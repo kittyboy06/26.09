@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF5" />
+      <stop offset="100%" stop-color="#E8F8EA" />
+    </linearGradient>
+    <linearGradient id="stemGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#98D8A2" />
+      <stop offset="100%" stop-color="#55A866" />
+    </linearGradient>
+    <linearGradient id="petalPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD6E3" />
+      <stop offset="100%" stop-color="#FF99B8" />
+    </linearGradient>
+    <linearGradient id="petalYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8B3" />
+      <stop offset="100%" stop-color="#FCD34D" />
+    </linearGradient>
+    <linearGradient id="petalBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D7F3FC" />
+      <stop offset="100%" stop-color="#93C5FD" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="300" rx="24" fill="url(#bgGrad)" />
+
+  <!-- Stems -->
+  <path d="M190 270 C195 210 180 160 170 110" stroke="url(#stemGrad)" stroke-width="6" stroke-linecap="round" />
+  <path d="M200 270 C200 200 215 150 230 95" stroke="url(#stemGrad)" stroke-width="6" stroke-linecap="round" />
+  <path d="M195 270 C190 220 150 170 130 130" stroke="url(#stemGrad)" stroke-width="5" stroke-linecap="round" />
+  <path d="M205 270 C210 220 250 180 275 140" stroke="url(#stemGrad)" stroke-width="5" stroke-linecap="round" />
+  <path d="M200 270 C200 180 198 130 198 80" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round" />
+
+  <!-- Botanical Leaves -->
+  <path d="M185 210 Q150 200 145 180 Q170 190 183 205 Z" fill="#98D8A2" />
+  <path d="M205 220 Q240 210 248 190 Q225 200 207 215 Z" fill="#86EFAC" />
+  <path d="M175 160 Q130 150 120 130 Q150 140 173 155 Z" fill="#6EE7B7" />
+  <path d="M220 170 Q265 160 275 140 Q245 150 222 165 Z" fill="#98D8A2" />
+
+  <!-- Flowers -->
+  <!-- Left Pink Daisy -->
+  <g transform="translate(130, 130)">
+    <circle cx="-12" cy="0" r="10" fill="url(#petalPink)" />
+    <circle cx="12" cy="0" r="10" fill="url(#petalPink)" />
+    <circle cx="0" cy="-12" r="10" fill="url(#petalPink)" />
+    <circle cx="0" cy="12" r="10" fill="url(#petalPink)" />
+    <circle cx="-8" cy="-8" r="9" fill="url(#petalPink)" />
+    <circle cx="8" cy="-8" r="9" fill="url(#petalPink)" />
+    <circle cx="-8" cy="8" r="9" fill="url(#petalPink)" />
+    <circle cx="8" cy="8" r="9" fill="url(#petalPink)" />
+    <circle cx="0" cy="0" r="8" fill="#FDE047" />
+  </g>
+
+  <!-- Right Sky Blue Blossom -->
+  <g transform="translate(275, 140)">
+    <circle cx="-10" cy="0" r="9" fill="url(#petalBlue)" />
+    <circle cx="10" cy="0" r="9" fill="url(#petalBlue)" />
+    <circle cx="0" cy="-10" r="9" fill="url(#petalBlue)" />
+    <circle cx="0" cy="10" r="9" fill="url(#petalBlue)" />
+    <circle cx="0" cy="0" r="7" fill="#FEF08A" />
+  </g>
+
+  <!-- Center-Left Buttercup (Yellow) -->
+  <g transform="translate(170, 110)">
+    <circle cx="-14" cy="0" r="11" fill="url(#petalYellow)" />
+    <circle cx="14" cy="0" r="11" fill="url(#petalYellow)" />
+    <circle cx="0" cy="-14" r="11" fill="url(#petalYellow)" />
+    <circle cx="0" cy="14" r="11" fill="url(#petalYellow)" />
+    <circle cx="-10" cy="-10" r="10" fill="url(#petalYellow)" />
+    <circle cx="10" cy="-10" r="10" fill="url(#petalYellow)" />
+    <circle cx="-10" cy="10" r="10" fill="url(#petalYellow)" />
+    <circle cx="10" cy="10" r="10" fill="url(#petalYellow)" />
+    <circle cx="0" cy="0" r="9" fill="#EA580C" />
+  </g>
+
+  <!-- Center-Right Lavender / Purple Blossom -->
+  <g transform="translate(230, 95)">
+    <circle cx="-11" cy="0" r="9" fill="#E9D5FF" />
+    <circle cx="11" cy="0" r="9" fill="#E9D5FF" />
+    <circle cx="0" cy="-11" r="9" fill="#E9D5FF" />
+    <circle cx="0" cy="11" r="9" fill="#E9D5FF" />
+    <circle cx="0" cy="0" r="7" fill="#FDE047" />
+  </g>
+
+  <!-- Center Top Wild Sunflower / Master Bloom -->
+  <g transform="translate(198, 80)">
+    <circle cx="-16" cy="0" r="12" fill="url(#petalPink)" />
+    <circle cx="16" cy="0" r="12" fill="url(#petalPink)" />
+    <circle cx="0" cy="-16" r="12" fill="url(#petalPink)" />
+    <circle cx="0" cy="16" r="12" fill="url(#petalPink)" />
+    <circle cx="-11" cy="-11" r="11" fill="url(#petalYellow)" />
+    <circle cx="11" cy="-11" r="11" fill="url(#petalYellow)" />
+    <circle cx="-11" cy="11" r="11" fill="url(#petalYellow)" />
+    <circle cx="11" cy="11" r="11" fill="url(#petalYellow)" />
+    <circle cx="0" cy="0" r="11" fill="#F59E0B" />
+  </g>
+
+  <!-- Ribbon Tie -->
+  <path d="M182 265 Q198 258 214 265 Q206 276 198 285 Q190 276 182 265 Z" fill="#F472B6" />
+  <circle cx="198" cy="265" r="5" fill="#DB2777" />
+
+  <!-- Badge Text -->
+  <rect x="250" y="240" width="130" height="34" rx="17" fill="#FFFFFF" stroke="#98D8A2" stroke-width="2" />
+  <text x="315" y="262" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#166534" text-anchor="middle">939 PIECES 🌸</text>
+</svg>
