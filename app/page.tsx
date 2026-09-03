@@ -16,13 +16,32 @@ export default function HomePage() {
   const { isUnlocked, unlock } = useBirthday();
   const [passcode, setPasscode] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const [justUnlocked, setJustUnlocked] = useState<boolean>(false);
+  const [isUnlocking, setIsUnlocking] = useState<boolean>(false);
 
-  const checkAndUnlock = (codeToCheck: string) => {
-    const cleanInput = codeToCheck.trim().replace(/\s+/g, "");
+  const handleKeyPress = (val: string) => {
+    if (isUnlocking) return;
+
+    setPasscode((prev) => {
+      if (prev.length >= 6) return prev;
+      return prev + val;
+    });
+    if (errorMsg) setErrorMsg("");
+  };
+
+  const handleBackspace = () => {
+    if (isUnlocking) return;
+    setPasscode((prev) => prev.slice(0, -1));
+    if (errorMsg) setErrorMsg("");
+  };
+
+  const handleUnlockClick = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (isUnlocking) return;
+
+    const cleanInput = passcode.trim().replace(/\s+/g, "");
     if (cleanInput === siteConfig.passcode || cleanInput === "2609" || cleanInput === "26/09") {
       setErrorMsg("");
-      setJustUnlocked(true);
+      setIsUnlocking(true);
 
       // Trigger celebratory pastel confetti burst
       try {
@@ -39,34 +58,11 @@ export default function HomePage() {
       // Unlock global state & initialize mobile audio
       unlock();
 
-      // Smooth transition to Chapter 2
+      // Smooth animated exit transition to Chapter 2
       setTimeout(() => {
         router.push("/note");
-      }, 700);
-      return true;
-    }
-    return false;
-  };
-
-  const handleKeyPress = (val: string) => {
-    if (justUnlocked || isUnlocked) return;
-
-    setPasscode((prev) => {
-      if (prev.length >= 6) return prev;
-      return prev + val;
-    });
-    if (errorMsg) setErrorMsg("");
-  };
-
-  const handleBackspace = () => {
-    if (justUnlocked || isUnlocked) return;
-    setPasscode((prev) => prev.slice(0, -1));
-    if (errorMsg) setErrorMsg("");
-  };
-
-  const handleUnlockClick = (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    if (!checkAndUnlock(passcode)) {
+      }, 350);
+    } else {
       setErrorMsg("Try your birthday date! 😉 (26.09)");
     }
   };
@@ -74,7 +70,7 @@ export default function HomePage() {
   // Support desktop keyboard entry
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isUnlocked || justUnlocked) return;
+      if (isUnlocking) return;
 
       if (e.key >= "0" && e.key <= "9") {
         handleKeyPress(e.key);
@@ -89,7 +85,7 @@ export default function HomePage() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [passcode, isUnlocked, justUnlocked]);
+  }, [passcode, isUnlocking]);
 
   const numpadKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "del"];
 
@@ -141,16 +137,16 @@ export default function HomePage() {
 
         {/* Aesthetic Numberpad Birthday Lock Card */}
         <div className="w-full max-w-[290px] mx-auto rounded-3xl bg-white/95 p-3.5 sm:p-4 shadow-scrapbook border border-pastel-pink/40 backdrop-blur-md shrink-0">
-          {isUnlocked || justUnlocked ? (
+          {isUnlocked && !isUnlocking ? (
             <div className="flex flex-col items-center gap-2 py-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-pastel-green/40 text-emerald-800 animate-bounce">
                 <Unlock className="h-5 w-5" />
               </div>
               <p className="font-display text-base font-bold text-pastel-charcoal">
-                ✨ Unlocked!
+                ✨ Story Unlocked!
               </p>
               <p className="text-xs text-pastel-charcoal/70">
-                Starting soundtrack & opening scrapbook...
+                You&apos;re already on this journey.
               </p>
               <SpecularButton
                 variant="pink"
@@ -158,7 +154,7 @@ export default function HomePage() {
                 className="w-full mt-2"
                 onClick={() => router.push("/note")}
               >
-                <span>Resume Story</span>
+                <span>Continue to Chapter 02</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </SpecularButton>
             </div>
@@ -203,8 +199,9 @@ export default function HomePage() {
                         key="del"
                         type="button"
                         onClick={handleBackspace}
+                        disabled={isUnlocking}
                         aria-label="Backspace"
-                        className="h-10 rounded-xl bg-pastel-pink/30 hover:bg-pastel-pink/50 active:scale-90 border border-pastel-pink/40 text-pastel-charcoal flex items-center justify-center transition-transform shadow-xs"
+                        className="h-10 rounded-xl bg-pastel-pink/30 hover:bg-pastel-pink/50 active:scale-90 border border-pastel-pink/40 text-pastel-charcoal flex items-center justify-center transition-transform shadow-xs disabled:opacity-50"
                       >
                         <Delete className="h-4 w-4 text-pastel-charcoal/80" />
                       </button>
@@ -216,7 +213,8 @@ export default function HomePage() {
                       key={key}
                       type="button"
                       onClick={() => handleKeyPress(key)}
-                      className="h-10 rounded-xl bg-pastel-cream/80 hover:bg-pastel-pink/20 active:scale-90 border border-pastel-pink/20 font-display text-base font-bold text-pastel-charcoal transition-transform shadow-xs flex items-center justify-center"
+                      disabled={isUnlocking}
+                      className="h-10 rounded-xl bg-pastel-cream/80 hover:bg-pastel-pink/20 active:scale-90 border border-pastel-pink/20 font-display text-base font-bold text-pastel-charcoal transition-transform shadow-xs flex items-center justify-center disabled:opacity-50"
                     >
                       {key}
                     </button>
@@ -230,9 +228,17 @@ export default function HomePage() {
                 variant="pink"
                 size="default"
                 onClick={handleUnlockClick}
+                disabled={isUnlocking}
                 className="w-full justify-center py-2 text-xs font-bold mt-1"
               >
-                <span>Unlock Story →</span>
+                {isUnlocking ? (
+                  <span className="flex items-center justify-center gap-1.5 animate-pulse text-pastel-charcoal">
+                    <Sparkles className="h-3.5 w-3.5 text-pastel-pink-dark animate-spin" />
+                    <span>Opening Chapter 02... 🌸</span>
+                  </span>
+                ) : (
+                  <span>Unlock Story →</span>
+                )}
               </SpecularButton>
             </div>
           )}

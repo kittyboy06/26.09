@@ -24,6 +24,8 @@ export const viewport: Viewport = {
   themeColor: "#FFFDF5",
 };
 
+import { RouteTransition } from "@/components/layout/RouteTransition";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,9 +44,9 @@ export default function RootLayout({
           {/* Floating Skiper 2 Dynamic Music Island */}
           <Skiper2MusicIsland />
 
-          {/* Mobile-first main container without rigid excessive paddings */}
+          {/* Mobile-first main container with animated route transitions */}
           <main className="relative min-h-[100dvh] w-full max-w-md mx-auto px-4 flex flex-col">
-            {children}
+            <RouteTransition>{children}</RouteTransition>
           </main>
         </BirthdayProvider>
       </body>
