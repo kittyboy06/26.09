@@ -53,11 +53,7 @@ export default function HomePage() {
 
     setPasscode((prev) => {
       if (prev.length >= 6) return prev;
-      const nextCode = prev + val;
-      if (nextCode === siteConfig.passcode || nextCode === "2609") {
-        checkAndUnlock(nextCode);
-      }
-      return nextCode;
+      return prev + val;
     });
     if (errorMsg) setErrorMsg("");
   };
@@ -236,7 +232,7 @@ export default function HomePage() {
                 onClick={handleUnlockClick}
                 className="w-full justify-center py-2 text-xs font-bold mt-1"
               >
-                <span>Unlock the birthday →</span>
+                <span>Unlock Story →</span>
               </SpecularButton>
             </div>
           )}
