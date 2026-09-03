@@ -33,7 +33,7 @@ export default function BirthdayPage() {
   }, []);
 
   return (
-    <PageTransition className="relative flex flex-col items-center text-center">
+    <PageTransition className="relative flex flex-col items-center pt-12 pb-16 text-center">
       {/* Top Ribbon & Celebration Badges */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-3}>

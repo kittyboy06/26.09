@@ -42,8 +42,8 @@ export default function RootLayout({
           {/* Floating Skiper 2 Dynamic Music Island */}
           <Skiper2MusicIsland />
 
-          {/* Mobile-first main container */}
-          <main className="relative min-h-[100dvh] w-full max-w-md mx-auto px-4 sm:px-6 pt-16 pb-24 flex flex-col justify-start">
+          {/* Mobile-first main container without rigid excessive paddings */}
+          <main className="relative min-h-[100dvh] w-full max-w-md mx-auto px-4 flex flex-col">
             {children}
           </main>
         </BirthdayProvider>

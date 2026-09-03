@@ -20,7 +20,7 @@ export default function NotePage() {
   ];
 
   return (
-    <PageTransition className="relative flex flex-col items-center">
+    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Skiper 19 Progressive SVG Vine */}
       <Skiper19ScrollVine color="#91D4EB" />
 

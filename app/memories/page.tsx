@@ -22,7 +22,7 @@ export default function MemoriesPage() {
   const foodCard = memoriesData.find((m) => m.id === "mem-7");
 
   return (
-    <PageTransition className="relative flex flex-col items-center">
+    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Skiper 19 Scroll Vine */}
       <Skiper19ScrollVine color="#F7A8C2" />
 

@@ -23,7 +23,7 @@ export default function GiftPage() {
   };
 
   return (
-    <PageTransition className="relative flex flex-col items-center">
+    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Skiper 19 Scroll Vine */}
       <Skiper19ScrollVine color="#98D8A2" />
 

@@ -51,7 +51,7 @@ export default function NineteenPage() {
   const card19 = nineteenThingsData.find((c) => c.isSpecial);
 
   return (
-    <PageTransition className="relative flex flex-col items-center">
+    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>

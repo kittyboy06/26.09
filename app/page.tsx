@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
-import { Sparkles, Lock, Unlock, ArrowRight, Heart } from "lucide-react";
+import { Sparkles, Lock, Unlock, ArrowRight } from "lucide-react";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
 import { siteConfig } from "@/data/siteConfig";
 import { TextLoop } from "@/components/ui/TextLoop";
@@ -51,10 +51,10 @@ export default function HomePage() {
   };
 
   return (
-    <PageTransition className="flex min-h-[82vh] flex-col items-center justify-between text-center">
-      {/* Top Floating Stickers */}
-      <div className="w-full flex items-center justify-between pt-2 px-2">
-        <Sticker variant="floating" rotation={-4}>
+    <PageTransition className="h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center py-3 overflow-hidden select-none">
+      {/* Top Floating Badges */}
+      <div className="w-full flex items-center justify-between px-1 shrink-0 pt-1">
+        <Sticker variant="floating" rotation={-3}>
           <span>🌼</span>
           <span className="text-[11px] text-pastel-charcoal font-medium">Sept 26</span>
         </Sticker>
@@ -66,69 +66,69 @@ export default function HomePage() {
       </div>
 
       {/* Hero Typography Composition */}
-      <div className="my-auto py-6 w-full flex flex-col items-center">
-        <div className="mb-2 inline-flex items-center gap-1.5 rounded-full bg-pastel-pink/50 px-3.5 py-1 text-xs font-semibold text-pastel-charcoal/80 border border-pastel-pink-dark/40 shadow-xs">
-          <Sparkles className="h-3.5 w-3.5 text-pastel-charcoal" />
+      <div className="my-auto py-1 w-full flex flex-col items-center shrink-0">
+        <div className="mb-1.5 inline-flex items-center gap-1.5 rounded-full bg-pastel-pink/50 px-3 py-0.5 text-[11px] font-semibold text-pastel-charcoal/80 border border-pastel-pink-dark/40 shadow-xs">
+          <Sparkles className="h-3 w-3 text-pastel-charcoal" />
           <span>A tiny digital birthday world</span>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-pastel-charcoal leading-[1.15]">
+        <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-pastel-charcoal leading-tight">
           Happy Birthday
         </h1>
 
-        <div className="mt-1 font-display text-5xl sm:text-6xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pastel-pink-dark via-pastel-charcoal to-pastel-blue-dark">
+        <div className="font-display text-4xl sm:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pastel-pink-dark via-pastel-charcoal to-pastel-blue-dark leading-tight">
           {siteConfig.recipient.toUpperCase()}
         </div>
 
         {/* Dynamic Text Loop */}
-        <div className="mt-4 h-12 flex items-center justify-center">
+        <div className="mt-2.5 h-9 flex items-center justify-center">
           <TextLoop
             words={siteConfig.heroLoopWords}
             interval={2600}
-            wordClassName="text-xl sm:text-2xl font-bold text-pastel-charcoal bg-pastel-yellow/60 px-4 py-1.5 rounded-full border border-pastel-yellow-dark/40 shadow-xs"
+            wordClassName="text-base sm:text-lg font-bold text-pastel-charcoal bg-pastel-yellow/60 px-3.5 py-1 rounded-full border border-pastel-yellow-dark/40 shadow-xs"
           />
         </div>
 
-        <p className="mt-4 max-w-xs text-xs sm:text-sm text-pastel-charcoal/75 leading-relaxed">
+        <p className="mt-2 max-w-xs text-xs text-pastel-charcoal/75 leading-relaxed px-4">
           Apparently a simple &ldquo;Happy Birthday&rdquo; text wasn&apos;t enough. 😂
         </p>
       </div>
 
       {/* Playful Birthday Lock Card */}
-      <div className="w-full max-w-xs rounded-3xl bg-white/95 p-6 shadow-scrapbook border border-pastel-pink/30 backdrop-blur-md">
+      <div className="w-full max-w-[310px] mx-auto rounded-2xl bg-white/95 p-4 shadow-scrapbook border border-pastel-pink/30 backdrop-blur-md shrink-0">
         {isUnlocked || justUnlocked ? (
-          <div className="flex flex-col items-center gap-3 py-2">
-            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-pastel-green/40 text-emerald-800 animate-bounce">
-              <Unlock className="h-6 w-6" />
+          <div className="flex flex-col items-center gap-2 py-1">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-pastel-green/40 text-emerald-800 animate-bounce">
+              <Unlock className="h-5 w-5" />
             </div>
-            <p className="font-display text-base font-bold text-pastel-charcoal">
+            <p className="font-display text-sm font-bold text-pastel-charcoal">
               ✨ Unlocked!
             </p>
-            <p className="text-xs text-pastel-charcoal/70">
-              Starting the soundtrack and opening the scrapbook...
+            <p className="text-[11px] text-pastel-charcoal/70">
+              Starting soundtrack & opening scrapbook...
             </p>
             <SpecularButton
               variant="pink"
-              size="default"
+              size="small"
               className="w-full mt-1"
               onClick={() => router.push("/note")}
             >
               <span>Resume Story</span>
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-3.5 w-3.5" />
             </SpecularButton>
           </div>
         ) : (
-          <form onSubmit={handleUnlock} className="flex flex-col gap-3">
+          <form onSubmit={handleUnlock} className="flex flex-col gap-2">
             <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-pastel-charcoal/85">
-              <Lock className="h-4 w-4 text-pastel-pink-dark" />
+              <Lock className="h-3.5 w-3.5 text-pastel-pink-dark" />
               <span>🔐 A tiny birthday lock</span>
             </div>
 
-            <p className="text-[11px] text-pastel-muted font-medium">
+            <p className="text-[10px] text-pastel-muted font-medium">
               Hint: It&apos;s your birthday 😉 (<strong>26.09</strong>)
             </p>
 
-            <div className="relative">
+            <div>
               <input
                 type="text"
                 inputMode="decimal"
@@ -138,13 +138,13 @@ export default function HomePage() {
                   if (errorMsg) setErrorMsg("");
                 }}
                 placeholder="26.09"
-                className="w-full rounded-2xl border border-pastel-pink/40 bg-pastel-cream/60 px-4 py-3 text-center font-display text-lg font-bold tracking-widest text-pastel-charcoal placeholder:text-pastel-muted/40 focus:border-pastel-pink-dark focus:bg-white focus:outline-none transition-colors"
+                className="w-full rounded-xl border border-pastel-pink/40 bg-pastel-cream/60 px-3 py-2 text-center font-display text-base font-bold tracking-widest text-pastel-charcoal placeholder:text-pastel-muted/40 focus:border-pastel-pink-dark focus:bg-white focus:outline-none transition-colors"
                 maxLength={6}
               />
             </div>
 
             {errorMsg && (
-              <p className="text-[11px] font-semibold text-rose-500 animate-wiggle-soft">
+              <p className="text-[10px] font-semibold text-rose-500 animate-wiggle-soft">
                 {errorMsg}
               </p>
             )}
@@ -153,7 +153,7 @@ export default function HomePage() {
               type="submit"
               variant="pink"
               size="default"
-              className="w-full justify-center"
+              className="w-full justify-center py-2 text-xs"
             >
               <span>Unlock the birthday →</span>
             </SpecularButton>
@@ -162,9 +162,9 @@ export default function HomePage() {
       </div>
 
       {/* Bottom Sparkles Decor */}
-      <div className="mt-6 flex items-center justify-center gap-4 text-sm text-pastel-muted select-none">
+      <div className="mt-2 flex items-center justify-center gap-3 text-xs text-pastel-muted select-none shrink-0 pb-1">
         <span>✨</span>
-        <span className="font-handwriting text-base text-pastel-charcoal/70">19 looks good on you</span>
+        <span className="font-handwriting text-sm text-pastel-charcoal/70">19 looks good on you</span>
         <span>🌸</span>
       </div>
     </PageTransition>
