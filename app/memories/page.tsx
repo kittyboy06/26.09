@@ -205,10 +205,10 @@ export default function MemoriesPage() {
 
       {/* Page Navigation */}
       <PageNavigation
-        nextHref="/nineteen"
-        nextLabel="19 Things →"
+        nextHref="/chat"
+        nextLabel="The Chat Logs →"
         prevHref="/noticed"
-        prevLabel="Back to Observations"
+        prevLabel="Back to Terminal"
         variant="pink"
       />
     </PageTransition>

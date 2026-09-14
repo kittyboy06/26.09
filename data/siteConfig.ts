@@ -10,9 +10,11 @@ export const siteRoutes: SiteRoute[] = [
   { path: "/note", label: "A Little Something", number: "02", badge: "The Note 💌" },
   { path: "/noticed", label: "Things I've Noticed", number: "03", badge: "System Profile 🤖" },
   { path: "/memories", label: "Our Randomness", number: "04", badge: "Scrapbook 📸" },
-  { path: "/nineteen", label: "19 Things", number: "05", badge: "19 Things ✨" },
-  { path: "/gift", label: "Flower Reveal", number: "06", badge: "939 Pieces 🌸" },
-  { path: "/birthday", label: "Final Celebration", number: "07", badge: "Birthday! 🎉" },
+  { path: "/chat", label: "The Chat Logs", number: "05", badge: "Chat Wall 💬" },
+  { path: "/nineteen", label: "19 Things", number: "06", badge: "19 Things ✨" },
+  { path: "/game", label: "Whack-a-Tanisha", number: "07", badge: "Mini-Game 🕹️" },
+  { path: "/gift", label: "Flower Reveal", number: "08", badge: "939 Pieces 🌸" },
+  { path: "/birthday", label: "Final Celebration", number: "09", badge: "Birthday! 🎉" },
 ];
 
 export const siteConfig = {

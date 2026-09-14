@@ -24,9 +24,9 @@ export function ChapterProgress() {
         paddingTop: "max(6px, env(safe-area-inset-top, 6px))",
       }}
     >
-      {/* Chapter Counter e.g. 01 / 07 */}
+      {/* Chapter Counter e.g. 01 / 09 */}
       <span className="font-display text-xs font-bold text-pastel-charcoal">
-        {current.number} <span className="text-pastel-muted font-normal">/ 07</span>
+        {current.number} <span className="text-pastel-muted font-normal">/ 09</span>
       </span>
 
       <span className="h-3 w-[1px] bg-pastel-muted/30" aria-hidden="true" />

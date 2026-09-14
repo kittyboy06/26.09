@@ -106,11 +106,16 @@ export default function HomePage() {
 
       {/* Middle Content: Vertically Centered and Perfectly Balanced */}
       <div className="my-auto w-full flex flex-col items-center justify-center gap-2 sm:gap-2.5 py-1">
-        {/* Title Group */}
-        <div className="w-full flex flex-col items-center shrink-0">
-          <div className="mb-1 inline-flex items-center gap-1.5 rounded-full bg-pastel-pink/50 px-3 py-0.5 text-[10px] font-semibold text-pastel-charcoal/80 border border-pastel-pink-dark/40 shadow-xs">
-            <Sparkles className="h-3 w-3 text-pastel-charcoal" />
-            <span>A tiny digital birthday world</span>
+        {/* Title Group with Postcard Postmark */}
+        <div className="w-full flex flex-col items-center shrink-0 relative">
+          <div className="mb-1 flex items-center gap-2">
+            <span className="inline-flex items-center gap-1 rounded-full bg-pastel-pink/50 px-2.5 py-0.5 text-[10px] font-semibold text-pastel-charcoal/80 border border-pastel-pink-dark/40 shadow-xs">
+              <Sparkles className="h-3 w-3 text-pastel-charcoal" />
+              <span>A tiny digital birthday world</span>
+            </span>
+            <span className="border border-dashed border-pastel-pink-dark/60 rounded px-1.5 py-0.2 text-[8px] font-mono font-bold text-pastel-pink-dark rotate-3 bg-white/70">
+              POST • 26.09
+            </span>
           </div>
 
           <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-pastel-charcoal leading-tight">

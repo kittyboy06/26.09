@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
-import { Sparkles, Music, RotateCcw, Heart } from "lucide-react";
+import { Sparkles, Music, RotateCcw, Heart, ArrowLeft } from "lucide-react";
 import { siteConfig } from "@/data/siteConfig";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
 import { PaperCard } from "@/components/ui/PaperCard";
@@ -38,7 +38,7 @@ export default function BirthdayPage() {
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-3}>
           <span>🎀</span>
-          <span className="text-[11px] font-medium">Chapter 07</span>
+          <span className="text-[11px] font-medium">Chapter 09</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={3}>
@@ -64,14 +64,19 @@ export default function BirthdayPage() {
         </p>
       </div>
 
-      {/* Sincere Friendship Birthday Letter */}
+      {/* Sincere Friendship Birthday Letter (Ivory Letterhead) */}
       <div className="w-full max-w-sm my-6">
-        <PaperCard
-          tapeColor="pink"
-          tapePosition="center"
-          rotation={-0.5}
-          className="bg-white/95 border-pastel-pink/40 text-left p-6 shadow-scrapbook-lg"
-        >
+        <div className="relative rounded-3xl bg-[#FCFAF2] border-2 border-amber-200/70 p-6 shadow-scrapbook-lg text-left overflow-hidden">
+          {/* Subtle gold foil header line */}
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-amber-200/60">
+            <span className="text-[9px] font-mono tracking-widest text-amber-800/60 uppercase font-bold">
+              FROM AFSAL • FOR TANISHA
+            </span>
+            <span className="text-[9px] font-mono text-amber-700/60">
+              SEPT 26, 2026
+            </span>
+          </div>
+
           <div className="space-y-4 text-sm sm:text-base text-pastel-charcoal leading-relaxed">
             <p className="font-handwriting text-2xl text-pastel-pink-dark font-bold">
               19 looks good on you. 🌸
@@ -93,14 +98,17 @@ export default function BirthdayPage() {
               Have a really good birthday, Tanisha.
             </p>
 
-            <div className="pt-4 border-t border-pastel-cream flex items-center justify-between">
+            <div className="pt-4 border-t border-amber-200/50 flex items-center justify-between">
               <span className="font-handwriting text-xl text-pastel-charcoal font-bold">
                 — {siteConfig.creator}
               </span>
-              <Heart className="h-5 w-5 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+              <div className="flex items-center gap-1">
+                <span className="text-xs">🌸</span>
+                <Heart className="h-5 w-5 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+              </div>
             </div>
           </div>
-        </PaperCard>
+        </div>
       </div>
 
       {/* Interactive CTA Controls */}
@@ -127,10 +135,19 @@ export default function BirthdayPage() {
           <span>{isPlaying ? "Pause Music 🎵" : "Replay Music 🎵"}</span>
         </SpecularButton>
 
+        {/* Back to Gift button */}
+        <button
+          onClick={() => router.push("/gift")}
+          className="mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-pastel-muted hover:text-pastel-charcoal transition-colors py-1.5 focus:outline-none"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          <span>Back to Flower Reveal</span>
+        </button>
+
         {/* Start Over button */}
         <button
           onClick={() => router.push("/")}
-          className="mt-2 flex items-center justify-center gap-1.5 text-xs font-semibold text-pastel-muted hover:text-pastel-charcoal transition-colors py-2 focus:outline-none"
+          className="flex items-center justify-center gap-1.5 text-xs font-semibold text-pastel-muted hover:text-pastel-charcoal transition-colors py-1 focus:outline-none"
         >
           <RotateCcw className="h-3.5 w-3.5" />
           <span>Start Over from the Beginning ↻</span>

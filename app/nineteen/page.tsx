@@ -56,17 +56,17 @@ export default function NineteenPage() {
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
           <span>✨</span>
-          <span className="text-[11px] font-medium">Chapter 05</span>
+          <span className="text-[11px] font-medium">Chapter 06</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
-          <span>🎂</span>
-          <span className="text-[11px] font-medium">19 Milestones</span>
+          <span>🃏</span>
+          <span className="text-[11px] font-medium">Card Collection</span>
         </Sticker>
       </div>
 
       <div className="text-center mb-6">
-        <h2 className="font-display text-4xl font-extrabold text-pastel-charcoal">
+        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-pastel-charcoal">
           19 Things
         </h2>
         <p className="mt-1 font-handwriting text-lg text-pastel-charcoal/75">
@@ -194,10 +194,10 @@ export default function NineteenPage() {
 
       {/* Page Navigation */}
       <PageNavigation
-        nextHref="/gift"
-        nextLabel="One last thing... →"
-        prevHref="/memories"
-        prevLabel="Back to Scrapbook"
+        nextHref="/game"
+        nextLabel="Play Mini-Game →"
+        prevHref="/chat"
+        prevLabel="Back to Chat Logs"
         variant="yellow"
       />
     </PageTransition>

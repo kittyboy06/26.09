@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <radialGradient id="faceGlow" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#FFF0F5" />
+      <stop offset="100%" stop-color="#FFE4E9" />
+    </radialGradient>
+    <linearGradient id="partyHatGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF9EAA" />
+      <stop offset="50%" stop-color="#FFD1DC" />
+      <stop offset="100%" stop-color="#BDE7F5" />
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <!-- Hair / Background shadow -->
+  <circle cx="100" cy="110" r="68" fill="#3D323E" filter="url(#softShadow)" />
+
+  <!-- Bangs & Face Contour -->
+  <circle cx="100" cy="115" r="58" fill="url(#faceGlow)" />
+
+  <!-- Hair strands framing face -->
+  <path d="M42 110 C42 80, 65 65, 100 65 C135 65, 158 80, 158 110 C158 130, 152 145, 146 150 C146 115, 135 85, 100 85 C65 85, 54 115, 54 150 C48 145, 42 130, 42 110 Z" fill="#3D323E" />
+
+  <!-- Eyes with sparkling catchlights -->
+  <ellipse cx="78" cy="115" rx="6" ry="8" fill="#2D3748" />
+  <circle cx="76" cy="112" r="2.5" fill="#FFFFFF" />
+  <ellipse cx="122" cy="115" rx="6" ry="8" fill="#2D3748" />
+  <circle cx="120" cy="112" r="2.5" fill="#FFFFFF" />
+
+  <!-- Cute Rosy Cheeks -->
+  <ellipse cx="68" cy="125" rx="8" ry="4.5" fill="#FF8FAB" opacity="0.65" />
+  <ellipse cx="132" cy="125" rx="8" ry="4.5" fill="#FF8FAB" opacity="0.65" />
+
+  <!-- Sweet Smile -->
+  <path d="M92 128 Q100 134 108 128" stroke="#2D3748" stroke-width="2.5" stroke-linecap="round" fill="none" />
+
+  <!-- Mini Birthday Party Hat -->
+  <g transform="translate(100, 58) rotate(-8) translate(-100, -58)">
+    <polygon points="100,10 76,64 124,64" fill="url(#partyHatGrad)" stroke="#FF8FAB" stroke-width="2" stroke-linejoin="round" />
+    <!-- Hat Polka Dots -->
+    <circle cx="95" cy="46" r="3" fill="#FFF4A8" />
+    <circle cx="106" cy="52" r="2.5" fill="#BFE8C5" />
+    <circle cx="98" cy="30" r="2" fill="#FFFFFF" />
+    <!-- Hat Pom-pom -->
+    <circle cx="100" cy="10" r="6" fill="#FFF4A8" stroke="#FFD6B3" stroke-width="1.5" />
+    <!-- Hat Rim Ruffle -->
+    <ellipse cx="100" cy="64" rx="25" ry="4.5" fill="#FFFFFF" stroke="#FF9EAA" stroke-width="1.5" />
+  </g>
+
+  <!-- Cute Mini Flower Hairclip -->
+  <g transform="translate(138, 92)">
+    <circle cx="0" cy="0" r="4" fill="#FFC7D9" />
+    <circle cx="-5" cy="-2" r="3" fill="#FFF4A8" />
+    <circle cx="4" cy="-3" r="3" fill="#FFF4A8" />
+    <circle cx="-3" cy="4" r="3" fill="#FFF4A8" />
+    <circle cx="4" cy="3" r="3" fill="#FFF4A8" />
+  </g>
+</svg>

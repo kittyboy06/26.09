@@ -31,12 +31,12 @@ export default function GiftPage() {
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
           <span>💐</span>
-          <span className="text-[11px] font-medium">Chapter 06</span>
+          <span className="text-[11px] font-medium">Chapter 08</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
-          <span>🌸</span>
-          <span className="text-[11px] font-medium">Something That Stays</span>
+          <span>🌿</span>
+          <span className="text-[11px] font-medium">Botanical Specimen</span>
         </Sticker>
       </div>
 
@@ -52,10 +52,15 @@ export default function GiftPage() {
       <div className="w-full max-w-sm flex flex-col gap-6">
         {/* Botanical Growth Timeline */}
         <div className="rounded-3xl bg-white/90 p-5 shadow-scrapbook border border-pastel-green/40">
-          <h3 className="font-display text-xs font-bold uppercase tracking-wider text-emerald-800 mb-3 flex items-center gap-1.5">
-            <Flower2 className="h-3.5 w-3.5" />
-            <span>Botanical Progression</span>
-          </h3>
+          <div className="flex items-center justify-between border-b border-pastel-green/30 pb-2 mb-3">
+            <h3 className="font-display text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
+              <Flower2 className="h-3.5 w-3.5" />
+              <span>Botanical Progression</span>
+            </h3>
+            <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">
+              SPECIMEN #939
+            </span>
+          </div>
 
           <div className="flex flex-col gap-2.5">
             {giftData.stages.map((stage) => (
@@ -84,7 +89,7 @@ export default function GiftPage() {
           </div>
         </div>
 
-        {/* The Gift Reveal Card with Scrapbook Framing */}
+        {/* The Gift Reveal Card with Archival Botanical Framing */}
         <PaperCard
           tapeColor="green"
           tapePosition="center"
@@ -154,8 +159,8 @@ export default function GiftPage() {
       <PageNavigation
         nextHref="/birthday"
         nextLabel="The final wish →"
-        prevHref="/nineteen"
-        prevLabel="Back to 19 Things"
+        prevHref="/game"
+        prevLabel="Back to Mini-Game"
         variant="green"
       />
     </PageTransition>
