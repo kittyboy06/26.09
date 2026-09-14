@@ -19,20 +19,22 @@ export function ChapterProgress() {
   return (
     <nav
       aria-label="Story progression"
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 rounded-full border border-white/70 bg-white/90 px-3.5 py-1.5 shadow-scrapbook backdrop-blur-md select-none"
+      className="fixed top-2.5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-white/80 bg-white/95 px-3 py-1 shadow-scrapbook backdrop-blur-md select-none whitespace-nowrap shrink-0 max-w-fit"
       style={{
-        paddingTop: "max(6px, env(safe-area-inset-top, 6px))",
+        paddingTop: "max(4px, env(safe-area-inset-top, 4px))",
       }}
     >
-      {/* Chapter Counter e.g. 01 / 09 */}
-      <span className="font-display text-xs font-bold text-pastel-charcoal">
-        {current.number} <span className="text-pastel-muted font-normal">/ 09</span>
+      {/* Chapter Counter strictly on one single line */}
+      <span className="font-display text-xs font-bold text-pastel-charcoal whitespace-nowrap shrink-0 inline-flex items-center gap-1">
+        <span>{current.number}</span>
+        <span className="text-pastel-muted font-normal">/</span>
+        <span className="text-pastel-muted font-normal">09</span>
       </span>
 
-      <span className="h-3 w-[1px] bg-pastel-muted/30" aria-hidden="true" />
+      <span className="h-3 w-[1px] bg-pastel-muted/30 shrink-0" aria-hidden="true" />
 
-      {/* Progress Dots */}
-      <div className="flex items-center gap-1.5">
+      {/* Progress Dots strictly on one single line */}
+      <div className="flex items-center gap-1 shrink-0 flex-nowrap">
         {siteRoutes.map((route, idx) => {
           const isActive = idx === currentRouteIndex;
           const isPassed = idx < currentRouteIndex;
@@ -43,12 +45,12 @@ export function ChapterProgress() {
               href={route.path}
               aria-label={`Go to page ${route.number}: ${route.label}`}
               className={cn(
-                "h-2 rounded-full transition-all duration-300",
+                "h-1.5 rounded-full transition-all duration-300 shrink-0",
                 isActive
-                  ? "w-5 bg-pastel-pink-dark"
+                  ? "w-4 bg-pastel-pink-dark"
                   : isPassed
-                  ? "w-2 bg-pastel-green-dark"
-                  : "w-2 bg-pastel-muted/30 hover:bg-pastel-muted/50"
+                  ? "w-1.5 bg-pastel-green-dark"
+                  : "w-1.5 bg-pastel-muted/30 hover:bg-pastel-muted/50"
               )}
             />
           );

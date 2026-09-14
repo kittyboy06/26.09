@@ -10,6 +10,7 @@ import { TextLoop } from "@/components/ui/TextLoop";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { cn } from "@/lib/utils";
 
 export default function HomePage() {
   const router = useRouter();
@@ -91,8 +92,13 @@ export default function HomePage() {
 
   return (
     <PageTransition className="h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-2 py-3 select-none overflow-hidden">
-      {/* Top Floating Badges */}
-      <div className="w-full flex items-center justify-between px-2 shrink-0 pt-0.5">
+      {/* Top Floating Badges with clearance for ChapterProgress when unlocked */}
+      <div
+        className={cn(
+          "w-full flex items-center justify-between px-2 shrink-0 transition-all duration-300",
+          isUnlocked ? "pt-10" : "pt-0.5"
+        )}
+      >
         <Sticker variant="floating" rotation={-3}>
           <span>🌼</span>
           <span className="text-[11px] text-pastel-charcoal font-medium">Sept 26</span>

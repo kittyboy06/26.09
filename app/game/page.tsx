@@ -4,39 +4,30 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { Sparkles, Trophy, RotateCcw, ArrowRight } from "lucide-react";
+import { Trophy, RotateCcw, Sparkles } from "lucide-react";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sticker } from "@/components/ui/Sticker";
-import { SpecularButton } from "@/components/ui/SpecularButton";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 
 const TARGET_SCORE = 7;
-const TOTAL_HOLES = 6; // 2 cols x 3 rows fits phones perfectly
+const TOTAL_HOLES = 9; // Classic 3x3 arcade grid
 
-const POP_QUOTES = [
-  "+1 💥",
-  "Latency +100ms 🐢",
-  "Fast loading?! 😂",
-  "Shell cracked! 🐚",
-  "Bot hit! 🤖",
-  "Dodged! 💨",
-  "Nice reflex! 🌸",
-];
+const HIT_SOUND_TEXTS = ["POW! 💥", "WHACK! 🔨", "BOP! ✨", "GOTCHA! 😂", "OUCH! 🌸", "+10 🎯"];
 
 export default function WhackGamePage() {
   const [activeHole, setActiveHole] = useState<number | null>(null);
   const [score, setScore] = useState<number>(0);
   const [isWon, setIsWon] = useState<boolean>(false);
-  const [floatingText, setFloatingText] = useState<{ id: number; text: string; hole: number } | null>(null);
-  const [hasWhackedCurrentHole, setHasWhackedCurrentHole] = useState<boolean>(false);
+  const [hitHole, setHitHole] = useState<number | null>(null);
+  const [floatingScore, setFloatingScore] = useState<{ id: number; text: string; hole: number } | null>(null);
+  const [malletStrike, setMalletStrike] = useState<number | null>(null);
   const [photoSrc, setPhotoSrc] = useState<string>("/assets/photos/tanisha.png");
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Spawn random mole
+  // Spawn random mole in one of the 9 holes
   const spawnMole = useCallback(() => {
     if (isWon) return;
-    setHasWhackedCurrentHole(false);
 
     setActiveHole((prev) => {
       let nextHole: number;
@@ -47,7 +38,7 @@ export default function WhackGamePage() {
     });
   }, [isWon]);
 
-  // Game loop interval
+  // Main game spawn loop
   useEffect(() => {
     if (isWon) {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -56,39 +47,51 @@ export default function WhackGamePage() {
 
     timerRef.current = setInterval(() => {
       spawnMole();
-    }, 1100);
+    }, 1150);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [spawnMole, isWon]);
 
-  // Handle successful whack
-  const handleWhack = (holeIndex: number) => {
-    if (isWon || holeIndex !== activeHole || hasWhackedCurrentHole) return;
+  // Handle tapping a hole
+  const handleHoleClick = (holeIndex: number) => {
+    if (isWon) return;
 
-    setHasWhackedCurrentHole(true);
-    const newScore = score + 1;
-    setScore(newScore);
+    // Trigger mallet strike animation on that hole
+    setMalletStrike(holeIndex);
+    setTimeout(() => setMalletStrike(null), 250);
 
-    // Pick random floating quote
-    const randomQuote = POP_QUOTES[Math.floor(Math.random() * POP_QUOTES.length)];
-    setFloatingText({ id: Date.now(), text: randomQuote, hole: holeIndex });
-    setTimeout(() => setFloatingText(null), 900);
+    // If mole is present and hasn't been whacked this pop
+    if (holeIndex === activeHole && hitHole !== holeIndex) {
+      setHitHole(holeIndex);
+      const newScore = score + 1;
+      setScore(newScore);
 
-    // Win condition check
-    if (newScore >= TARGET_SCORE) {
-      setIsWon(true);
-      setActiveHole(null);
+      const randomText = HIT_SOUND_TEXTS[Math.floor(Math.random() * HIT_SOUND_TEXTS.length)];
+      setFloatingScore({ id: Date.now(), text: randomText, hole: holeIndex });
+      setTimeout(() => setFloatingScore(null), 850);
 
-      try {
-        confetti({
-          particleCount: 100,
-          spread: 75,
-          origin: { y: 0.6 },
-          colors: ["#FFF4A8", "#BFE8C5", "#BDE7F5", "#FFC7D9", "#FFD6B3"],
-        });
-      } catch {}
+      // Win condition check
+      if (newScore >= TARGET_SCORE) {
+        setIsWon(true);
+        setActiveHole(null);
+
+        try {
+          confetti({
+            particleCount: 110,
+            spread: 80,
+            origin: { y: 0.6 },
+            colors: ["#FFF4A8", "#BFE8C5", "#BDE7F5", "#FFC7D9", "#FFD6B3"],
+          });
+        } catch {}
+      } else {
+        // Hide mole quickly after being hit
+        setTimeout(() => {
+          setActiveHole(null);
+          setHitHole(null);
+        }, 300);
+      }
     }
   };
 
@@ -96,7 +99,8 @@ export default function WhackGamePage() {
     setScore(0);
     setIsWon(false);
     setActiveHole(null);
-    setHasWhackedCurrentHole(false);
+    setHitHole(null);
+    setMalletStrike(null);
     spawnMole();
   };
 
@@ -106,134 +110,188 @@ export default function WhackGamePage() {
       <Skiper19ScrollVine color="#FFD6B3" />
 
       {/* Header Badges */}
-      <div className="w-full flex items-center justify-between mb-4">
+      <div className="w-full flex items-center justify-between mb-3">
         <Sticker variant="floating" rotation={-3}>
           <span>🕹️</span>
-          <span className="text-xs text-pastel-charcoal font-medium">Chapter 07</span>
+          <span className="text-[11px] font-medium">Chapter 07</span>
         </Sticker>
         <Sticker variant="wiggle" rotation={3}>
-          <span>🎯</span>
-          <span className="text-xs text-pastel-charcoal font-medium">Whack-a-Tanisha</span>
+          <span>🔨</span>
+          <span className="text-[11px] font-medium">Classic Whack-a-Mole</span>
         </Sticker>
       </div>
 
       {/* Chapter Title */}
-      <div className="text-center mb-3">
+      <div className="text-center mb-2">
         <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-pastel-charcoal">
-          Catch the Birthday Girl!
+          Whack-a-Tanisha!
         </h2>
-        <p className="mt-0.5 text-xs text-pastel-muted">
-          Whack Tanisha 7 times before she retreats into her shell 🐚
+        <p className="text-xs text-pastel-muted">
+          Classic Carnival Edition • Whack 7 times to break the shell 🐚
         </p>
       </div>
 
-      {/* Arcade Bezel Game Box */}
-      <div className="w-full max-w-sm rounded-3xl bg-white/95 border-2 border-pastel-pink/50 shadow-scrapbook p-4 backdrop-blur-md">
-        {/* Game Status Header */}
-        <div className="flex items-center justify-between bg-pastel-cream/70 rounded-2xl px-4 py-2 border border-pastel-pink/30 mb-4 shadow-inner">
-          <div className="flex items-center gap-1.5 font-display text-xs font-bold text-pastel-charcoal">
-            <Trophy className="h-4 w-4 text-pastel-yellow-dark" />
-            <span>Score:</span>
-            <span className="text-pastel-pink-dark text-sm font-black">
-              {score} / {TARGET_SCORE}
-            </span>
-          </div>
-
-          <button
-            type="button"
-            onClick={handleRestart}
-            className="flex items-center gap-1 text-[11px] font-semibold text-pastel-muted hover:text-pastel-charcoal bg-white/80 px-2.5 py-1 rounded-xl border border-pastel-pink/20 transition-all active:scale-95 shadow-2xs"
-          >
-            <RotateCcw className="h-3 w-3" />
-            <span>Restart</span>
-          </button>
+      {/* Scoreboard Bar */}
+      <div className="w-full max-w-[340px] flex items-center justify-between bg-amber-900/90 text-amber-100 rounded-2xl px-4 py-2 border-2 border-amber-700 shadow-md mb-2 select-none">
+        <div className="flex items-center gap-2 font-display text-xs font-bold">
+          <Trophy className="h-4 w-4 text-yellow-400 animate-bounce" />
+          <span>SCORE:</span>
+          <span className="text-yellow-300 text-base font-mono font-black tracking-wider bg-black/40 px-2.5 py-0.5 rounded-lg border border-amber-600">
+            {score} / {TARGET_SCORE}
+          </span>
         </div>
 
-        {/* 2 x 3 Burrow Grid */}
-        <div className="grid grid-cols-2 gap-3 w-full my-2">
+        <button
+          type="button"
+          onClick={handleRestart}
+          className="flex items-center gap-1 text-[11px] font-bold text-amber-200 hover:text-white bg-amber-800/80 px-2.5 py-1 rounded-xl border border-amber-600 active:scale-95 transition-all shadow-xs"
+        >
+          <RotateCcw className="h-3 w-3" />
+          <span>RESET</span>
+        </button>
+      </div>
+
+      {/* Classic Carnival Dirt Ground & Wooden Border (3x3 Grid) */}
+      <div className="w-full max-w-[340px] rounded-3xl bg-[#5C4033] p-3 sm:p-3.5 shadow-2xl border-4 border-[#8B5A2B] relative select-none overflow-hidden">
+        {/* Wood Fence Corner Accents */}
+        <div className="absolute top-1 left-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute top-1 right-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute bottom-1 left-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute bottom-1 right-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+
+        {/* Dirt Surface Texture */}
+        <div
+          className="rounded-2xl bg-[#4A3222] p-2.5 border-2 border-[#382416] grid grid-cols-3 gap-2.5 shadow-inner"
+          style={{
+            backgroundImage: "radial-gradient(#3E2718 15%, transparent 16%), radial-gradient(#382315 15%, transparent 16%)",
+            backgroundSize: "16px 16px",
+            backgroundPosition: "0 0, 8px 8px",
+          }}
+        >
           {Array.from({ length: TOTAL_HOLES }).map((_, index) => {
-            const isMoleHere = activeHole === index;
+            const isMoleActive = activeHole === index;
+            const isHit = hitHole === index;
+            const isStrikingHere = malletStrike === index;
 
             return (
               <div
                 key={index}
-                onClick={() => handleWhack(index)}
-                className="relative h-24 rounded-2xl bg-gradient-to-b from-pastel-cream via-amber-50 to-pastel-yellow/30 border border-pastel-yellow-dark/30 overflow-hidden flex flex-col justify-end items-center cursor-pointer select-none active:scale-95 transition-transform shadow-xs"
+                onClick={() => handleHoleClick(index)}
+                className="relative h-20 w-full flex flex-col justify-end items-center cursor-pointer select-none"
               >
-                {/* Floating score text */}
+                {/* Floating Hit Text / Score */}
                 <AnimatePresence>
-                  {floatingText && floatingText.hole === index && (
-                    <motion.span
+                  {floatingScore && floatingScore.hole === index && (
+                    <motion.div
                       initial={{ opacity: 1, y: 0, scale: 0.8 }}
-                      animate={{ opacity: 0, y: -40, scale: 1.2 }}
+                      animate={{ opacity: 0, y: -45, scale: 1.3 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.8 }}
-                      className="absolute top-2 z-30 font-display text-xs font-black text-rose-500 bg-white/90 px-2 py-0.5 rounded-full shadow-xs border border-rose-200 pointer-events-none"
+                      className="absolute -top-3 z-40 font-display text-xs font-black text-yellow-300 bg-amber-950/90 px-2 py-0.5 rounded-full border border-yellow-400 shadow-lg pointer-events-none"
                     >
-                      {floatingText.text}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-
-                {/* Tanisha Mole Pop Element */}
-                <AnimatePresence>
-                  {isMoleHere && (
-                    <motion.div
-                      key="mole"
-                      initial={{ y: 55, scale: 0.7 }}
-                      animate={{ y: 0, scale: 1 }}
-                      exit={{ y: 55, scale: 0.7 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 450,
-                        damping: 24,
-                      }}
-                      className="relative z-10 flex flex-col items-center cursor-pointer"
-                    >
-                      {/* Avatar container */}
-                      <div className="relative h-16 w-16 rounded-full p-1 bg-white border-2 border-pastel-pink-dark shadow-md overflow-hidden">
-                        <Image
-                          src={photoSrc}
-                          alt="Tanisha"
-                          width={64}
-                          height={64}
-                          className="h-full w-full object-cover rounded-full"
-                          onError={() => {
-                            setPhotoSrc("/assets/photos/tanisha.svg");
-                          }}
-                          priority
-                        />
-                      </div>
+                      {floatingScore.text}
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                {/* Burrow Dirt Rim & Grass Sprouts */}
-                <div className="absolute bottom-0 w-full h-7 bg-pastel-yellow/60 border-t border-amber-200/80 rounded-b-2xl z-20 flex items-center justify-between px-3">
-                  <span className="text-[10px]">🌱</span>
-                  <span className="text-[9px] font-mono text-pastel-charcoal/40">
-                    hole {index + 1}
-                  </span>
-                  <span className="text-[10px]">🌸</span>
+                {/* Animated Toy Mallet Strike */}
+                <AnimatePresence>
+                  {isStrikingHere && (
+                    <motion.div
+                      initial={{ rotate: -55, scale: 0.8, x: 20, y: -20, opacity: 0.9 }}
+                      animate={{ rotate: 10, scale: 1.1, x: 0, y: 5, opacity: 1 }}
+                      exit={{ rotate: -20, opacity: 0 }}
+                      transition={{ duration: 0.18 }}
+                      className="absolute -top-4 z-50 pointer-events-none"
+                    >
+                      {/* Realistic Squeaky Mallet SVG */}
+                      <svg width="44" height="44" viewBox="0 0 64 64" fill="none">
+                        {/* Wooden Handle */}
+                        <rect x="29" y="24" width="6" height="36" rx="3" fill="#D2B48C" stroke="#8B5A2B" strokeWidth="2" />
+                        {/* Mallet Barrel Head */}
+                        <rect x="12" y="10" width="40" height="20" rx="5" fill="#E65100" stroke="#BF360C" strokeWidth="2" />
+                        {/* Rubber striking face left & right */}
+                        <rect x="8" y="12" width="6" height="16" rx="2" fill="#FFE082" />
+                        <rect x="50" y="12" width="6" height="16" rx="2" fill="#FFE082" />
+                      </svg>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Deep Dark Hole Cavity (Behind Mole) */}
+                <div className="absolute bottom-1 w-[90%] h-7 rounded-[50%] bg-[#1E110A] border border-[#120A05] shadow-inner" />
+
+                {/* Tanisha Mole Pop-Up Container (Masked by bottom dirt rim) */}
+                <div className="relative w-full h-full overflow-hidden flex justify-center items-end pb-2 pointer-events-none">
+                  <AnimatePresence>
+                    {isMoleActive && (
+                      <motion.div
+                        key="mole"
+                        initial={{ y: 55, scale: 0.8 }}
+                        animate={{
+                          y: isHit ? 8 : 0,
+                          scale: isHit ? 0.9 : 1,
+                          rotate: isHit ? [-8, 8, -4, 0] : 0,
+                        }}
+                        exit={{ y: 55, scale: 0.8 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 550,
+                          damping: 26,
+                        }}
+                        className="relative z-10 flex flex-col items-center"
+                      >
+                        {/* Hit Stars Dizziness */}
+                        {isHit && (
+                          <span className="absolute -top-3 z-30 text-xs animate-spin select-none">
+                            💫✨
+                          </span>
+                        )}
+
+                        {/* Tanisha Avatar Head with Party Hat */}
+                        <div className="relative h-14 w-14 rounded-full p-0.5 bg-gradient-to-b from-amber-200 to-amber-400 border-2 border-[#8B5A2B] shadow-md overflow-hidden">
+                          <Image
+                            src={photoSrc}
+                            alt="Tanisha"
+                            width={56}
+                            height={56}
+                            className="h-full w-full object-cover rounded-full"
+                            onError={() => {
+                              setPhotoSrc("/assets/photos/tanisha.svg");
+                            }}
+                            priority
+                          />
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Classic 3D Dirt Mound Lip (Foreground over hole) */}
+                <div className="absolute -bottom-1 w-[94%] h-5 rounded-[50%] bg-[#795548] border-t-2 border-[#A1887F] shadow-md z-20 flex items-center justify-around px-1 pointer-events-none">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#5D4037]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#8D6E63]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#4E342E]" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#6D4C41]" />
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Win State Overlay Banner */}
+        {/* Win Banner Overlay */}
         {isWon && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-3 bg-gradient-to-r from-pastel-pink/40 via-pastel-yellow/40 to-pastel-green/40 p-3.5 rounded-2xl border border-pastel-pink text-center shadow-xs"
+            className="mt-3 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 p-3 rounded-2xl border-2 border-yellow-500 text-center shadow-lg text-amber-950"
           >
-            <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-pastel-charcoal">
-              <Sparkles className="h-4 w-4 text-pastel-yellow-dark" />
-              <span>Shell Integrity: 0% — Fully Unlocked!</span>
+            <div className="flex items-center justify-center gap-1.5 text-xs font-black uppercase tracking-wider">
+              <Sparkles className="h-4 w-4 text-amber-800" />
+              <span>CARNIVAL CHAMPION! 🏆</span>
             </div>
-            <p className="mt-1 text-[11px] text-pastel-charcoal/80 italic">
-              “My shell will break but it takes time.” — Verified! 🎉
+            <p className="mt-0.5 text-xs font-bold text-amber-900">
+              “My shell will break but it takes time.” — Officially Broken! 🎉
             </p>
           </motion.div>
         )}
