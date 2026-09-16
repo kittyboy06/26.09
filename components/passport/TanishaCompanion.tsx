@@ -6,18 +6,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
 import { usePassport } from "@/hooks/usePassport";
+import { useStickerCollection } from "@/hooks/useStickerCollection";
 import { PassportModal } from "./PassportModal";
 
 export function TanishaCompanion() {
   const { isUnlocked } = useBirthday();
   const {
-    unlockedChapters,
     hasNewStamp,
     activeChapterStamp,
-    totalUnlocked,
-    isComplete,
     markAsSeen,
   } = usePassport();
+  const { totalCollected, isComplete: isStickerComplete } = useStickerCollection();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -86,12 +85,12 @@ export function TanishaCompanion() {
             </span>
             <span
               className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full border ${
-                isComplete
+                isStickerComplete
                   ? "bg-amber-100 text-amber-800 border-amber-300 animate-pulse"
                   : "bg-pastel-pink/30 text-pastel-charcoal border-pastel-pink/40"
               }`}
             >
-              {totalUnlocked}/9 🌸
+              {totalCollected}/16 🌸
             </span>
           </div>
         </motion.button>
@@ -101,10 +100,6 @@ export function TanishaCompanion() {
       <PassportModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        unlockedChapters={unlockedChapters}
-        activeChapterStamp={activeChapterStamp}
-        totalUnlocked={totalUnlocked}
-        isComplete={isComplete}
       />
     </>
   );

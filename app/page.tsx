@@ -10,6 +10,7 @@ import { TextLoop } from "@/components/ui/TextLoop";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { StickerMissionModal } from "@/components/stickers/StickerMissionModal";
 import { cn } from "@/lib/utils";
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
   const [passcode, setPasscode] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [isUnlocking, setIsUnlocking] = useState<boolean>(false);
+  const [showMissionModal, setShowMissionModal] = useState<boolean>(false);
 
   const handleKeyPress = (val: string) => {
     if (isUnlocking) return;
@@ -59,10 +61,10 @@ export default function HomePage() {
       // Unlock global state & initialize mobile audio
       unlock();
 
-      // Smooth animated exit transition to Chapter 2
+      // Open Sticker Quest Mission Briefing popup
       setTimeout(() => {
-        router.push("/note");
-      }, 350);
+        setShowMissionModal(true);
+      }, 400);
     } else {
       setErrorMsg("Try your birthday date! 😉 (26.09)");
     }
@@ -262,6 +264,12 @@ export default function HomePage() {
         <span className="font-handwriting text-sm text-pastel-charcoal/70">19 looks good on you</span>
         <span>🌸</span>
       </div>
+
+      {/* Post-Password Scavenger Hunt Mission Briefing Popup */}
+      <StickerMissionModal
+        isOpen={showMissionModal}
+        onProceed={() => router.push("/note")}
+      />
     </PageTransition>
   );
 }

@@ -8,6 +8,7 @@ import { Trophy, RotateCcw, Sparkles } from "lucide-react";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sticker } from "@/components/ui/Sticker";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 
 const TARGET_SCORE = 7;
@@ -197,6 +198,11 @@ export default function WhackGamePage() {
 
         {/* The Cool Cat Mascot & Animated Pivoting Mallet */}
         <div className="relative flex items-center justify-center h-28 w-full py-1">
+          {/* Peeking Quest Sticker: tanisha_doubt */}
+          <div className="absolute left-1 top-0 z-20">
+            <CollectibleSticker id="tanisha_doubt" size={48} rotation={-6} />
+          </div>
+
           {/* Animated Cat Body */}
           <motion.div
             animate={

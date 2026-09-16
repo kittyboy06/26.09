@@ -7,6 +7,8 @@ import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sparkles, RotateCw } from "lucide-react";
+import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { cn } from "@/lib/utils";
 
 export default function NineteenPage() {
@@ -128,6 +130,18 @@ export default function NineteenPage() {
                   <p className="my-auto text-xs font-semibold text-pastel-charcoal leading-snug">
                     {card.backContent}
                   </p>
+
+                  {card.number === "03" && (
+                    <div className="my-1" onClick={(e) => e.stopPropagation()}>
+                      <CollectibleSticker id="tanisha_fight" size={44} rotation={-3} />
+                    </div>
+                  )}
+
+                  {card.number === "07" && (
+                    <div className="my-1" onClick={(e) => e.stopPropagation()}>
+                      <CollectibleSticker id="tanisha_angry" size={44} rotation={3} />
+                    </div>
+                  )}
 
                   <span className="text-[9px] text-pastel-charcoal/60 font-semibold">
                     Tap to flip back ↻

@@ -8,6 +8,7 @@ import { Lightbox } from "@/components/ui/Lightbox";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 export default function MemoriesPage() {
   const [selectedItem, setSelectedItem] = useState<MemoryItem | null>(null);
@@ -87,8 +88,9 @@ export default function MemoriesPage() {
               aspectRatio="portrait"
               onExpand={() => setSelectedItem(photo1)}
             />
-            <div className="absolute -bottom-2 -left-2 z-20 -rotate-6 rounded-lg bg-pastel-yellow px-2.5 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-yellow-dark/40">
-              {photo1.subNote}
+            <div className="absolute -bottom-3 -left-2 z-20 -rotate-6 rounded-xl bg-pastel-yellow px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-yellow-dark/40 flex items-center gap-2">
+              <span>{photo1.subNote}</span>
+              <CollectibleSticker id="tanisha_book" size={48} rotation={-4} />
             </div>
           </div>
         )}
@@ -156,9 +158,15 @@ export default function MemoriesPage() {
             <p className="font-handwriting text-xl font-bold text-pastel-charcoal leading-snug">
               &ldquo;{shellDefense.quote}&rdquo;
             </p>
-            <p className="text-right text-[10px] text-pastel-charcoal/70 font-semibold mt-1">
-              — {shellDefense.author}
-            </p>
+            <div className="flex items-center justify-between mt-2 pt-2 border-t border-pastel-pink-dark/20">
+              <span className="text-[10px] text-pastel-muted italic">Campus hall observation</span>
+              <div className="flex items-center gap-2">
+                <CollectibleSticker id="tanisha_idle" size={48} rotation={2} />
+                <p className="text-[10px] text-pastel-charcoal/70 font-semibold">
+                  — {shellDefense.author}
+                </p>
+              </div>
+            </div>
           </div>
         )}
 

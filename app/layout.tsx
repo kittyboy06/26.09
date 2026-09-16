@@ -5,6 +5,7 @@ import { WebThreadsBackground } from "@/components/canvas/WebThreadsBackground";
 import { ChapterProgress } from "@/components/layout/ChapterProgress";
 import { Skiper2MusicIsland } from "@/components/audio/Skiper2MusicIsland";
 import { TanishaCompanion } from "@/components/passport/TanishaCompanion";
+import { StickerToastContainer } from "@/components/stickers/StickerToastContainer";
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
@@ -47,6 +48,9 @@ export default function RootLayout({
 
           {/* Floating Tanisha Sticker Companion & Birthday Passport */}
           <TanishaCompanion />
+
+          {/* Global Sticker Scavenger Hunt Toast Notifications */}
+          <StickerToastContainer />
 
           {/* Mobile-first main container with animated route transitions */}
           <main className="relative min-h-[100dvh] w-full max-w-md mx-auto px-4 flex flex-col">

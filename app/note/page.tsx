@@ -6,6 +6,7 @@ import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 export default function NotePage() {
   const [tappedSticker, setTappedSticker] = useState<string | null>(null);
@@ -80,10 +81,16 @@ export default function NotePage() {
             </p>
 
             <div className="pt-2 border-t border-amber-200/60 flex items-center justify-between">
-              <span className="font-handwriting text-2xl font-bold text-pastel-charcoal/90">
-                So here we are.
-              </span>
-              <Heart className="h-4 w-4 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+              <div>
+                <span className="font-handwriting text-2xl font-bold text-pastel-charcoal/90">
+                  So here we are.
+                </span>
+                <p className="text-[10px] text-pastel-muted italic">With all my care 💌</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <CollectibleSticker id="tanisha_smile" size={54} rotation={-4} />
+                <Heart className="h-4 w-4 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+              </div>
             </div>
           </div>
         </div>
@@ -115,31 +122,17 @@ export default function NotePage() {
             </span>
           </div>
 
-          {/* Interactive Tap-to-Pop Stickers */}
-          <div className="mt-5 pt-3 border-t border-pastel-pink/20 text-center">
-            <p className="text-[10px] text-pastel-muted font-semibold uppercase tracking-wider mb-2">
-              Tap a sticker to test the touch screen:
+          {/* Collectible Quest Sticker: tanisha_bye */}
+          <div className="mt-5 pt-3 border-t border-pastel-pink/20 text-center flex flex-col items-center">
+            <p className="text-[10px] text-amber-800 font-mono font-bold uppercase tracking-wider mb-2">
+              ★ Hidden Quest Sticker Spotted! ★
             </p>
-            <div className="flex items-center justify-center gap-2.5">
-              {stickers.map((stk) => (
-                <button
-                  key={stk.label}
-                  type="button"
-                  onClick={() => setTappedSticker(stk.label)}
-                  className={`flex h-10 w-10 items-center justify-center rounded-2xl bg-pastel-cream/70 shadow-xs border border-pastel-pink/20 text-lg transition-transform active:scale-90 ${
-                    tappedSticker === stk.label ? "scale-125 ring-2 ring-pastel-pink-dark bg-white" : "hover:scale-110"
-                  }`}
-                  aria-label={stk.label}
-                >
-                  {stk.emoji}
-                </button>
-              ))}
+            <div className="my-1">
+              <CollectibleSticker id="tanisha_bye" size={62} rotation={4} showTapPrompt={true} />
             </div>
-            {tappedSticker && (
-              <p className="mt-2 text-[11px] font-semibold text-pastel-pink-dark animate-pulse">
-                ✨ {tappedSticker} unlocked!
-              </p>
-            )}
+            <p className="text-[10px] text-pastel-muted italic mt-1">
+              &ldquo;Waving cheerful at the foot of the stationery 🌸&rdquo;
+            </p>
           </div>
         </div>
 

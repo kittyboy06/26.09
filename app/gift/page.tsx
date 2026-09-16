@@ -9,6 +9,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { Flower2, PackageCheck } from "lucide-react";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 export default function GiftPage() {
   const [currentImg, setCurrentImg] = useState<string>(giftData.productImage);
@@ -51,7 +52,10 @@ export default function GiftPage() {
 
       <div className="w-full max-w-sm flex flex-col gap-6">
         {/* Botanical Growth Timeline */}
-        <div className="rounded-3xl bg-white/90 p-5 shadow-scrapbook border border-pastel-green/40">
+        <div className="relative rounded-3xl bg-white/90 p-5 shadow-scrapbook border border-pastel-green/40">
+          <div className="absolute -top-3.5 -right-2 z-10">
+            <CollectibleSticker id="tanisha_sad" size={48} rotation={6} />
+          </div>
           <div className="flex items-center justify-between border-b border-pastel-green/30 pb-2 mb-3">
             <h3 className="font-display text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
               <Flower2 className="h-3.5 w-3.5" />
@@ -148,9 +152,14 @@ export default function GiftPage() {
               &ldquo;{giftData.warning}&rdquo;
             </p>
 
-            <p className="text-xs text-pastel-muted">
-              (Never withers, never needs watering, only takes a weekend of assembly!)
-            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1">
+              <p className="text-xs text-pastel-muted">
+                (Never withers, never needs watering, only takes a weekend of assembly!)
+              </p>
+              <div className="shrink-0">
+                <CollectibleSticker id="tanisha_heart" size={50} rotation={-4} />
+              </div>
+            </div>
           </div>
         </PaperCard>
       </div>

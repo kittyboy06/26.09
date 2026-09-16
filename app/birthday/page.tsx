@@ -10,6 +10,7 @@ import { PaperCard } from "@/components/ui/PaperCard";
 import { Sticker } from "@/components/ui/Sticker";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 export default function BirthdayPage() {
   const router = useRouter();
@@ -49,7 +50,12 @@ export default function BirthdayPage() {
 
       {/* Main Celebration Headline */}
       <div className="my-2 flex flex-col items-center">
-        <span className="text-4xl mb-1 select-none animate-bounce">🎂</span>
+        <div className="relative inline-flex items-center justify-center">
+          <span className="text-4xl mb-1 select-none animate-bounce">🎂</span>
+          <div className="absolute -right-14 -top-2">
+            <CollectibleSticker id="tanisha_laugh" size={50} rotation={6} />
+          </div>
+        </div>
 
         <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight text-pastel-charcoal leading-tight">
           HAPPY BIRTHDAY!
@@ -102,9 +108,12 @@ export default function BirthdayPage() {
               <span className="font-handwriting text-xl text-pastel-charcoal font-bold">
                 — {siteConfig.creator}
               </span>
-              <div className="flex items-center gap-1">
-                <span className="text-xs">🌸</span>
-                <Heart className="h-5 w-5 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+              <div className="flex items-center gap-2">
+                <CollectibleSticker id="tanisha_laugh_2" size={48} rotation={-4} />
+                <div className="flex items-center gap-1">
+                  <span className="text-xs">🌸</span>
+                  <Heart className="h-5 w-5 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+                </div>
               </div>
             </div>
           </div>

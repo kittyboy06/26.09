@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, CheckCheck, Smile, Phone, Video, MoreVertical, Heart } from "lucide-react";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sticker } from "@/components/ui/Sticker";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 interface ChatMessage {
   id: string;
@@ -123,9 +125,15 @@ export default function ChatPage() {
         {/* Chat App Header */}
         <div className="bg-gradient-to-r from-pastel-pink/30 via-pastel-cream to-pastel-yellow/30 px-4 py-3 border-b border-pastel-pink/20 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="relative h-9 w-9 rounded-full bg-pastel-pink-dark/20 border border-pastel-pink-dark/40 flex items-center justify-center font-display font-bold text-sm text-pastel-charcoal shadow-xs">
-              <span>🤖</span>
-              <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-white" />
+            <div className="relative h-9 w-9 rounded-full bg-pastel-pink/40 border border-pastel-pink-dark/40 flex items-center justify-center font-display font-bold text-sm text-pastel-charcoal shadow-xs overflow-hidden">
+              <Image
+                src="/assets/stickers/tanisha_idle.png"
+                alt="Tanisha"
+                fill
+                sizes="36px"
+                className="object-contain p-0.5"
+              />
+              <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-white z-10" />
             </div>
             <div className="text-left">
               <div className="font-display text-xs font-bold text-pastel-charcoal flex items-center gap-1">
@@ -193,6 +201,22 @@ export default function ChatPage() {
                     </span>
                   )}
                 </div>
+
+                {/* Inline Collectible Sticker for m-2 */}
+                {msg.id === "m-2" && (
+                  <div className="mt-1 ml-2 flex items-center gap-1.5">
+                    <CollectibleSticker id="tanisha_smirk" size={54} rotation={-3} />
+                    <span className="text-[9px] font-mono text-pastel-muted italic">Quest Sticker ✨</span>
+                  </div>
+                )}
+
+                {/* Inline Collectible Sticker for m-4 */}
+                {msg.id === "m-4" && (
+                  <div className="mt-1 ml-2 flex items-center gap-1.5">
+                    <CollectibleSticker id="tanisha_work" size={54} rotation={2} />
+                    <span className="text-[9px] font-mono text-pastel-muted italic">Quest Sticker ✨</span>
+                  </div>
+                )}
               </motion.div>
             );
           })}

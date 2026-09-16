@@ -11,6 +11,7 @@ import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
+import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { Cpu, Terminal, ShieldAlert, Sparkles } from "lucide-react";
 
 export default function NoticedPage() {
@@ -129,9 +130,21 @@ export default function NoticedPage() {
               // {obs.subtitle}
             </p>
 
-            <p className="text-xs text-pastel-charcoal/85 leading-relaxed">
-              {obs.description}
-            </p>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-xs text-pastel-charcoal/85 leading-relaxed flex-1">
+                {obs.description}
+              </p>
+              {obs.id === "obs-2" && (
+                <div className="shrink-0">
+                  <CollectibleSticker id="tanisha_drink" size={54} rotation={-4} />
+                </div>
+              )}
+              {obs.id === "obs-5" && (
+                <div className="shrink-0">
+                  <CollectibleSticker id="tanisha_sleep" size={54} rotation={4} />
+                </div>
+              )}
+            </div>
           </div>
         ))}
 

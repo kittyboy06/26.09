@@ -5,38 +5,28 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
-import { X, Sparkles, Award, ArrowRight, BookOpen, Compass } from "lucide-react";
-import { PASSPORT_CHAPTERS } from "@/data/passportChapters";
-import { ChapterStamp } from "@/types/passport";
-import { PassportStampSlot } from "./PassportStampSlot";
+import { X, Sparkles, Award, ArrowRight, Compass, Lock, Check } from "lucide-react";
+import { STICKER_CATALOG } from "@/data/stickerCatalog";
+import { CollectibleStickerItem } from "@/types/stickers";
+import { useStickerCollection } from "@/hooks/useStickerCollection";
 
 interface PassportModalProps {
   isOpen: boolean;
   onClose: () => void;
-  unlockedChapters: string[];
-  activeChapterStamp: ChapterStamp | null;
-  totalUnlocked: number;
-  isComplete: boolean;
 }
 
-export function PassportModal({
-  isOpen,
-  onClose,
-  unlockedChapters,
-  activeChapterStamp,
-  totalUnlocked,
-  isComplete,
-}: PassportModalProps) {
+export function PassportModal({ isOpen, onClose }: PassportModalProps) {
   const router = useRouter();
-  const [selectedStamp, setSelectedStamp] = useState<ChapterStamp | null>(null);
+  const { collectedIds, totalCollected, isComplete, isCollected } = useStickerCollection();
+  const [selectedSticker, setSelectedSticker] = useState<CollectibleStickerItem | null>(null);
 
-  // Trigger grand finale confetti when modal opens with 9/9 complete
+  // Trigger grand finale confetti when modal opens with all 16 complete
   useEffect(() => {
     if (isOpen && isComplete) {
       try {
         confetti({
-          particleCount: 80,
-          spread: 70,
+          particleCount: 100,
+          spread: 80,
           origin: { y: 0.5 },
           colors: ["#FBBF24", "#F472B6", "#60A5FA", "#34D399", "#A78BFA"],
         });
@@ -44,7 +34,7 @@ export function PassportModal({
     }
   }, [isOpen, isComplete]);
 
-  // Handle navigating directly to a chapter from inspection
+  // Navigate to chapter from inspector
   const handleGoToChapter = (route: string) => {
     onClose();
     router.push(route);
@@ -60,7 +50,7 @@ export function PassportModal({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-xs"
+            className="fixed inset-0 bg-black/55 backdrop-blur-xs"
           />
 
           {/* Sheet / Modal Container */}
@@ -97,10 +87,10 @@ export function PassportModal({
                 <span>OFFICIAL BIRTHDAY PASSPORT</span>
               </div>
               <h3 className="font-display text-lg sm:text-xl font-black text-[#4E3924] tracking-tight">
-                Tanisha’s 19th Journey
+                Tanisha’s 16-Sticker Quest
               </h3>
               <p className="text-[11px] text-[#8C765C] font-medium">
-                Collect all 9 commemorative stamps across the story ✨
+                Find & touch all 16 mood stickers hidden across the screens ✨
               </p>
 
               {/* Progress Bar Track */}
@@ -108,39 +98,74 @@ export function PassportModal({
                 <div className="w-full bg-[#E5D7BE] rounded-full h-2 overflow-hidden p-0.5 border border-[#CCBA9A]">
                   <motion.div
                     initial={{ width: 0 }}
-                    animate={{ width: `${(totalUnlocked / PASSPORT_CHAPTERS.length) * 100}%` }}
+                    animate={{ width: `${(totalCollected / STICKER_CATALOG.length) * 100}%` }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     className="bg-gradient-to-r from-amber-400 via-rose-400 to-amber-500 h-full rounded-full"
                   />
                 </div>
                 <div className="flex items-center justify-between w-full text-[10px] font-mono font-bold text-[#6D5438]">
-                  <span>{totalUnlocked} of {PASSPORT_CHAPTERS.length} STAMPS</span>
+                  <span>{totalCollected} of {STICKER_CATALOG.length} COLLECTED</span>
                   <span className="text-amber-700">
-                    {isComplete ? "★ COMPLETE ★" : `${Math.round((totalUnlocked / PASSPORT_CHAPTERS.length) * 100)}%`}
+                    {isComplete ? "★ 100% COMPLETE ★" : `${Math.round((totalCollected / STICKER_CATALOG.length) * 100)}%`}
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* 3x3 Vintage Stamp Grid */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-2.5 my-3.5">
-              {PASSPORT_CHAPTERS.map((stamp) => {
-                const isUnlocked = unlockedChapters.includes(stamp.chapterId);
-                const isActive = activeChapterStamp?.chapterId === stamp.chapterId;
+            {/* 4x4 Scrapbook Collector Grid */}
+            <div className="grid grid-cols-4 gap-1.5 sm:gap-2 my-3">
+              {STICKER_CATALOG.map((sticker, idx) => {
+                const collected = isCollected(sticker.id);
 
                 return (
-                  <PassportStampSlot
-                    key={stamp.chapterId}
-                    stamp={stamp}
-                    isUnlocked={isUnlocked}
-                    isActive={isActive}
-                    onSelect={(stk) => setSelectedStamp(stk)}
-                  />
+                  <motion.button
+                    key={sticker.id}
+                    type="button"
+                    whileHover={collected ? { scale: 1.05 } : {}}
+                    whileTap={collected ? { scale: 0.95 } : {}}
+                    onClick={() => collected && setSelectedSticker(sticker)}
+                    disabled={!collected}
+                    className={`relative rounded-xl border-2 border-dashed p-1 flex flex-col items-center justify-between text-center transition-all aspect-square select-none overflow-hidden ${
+                      collected
+                        ? "bg-white border-amber-400/80 shadow-xs hover:shadow-md cursor-pointer ring-1 ring-amber-300"
+                        : "bg-[#F3EFE6]/60 border-stone-300/70 cursor-not-allowed opacity-60"
+                    }`}
+                  >
+                    {/* Index Tag */}
+                    <div className="w-full flex items-center justify-between px-0.5">
+                      <span className="text-[7px] font-mono font-bold text-stone-500">
+                        #{idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                      </span>
+                      {collected && <Check className="h-2 w-2 text-emerald-600 stroke-[3]" />}
+                    </div>
+
+                    {/* Center Sticker */}
+                    <div className="relative h-9 w-9 sm:h-10 sm:w-10 my-0.5">
+                      {collected ? (
+                        <Image
+                          src={sticker.src}
+                          alt={sticker.name}
+                          fill
+                          sizes="40px"
+                          className="object-contain"
+                        />
+                      ) : (
+                        <div className="h-full w-full flex items-center justify-center text-stone-400">
+                          <Lock className="h-3.5 w-3.5" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Bottom Tiny Name Label */}
+                    <p className="text-[7.5px] font-bold text-pastel-charcoal truncate w-full px-0.5 leading-tight">
+                      {collected ? sticker.name : `Ch 0${sticker.chapterNum}`}
+                    </p>
+                  </motion.button>
                 );
               })}
             </div>
 
-            {/* Grand Finale: Master Explorer Seal Banner (Unlocked at 9/9) */}
+            {/* Grand Finale: Master Explorer Seal Banner (Unlocked at 16/16) */}
             {isComplete && (
               <motion.div
                 initial={{ scale: 0.9, opacity: 0 }}
@@ -154,58 +179,58 @@ export function PassportModal({
                   </span>
                 </div>
                 <p className="text-[11px] font-medium leading-tight text-amber-900">
-                  You’ve traveled through all 9 chapters of your 19th birthday scrapbook! 🌟 Happy Birthday Tanisha! 🎂
+                  You’ve discovered all 16 mood stickers across your 19th birthday scrapbook! 🌟 Happy Birthday Tanisha! 🎂
                 </p>
               </motion.div>
             )}
 
-            {/* Detailed Stamp Inspector Card (When clicked) */}
+            {/* Detailed Sticker Inspector Card (When clicked) */}
             <AnimatePresence>
-              {selectedStamp && (
+              {selectedSticker && (
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 12 }}
-                  className="rounded-2xl bg-white p-3.5 border border-amber-300/80 shadow-md mb-2 relative"
+                  className="rounded-2xl bg-white p-3 border border-amber-300/80 shadow-md mb-2 relative"
                 >
                   <button
                     type="button"
-                    onClick={() => setSelectedStamp(null)}
+                    onClick={() => setSelectedSticker(null)}
                     className="absolute top-2 right-2 text-stone-400 hover:text-stone-700 p-1"
                   >
                     <X className="h-3.5 w-3.5" />
                   </button>
 
                   <div className="flex items-center gap-3">
-                    <div className="relative h-16 w-16 shrink-0 drop-shadow-md">
+                    <div className="relative h-14 w-14 shrink-0 drop-shadow-md">
                       <Image
-                        src={selectedStamp.stickerSrc}
-                        alt={selectedStamp.stickerAlt}
+                        src={selectedSticker.src}
+                        alt={selectedSticker.name}
                         fill
-                        sizes="64px"
+                        sizes="56px"
                         className="object-contain"
                       />
                     </div>
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1">
-                        <span className="font-mono text-[9px] font-bold text-amber-700 bg-amber-100 px-1.5 rounded">
-                          {selectedStamp.stampDate}
+                        <span className="font-mono text-[8px] font-bold text-amber-800 bg-amber-100 px-1.5 rounded">
+                          Ch 0{selectedSticker.chapterNum}
                         </span>
                         <h4 className="font-display text-xs font-bold text-pastel-charcoal truncate">
-                          {selectedStamp.title}
+                          {selectedSticker.name}
                         </h4>
                       </div>
                       <p className="text-[10px] text-pastel-muted italic mt-0.5">
-                        &ldquo;{selectedStamp.quote}&rdquo;
+                        &ldquo;{selectedSticker.quote}&rdquo;
                       </p>
 
                       <button
                         type="button"
-                        onClick={() => handleGoToChapter(selectedStamp.route)}
-                        className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-amber-800 bg-amber-100/90 hover:bg-amber-200 px-2 py-0.5 rounded-lg border border-amber-300 active:scale-95 transition-all"
+                        onClick={() => handleGoToChapter(selectedSticker.route)}
+                        className="mt-1.5 inline-flex items-center gap-1 text-[9px] font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 px-2 py-0.5 rounded-lg border border-amber-300 active:scale-95 transition-all"
                       >
-                        <span>Visit Chapter</span>
+                        <span>Go to Screen</span>
                         <ArrowRight className="h-2.5 w-2.5" />
                       </button>
                     </div>
