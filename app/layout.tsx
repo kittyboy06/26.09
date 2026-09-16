@@ -4,6 +4,7 @@ import { BirthdayProvider } from "@/components/providers/BirthdayProvider";
 import { WebThreadsBackground } from "@/components/canvas/WebThreadsBackground";
 import { ChapterProgress } from "@/components/layout/ChapterProgress";
 import { Skiper2MusicIsland } from "@/components/audio/Skiper2MusicIsland";
+import { TanishaCompanion } from "@/components/passport/TanishaCompanion";
 import { siteConfig } from "@/data/siteConfig";
 
 export const metadata: Metadata = {
@@ -43,6 +44,9 @@ export default function RootLayout({
 
           {/* Floating Skiper 2 Dynamic Music Island */}
           <Skiper2MusicIsland />
+
+          {/* Floating Tanisha Sticker Companion & Birthday Passport */}
+          <TanishaCompanion />
 
           {/* Mobile-first main container with animated route transitions */}
           <main className="relative min-h-[100dvh] w-full max-w-md mx-auto px-4 flex flex-col">
