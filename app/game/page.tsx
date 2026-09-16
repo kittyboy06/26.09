@@ -99,7 +99,10 @@ export default function WhackGamePage() {
       // Win condition check
       if (newScore >= TARGET_SCORE) {
         setIsWon(true);
-        setActiveHole(null);
+        setTimeout(() => {
+          setActiveHole(null);
+          setHitHole(null);
+        }, 750);
 
         try {
           confetti({
@@ -110,11 +113,11 @@ export default function WhackGamePage() {
           });
         } catch {}
       } else {
-        // Retract mole after hit display
+        // Retract mole after hit display (500ms allows the player to clearly see the whacked expression)
         setTimeout(() => {
           setActiveHole(null);
           setHitHole(null);
-        }, 360);
+        }, 500);
       }
     }
   };
@@ -339,16 +342,16 @@ export default function WhackGamePage() {
                 <div className="absolute bottom-1 w-[90%] h-8 rounded-[50%] bg-[#1E110A] border border-[#120A05] shadow-inner" />
 
                 {/* Tanisha Mole Pop-Up Container (Masked by bottom dirt rim) */}
-                <div className="relative w-full h-full overflow-hidden flex justify-center items-end pb-1.5 pointer-events-none">
+                <div className="relative w-full h-full overflow-hidden flex justify-center items-end pb-1 pointer-events-none">
                   <AnimatePresence>
                     {isMoleActive && (
                       <motion.div
-                        key={isHit ? "mole-hit" : "mole-idle"}
+                        key="active-mole"
                         initial={{ y: 70, scale: 0.85 }}
                         animate={{
-                          y: isHit ? 10 : 0,
+                          y: isHit ? 4 : 0,
                           scale: isHit ? 1.05 : 1,
-                          rotate: isHit ? [-8, 8, -4, 4, 0] : 0,
+                          rotate: isHit ? [-6, 6, -3, 3, 0] : 0,
                         }}
                         exit={{ y: 70, scale: 0.85 }}
                         transition={{
@@ -356,7 +359,7 @@ export default function WhackGamePage() {
                           stiffness: 520,
                           damping: 24,
                         }}
-                        className="relative z-10 flex flex-col items-center"
+                        className="absolute bottom-1 inset-x-0 flex flex-col items-center z-10"
                       >
                         {/* Realistic Sticker Illustration: Idle vs Hit */}
                         <div className="relative h-20 w-20 drop-shadow-md">
