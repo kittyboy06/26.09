@@ -23,7 +23,7 @@ export const siteConfig = {
   age: 19,
   birthDate: "September 26, 2007",
   passcode: "26.09",
-  passcodeHint: "It's your birthday 😉 (26.09)",
+  passcodeHint: "See Behind the QR",
   audioTrack: "/assets/music/birthday.mp3",
   heroLoopWords: [
     "Happy Birthday",

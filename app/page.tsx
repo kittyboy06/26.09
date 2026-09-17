@@ -66,7 +66,7 @@ export default function HomePage() {
         setShowMissionModal(true);
       }, 400);
     } else {
-      setErrorMsg("Try your birthday date! 😉 (26.09)");
+      setErrorMsg("Try again! Check behind the QR 😉");
     }
   };
 
@@ -180,7 +180,7 @@ export default function HomePage() {
               </div>
 
               <p className="text-[10px] text-pastel-muted font-medium">
-                Hint: It&apos;s your birthday 😉 (<strong>26.09</strong>)
+                Hint: See Behind the QR
               </p>
 
               {/* Aesthetic Code Display Box */}
@@ -191,8 +191,8 @@ export default function HomePage() {
                     <span className="h-4 w-0.5 bg-pastel-pink-dark animate-pulse" />
                   </div>
                 ) : (
-                  <span className="text-pastel-muted/40 font-normal text-sm">
-                    tap 2 6 . 0 9
+                  <span className="text-pastel-muted/40 font-normal text-sm tracking-normal">
+                    Enter passcode
                   </span>
                 )}
               </div>
