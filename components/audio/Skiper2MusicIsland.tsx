@@ -5,9 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX, Music, Sparkles } from "lucide-react";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
 
+import { common } from "@/lib/appData";
+
 export function Skiper2MusicIsland() {
   const { isUnlocked, isPlaying, toggleMusic, hasAudioError } = useBirthday();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const audioText = common.audioIsland;
 
   // If not unlocked yet, do not display the floating island
   if (!isUnlocked) {
@@ -31,7 +34,7 @@ export function Skiper2MusicIsland() {
           {/* Animated sound wave bars when playing */}
           <button
             onClick={toggleMusic}
-            aria-label={isPlaying ? "Pause music" : "Play music"}
+            aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
             className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink"
           >
             {isPlaying ? (
@@ -47,7 +50,7 @@ export function Skiper2MusicIsland() {
             )}
 
             <span className="text-xs font-medium text-pastel-charcoal">
-              {isPlaying ? "Birthday Tune" : hasAudioError ? "Muted" : "Paused"}
+              {isPlaying ? audioText.playingLabel : hasAudioError ? audioText.mutedLabel : audioText.pausedLabel}
             </span>
           </button>
 
@@ -74,14 +77,14 @@ export function Skiper2MusicIsland() {
               <p className="text-[11px] text-pastel-charcoal/80 flex items-center justify-center gap-1">
                 <Sparkles className="h-3 w-3 text-pastel-yellow-dark" />
                 {hasAudioError
-                  ? "Audio ready when MP3 is placed in public/assets/music/"
-                  : "Soundtrack curated for Tanisha's 19th"}
+                  ? audioText.missingInfo
+                  : audioText.readyInfo}
               </p>
               <button
                 onClick={toggleMusic}
                 className="mt-1.5 inline-block rounded-full bg-pastel-pink/40 px-3 py-1 text-[11px] font-semibold text-pastel-charcoal hover:bg-pastel-pink/60 transition-colors"
               >
-                {isPlaying ? "Tap to Pause" : "Tap to Play"}
+                {isPlaying ? audioText.pauseAction : audioText.playAction}
               </button>
             </motion.div>
           )}

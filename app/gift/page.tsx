@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { giftData } from "@/data/gift";
+import { screens } from "@/lib/appData";
 import { PaperCard } from "@/components/ui/PaperCard";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -12,12 +12,13 @@ import { Flower2, PackageCheck } from "lucide-react";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 export default function GiftPage() {
-  const [currentImg, setCurrentImg] = useState<string>(giftData.productImage);
+  const data = screens.gift;
+  const [currentImg, setCurrentImg] = useState<string>(data.productImage);
   const [hasError, setHasError] = useState<boolean>(false);
 
   const handleImageError = () => {
-    if (currentImg !== giftData.fallbackImage) {
-      setCurrentImg(giftData.fallbackImage);
+    if (currentImg !== data.fallbackImage) {
+      setCurrentImg(data.fallbackImage);
     } else {
       setHasError(true);
     }
@@ -31,22 +32,22 @@ export default function GiftPage() {
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
-          <span>💐</span>
-          <span className="text-[11px] font-medium">Chapter 08</span>
+          <span>{data.badges.left.emoji}</span>
+          <span className="text-[11px] font-medium">{data.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
-          <span>🌿</span>
-          <span className="text-[11px] font-medium">Botanical Specimen</span>
+          <span>{data.badges.right.emoji}</span>
+          <span className="text-[11px] font-medium">{data.badges.right.text}</span>
         </Sticker>
       </div>
 
       <div className="text-center mb-6">
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-pastel-charcoal">
-          {giftData.mainHeading}
+          {data.mainHeading}
         </h2>
         <p className="mt-1 font-handwriting text-xl text-pastel-charcoal/80">
-          {giftData.tagline}
+          {data.tagline}
         </p>
       </div>
 
@@ -59,15 +60,15 @@ export default function GiftPage() {
           <div className="flex items-center justify-between border-b border-pastel-green/30 pb-2 mb-3">
             <h3 className="font-display text-xs font-bold uppercase tracking-wider text-emerald-800 flex items-center gap-1.5">
               <Flower2 className="h-3.5 w-3.5" />
-              <span>Botanical Progression</span>
+              <span>{data.progressionTitle}</span>
             </h3>
             <span className="text-[9px] font-mono font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">
-              SPECIMEN #939
+              {data.specimenTag}
             </span>
           </div>
 
           <div className="flex flex-col gap-2.5">
-            {giftData.stages.map((stage) => (
+            {data.stages.map((stage) => (
               <div
                 key={stage.stage}
                 className="flex items-center gap-3 rounded-2xl bg-pastel-cream/80 p-2.5 border border-pastel-green/20"
@@ -81,7 +82,7 @@ export default function GiftPage() {
                       {stage.label}
                     </h4>
                     <span className="text-[10px] font-bold text-pastel-muted">
-                      Stage {stage.stage}
+                      {data.stagePrefix} {stage.stage}
                     </span>
                   </div>
                   <p className="text-[11px] text-pastel-charcoal/75 leading-tight truncate">
@@ -110,7 +111,7 @@ export default function GiftPage() {
 
           <div className="text-center mb-4">
             <span className="font-handwriting text-2xl sm:text-3xl font-bold text-emerald-900 leading-snug block">
-              &ldquo;{giftData.hook}&rdquo;
+              &ldquo;{data.hook}&rdquo;
             </span>
           </div>
 
@@ -119,7 +120,7 @@ export default function GiftPage() {
             {!hasError ? (
               <Image
                 src={currentImg}
-                alt="Wildflower Building Bouquet (939 pieces)"
+                alt={data.productAlt}
                 fill
                 className="object-contain p-2 transition-transform duration-500 hover:scale-105"
                 onError={handleImageError}
@@ -128,33 +129,33 @@ export default function GiftPage() {
               <div className="flex flex-col items-center justify-center p-6 text-center">
                 <span className="text-5xl select-none mb-1">💐</span>
                 <h4 className="font-display text-sm font-bold text-pastel-charcoal">
-                  Wildflower Building Bouquet
+                  {data.title}
                 </h4>
               </div>
             )}
 
             {/* Corner stickers framing the bouquet */}
             <div className="absolute top-2 left-2 rounded-full bg-white/90 px-2 py-0.5 text-[10px] font-bold text-emerald-800 shadow-xs border border-white">
-              🌼 Botanical
+              {data.cornerBadges.botanical}
             </div>
             <div className="absolute bottom-2 right-2 rounded-full bg-pastel-pink/90 px-2.5 py-0.5 text-[10px] font-bold text-pastel-charcoal shadow-xs border border-white">
-              Permanent Bloom ✨
+              {data.cornerBadges.permanentBloom}
             </div>
           </div>
 
           <div className="mt-4 space-y-2.5 text-center">
             <div className="inline-flex items-center gap-1.5 rounded-full bg-pastel-yellow/70 px-3.5 py-1 text-xs font-bold text-pastel-charcoal border border-pastel-yellow-dark/40 shadow-xs">
               <PackageCheck className="h-4 w-4 text-emerald-800" />
-              <span>{giftData.punchline}</span>
+              <span>{data.punchline}</span>
             </div>
 
             <p className="font-handwriting text-xl font-bold text-pastel-charcoal leading-snug">
-              &ldquo;{giftData.warning}&rdquo;
+              &ldquo;{data.warning}&rdquo;
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1">
               <p className="text-xs text-pastel-muted">
-                (Never withers, never needs watering, only takes a weekend of assembly!)
+                {data.subWarning}
               </p>
               <div className="shrink-0">
                 <CollectibleSticker id="tanisha_heart" size={50} rotation={-4} />
@@ -166,11 +167,11 @@ export default function GiftPage() {
 
       {/* Page Navigation */}
       <PageNavigation
-        nextHref="/birthday"
-        nextLabel="The final wish →"
-        prevHref="/game"
-        prevLabel="Back to Mini-Game"
-        variant="green"
+        nextHref={data.navigation.nextHref}
+        nextLabel={data.navigation.nextLabel}
+        prevHref={data.navigation.prevHref}
+        prevLabel={data.navigation.prevLabel}
+        variant={data.navigation.variant as any}
       />
     </PageTransition>
   );

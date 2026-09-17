@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { X, Sparkles, Award, ArrowRight, Compass, Lock, Check } from "lucide-react";
-import { STICKER_CATALOG } from "@/data/stickerCatalog";
+import { stickers as STICKER_CATALOG, common } from "@/lib/appData";
 import { CollectibleStickerItem } from "@/types/stickers";
 import { useStickerCollection } from "@/hooks/useStickerCollection";
 
@@ -19,6 +19,7 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
   const router = useRouter();
   const { collectedIds, totalCollected, isComplete, isCollected } = useStickerCollection();
   const [selectedSticker, setSelectedSticker] = useState<CollectibleStickerItem | null>(null);
+  const passportText = common.passport;
 
   // Trigger grand finale confetti when modal opens with all 16 complete
   useEffect(() => {
@@ -75,7 +76,7 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
               type="button"
               onClick={onClose}
               className="absolute top-3.5 right-3.5 p-1.5 rounded-full bg-[#EFE6D4] hover:bg-[#E2D4BD] text-[#78644A] transition-colors focus:outline-none"
-              aria-label="Close passport"
+              aria-label={passportText.closeAriaLabel}
             >
               <X className="h-4 w-4" />
             </button>
@@ -84,13 +85,13 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
             <div className="text-center pt-1 pb-3 border-b-2 border-dashed border-[#D2BF9E]/80">
               <div className="inline-flex items-center gap-1.5 bg-[#EFE4CF] px-3 py-0.5 rounded-full border border-[#D5C29E] text-[10px] font-mono font-bold tracking-widest text-[#7C6647] uppercase mb-1">
                 <Compass className="h-3 w-3 text-amber-700" />
-                <span>OFFICIAL BIRTHDAY PASSPORT</span>
+                <span>{passportText.headerBadge}</span>
               </div>
               <h3 className="font-display text-lg sm:text-xl font-black text-[#4E3924] tracking-tight">
-                Tanisha’s 16-Sticker Quest
+                {passportText.title}
               </h3>
               <p className="text-[11px] text-[#8C765C] font-medium">
-                Find & touch all 16 mood stickers hidden across the screens ✨
+                {passportText.subtitle}
               </p>
 
               {/* Progress Bar Track */}
@@ -104,9 +105,9 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
                   />
                 </div>
                 <div className="flex items-center justify-between w-full text-[10px] font-mono font-bold text-[#6D5438]">
-                  <span>{totalCollected} of {STICKER_CATALOG.length} COLLECTED</span>
+                  <span>{totalCollected} of {STICKER_CATALOG.length} {passportText.progressCollectedSuffix}</span>
                   <span className="text-amber-700">
-                    {isComplete ? "★ 100% COMPLETE ★" : `${Math.round((totalCollected / STICKER_CATALOG.length) * 100)}%`}
+                    {isComplete ? passportText.completeBadge : `${Math.round((totalCollected / STICKER_CATALOG.length) * 100)}%`}
                   </span>
                 </div>
               </div>
@@ -158,7 +159,7 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
 
                     {/* Bottom Tiny Name Label */}
                     <p className="text-[7.5px] font-bold text-pastel-charcoal truncate w-full px-0.5 leading-tight">
-                      {collected ? sticker.name : `Ch 0${sticker.chapterNum}`}
+                      {collected ? sticker.name : `${passportText.chapterPrefix}${sticker.chapterNum}`}
                     </p>
                   </motion.button>
                 );
@@ -175,11 +176,11 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
                 <div className="flex items-center justify-center gap-1.5 mb-1">
                   <Award className="h-5 w-5 text-amber-700 animate-bounce" />
                   <span className="font-display text-xs font-black tracking-wider uppercase">
-                    Master Explorer Seal Unlocked!
+                    {passportText.sealTitle}
                   </span>
                 </div>
                 <p className="text-[11px] font-medium leading-tight text-amber-900">
-                  You’ve discovered all 16 mood stickers across your 19th birthday scrapbook! 🌟 Happy Birthday Tanisha! 🎂
+                  {passportText.sealText}
                 </p>
               </motion.div>
             )}
@@ -215,7 +216,7 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-1">
                         <span className="font-mono text-[8px] font-bold text-amber-800 bg-amber-100 px-1.5 rounded">
-                          Ch 0{selectedSticker.chapterNum}
+                          {passportText.chapterPrefix}{selectedSticker.chapterNum}
                         </span>
                         <h4 className="font-display text-xs font-bold text-pastel-charcoal truncate">
                           {selectedSticker.name}
@@ -230,7 +231,7 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
                         onClick={() => handleGoToChapter(selectedSticker.route)}
                         className="mt-1.5 inline-flex items-center gap-1 text-[9px] font-bold text-amber-800 bg-amber-100 hover:bg-amber-200 px-2 py-0.5 rounded-lg border border-amber-300 active:scale-95 transition-all"
                       >
-                        <span>Go to Screen</span>
+                        <span>{passportText.goToScreen}</span>
                         <ArrowRight className="h-2.5 w-2.5" />
                       </button>
                     </div>
@@ -241,13 +242,13 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
 
             {/* Bottom Footer Action */}
             <div className="pt-2 flex items-center justify-between text-[10px] font-medium text-[#8C765C]">
-              <span>Tanisha’s Scrapbook • 26.09</span>
+              <span>{passportText.footerBrand}</span>
               <button
                 type="button"
                 onClick={onClose}
                 className="font-bold text-amber-900 bg-[#E8DCBF] hover:bg-[#DDD0AE] px-3 py-1 rounded-xl active:scale-95 transition-all"
               >
-                Done Looking
+                {passportText.doneButton}
               </button>
             </div>
           </motion.div>

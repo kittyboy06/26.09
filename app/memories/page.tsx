@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { memoriesData, MemoryItem } from "@/data/memories";
+import { screens } from "@/lib/appData";
 import { PhotoCard } from "@/components/ui/PhotoCard";
 import { Sticker } from "@/components/ui/Sticker";
 import { Lightbox } from "@/components/ui/Lightbox";
@@ -11,16 +11,19 @@ import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
 export default function MemoriesPage() {
-  const [selectedItem, setSelectedItem] = useState<MemoryItem | null>(null);
+  const memoriesData = screens.memories;
+  const items = memoriesData.items;
+  type MemoryItemType = (typeof items)[0];
+
+  const [selectedItem, setSelectedItem] = useState<MemoryItemType | null>(null);
 
   // Group items for artistic asymmetric collage arrangement
-  const quote1 = memoriesData.find((m) => m.id === "mem-1");
-  const photo1 = memoriesData.find((m) => m.id === "mem-2");
-  const robotIncident = memoriesData.find((m) => m.id === "mem-3");
-  const quote2 = memoriesData.find((m) => m.id === "mem-4");
-  const shellDefense = memoriesData.find((m) => m.id === "mem-5");
-  const reelCard = memoriesData.find((m) => m.id === "mem-6");
-  const foodCard = memoriesData.find((m) => m.id === "mem-7");
+  const quote1 = items.find((m) => m.id === "mem-1");
+  const photo1 = items.find((m) => m.id === "mem-2");
+  const robotIncident = items.find((m) => m.id === "mem-3");
+  const shellDefense = items.find((m) => m.id === "mem-5");
+  const reelCard = items.find((m) => m.id === "mem-6");
+  const foodCard = items.find((m) => m.id === "mem-7");
 
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
@@ -28,27 +31,27 @@ export default function MemoriesPage() {
       <Skiper19ScrollVine color="#F7A8C2" />
 
       {/* Lightbox Modal */}
-      <Lightbox item={selectedItem} onClose={() => setSelectedItem(null)} />
+      <Lightbox item={selectedItem as any} onClose={() => setSelectedItem(null)} />
 
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
-          <span>📸</span>
-          <span className="text-[11px] font-medium">Chapter 04</span>
+          <span>{memoriesData.badges.left.emoji}</span>
+          <span className="text-[11px] font-medium">{memoriesData.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
-          <span>✨</span>
-          <span className="text-[11px] font-medium">Our Randomness</span>
+          <span>{memoriesData.badges.right.emoji}</span>
+          <span className="text-[11px] font-medium">{memoriesData.badges.right.text}</span>
         </Sticker>
       </div>
 
       <div className="text-center mb-6">
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-pastel-charcoal">
-          Our Randomness
+          {memoriesData.header.title}
         </h2>
         <p className="mt-1 font-handwriting text-xl text-pastel-charcoal/80">
-          The official digital college scrapbook 📎
+          {memoriesData.header.subtitle}
         </p>
       </div>
 
@@ -63,7 +66,7 @@ export default function MemoriesPage() {
             <span className="absolute -top-3 left-6 h-5 w-16 bg-white/70 border border-pastel-yellow-dark/30 rounded-xs -rotate-6" />
             <div className="flex items-center justify-between text-[11px] font-bold text-pastel-charcoal/70 mb-1">
               <span>⏱️ {quote1.tag}</span>
-              <span className="text-[10px] text-pastel-muted">Tap to expand 🔍</span>
+              <span className="text-[10px] text-pastel-muted">{memoriesData.tapToExpand}</span>
             </div>
             <p className="font-handwriting text-xl font-bold text-pastel-charcoal leading-snug">
               &ldquo;{quote1.quote}&rdquo;
@@ -99,18 +102,18 @@ export default function MemoriesPage() {
         <div className="flex items-center justify-between gap-2 px-1">
           <div className="flex-1 rounded-2xl bg-white/95 p-3.5 shadow-scrapbook border border-pastel-blue/40 -rotate-1">
             <div className="flex items-center gap-1.5 text-xs font-bold text-pastel-charcoal mb-1">
-              <span>🎬</span>
-              <span>Reel Reaction</span>
+              <span>{memoriesData.reelReactionCard.badgeEmoji}</span>
+              <span>{memoriesData.reelReactionCard.badgeTitle}</span>
             </div>
             <p className="font-handwriting text-lg text-pastel-charcoal font-bold leading-tight">
-              &ldquo;Ohh wow... Yep much better&rdquo;
+              &ldquo;{memoriesData.reelReactionCard.quote}&rdquo;
             </p>
-            <span className="text-[10px] text-pastel-muted">Peak enthusiasm achieved</span>
+            <span className="text-[10px] text-pastel-muted">{memoriesData.reelReactionCard.subtext}</span>
           </div>
 
           <div className="flex flex-col items-center justify-center p-2 text-2xl animate-float-slow select-none">
-            <span>😂</span>
-            <span className="text-xs font-handwriting text-pastel-charcoal/70">Reels</span>
+            <span>{memoriesData.reelReactionCard.floatingEmoji}</span>
+            <span className="text-xs font-handwriting text-pastel-charcoal/70">{memoriesData.reelReactionCard.floatingLabel}</span>
           </div>
         </div>
 
@@ -139,7 +142,7 @@ export default function MemoriesPage() {
 
             <div className="flex items-center justify-between text-[11px] text-pastel-muted font-medium pt-1">
               <span>{robotIncident.subNote}</span>
-              <span>Tap to expand 🔍</span>
+              <span>{memoriesData.tapToExpand}</span>
             </div>
           </div>
         )}
@@ -159,7 +162,7 @@ export default function MemoriesPage() {
               &ldquo;{shellDefense.quote}&rdquo;
             </p>
             <div className="flex items-center justify-between mt-2 pt-2 border-t border-pastel-pink-dark/20">
-              <span className="text-[10px] text-pastel-muted italic">Campus hall observation</span>
+              <span className="text-[10px] text-pastel-muted italic">{memoriesData.campusHallObservation}</span>
               <div className="flex items-center gap-2">
                 <CollectibleSticker id="tanisha_idle" size={48} rotation={2} />
                 <p className="text-[10px] text-pastel-charcoal/70 font-semibold">
@@ -185,7 +188,7 @@ export default function MemoriesPage() {
               onExpand={() => setSelectedItem(reelCard)}
             />
             <div className="absolute -bottom-2 -right-2 z-20 rotate-3 rounded-lg bg-pastel-pink px-2.5 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-pink-dark/40">
-              &ldquo;I might actually do that 😂&rdquo;
+              &ldquo;{memoriesData.reelCardReaction}&rdquo;
             </div>
           </div>
         )}
@@ -213,10 +216,10 @@ export default function MemoriesPage() {
 
       {/* Page Navigation */}
       <PageNavigation
-        nextHref="/chat"
-        nextLabel="The Chat Logs →"
-        prevHref="/noticed"
-        prevLabel="Back to Terminal"
+        nextHref={memoriesData.navigation.nextHref}
+        nextLabel={memoriesData.navigation.nextLabel}
+        prevHref={memoriesData.navigation.prevHref}
+        prevLabel={memoriesData.navigation.prevLabel}
         variant="pink"
       />
     </PageTransition>

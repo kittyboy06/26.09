@@ -8,16 +8,10 @@ import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
-export default function NotePage() {
-  const [tappedSticker, setTappedSticker] = useState<string | null>(null);
+import { screens } from "@/lib/appData";
 
-  const stickers = [
-    { emoji: "🌸", label: "bloom" },
-    { emoji: "🦋", label: "flutter" },
-    { emoji: "🎀", label: "ribbon" },
-    { emoji: "✨", label: "sparkle" },
-    { emoji: "🤖", label: "beep-boop" },
-  ];
+export default function NotePage() {
+  const noteData = screens.note;
 
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
@@ -27,13 +21,13 @@ export default function NotePage() {
       {/* Top Header Badge */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
-          <span>💌</span>
-          <span className="text-[11px] font-medium">Chapter 02</span>
+          <span>{noteData.badges.left.emoji}</span>
+          <span className="text-[11px] font-medium">{noteData.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
-          <span>📝</span>
-          <span className="text-[11px] font-medium">Handwritten Note</span>
+          <span>{noteData.badges.right.emoji}</span>
+          <span className="text-[11px] font-medium">{noteData.badges.right.text}</span>
         </Sticker>
       </div>
 
@@ -56,36 +50,36 @@ export default function NotePage() {
               ))}
             </div>
             <span className="text-[10px] font-mono text-amber-600/60 font-semibold tracking-wider">
-              MEMO • NO. 02
+              {noteData.memo.tag}
             </span>
           </div>
 
           {/* Red Vertical Margin Line & Note Content */}
           <div className="border-l-2 border-rose-300/60 pl-4 ml-1 space-y-4 text-pastel-charcoal">
             <p className="font-handwriting text-3xl font-bold text-pastel-charcoal leading-snug">
-              Okay...
+              {noteData.memo.greeting}
             </p>
 
             <p className="text-xs text-pastel-charcoal/85 leading-loose">
-              You could&apos;ve just gotten a standard birthday text:
+              {noteData.memo.intro}
             </p>
 
             <div className="rounded-xl bg-white/90 p-2.5 text-center border border-amber-200/70 shadow-2xs">
               <span className="font-display text-sm font-bold text-pastel-charcoal">
-                &ldquo;Happy Birthday Tanisha 🎂&rdquo;
+                {noteData.memo.standardWish}
               </span>
             </div>
 
             <p className="text-xs text-pastel-charcoal/85 leading-loose">
-              ...but apparently I decided to build a whole interactive web app instead. 😂
+              {noteData.memo.turn}
             </p>
 
             <div className="pt-2 border-t border-amber-200/60 flex items-center justify-between">
               <div>
                 <span className="font-handwriting text-2xl font-bold text-pastel-charcoal/90">
-                  So here we are.
+                  {noteData.memo.closingBold}
                 </span>
-                <p className="text-[10px] text-pastel-muted italic">With all my care 💌</p>
+                <p className="text-[10px] text-pastel-muted italic">{noteData.memo.closingCare}</p>
               </div>
               <div className="flex items-center gap-2">
                 <CollectibleSticker id="tanisha_smile" size={54} rotation={-4} />
@@ -98,40 +92,40 @@ export default function NotePage() {
         {/* 'Why This Exists' Sequence Card */}
         <div className="relative rounded-3xl bg-white/95 p-5 shadow-scrapbook border border-pastel-pink/30">
           <h4 className="font-display text-xs font-bold text-pastel-charcoal uppercase tracking-wider text-center mb-3">
-            How we ended up here:
+            {noteData.whyItExists.title}
           </h4>
 
           <div className="flex flex-col items-center gap-2 text-center text-xs text-pastel-charcoal font-medium">
-            <span className="rounded-full bg-pastel-cream px-3 py-1 shadow-2xs border border-pastel-pink/20">
-              A normal birthday wish
-            </span>
-            <ArrowDown className="h-3 w-3 text-pastel-muted" />
-
-            <span className="rounded-full bg-pastel-yellow/50 px-3 py-1 border border-pastel-yellow-dark/30">
-              wasn&apos;t enough
-            </span>
-            <ArrowDown className="h-3 w-3 text-pastel-muted" />
-
-            <span className="font-handwriting text-base font-bold text-pastel-charcoal">
-              so...
-            </span>
-            <ArrowDown className="h-3 w-3 text-pastel-muted" />
-
-            <span className="rounded-full bg-pastel-pink/60 px-4 py-1.5 font-bold text-pastel-charcoal border border-pastel-pink-dark/40 shadow-xs">
-              this happened 😂
-            </span>
+            {noteData.whyItExists.steps.map((step, idx) => (
+              <React.Fragment key={idx}>
+                {idx > 0 && <ArrowDown className="h-3 w-3 text-pastel-muted" />}
+                <span
+                  className={
+                    step.style === "cream"
+                      ? "rounded-full bg-pastel-cream px-3 py-1 shadow-2xs border border-pastel-pink/20"
+                      : step.style === "yellow"
+                      ? "rounded-full bg-pastel-yellow/50 px-3 py-1 border border-pastel-yellow-dark/30"
+                      : step.style === "handwriting"
+                      ? "font-handwriting text-base font-bold text-pastel-charcoal"
+                      : "rounded-full bg-pastel-pink/60 px-4 py-1.5 font-bold text-pastel-charcoal border border-pastel-pink-dark/40 shadow-xs"
+                  }
+                >
+                  {step.text}
+                </span>
+              </React.Fragment>
+            ))}
           </div>
 
           {/* Collectible Quest Sticker: tanisha_bye */}
           <div className="mt-5 pt-3 border-t border-pastel-pink/20 text-center flex flex-col items-center">
             <p className="text-[10px] text-amber-800 font-mono font-bold uppercase tracking-wider mb-2">
-              ★ Hidden Quest Sticker Spotted! ★
+              {noteData.whyItExists.questBadge}
             </p>
             <div className="my-1">
               <CollectibleSticker id="tanisha_bye" size={62} rotation={4} showTapPrompt={true} />
             </div>
             <p className="text-[10px] text-pastel-muted italic mt-1">
-              &ldquo;Waving cheerful at the foot of the stationery 🌸&rdquo;
+              {noteData.whyItExists.questDescription}
             </p>
           </div>
         </div>
@@ -139,10 +133,10 @@ export default function NotePage() {
         {/* Tucked Notice */}
         <div className="rounded-2xl bg-pastel-blue/20 p-3.5 border border-pastel-blue/40 text-center">
           <p className="font-handwriting text-base text-pastel-charcoal font-bold">
-            &ldquo;There&apos;s actually quite a bit more ahead.&rdquo;
+            {noteData.tuckedNotice.quote}
           </p>
           <span className="text-[11px] text-pastel-charcoal/70">
-            Next up: The official system profile 🤖
+            {noteData.tuckedNotice.nextHint}
           </span>
         </div>
       </div>
@@ -150,15 +144,15 @@ export default function NotePage() {
       {/* Floating Sparkles */}
       <div className="my-4 flex items-center gap-1.5 text-xs text-pastel-muted">
         <Sparkles className="h-3 w-3 text-pastel-yellow-dark" />
-        <span className="font-handwriting text-base text-pastel-charcoal/80">Keep scrolling</span>
+        <span className="font-handwriting text-base text-pastel-charcoal/80">{noteData.keepScrolling}</span>
       </div>
 
       {/* Page Navigation */}
       <PageNavigation
-        nextHref="/noticed"
-        nextLabel="Things I've Noticed →"
-        prevHref="/"
-        prevLabel="Back to Gate"
+        nextHref={noteData.navigation.nextHref}
+        nextLabel={noteData.navigation.nextLabel}
+        prevHref={noteData.navigation.prevHref}
+        prevLabel={noteData.navigation.prevLabel}
         variant="blue"
       />
     </PageTransition>

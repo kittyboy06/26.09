@@ -5,9 +5,11 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { StickerToastPayload } from "@/types/stickers";
+import { common } from "@/lib/appData";
 
 export function StickerToastContainer() {
   const [toast, setToast] = useState<StickerToastPayload | null>(null);
+  const data = common.toast;
 
   useEffect(() => {
     const handleCollected = (e: Event) => {
@@ -56,13 +58,13 @@ export function StickerToastContainer() {
             <div className="flex-1 min-w-0 text-left">
               <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-yellow-300">
                 <Sparkles className="h-3 w-3 text-yellow-400 animate-spin" />
-                <span>STICKER COLLECTED!</span>
+                <span>{data.title}</span>
               </div>
               <p className="font-display text-xs font-bold text-white truncate">
                 {toast.name}
               </p>
               <p className="text-[10px] text-amber-200/80 font-mono font-bold">
-                {toast.count} of {toast.total} Collected 🌸
+                {toast.count} {data.of} {toast.total} {data.collectedSuffix}
               </p>
             </div>
           </motion.div>

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
 import { Sparkles, Lock, Unlock, ArrowRight, Delete } from "lucide-react";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
-import { siteConfig } from "@/data/siteConfig";
+import { site, screens } from "@/lib/appData";
 import { TextLoop } from "@/components/ui/TextLoop";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 import { Sticker } from "@/components/ui/Sticker";
@@ -20,6 +20,8 @@ export default function HomePage() {
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [isUnlocking, setIsUnlocking] = useState<boolean>(false);
   const [showMissionModal, setShowMissionModal] = useState<boolean>(false);
+
+  const gateData = screens.gate;
 
   const handleKeyPress = (val: string) => {
     if (isUnlocking) return;
@@ -42,7 +44,7 @@ export default function HomePage() {
     if (isUnlocking) return;
 
     const cleanInput = passcode.trim().replace(/\s+/g, "");
-    if (cleanInput === siteConfig.passcode || cleanInput === "2609" || cleanInput === "26/09") {
+    if (cleanInput === site.passcode || cleanInput === "2609" || cleanInput === "26/09") {
       setErrorMsg("");
       setIsUnlocking(true);
 
@@ -66,7 +68,7 @@ export default function HomePage() {
         setShowMissionModal(true);
       }, 400);
     } else {
-      setErrorMsg("Try again! Check behind the QR 😉");
+      setErrorMsg(gateData.lockCard.errorMessage);
     }
   };
 
@@ -90,7 +92,7 @@ export default function HomePage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [passcode, isUnlocking]);
 
-  const numpadKeys = ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "del"];
+  const numpadKeys = gateData.lockCard.numpadKeys;
 
   return (
     <PageTransition className="h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-2 py-3 select-none overflow-hidden">
@@ -102,13 +104,13 @@ export default function HomePage() {
         )}
       >
         <Sticker variant="floating" rotation={-3}>
-          <span>🌼</span>
-          <span className="text-[11px] text-pastel-charcoal font-medium">Sept 26</span>
+          <span>{gateData.badges.left.emoji}</span>
+          <span className="text-[11px] text-pastel-charcoal font-medium">{gateData.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={3}>
-          <span>🦋</span>
-          <span className="text-[11px] text-pastel-charcoal font-medium">19 Unlocked</span>
+          <span>{gateData.badges.right.emoji}</span>
+          <span className="text-[11px] text-pastel-charcoal font-medium">{gateData.badges.right.text}</span>
         </Sticker>
       </div>
 
@@ -119,32 +121,32 @@ export default function HomePage() {
           <div className="mb-1 flex items-center gap-2">
             <span className="inline-flex items-center gap-1 rounded-full bg-pastel-pink/50 px-2.5 py-0.5 text-[10px] font-semibold text-pastel-charcoal/80 border border-pastel-pink-dark/40 shadow-xs">
               <Sparkles className="h-3 w-3 text-pastel-charcoal" />
-              <span>A tiny digital birthday world</span>
+              <span>{gateData.hero.tag}</span>
             </span>
             <span className="border border-dashed border-pastel-pink-dark/60 rounded px-1.5 py-0.2 text-[8px] font-mono font-bold text-pastel-pink-dark rotate-3 bg-white/70">
-              POST • 26.09
+              {gateData.hero.postmark}
             </span>
           </div>
 
           <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-pastel-charcoal leading-tight">
-            Happy Birthday
+            {gateData.hero.heading}
           </h1>
 
           <div className="font-display text-4xl sm:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pastel-pink-dark via-pastel-charcoal to-pastel-blue-dark leading-tight">
-            {siteConfig.recipient.toUpperCase()}
+            {site.recipient.toUpperCase()}
           </div>
 
           {/* Dynamic Text Loop */}
           <div className="mt-1 h-7 flex items-center justify-center">
             <TextLoop
-              words={siteConfig.heroLoopWords}
+              words={site.heroLoopWords}
               interval={2600}
               wordClassName="text-sm sm:text-base font-bold text-pastel-charcoal bg-pastel-yellow/60 px-3.5 py-0.5 rounded-full border border-pastel-yellow-dark/40 shadow-xs"
             />
           </div>
 
           <p className="mt-1 max-w-xs text-xs text-pastel-charcoal/75 leading-relaxed px-4">
-            Apparently a simple &ldquo;Happy Birthday&rdquo; text wasn&apos;t enough. 😂
+            {gateData.hero.subtext}
           </p>
         </div>
 
@@ -156,10 +158,10 @@ export default function HomePage() {
                 <Unlock className="h-5 w-5" />
               </div>
               <p className="font-display text-base font-bold text-pastel-charcoal">
-                ✨ Story Unlocked!
+                {gateData.unlockedState.title}
               </p>
               <p className="text-xs text-pastel-charcoal/70">
-                You&apos;re already on this journey.
+                {gateData.unlockedState.subtitle}
               </p>
               <SpecularButton
                 variant="pink"
@@ -167,7 +169,7 @@ export default function HomePage() {
                 className="w-full mt-2"
                 onClick={() => router.push("/note")}
               >
-                <span>Continue to Chapter 02</span>
+                <span>{gateData.unlockedState.continueButton}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </SpecularButton>
             </div>
@@ -176,11 +178,11 @@ export default function HomePage() {
               {/* Header */}
               <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-pastel-charcoal/85">
                 <Lock className="h-3.5 w-3.5 text-pastel-pink-dark" />
-                <span>🔐 A tiny birthday lock</span>
+                <span>{gateData.lockCard.title}</span>
               </div>
 
               <p className="text-[10px] text-pastel-muted font-medium">
-                Hint: See Behind the QR
+                {gateData.lockCard.hint}
               </p>
 
               {/* Aesthetic Code Display Box */}
@@ -192,7 +194,7 @@ export default function HomePage() {
                   </div>
                 ) : (
                   <span className="text-pastel-muted/40 font-normal text-sm tracking-normal">
-                    Enter passcode
+                    {gateData.lockCard.passcodePlaceholder}
                   </span>
                 )}
               </div>
@@ -247,10 +249,10 @@ export default function HomePage() {
                 {isUnlocking ? (
                   <span className="flex items-center justify-center gap-1.5 animate-pulse text-pastel-charcoal">
                     <Sparkles className="h-3.5 w-3.5 text-pastel-pink-dark animate-spin" />
-                    <span>Opening Chapter 02... 🌸</span>
+                    <span>{gateData.lockCard.unlockingButton}</span>
                   </span>
                 ) : (
-                  <span>Unlock Story →</span>
+                  <span>{gateData.lockCard.unlockButton}</span>
                 )}
               </SpecularButton>
             </div>
@@ -260,9 +262,9 @@ export default function HomePage() {
 
       {/* Bottom Sparkles Decor - Anchored near bottom */}
       <div className="flex items-center justify-center gap-2 text-xs text-pastel-muted select-none shrink-0 pb-1">
-        <span>✨</span>
-        <span className="font-handwriting text-sm text-pastel-charcoal/70">19 looks good on you</span>
-        <span>🌸</span>
+        <span>{gateData.footerSparkles.leftEmoji}</span>
+        <span className="font-handwriting text-sm text-pastel-charcoal/70">{gateData.footerSparkles.text}</span>
+        <span>{gateData.footerSparkles.rightEmoji}</span>
       </div>
 
       {/* Post-Password Scavenger Hunt Mission Briefing Popup */}

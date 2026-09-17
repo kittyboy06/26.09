@@ -6,11 +6,11 @@ import { ChapterProgress } from "@/components/layout/ChapterProgress";
 import { Skiper2MusicIsland } from "@/components/audio/Skiper2MusicIsland";
 import { TanishaCompanion } from "@/components/passport/TanishaCompanion";
 import { StickerToastContainer } from "@/components/stickers/StickerToastContainer";
-import { siteConfig } from "@/data/siteConfig";
+import { site } from "@/lib/appData";
 
 export const metadata: Metadata = {
-  title: siteConfig.meta.title,
-  description: siteConfig.meta.description,
+  title: site.meta.title,
+  description: site.meta.description,
   robots: {
     index: false,
     follow: false,

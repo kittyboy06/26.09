@@ -5,20 +5,20 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import { Trophy, RotateCcw, Sparkles } from "lucide-react";
+import { screens } from "@/lib/appData";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sticker } from "@/components/ui/Sticker";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 
-const TARGET_SCORE = 7;
-const TOTAL_HOLES = 9; // Classic 3x3 arcade grid
-
-const HIT_SOUND_TEXTS = ["POW! 💥", "WHACK! 🔨", "BOP! ✨", "GOTCHA! 😂", "OUCH! 🌸", "+10 🎯"];
-
-const CAT_QUOTES = ["Whack 'em! 🔨", "Gotcha! 🕶️", "Target down! 💥", "Nice hit! 🐾", "BAM! 🎯"];
-
 export default function WhackGamePage() {
+  const data = screens.game;
+  const TARGET_SCORE = data.targetScore;
+  const TOTAL_HOLES = data.totalHoles;
+  const HIT_SOUND_TEXTS = data.hitSoundTexts;
+  const CAT_QUOTES = data.catQuotes;
+
   const [activeHole, setActiveHole] = useState<number | null>(null);
   const [score, setScore] = useState<number>(0);
   const [isWon, setIsWon] = useState<boolean>(false);
@@ -26,7 +26,7 @@ export default function WhackGamePage() {
   const [floatingScore, setFloatingScore] = useState<{ id: number; text: string; hole: number } | null>(null);
   const [malletStrike, setMalletStrike] = useState<number | null>(null);
   const [catStriking, setCatStriking] = useState<boolean>(false);
-  const [catQuote, setCatQuote] = useState<string>("Ready to strike! 🕶️");
+  const [catQuote, setCatQuote] = useState<string>(data.marquee.initialQuote);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   // Eagerly preload game assets on mount
@@ -53,7 +53,7 @@ export default function WhackGamePage() {
       } while (nextHole === prev && TOTAL_HOLES > 1);
       return nextHole;
     });
-  }, [isWon]);
+  }, [isWon, TOTAL_HOLES]);
 
   // Main game spawn loop
   useEffect(() => {
@@ -130,7 +130,7 @@ export default function WhackGamePage() {
     setHitHole(null);
     setMalletStrike(null);
     setCatStriking(false);
-    setCatQuote("Ready to strike! 🕶️");
+    setCatQuote(data.marquee.initialQuote);
     spawnMole();
   };
 
@@ -142,22 +142,22 @@ export default function WhackGamePage() {
       {/* Header Badges */}
       <div className="w-full flex items-center justify-between mb-3">
         <Sticker variant="floating" rotation={-3}>
-          <span>🕹️</span>
-          <span className="text-[11px] font-medium">Chapter 07</span>
+          <span>{data.badges.left.emoji}</span>
+          <span className="text-[11px] font-medium">{data.badges.left.text}</span>
         </Sticker>
         <Sticker variant="wiggle" rotation={3}>
-          <span>🔨</span>
-          <span className="text-[11px] font-medium">Classic Whack-a-Mole</span>
+          <span>{data.badges.right.emoji}</span>
+          <span className="text-[11px] font-medium">{data.badges.right.text}</span>
         </Sticker>
       </div>
 
       {/* Chapter Title */}
       <div className="text-center mb-2">
         <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-pastel-charcoal">
-          Whack-a-Tanisha!
+          {data.header.title}
         </h2>
         <p className="text-xs text-pastel-muted">
-          Classic Carnival Edition • Whack 7 times to break the shell 🐚
+          {data.header.subtitle}
         </p>
       </div>
 
@@ -165,7 +165,7 @@ export default function WhackGamePage() {
       <div className="w-full max-w-[340px] flex items-center justify-between bg-amber-900/90 text-amber-100 rounded-2xl px-4 py-2 border-2 border-amber-700 shadow-md mb-2 select-none">
         <div className="flex items-center gap-2 font-display text-xs font-bold">
           <Trophy className="h-4 w-4 text-yellow-400 animate-bounce" />
-          <span>SCORE:</span>
+          <span>{data.scoreboard.scoreLabel}</span>
           <span className="text-yellow-300 text-base font-mono font-black tracking-wider bg-black/40 px-2.5 py-0.5 rounded-lg border border-amber-600">
             {score} / {TARGET_SCORE}
           </span>
@@ -177,7 +177,7 @@ export default function WhackGamePage() {
           className="flex items-center gap-1 text-[11px] font-bold text-amber-200 hover:text-white bg-amber-800/80 px-2.5 py-1 rounded-xl border border-amber-600 active:scale-95 transition-all shadow-xs"
         >
           <RotateCcw className="h-3 w-3" />
-          <span>RESET</span>
+          <span>{data.scoreboard.resetButton}</span>
         </button>
       </div>
 
@@ -188,7 +188,7 @@ export default function WhackGamePage() {
           <div className="flex items-center gap-1.5">
             <span className="h-2 w-2 rounded-full bg-yellow-500 shadow-xs animate-ping" />
             <span className="text-[10px] font-mono font-bold tracking-widest text-amber-200 uppercase">
-              CAT STRIKER 9000
+              {data.marquee.title}
             </span>
           </div>
           <span className="text-[9px] font-bold text-amber-300/80 bg-black/40 px-1.5 py-0.5 rounded">
@@ -220,7 +220,7 @@ export default function WhackGamePage() {
             <div className="relative h-24 w-48 drop-shadow-xl overflow-visible">
               <Image
                 src="/assets/whack_a_mole/cat.png"
-                alt="Cool Cat Striker"
+                alt={data.marquee.catAlt}
                 fill
                 sizes="200px"
                 className="object-contain scale-[1.6] origin-center"
@@ -371,7 +371,7 @@ export default function WhackGamePage() {
                         <div className="relative h-20 w-20 drop-shadow-md">
                           <Image
                             src={isHit ? "/assets/whack_a_mole/tanisha_hit.png" : "/assets/whack_a_mole/tanisha_idle.png"}
-                            alt={isHit ? "Tanisha Whacked!" : "Tanisha Mole"}
+                            alt={isHit ? data.tanishaMole.hitAlt : data.tanishaMole.idleAlt}
                             fill
                             sizes="80px"
                             className="object-contain"
@@ -404,10 +404,10 @@ export default function WhackGamePage() {
           >
             <div className="flex items-center justify-center gap-1.5 text-xs font-black uppercase tracking-wider">
               <Sparkles className="h-4 w-4 text-amber-800" />
-              <span>CARNIVAL CHAMPION! 🏆</span>
+              <span>{data.winBanner.title}</span>
             </div>
             <p className="mt-0.5 text-xs font-bold text-amber-900">
-              “My shell will break but it takes time.” — Officially Broken! 🎉
+              {data.winBanner.description}
             </p>
           </motion.div>
         )}
@@ -415,11 +415,11 @@ export default function WhackGamePage() {
 
       {/* Navigation */}
       <PageNavigation
-        nextHref="/gift"
-        nextLabel="Flower Reveal →"
-        prevHref="/nineteen"
-        prevLabel="Back to 19 Things"
-        variant="yellow"
+        nextHref={data.navigation.nextHref}
+        nextLabel={data.navigation.nextLabel}
+        prevHref={data.navigation.prevHref}
+        prevLabel={data.navigation.prevLabel}
+        variant={data.navigation.variant as any}
       />
     </PageTransition>
   );

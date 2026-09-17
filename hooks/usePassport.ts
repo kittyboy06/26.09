@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { usePathname } from "next/navigation";
-import { PASSPORT_CHAPTERS } from "@/data/passportChapters";
+import { passportChapters as PASSPORT_CHAPTERS } from "@/lib/appData";
 import { ChapterStamp, PassportState } from "@/types/passport";
 
 const STORAGE_KEY_UNLOCKED = "tanisha_passport_unlocked_v1";

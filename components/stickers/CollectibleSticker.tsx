@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, Check } from "lucide-react";
-import { STICKER_CATALOG } from "@/data/stickerCatalog";
+import { stickers, common } from "@/lib/appData";
 import { useStickerCollection } from "@/hooks/useStickerCollection";
 
 interface CollectibleStickerProps {
@@ -23,11 +23,12 @@ export function CollectibleSticker({
   showTapPrompt = false,
 }: CollectibleStickerProps) {
   const { isCollected, collectSticker } = useStickerCollection();
-  const item = STICKER_CATALOG.find((s) => s.id === id);
+  const item = stickers.find((s) => s.id === id);
 
   if (!item) return null;
 
   const collected = isCollected(id);
+  const data = common.stickerItem;
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -59,7 +60,7 @@ export function CollectibleSticker({
             ? "drop-shadow-sm hover:drop-shadow-md"
             : "drop-shadow-md hover:drop-shadow-lg ring-2 ring-amber-400/60 ring-offset-2 bg-amber-100/30"
         }`}
-        aria-label={collected ? `${item.name} (Collected)` : `Touch to collect ${item.name}`}
+        aria-label={collected ? `${item.name} ${data.ariaCollectedSuffix}` : `${data.ariaCollectPrefix} ${item.name}`}
       >
         {/* Uncollected Floating Sparkle Indicator */}
         {!collected && (
@@ -103,7 +104,7 @@ export function CollectibleSticker({
           className="mt-1 flex items-center gap-1 bg-amber-100/95 border border-amber-300 text-amber-900 px-2 py-0.5 rounded-full text-[9px] font-bold shadow-xs pointer-events-none whitespace-nowrap"
         >
           <Sparkles className="h-2.5 w-2.5 text-amber-600 animate-spin" />
-          <span>Tap to Collect!</span>
+          <span>{data.tapToCollect}</span>
         </motion.div>
       )}
     </div>

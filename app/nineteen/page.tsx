@@ -2,18 +2,18 @@
 
 import React, { useState } from "react";
 import confetti from "canvas-confetti";
-import { nineteenThingsData } from "@/data/nineteenThings";
+import { screens } from "@/lib/appData";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sparkles, RotateCw } from "lucide-react";
-import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { cn } from "@/lib/utils";
 
 export default function NineteenPage() {
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
   const [isCard19Unlocked, setIsCard19Unlocked] = useState<boolean>(false);
+  const data = screens.nineteen;
 
   const toggleCard = (id: number) => {
     setFlippedCards((prev) => ({
@@ -40,7 +40,7 @@ export default function NineteenPage() {
     }
   };
 
-  const themeColors = {
+  const themeColors: Record<string, string> = {
     yellow: "bg-pastel-yellow/50 border-pastel-yellow-dark/50 text-pastel-charcoal",
     green: "bg-pastel-green/50 border-pastel-green-dark/50 text-pastel-charcoal",
     blue: "bg-pastel-blue/50 border-pastel-blue-dark/50 text-pastel-charcoal",
@@ -49,30 +49,30 @@ export default function NineteenPage() {
     lavender: "bg-pastel-lavender/50 border-purple-300 text-pastel-charcoal",
   };
 
-  const standardCards = nineteenThingsData.filter((c) => !c.isSpecial);
-  const card19 = nineteenThingsData.find((c) => c.isSpecial);
+  const standardCards = data.cards.filter((c) => !c.isSpecial);
+  const card19 = data.cards.find((c) => c.isSpecial);
 
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
-          <span>✨</span>
-          <span className="text-[11px] font-medium">Chapter 06</span>
+          <span>{data.badges.left.emoji}</span>
+          <span className="text-[11px] font-medium">{data.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
-          <span>🃏</span>
-          <span className="text-[11px] font-medium">Card Collection</span>
+          <span>{data.badges.right.emoji}</span>
+          <span className="text-[11px] font-medium">{data.badges.right.text}</span>
         </Sticker>
       </div>
 
       <div className="text-center mb-6">
         <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-pastel-charcoal">
-          19 Things
+          {data.header.title}
         </h2>
         <p className="mt-1 font-handwriting text-lg text-pastel-charcoal/75">
-          Because you&apos;re officially 19 now. Tap each card to reveal! 🌸
+          {data.header.subtitle}
         </p>
       </div>
 
@@ -92,7 +92,7 @@ export default function NineteenPage() {
                 className={cn(
                   "relative h-full w-full rounded-2xl shadow-scrapbook transition-transform duration-500 transform-style-3d border",
                   isFlipped ? "rotate-y-180" : "",
-                  themeColors[card.themeColor]
+                  themeColors[card.themeColor] || themeColors.yellow
                 )}
               >
                 {/* FRONT OF CARD */}
@@ -111,7 +111,7 @@ export default function NineteenPage() {
 
                   <span className="text-[10px] font-semibold text-pastel-pink-dark flex items-center gap-1">
                     <Sparkles className="h-2.5 w-2.5" />
-                    Tap to flip
+                    {data.tapToFlip}
                   </span>
                 </div>
 
@@ -119,7 +119,7 @@ export default function NineteenPage() {
                 <div
                   className={cn(
                     "backface-hidden rotate-y-180 absolute inset-0 flex flex-col items-center justify-between p-3.5 text-center rounded-2xl",
-                    themeColors[card.themeColor]
+                    themeColors[card.themeColor] || themeColors.yellow
                   )}
                 >
                   <div className="w-full flex items-center justify-between text-[11px] font-bold text-pastel-charcoal/60">
@@ -144,7 +144,7 @@ export default function NineteenPage() {
                   )}
 
                   <span className="text-[9px] text-pastel-charcoal/60 font-semibold">
-                    Tap to flip back ↻
+                    {data.tapToFlipBack}
                   </span>
                 </div>
               </div>
@@ -168,36 +168,36 @@ export default function NineteenPage() {
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="rounded-full bg-pastel-pink/50 px-2.5 py-0.5 text-[10px] font-bold text-pastel-charcoal">
-                  MILESTONE 19
+                  {data.milestoneCard.tag}
                 </span>
                 <Sparkles className="h-4 w-4 text-pastel-yellow-dark" />
               </div>
 
               {!isCard19Unlocked ? (
                 <div className="py-4 flex flex-col items-center gap-2">
-                  <span className="text-4xl animate-bounce">🎂</span>
+                  <span className="text-4xl animate-bounce">{data.milestoneCard.lockedEmoji}</span>
                   <h3 className="font-display text-xl font-black text-pastel-charcoal">
-                    19 — The Grand Finale Card
+                    {data.milestoneCard.lockedTitle}
                   </h3>
                   <span className="text-xs font-semibold text-pastel-pink-dark flex items-center gap-1">
                     <Sparkles className="h-3 w-3" />
-                    Tap to unlock 19
+                    {data.milestoneCard.lockedTapPrompt}
                   </span>
                 </div>
               ) : (
                 <div className="py-4 flex flex-col items-center gap-2 animate-in fade-in zoom-in-95 duration-300">
                   <span className="font-display text-6xl font-black text-pastel-charcoal">
-                    19
+                    {data.milestoneCard.unlockedNumber}
                   </span>
-                  <span className="text-5xl my-1 animate-bounce">🎂</span>
+                  <span className="text-5xl my-1 animate-bounce">{data.milestoneCard.unlockedEmoji}</span>
                   <div className="rounded-full bg-pastel-pink/70 px-4 py-1 text-xs font-bold tracking-widest text-pastel-charcoal uppercase border border-pastel-pink-dark/40 shadow-xs">
-                    OFFICIALLY UNLOCKED
+                    {data.milestoneCard.unlockedTag}
                   </div>
                   <p className="font-handwriting text-3xl font-bold text-pastel-pink-dark mt-2">
-                    Happy Birthday, Tanisha 🌸
+                    {data.milestoneCard.unlockedMessage}
                   </p>
                   <span className="text-[10px] text-pastel-muted mt-3">
-                    Tap to collapse ↻
+                    {data.milestoneCard.unlockedCollapsePrompt}
                   </span>
                 </div>
               )}
@@ -208,11 +208,11 @@ export default function NineteenPage() {
 
       {/* Page Navigation */}
       <PageNavigation
-        nextHref="/game"
-        nextLabel="Play Mini-Game →"
-        prevHref="/chat"
-        prevLabel="Back to Chat Logs"
-        variant="yellow"
+        nextHref={data.navigation.nextHref}
+        nextLabel={data.navigation.nextLabel}
+        prevHref={data.navigation.prevHref}
+        prevLabel={data.navigation.prevLabel}
+        variant={data.navigation.variant as any}
       />
     </PageTransition>
   );

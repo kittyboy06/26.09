@@ -10,82 +10,11 @@ import { Sticker } from "@/components/ui/Sticker";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
-interface ChatMessage {
-  id: string;
-  sender: "tanisha" | "afsal";
-  text: string;
-  subtext?: string;
-  time: string;
-  reaction?: string;
-}
+import { screens } from "@/lib/appData";
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: "m-1",
-      sender: "afsal",
-      text: "Sending this today so you have time to process it 😂",
-      time: "10:14 PM",
-    },
-    {
-      id: "m-2",
-      sender: "tanisha",
-      text: "I'm gonna send today, you can reply tomorrow 😂",
-      subtext: "Standard Tanisha delivery protocol",
-      time: "10:18 PM",
-      reaction: "🐢",
-    },
-    {
-      id: "m-3",
-      sender: "afsal",
-      text: "Are you finishing the DSA logic or is the robot brain taking a break?",
-      time: "11:02 PM",
-    },
-    {
-      id: "m-4",
-      sender: "tanisha",
-      text: "Do the work. Mind your business. Continue life.",
-      subtext: "System Rule #1",
-      time: "11:05 PM",
-      reaction: "🤖",
-    },
-    {
-      id: "m-5",
-      sender: "afsal",
-      text: "Checking in on the shell status... any cracks yet?",
-      time: "Yesterday",
-    },
-    {
-      id: "m-6",
-      sender: "tanisha",
-      text: "My shell will break but it takes time. 🐚",
-      subtext: "Verified direct quote",
-      time: "Yesterday",
-      reaction: "🐚",
-    },
-    {
-      id: "m-7",
-      sender: "afsal",
-      text: "Look at the updated poster layout vs the first draft",
-      time: "Today",
-    },
-    {
-      id: "m-8",
-      sender: "tanisha",
-      text: "Ohh wow... Yep much better",
-      subtext: "Peak excitement reached",
-      time: "Today",
-      reaction: "🌸",
-    },
-    {
-      id: "m-9",
-      sender: "tanisha",
-      text: "One more reel probably won't hurt 🎬",
-      time: "Just now",
-      reaction: "🍿",
-    },
-  ]);
-
+  const chatData = screens.chat;
+  const [messages, setMessages] = useState(chatData.messages);
   const [activeReaction, setActiveReaction] = useState<string | null>(null);
 
   const addReaction = (emoji: string) => {
@@ -101,22 +30,22 @@ export default function ChatPage() {
       {/* Header Badges */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
-          <span>💬</span>
-          <span className="text-xs text-pastel-charcoal font-medium">Chapter 05</span>
+          <span>{chatData.badges.left.emoji}</span>
+          <span className="text-xs text-pastel-charcoal font-medium">{chatData.badges.left.text}</span>
         </Sticker>
         <Sticker variant="wiggle" rotation={3}>
-          <span>📱</span>
-          <span className="text-xs text-pastel-charcoal font-medium">The Chat Logs</span>
+          <span>{chatData.badges.right.emoji}</span>
+          <span className="text-xs text-pastel-charcoal font-medium">{chatData.badges.right.text}</span>
         </Sticker>
       </div>
 
       {/* Chapter Title */}
       <div className="text-center mb-5">
         <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-pastel-charcoal">
-          The Message Archive
+          {chatData.header.title}
         </h2>
         <p className="mt-1 text-xs text-pastel-muted">
-          A purely authentic record of real conversation patterns
+          {chatData.header.subtitle}
         </p>
       </div>
 
@@ -128,7 +57,7 @@ export default function ChatPage() {
             <div className="relative h-9 w-9 rounded-full bg-pastel-pink/40 border border-pastel-pink-dark/40 flex items-center justify-center font-display font-bold text-sm text-pastel-charcoal shadow-xs overflow-hidden">
               <Image
                 src="/assets/stickers/tanisha_idle.png"
-                alt="Tanisha"
+                alt={chatData.device.contactAvatarAlt}
                 fill
                 sizes="36px"
                 className="object-contain p-0.5"
@@ -137,11 +66,11 @@ export default function ChatPage() {
             </div>
             <div className="text-left">
               <div className="font-display text-xs font-bold text-pastel-charcoal flex items-center gap-1">
-                <span>Tanisha</span>
-                <span className="text-[10px] text-pastel-pink-dark font-medium">(Bot Mode)</span>
+                <span>{chatData.device.contactName}</span>
+                <span className="text-[10px] text-pastel-pink-dark font-medium">{chatData.device.contactMode}</span>
               </div>
               <p className="text-[10px] text-pastel-muted">
-                Replies: <span className="font-semibold text-pastel-charcoal/70">tomorrow 😂</span>
+                {chatData.device.repliesPrefix} <span className="font-semibold text-pastel-charcoal/70">{chatData.device.repliesDelay}</span>
               </p>
             </div>
           </div>
@@ -158,7 +87,7 @@ export default function ChatPage() {
           {/* Day Divider */}
           <div className="flex items-center justify-center my-1">
             <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-[9px] font-semibold text-pastel-muted shadow-2xs border border-pastel-pink/20">
-              Verified Chat Transcript
+              {chatData.device.dayDivider}
             </span>
           </div>
 
@@ -206,7 +135,7 @@ export default function ChatPage() {
                 {msg.id === "m-2" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_smirk" size={54} rotation={-3} />
-                    <span className="text-[9px] font-mono text-pastel-muted italic">Quest Sticker ✨</span>
+                    <span className="text-[9px] font-mono text-pastel-muted italic">{chatData.device.questStickerTag}</span>
                   </div>
                 )}
 
@@ -214,7 +143,7 @@ export default function ChatPage() {
                 {msg.id === "m-4" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_work" size={54} rotation={2} />
-                    <span className="text-[9px] font-mono text-pastel-muted italic">Quest Sticker ✨</span>
+                    <span className="text-[9px] font-mono text-pastel-muted italic">{chatData.device.questStickerTag}</span>
                   </div>
                 )}
               </motion.div>
@@ -240,16 +169,16 @@ export default function ChatPage() {
         {/* Quick Reactions Bar */}
         <div className="bg-white px-3 py-2 border-t border-pastel-pink/20 flex items-center justify-between">
           <span className="text-[10px] font-semibold text-pastel-muted flex items-center gap-1">
-            <Smile className="h-3 w-3 text-pastel-pink-dark" /> Quick tap:
+            <Smile className="h-3 w-3 text-pastel-pink-dark" /> {chatData.device.quickTapPrefix}
           </span>
           <div className="flex items-center gap-1.5">
-            {["🌸", "🤖", "🐢", "🐚", "🎬"].map((emoji) => (
+            {chatData.device.quickEmojis.map((emoji) => (
               <button
                 key={emoji}
                 type="button"
                 onClick={() => addReaction(emoji)}
                 className="h-7 w-7 rounded-full bg-pastel-cream hover:bg-pastel-pink/30 active:scale-90 border border-pastel-pink/20 text-xs flex items-center justify-center transition-transform shadow-2xs"
-                title={`Send ${emoji}`}
+                title={`${chatData.device.quickTapTitlePrefix} ${emoji}`}
               >
                 {emoji}
               </button>
@@ -260,10 +189,10 @@ export default function ChatPage() {
 
       {/* Navigation */}
       <PageNavigation
-        nextHref="/nineteen"
-        nextLabel="19 Things →"
-        prevHref="/memories"
-        prevLabel="Back to Scrapbook"
+        nextHref={chatData.navigation.nextHref}
+        nextLabel={chatData.navigation.nextLabel}
+        prevHref={chatData.navigation.prevHref}
+        prevLabel={chatData.navigation.prevLabel}
         variant="pink"
       />
     </PageTransition>

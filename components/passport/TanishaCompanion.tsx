@@ -9,6 +9,8 @@ import { usePassport } from "@/hooks/usePassport";
 import { useStickerCollection } from "@/hooks/useStickerCollection";
 import { PassportModal } from "./PassportModal";
 
+import { common } from "@/lib/appData";
+
 export function TanishaCompanion() {
   const { isUnlocked } = useBirthday();
   const {
@@ -19,6 +21,7 @@ export function TanishaCompanion() {
   const { totalCollected, isComplete: isStickerComplete } = useStickerCollection();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const companionText = common.passport;
 
   // If on the locked welcome gate before passcode entry, keep screen clean
   if (!isUnlocked) {
@@ -50,7 +53,7 @@ export function TanishaCompanion() {
           whileTap={{ scale: 0.95 }}
           onClick={handleOpenPassport}
           className="relative group overflow-visible rounded-full border border-pastel-pink/60 bg-white/95 shadow-scrapbook backdrop-blur-md px-3 py-1.5 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink"
-          aria-label="Open Tanisha's Birthday Passport"
+          aria-label={companionText.companionAriaLabel}
         >
           {/* Pulsing "New Stamp" Notification Badge */}
           <AnimatePresence>
@@ -81,7 +84,7 @@ export function TanishaCompanion() {
           {/* Label and Stamp Counter */}
           <div className="flex items-center gap-1.5 text-left">
             <span className="text-xs font-semibold text-pastel-charcoal hidden sm:inline">
-              Passport
+              {companionText.companionLabel}
             </span>
             <span
               className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full border ${
@@ -90,7 +93,7 @@ export function TanishaCompanion() {
                   : "bg-pastel-pink/30 text-pastel-charcoal border-pastel-pink/40"
               }`}
             >
-              {totalCollected}/16 🌸
+              {totalCollected}/{companionText.stickersTotalSuffix}
             </span>
           </div>
         </motion.button>

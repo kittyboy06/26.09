@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 
+import { common } from "@/lib/appData";
+
 interface PageNavigationProps {
   nextHref: string;
   nextLabel: string;
@@ -17,7 +19,7 @@ export function PageNavigation({
   nextHref,
   nextLabel,
   prevHref,
-  prevLabel = "Back",
+  prevLabel = common.navigation.prevDefaultLabel,
   variant = "pink",
 }: PageNavigationProps) {
   const router = useRouter();

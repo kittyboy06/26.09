@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import confetti from "canvas-confetti";
-import { STICKER_CATALOG } from "@/data/stickerCatalog";
+import { stickers as STICKER_CATALOG } from "@/lib/appData";
 import { StickerCollectionState, StickerToastPayload } from "@/types/stickers";
 
 const STORAGE_KEY = "tanisha_stickers_collected_v1";

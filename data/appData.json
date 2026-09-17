@@ -1,0 +1,1084 @@
+{
+  "site": {
+    "recipient": "Tanisha",
+    "creator": "Afsal",
+    "age": 19,
+    "birthDate": "September 26, 2007",
+    "passcode": "26.09",
+    "passcodeHint": "See Behind the QR",
+    "audioTrack": "/assets/music/birthday.mp3",
+    "heroLoopWords": [
+      "Happy Birthday",
+      "Tanisha",
+      "You're 19!",
+      "26.09",
+      "Have the best day 🌸"
+    ],
+    "meta": {
+      "title": "Happy Birthday Tanisha 🎂 | 19 Unlocked",
+      "description": "A tiny personal birthday world made for Tanisha by Afsal."
+    }
+  },
+  "routes": [
+    { "path": "/", "label": "Birthday Gate", "number": "01", "badge": "Unlock 🎂" },
+    { "path": "/note", "label": "A Little Something", "number": "02", "badge": "The Note 💌" },
+    { "path": "/noticed", "label": "Things I've Noticed", "number": "03", "badge": "System Profile 🤖" },
+    { "path": "/memories", "label": "Our Randomness", "number": "04", "badge": "Scrapbook 📸" },
+    { "path": "/chat", "label": "The Chat Logs", "number": "05", "badge": "Chat Wall 💬" },
+    { "path": "/nineteen", "label": "19 Things", "number": "06", "badge": "19 Things ✨" },
+    { "path": "/game", "label": "Whack-a-Tanisha", "number": "07", "badge": "Mini-Game 🕹️" },
+    { "path": "/gift", "label": "Flower Reveal", "number": "08", "badge": "939 Pieces 🌸" },
+    { "path": "/birthday", "label": "Final Celebration", "number": "09", "badge": "Birthday! 🎉" }
+  ],
+  "stickers": [
+    {
+      "id": "tanisha_hi",
+      "name": "Welcome Sparkle",
+      "chapterNum": 1,
+      "chapterTitle": "Birthday Gate",
+      "route": "/",
+      "src": "/assets/stickers/tanisha_hi.png",
+      "quote": "Welcome to your 19th birthday journey! ✨",
+      "tagline": "Found in Chapter 01: Mission Briefing",
+      "personality": "Waving peace sign & sparkles; the opening tutorial sticker."
+    },
+    {
+      "id": "tanisha_smile",
+      "name": "Gentle Care",
+      "chapterNum": 2,
+      "chapterTitle": "The Note",
+      "route": "/note",
+      "src": "/assets/stickers/tanisha_smile.png",
+      "quote": "Written straight from the heart with all my care 💌",
+      "tagline": "Found in Chapter 02: Closing Signature",
+      "personality": "Warm gentle smile on the letter's closing line."
+    },
+    {
+      "id": "tanisha_bye",
+      "name": "Cheerful Wave",
+      "chapterNum": 2,
+      "chapterTitle": "The Note",
+      "route": "/note",
+      "src": "/assets/stickers/tanisha_bye.png",
+      "quote": "Waving cheerful at the foot of the stationery 🌸",
+      "tagline": "Found in Chapter 02: P.S. Memo",
+      "personality": "Gentle wave goodbye pinned beside the postscript."
+    },
+    {
+      "id": "tanisha_drink",
+      "name": "Boba Sips",
+      "chapterNum": 3,
+      "chapterTitle": "Things I've Noticed",
+      "route": "/noticed",
+      "src": "/assets/stickers/tanisha_drink.png",
+      "quote": "Boba sips & little habits I know so well ☕",
+      "tagline": "Found in Chapter 03: Beverage Note",
+      "personality": "Sipping boba or chai, observing everyday quirks."
+    },
+    {
+      "id": "tanisha_sleep",
+      "name": "Midnight Reels",
+      "chapterNum": 3,
+      "chapterTitle": "Things I've Noticed",
+      "route": "/noticed",
+      "src": "/assets/stickers/tanisha_sleep.png",
+      "quote": "Fast asleep after late-night scrolling 😴",
+      "tagline": "Found in Chapter 03: Sleepy Routine",
+      "personality": "Fast asleep with Zzzs, nodding off after midnight."
+    },
+    {
+      "id": "tanisha_book",
+      "name": "Study Chaos",
+      "chapterNum": 4,
+      "chapterTitle": "College Memories",
+      "route": "/memories",
+      "src": "/assets/stickers/tanisha_book.png",
+      "quote": "Library sessions & university study chaos 📚",
+      "tagline": "Found in Chapter 04: Library Polaroid",
+      "personality": "Peeking over textbooks during intense study sessions."
+    },
+    {
+      "id": "tanisha_idle",
+      "name": "Campus Hallway",
+      "chapterNum": 4,
+      "chapterTitle": "College Memories",
+      "route": "/memories",
+      "src": "/assets/stickers/tanisha_idle.png",
+      "quote": "Everyday campus memories with friends 🏫",
+      "tagline": "Found in Chapter 04: Hallway Photo",
+      "personality": "Polite campus hallway pose alongside good friends."
+    },
+    {
+      "id": "tanisha_smirk",
+      "name": "Tomorrow Protocol",
+      "chapterNum": 5,
+      "chapterTitle": "The Chat Logs",
+      "route": "/chat",
+      "src": "/assets/stickers/tanisha_smirk.png",
+      "quote": "Replies: tomorrow 😂 • Standard delivery",
+      "tagline": "Found in Chapter 05: Banter Bubble",
+      "personality": "Mischievous smirk representing standard delivery delay."
+    },
+    {
+      "id": "tanisha_work",
+      "name": "Bot Work Mode",
+      "chapterNum": 5,
+      "chapterTitle": "The Chat Logs",
+      "route": "/chat",
+      "src": "/assets/stickers/tanisha_work.png",
+      "quote": "Do the work. Mind your business. Continue life. 💻",
+      "tagline": "Found in Chapter 05: System Rule #1",
+      "personality": "Coding away on laptop with heart sticker (Bot Mode)."
+    },
+    {
+      "id": "tanisha_fight",
+      "name": "Ready to Rumble",
+      "chapterNum": 6,
+      "chapterTitle": "19 Things Deck",
+      "route": "/nineteen",
+      "src": "/assets/stickers/tanisha_fight.png",
+      "quote": "Ready to fight over the smallest things 🥊",
+      "tagline": "Found in Chapter 06: Playful Debate",
+      "personality": "Boxing gloves & Fighting!! headband ready for banter."
+    },
+    {
+      "id": "tanisha_angry",
+      "name": "Puffed Cheeks",
+      "chapterNum": 6,
+      "chapterTitle": "19 Things Deck",
+      "route": "/nineteen",
+      "src": "/assets/stickers/tanisha_angry.png",
+      "quote": "Puffed cheeks and cute pout when annoyed 😤",
+      "tagline": "Found in Chapter 06: Dramatic Pout",
+      "personality": "Puffed cheeks and cute pout when mildly annoyed."
+    },
+    {
+      "id": "tanisha_doubt",
+      "name": "Cat Suspicion",
+      "chapterNum": 7,
+      "chapterTitle": "Whack-a-Tanisha",
+      "route": "/game",
+      "src": "/assets/stickers/tanisha_doubt.png",
+      "quote": "Side-eyeing the Cat Striker 9000 mallet 🔨",
+      "tagline": "Found in Chapter 07: Arcade Marquee",
+      "personality": "Skeptical side-eye watching the carnival mallet swing."
+    },
+    {
+      "id": "tanisha_heart",
+      "name": "Bouquet Love",
+      "chapterNum": 8,
+      "chapterTitle": "Flower Reveal",
+      "route": "/gift",
+      "src": "/assets/stickers/tanisha_heart.png",
+      "quote": "Wrapping love into every single petal 🌸",
+      "tagline": "Found in Chapter 08: Bouquet Seal",
+      "personality": "Heart hands gesture celebrating the floral gift."
+    },
+    {
+      "id": "tanisha_sad",
+      "name": "Tender Petals",
+      "chapterNum": 8,
+      "chapterTitle": "Flower Reveal",
+      "route": "/gift",
+      "src": "/assets/stickers/tanisha_sad.png",
+      "quote": "Flowers that never wilt in this garden 🥺",
+      "tagline": "Found in Chapter 08: Petals Reminder",
+      "personality": "Tender tearful pout remembering flowers never wilt here."
+    },
+    {
+      "id": "tanisha_laugh",
+      "name": "Cake Wishes",
+      "chapterNum": 9,
+      "chapterTitle": "Final Celebration",
+      "route": "/birthday",
+      "src": "/assets/stickers/tanisha_laugh.png",
+      "quote": "Pure joy, big wishes & blowing the candles 🎂",
+      "tagline": "Found in Chapter 09: Birthday Cake",
+      "personality": "Joyful birthday laughter blowing out the candles."
+    },
+    {
+      "id": "tanisha_laugh_2",
+      "name": "Grand Celebration",
+      "chapterNum": 9,
+      "chapterTitle": "Final Celebration",
+      "route": "/birthday",
+      "src": "/assets/stickers/tanisha_laugh_2.png",
+      "quote": "Laughing into year 19 with all my heart ✨",
+      "tagline": "Found in Chapter 09: Finale Polaroid",
+      "personality": "Pure happy celebration laughing with closed eyes."
+    }
+  ],
+  "passportChapters": [
+    {
+      "chapterId": "ch-1",
+      "chapterNum": 1,
+      "route": "/",
+      "title": "Birthday Gate",
+      "subtitle": "Secret Passcode & Countdown",
+      "stickerSrc": "/assets/stickers/tanisha_hi.png",
+      "stickerAlt": "Tanisha Waving Hello",
+      "quote": "Welcome to your 19th birthday journey! ✨",
+      "stampDate": "STAMP 01",
+      "accentColor": "border-amber-400/80 text-amber-900",
+      "badgeBg": "bg-amber-100"
+    },
+    {
+      "chapterId": "ch-2",
+      "chapterNum": 2,
+      "route": "/note",
+      "title": "The Note",
+      "subtitle": "A Handwritten Letter",
+      "stickerSrc": "/assets/stickers/tanisha_smile.png",
+      "stickerAlt": "Tanisha Gentle Smile",
+      "quote": "Written straight from the heart with all my care 💌",
+      "stampDate": "STAMP 02",
+      "accentColor": "border-rose-400/80 text-rose-900",
+      "badgeBg": "bg-rose-100"
+    },
+    {
+      "chapterId": "ch-3",
+      "chapterNum": 3,
+      "route": "/noticed",
+      "title": "Things I've Noticed",
+      "subtitle": "Observations & Quirks",
+      "stickerSrc": "/assets/stickers/tanisha_drink.png",
+      "stickerAlt": "Tanisha Sipping Boba",
+      "quote": "Boba sips & little habits I know so well ☕",
+      "stampDate": "STAMP 03",
+      "accentColor": "border-orange-400/80 text-orange-900",
+      "badgeBg": "bg-orange-100"
+    },
+    {
+      "chapterId": "ch-4",
+      "chapterNum": 4,
+      "route": "/memories",
+      "title": "College Memories",
+      "subtitle": "Campus Life & Photos",
+      "stickerSrc": "/assets/stickers/tanisha_book.png",
+      "stickerAlt": "Tanisha Reading with Books",
+      "quote": "Library sessions & everyday college chaos 📚",
+      "stampDate": "STAMP 04",
+      "accentColor": "border-emerald-400/80 text-emerald-900",
+      "badgeBg": "bg-emerald-100"
+    },
+    {
+      "chapterId": "ch-5",
+      "chapterNum": 5,
+      "route": "/chat",
+      "title": "The Chat Logs",
+      "subtitle": "WhatsApp Banter & Memes",
+      "stickerSrc": "/assets/stickers/tanisha_smirk.png",
+      "stickerAlt": "Tanisha Smirking",
+      "quote": "Replies: tomorrow 😂 • Do the work.",
+      "stampDate": "STAMP 05",
+      "accentColor": "border-sky-400/80 text-sky-900",
+      "badgeBg": "bg-sky-100"
+    },
+    {
+      "chapterId": "ch-6",
+      "chapterNum": 6,
+      "route": "/nineteen",
+      "title": "19 Things Deck",
+      "subtitle": "Your Quirks & Superpowers",
+      "stickerSrc": "/assets/stickers/tanisha_fight.png",
+      "stickerAlt": "Tanisha Boxing Gloves",
+      "quote": "Ready to fight over the smallest things 🥊",
+      "stampDate": "STAMP 06",
+      "accentColor": "border-purple-400/80 text-purple-900",
+      "badgeBg": "bg-purple-100"
+    },
+    {
+      "chapterId": "ch-7",
+      "chapterNum": 7,
+      "route": "/game",
+      "title": "Whack-a-Tanisha",
+      "subtitle": "Carnival Arcade Strike",
+      "stickerSrc": "/assets/stickers/tanisha_doubt.png",
+      "stickerAlt": "Tanisha Skeptical Side-Eye",
+      "quote": "Side-eyeing the Cat Striker 9000 🔨",
+      "stampDate": "STAMP 07",
+      "accentColor": "border-amber-600/80 text-amber-950",
+      "badgeBg": "bg-amber-200"
+    },
+    {
+      "chapterId": "ch-8",
+      "chapterNum": 8,
+      "route": "/gift",
+      "title": "Flower Reveal",
+      "subtitle": "Custom Bouquet Builder",
+      "stickerSrc": "/assets/stickers/tanisha_heart.png",
+      "stickerAlt": "Tanisha Heart Hands",
+      "quote": "Wrapping love into every single petal 🌸",
+      "stampDate": "STAMP 08",
+      "accentColor": "border-pink-400/80 text-pink-900",
+      "badgeBg": "bg-pink-100"
+    },
+    {
+      "chapterId": "ch-9",
+      "chapterNum": 9,
+      "route": "/birthday",
+      "title": "Final Celebration",
+      "subtitle": "Cake, Wishes & Confetti",
+      "stickerSrc": "/assets/stickers/tanisha_laugh.png",
+      "stickerAlt": "Tanisha Joyful Laughter",
+      "quote": "Pure joy, confetti & big wishes for 19! 🎂",
+      "stampDate": "STAMP 09",
+      "accentColor": "border-yellow-500/80 text-yellow-950",
+      "badgeBg": "bg-yellow-200"
+    }
+  ],
+  "common": {
+    "navigation": {
+      "prevDefaultLabel": "Back",
+      "nextDefaultLabel": "Next →"
+    },
+    "audioIsland": {
+      "ariaPlay": "Play music",
+      "ariaPause": "Pause music",
+      "playingLabel": "Birthday Tune",
+      "mutedLabel": "Muted",
+      "pausedLabel": "Paused",
+      "readyInfo": "Soundtrack curated for Tanisha's 19th",
+      "missingInfo": "Audio ready when MP3 is placed in public/assets/music/",
+      "pauseAction": "Tap to Pause",
+      "playAction": "Tap to Play"
+    },
+    "passport": {
+      "headerBadge": "OFFICIAL BIRTHDAY PASSPORT",
+      "title": "Tanisha’s 16-Sticker Quest",
+      "subtitle": "Find & touch all 16 mood stickers hidden across the screens ✨",
+      "progressCollectedSuffix": "COLLECTED",
+      "completeBadge": "★ 100% COMPLETE ★",
+      "sealTitle": "Master Explorer Seal Unlocked!",
+      "sealText": "You’ve discovered all 16 mood stickers across your 19th birthday scrapbook! 🌟 Happy Birthday Tanisha! 🎂",
+      "chapterPrefix": "Ch 0",
+      "goToScreen": "Go to Screen",
+      "footerBrand": "Tanisha’s Scrapbook • 26.09",
+      "doneButton": "Done Looking",
+      "closeAriaLabel": "Close passport",
+      "companionAriaLabel": "Open Tanisha's Birthday Passport",
+      "companionLabel": "Passport",
+      "stickersTotalSuffix": "16 🌸"
+    },
+    "missionModal": {
+      "badge": "SPECIAL BIRTHDAY QUEST",
+      "title": "Tanisha’s Sticker Quest! 🌸",
+      "descriptionBoldStickers": "16 illustrated stickers",
+      "descriptionBody": "of your moods and quirks are hidden across the story. Spot them and",
+      "descriptionBoldTouch": "touch them",
+      "descriptionTail": "on each screen to fill your Birthday Passport!",
+      "stepLabel": "Sticker #01 • Tutorial",
+      "successText": "Tutorial Complete! (1 / 16 Stickers)",
+      "promptText": "Touch Tanisha above to collect your 1st sticker! 👆",
+      "actionButton": "Start Journey into Chapter 02",
+      "hintText": "Tap the sticker to unlock your journey ✨"
+    },
+    "chapterProgress": {
+      "ariaLabel": "Story progression",
+      "totalChapters": "09",
+      "goToPageAriaPrefix": "Go to page"
+    },
+    "lightbox": {
+      "closeAriaLabel": "Close modal",
+      "footerLabel": "Scrapbook Memory",
+      "closeButton": "Close"
+    },
+    "stickerItem": {
+      "tapToCollect": "Tap to Collect!",
+      "ariaCollectedSuffix": "(Collected)",
+      "ariaCollectPrefix": "Touch to collect"
+    },
+    "toast": {
+      "title": "STICKER COLLECTED!",
+      "of": "of",
+      "collectedSuffix": "Collected 🌸"
+    }
+  },
+  "screens": {
+    "gate": {
+      "badges": {
+        "left": { "emoji": "🌼", "text": "Sept 26" },
+        "right": { "emoji": "🦋", "text": "19 Unlocked" }
+      },
+      "hero": {
+        "tag": "A tiny digital birthday world",
+        "postmark": "POST • 26.09",
+        "heading": "Happy Birthday",
+        "subtext": "Apparently a simple “Happy Birthday” text wasn't enough. 😂"
+      },
+      "lockCard": {
+        "title": "🔐 A tiny birthday lock",
+        "hint": "Hint: See Behind the QR",
+        "passcodePlaceholder": "Enter passcode",
+        "errorMessage": "Try again! Check behind the QR 😉",
+        "numpadKeys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "del"],
+        "unlockButton": "Unlock Story →",
+        "unlockingButton": "Opening Chapter 02... 🌸"
+      },
+      "unlockedState": {
+        "title": "✨ Story Unlocked!",
+        "subtitle": "You're already on this journey.",
+        "continueButton": "Continue to Chapter 02"
+      },
+      "footerSparkles": {
+        "leftEmoji": "✨",
+        "text": "19 looks good on you",
+        "rightEmoji": "🌸"
+      }
+    },
+    "note": {
+      "badges": {
+        "left": { "emoji": "💌", "text": "Chapter 02" },
+        "right": { "emoji": "📝", "text": "Handwritten Note" }
+      },
+      "memo": {
+        "tag": "MEMO • NO. 02",
+        "greeting": "Okay...",
+        "intro": "You could've just gotten a standard birthday text:",
+        "standardWish": "“Happy Birthday Tanisha 🎂”",
+        "turn": "...but apparently I decided to build a whole interactive web app instead. 😂",
+        "closingBold": "So here we are.",
+        "closingCare": "With all my care 💌"
+      },
+      "whyItExists": {
+        "title": "How we ended up here:",
+        "steps": [
+          { "text": "A normal birthday wish", "style": "cream" },
+          { "text": "wasn't enough", "style": "yellow" },
+          { "text": "so...", "style": "handwriting" },
+          { "text": "this happened 😂", "style": "pink" }
+        ],
+        "questBadge": "★ Hidden Quest Sticker Spotted! ★",
+        "questDescription": "“Waving cheerful at the foot of the stationery 🌸”"
+      },
+      "tuckedNotice": {
+        "quote": "“There's actually quite a bit more ahead.”",
+        "nextHint": "Next up: The official system profile 🤖"
+      },
+      "keepScrolling": "Keep scrolling",
+      "navigation": {
+        "prevLabel": "Back to Gate",
+        "prevHref": "/",
+        "nextLabel": "Things I've Noticed →",
+        "nextHref": "/noticed",
+        "variant": "blue"
+      }
+    },
+    "noticed": {
+      "badges": {
+        "left": { "emoji": "🤖", "text": "Chapter 03" },
+        "right": { "emoji": "⚙️", "text": "System Terminal" }
+      },
+      "header": {
+        "title": "Things I've Noticed",
+        "subtitle": "A purely non-scientific diagnostic observation log"
+      },
+      "terminal": {
+        "windowTitle": "tanisha-v19.sh — bash",
+        "onlineStatus": "ONLINE",
+        "sectionTitle": "SYSTEM PROFILE",
+        "versionTag": "v19.0 ACTIVE",
+        "systemLogPrefix": "> SYSTEM_LOG_EXTRACT:",
+        "profileRows": [
+          { "label": "Social Mode", "value": "Selective", "badgeType": "normal" },
+          { "label": "Chat Loading", "value": "Gradual", "badgeType": "warning" },
+          { "label": "Independence", "value": "HIGH", "badgeType": "highlight" },
+          { "label": "Reel Capacity", "value": "∞", "badgeType": "highlight" },
+          { "label": "Robot Mode", "value": "ENABLED", "badgeType": "normal" },
+          { "label": "Shell", "value": "PRESENT", "badgeType": "normal" },
+          { "label": "Human Mode", "value": "LOADING...", "badgeType": "warning" }
+        ],
+        "quote": {
+          "quote": "My shell will break but it takes time.",
+          "attribution": "Actual Tanisha quote"
+        }
+      },
+      "observations": [
+        {
+          "id": "obs-1",
+          "title": "Professional Bot",
+          "emoji": "🤖",
+          "subtitle": "System Routine",
+          "description": "Do the work. Mind your business. Continue life.",
+          "bgColor": "bg-sky-50/90 border-sky-200/70",
+          "accentColor": "text-sky-800 bg-sky-100",
+          "tag": "Bot Protocol"
+        },
+        {
+          "id": "obs-2",
+          "title": "Slow Loading",
+          "emoji": "🐢",
+          "subtitle": "Latency Mode",
+          "description": "Your chatting style takes some time to load.",
+          "bgColor": "bg-amber-50/90 border-amber-200/70",
+          "accentColor": "text-amber-800 bg-amber-100",
+          "tag": "Chat Latency"
+        },
+        {
+          "id": "obs-3",
+          "title": "The Shell",
+          "emoji": "🐚",
+          "subtitle": "Defense Layer",
+          "description": "Apparently it'll break... just give it time.",
+          "bgColor": "bg-purple-50/90 border-purple-200/70",
+          "accentColor": "text-purple-800 bg-purple-100",
+          "tag": "Protected Core"
+        },
+        {
+          "id": "obs-4",
+          "title": "Reply.exe",
+          "emoji": "😂",
+          "subtitle": "Delivery Schedule",
+          "description": "Sometimes the reply comes today. Sometimes... tomorrow.",
+          "bgColor": "bg-pink-50/90 border-pink-200/70",
+          "accentColor": "text-pink-800 bg-pink-100",
+          "tag": "Reply Latency"
+        },
+        {
+          "id": "obs-5",
+          "title": "The Reel Department",
+          "emoji": "🎬",
+          "subtitle": "Algorithm Sync",
+          "description": "One more reel probably won't hurt.",
+          "bgColor": "bg-rose-50/90 border-rose-200/70",
+          "accentColor": "text-rose-800 bg-rose-100",
+          "tag": "Reels"
+        },
+        {
+          "id": "obs-6",
+          "title": "Autonomy",
+          "emoji": "🌱",
+          "subtitle": "Default Operating State",
+          "description": "Independent mode permanently enabled.",
+          "bgColor": "bg-emerald-50/90 border-emerald-200/70",
+          "accentColor": "text-emerald-800 bg-emerald-100",
+          "tag": "Solo Mode"
+        }
+      ],
+      "closing": {
+        "quote": "Maybe that's just your operating system.",
+        "subtext": "Version 19.0 rolled out today with zero bug fixes."
+      },
+      "navigation": {
+        "prevLabel": "Back to Note",
+        "prevHref": "/note",
+        "nextLabel": "Our Randomness →",
+        "nextHref": "/memories",
+        "variant": "green"
+      }
+    },
+    "memories": {
+      "badges": {
+        "left": { "emoji": "📸", "text": "Chapter 04" },
+        "right": { "emoji": "✨", "text": "Our Randomness" }
+      },
+      "header": {
+        "title": "Our Randomness",
+        "subtitle": "The official digital college scrapbook 📎"
+      },
+      "tapToExpand": "Tap to expand 🔍",
+      "reelReactionCard": {
+        "badgeEmoji": "🎬",
+        "badgeTitle": "Reel Reaction",
+        "quote": "Ohh wow... Yep much better",
+        "subtext": "Peak enthusiasm achieved",
+        "floatingEmoji": "😂",
+        "floatingLabel": "Reels"
+      },
+      "campusHallObservation": "Campus hall observation",
+      "reelCardReaction": "I might actually do that 😂",
+      "items": [
+        {
+          "id": "mem-1",
+          "type": "quote",
+          "title": "Classic Reply Schedule",
+          "quote": "I'm gonna send today, you can reply tomorrow 😂",
+          "author": "College chat archives",
+          "tag": "Latency Record",
+          "sticker": "⏱️",
+          "rotation": -1.8,
+          "tapeColor": "yellow",
+          "subNote": "Standard operating reply window"
+        },
+        {
+          "id": "mem-2",
+          "type": "photo",
+          "title": "Event Work & Edits",
+          "snippet": "Posters, design adjustments, and college deadlines.",
+          "tag": "Campus Grind",
+          "sticker": "🎨",
+          "rotation": 1.5,
+          "tapeColor": "pink",
+          "aspectRatio": "portrait",
+          "imageSrc": "/assets/photos/event_work.jpg",
+          "subNote": "“that day 😂”"
+        },
+        {
+          "id": "mem-3",
+          "type": "incident",
+          "title": "The Robot Incident 🤖",
+          "snippet": "Apparently my chatting style takes time to update.\n\nShell status: Loading...\nHuman mode: slowly installing...",
+          "tag": "Firmware Bug",
+          "sticker": "💾",
+          "rotation": -1.2,
+          "tapeColor": "blue",
+          "subNote": "The origin of the bot allegations"
+        },
+        {
+          "id": "mem-4",
+          "type": "quote",
+          "title": "Enthusiasm Meter",
+          "quote": "Ohh wow... Yep much better",
+          "author": "Peak Reaction",
+          "tag": "High Praise",
+          "sticker": "✨",
+          "rotation": 2.1,
+          "tapeColor": "green",
+          "subNote": "Maximum visible enthusiasm achieved"
+        },
+        {
+          "id": "mem-5",
+          "type": "quote",
+          "title": "The Shell Defense",
+          "quote": "my shell will break but it takes time",
+          "author": "Tanisha",
+          "tag": "Defense Protocol",
+          "sticker": "🐚",
+          "rotation": -1.4,
+          "tapeColor": "yellow",
+          "subNote": "Firmware updating"
+        },
+        {
+          "id": "mem-6",
+          "type": "reels",
+          "title": "Reel Department",
+          "quote": "I might actually do that 😂",
+          "snippet": "Reels shared back and forth.",
+          "tag": "Reels",
+          "sticker": "🎬",
+          "rotation": 1.2,
+          "tapeColor": "pink",
+          "aspectRatio": "video",
+          "imageSrc": "/assets/photos/reels_routine.jpg",
+          "subNote": "One more reel won't hurt"
+        },
+        {
+          "id": "mem-7",
+          "type": "photo",
+          "title": "Food Discussions",
+          "snippet": "Because food talks always take top priority.",
+          "tag": "Priority Topic",
+          "sticker": "🍜",
+          "rotation": -1.6,
+          "tapeColor": "blue",
+          "aspectRatio": "square",
+          "imageSrc": "/assets/photos/food_debate.jpg",
+          "subNote": "Essential agenda"
+        }
+      ],
+      "navigation": {
+        "prevLabel": "Back to Terminal",
+        "prevHref": "/noticed",
+        "nextLabel": "The Chat Logs →",
+        "nextHref": "/chat",
+        "variant": "pink"
+      }
+    },
+    "chat": {
+      "badges": {
+        "left": { "emoji": "💬", "text": "Chapter 05" },
+        "right": { "emoji": "📱", "text": "The Chat Logs" }
+      },
+      "header": {
+        "title": "The Message Archive",
+        "subtitle": "A purely authentic record of real conversation patterns"
+      },
+      "device": {
+        "contactName": "Tanisha",
+        "contactMode": "(Bot Mode)",
+        "contactAvatarAlt": "Tanisha",
+        "repliesPrefix": "Replies:",
+        "repliesDelay": "tomorrow 😂",
+        "dayDivider": "Verified Chat Transcript",
+        "questStickerTag": "Quest Sticker ✨",
+        "quickTapPrefix": "Quick tap:",
+        "quickEmojis": ["🌸", "🤖", "🐢", "🐚", "🎬"],
+        "quickTapTitlePrefix": "Send"
+      },
+      "messages": [
+        {
+          "id": "m-1",
+          "sender": "afsal",
+          "text": "Sending this today so you have time to process it 😂",
+          "time": "10:14 PM"
+        },
+        {
+          "id": "m-2",
+          "sender": "tanisha",
+          "text": "I'm gonna send today, you can reply tomorrow 😂",
+          "subtext": "Standard Tanisha delivery protocol",
+          "time": "10:18 PM",
+          "reaction": "🐢"
+        },
+        {
+          "id": "m-3",
+          "sender": "afsal",
+          "text": "Are you finishing the DSA logic or is the robot brain taking a break?",
+          "time": "11:02 PM"
+        },
+        {
+          "id": "m-4",
+          "sender": "tanisha",
+          "text": "Do the work. Mind your business. Continue life.",
+          "subtext": "System Rule #1",
+          "time": "11:05 PM",
+          "reaction": "🤖"
+        },
+        {
+          "id": "m-5",
+          "sender": "afsal",
+          "text": "Checking in on the shell status... any cracks yet?",
+          "time": "Yesterday"
+        },
+        {
+          "id": "m-6",
+          "sender": "tanisha",
+          "text": "My shell will break but it takes time. 🐚",
+          "subtext": "Verified direct quote",
+          "time": "Yesterday",
+          "reaction": "🐚"
+        },
+        {
+          "id": "m-7",
+          "sender": "afsal",
+          "text": "Look at the updated poster layout vs the first draft",
+          "time": "Today"
+        },
+        {
+          "id": "m-8",
+          "sender": "tanisha",
+          "text": "Ohh wow... Yep much better",
+          "subtext": "Peak excitement reached",
+          "time": "Today",
+          "reaction": "🌸"
+        },
+        {
+          "id": "m-9",
+          "sender": "tanisha",
+          "text": "One more reel probably won't hurt 🎬",
+          "time": "Just now",
+          "reaction": "🍿"
+        }
+      ],
+      "navigation": {
+        "prevLabel": "Back to Scrapbook",
+        "prevHref": "/memories",
+        "nextLabel": "19 Things →",
+        "nextHref": "/nineteen",
+        "variant": "pink"
+      }
+    },
+    "nineteen": {
+      "badges": {
+        "left": { "emoji": "✨", "text": "Chapter 06" },
+        "right": { "emoji": "🃏", "text": "Card Collection" }
+      },
+      "header": {
+        "title": "19 Things",
+        "subtitle": "Because you're officially 19 now. Tap each card to reveal! 🌸"
+      },
+      "tapToFlip": "Tap to flip",
+      "tapToFlipBack": "Tap to flip back ↻",
+      "milestoneCard": {
+        "tag": "MILESTONE 19",
+        "lockedEmoji": "🎂",
+        "lockedTitle": "19 — The Grand Finale Card",
+        "lockedTapPrompt": "Tap to unlock 19",
+        "unlockedNumber": "19",
+        "unlockedEmoji": "🎂",
+        "unlockedTag": "OFFICIALLY UNLOCKED",
+        "unlockedMessage": "Happy Birthday, Tanisha 🌸",
+        "unlockedCollapsePrompt": "Tap to collapse ↻"
+      },
+      "cards": [
+        {
+          "id": 1,
+          "number": "01",
+          "emoji": "🤖",
+          "frontLabel": "Robot Mode",
+          "backContent": "Do the work. Mind your business. Continue life.",
+          "themeColor": "yellow"
+        },
+        {
+          "id": 2,
+          "number": "02",
+          "emoji": "🐢",
+          "frontLabel": "Slow Loading",
+          "backContent": "Your chatting style takes some time to load.",
+          "themeColor": "blue"
+        },
+        {
+          "id": 3,
+          "number": "03",
+          "emoji": "🐚",
+          "frontLabel": "The Shell",
+          "backContent": "Apparently it'll break... just give it time.",
+          "themeColor": "pink"
+        },
+        {
+          "id": 4,
+          "number": "04",
+          "emoji": "😂",
+          "frontLabel": "Reply.exe",
+          "backContent": "Sometimes the reply comes today. Sometimes... tomorrow.",
+          "themeColor": "green"
+        },
+        {
+          "id": 5,
+          "number": "05",
+          "emoji": "🌱",
+          "frontLabel": "Independent",
+          "backContent": "Autonomous mode permanently enabled.",
+          "themeColor": "yellow"
+        },
+        {
+          "id": 6,
+          "number": "06",
+          "emoji": "🔋",
+          "frontLabel": "Low Initiation",
+          "backContent": "You don't run around starting conversations with everyone.",
+          "themeColor": "blue"
+        },
+        {
+          "id": 7,
+          "number": "07",
+          "emoji": "🎬",
+          "frontLabel": "The Reel Dept",
+          "backContent": "One more reel probably won't hurt.",
+          "themeColor": "peach"
+        },
+        {
+          "id": 8,
+          "number": "08",
+          "emoji": "🍜",
+          "frontLabel": "Food Talks",
+          "backContent": "Food conversations always take top priority.",
+          "themeColor": "peach"
+        },
+        {
+          "id": 9,
+          "number": "09",
+          "emoji": "📚",
+          "frontLabel": "College & DSA",
+          "backContent": "Assignments, deadlines, and surviving college grind.",
+          "themeColor": "green"
+        },
+        {
+          "id": 10,
+          "number": "10",
+          "emoji": "🎨",
+          "frontLabel": "Event Work",
+          "backContent": "Posters, design edits, and campus tasks.",
+          "themeColor": "pink"
+        },
+        {
+          "id": 11,
+          "number": "11",
+          "emoji": "🌙",
+          "frontLabel": "Night Pings",
+          "backContent": "Conversations that unexpectedly keep going.",
+          "themeColor": "blue"
+        },
+        {
+          "id": 12,
+          "number": "12",
+          "emoji": "💬",
+          "frontLabel": "Peak Reaction",
+          "backContent": "“Ohh wow... Yep much better”",
+          "themeColor": "lavender"
+        },
+        {
+          "id": 13,
+          "number": "13",
+          "emoji": "✨",
+          "frontLabel": "Hidden Comedian",
+          "backContent": "Surprisingly funny once the shell cracks.",
+          "themeColor": "yellow"
+        },
+        {
+          "id": 14,
+          "number": "14",
+          "emoji": "😆",
+          "frontLabel": "That Day",
+          "backContent": "Shared college chaos that made no sense 😂",
+          "themeColor": "green"
+        },
+        {
+          "id": 15,
+          "number": "15",
+          "emoji": "🧃",
+          "frontLabel": "Randomness",
+          "backContent": "When the conversation randomly drifts into nonsense.",
+          "themeColor": "peach"
+        },
+        {
+          "id": 16,
+          "number": "16",
+          "emoji": "🌸",
+          "frontLabel": "Small Moments",
+          "backContent": "Quiet everyday moments that stuck around.",
+          "themeColor": "pink"
+        },
+        {
+          "id": 17,
+          "number": "17",
+          "emoji": "🧩",
+          "frontLabel": "Patience Test",
+          "backContent": "939 pieces of wildflowers waiting to be built.",
+          "themeColor": "lavender"
+        },
+        {
+          "id": 18,
+          "number": "18",
+          "emoji": "🎀",
+          "frontLabel": "Birthday Law",
+          "backContent": "A proper celebration was non-negotiable.",
+          "themeColor": "yellow"
+        },
+        {
+          "id": 19,
+          "number": "19",
+          "emoji": "🎂",
+          "frontLabel": "Official 19",
+          "backContent": "19 looks good on you. Happy Birthday, Tanisha.",
+          "themeColor": "pink",
+          "isSpecial": true
+        }
+      ],
+      "navigation": {
+        "prevLabel": "Back to Chat Logs",
+        "prevHref": "/chat",
+        "nextLabel": "Play Mini-Game →",
+        "nextHref": "/game",
+        "variant": "yellow"
+      }
+    },
+    "game": {
+      "badges": {
+        "left": { "emoji": "🕹️", "text": "Chapter 07" },
+        "right": { "emoji": "🔨", "text": "Classic Whack-a-Mole" }
+      },
+      "header": {
+        "title": "Whack-a-Tanisha!",
+        "subtitle": "Classic Carnival Edition • Whack 7 times to break the shell 🐚"
+      },
+      "targetScore": 7,
+      "totalHoles": 9,
+      "scoreboard": {
+        "scoreLabel": "SCORE:",
+        "resetButton": "RESET"
+      },
+      "marquee": {
+        "title": "CAT STRIKER 9000",
+        "initialQuote": "Ready to strike! 🕶️",
+        "catAlt": "Cool Cat Striker"
+      },
+      "tanishaMole": {
+        "idleAlt": "Tanisha Mole",
+        "hitAlt": "Tanisha Whacked!"
+      },
+      "hitSoundTexts": [
+        "POW! 💥",
+        "WHACK! 🔨",
+        "BOP! ✨",
+        "GOTCHA! 😂",
+        "OUCH! 🌸",
+        "+10 🎯"
+      ],
+      "catQuotes": [
+        "Whack 'em! 🔨",
+        "Gotcha! 🕶️",
+        "Target down! 💥",
+        "Nice hit! 🐾",
+        "BAM! 🎯"
+      ],
+      "winBanner": {
+        "title": "CARNIVAL CHAMPION! 🏆",
+        "description": "“My shell will break but it takes time.” — Officially Broken! 🎉"
+      },
+      "navigation": {
+        "prevLabel": "Back to 19 Things",
+        "prevHref": "/nineteen",
+        "nextLabel": "Flower Reveal →",
+        "nextHref": "/gift",
+        "variant": "yellow"
+      }
+    },
+    "gift": {
+      "badges": {
+        "left": { "emoji": "💐", "text": "Chapter 08" },
+        "right": { "emoji": "🌿", "text": "Botanical Specimen" }
+      },
+      "title": "Wildflower Building Bouquet",
+      "pieces": 939,
+      "mainHeading": "One last thing...",
+      "tagline": "Real flowers don't last forever.",
+      "progressionTitle": "Botanical Progression",
+      "specimenTag": "SPECIMEN #939",
+      "stagePrefix": "Stage",
+      "stages": [
+        { "stage": 1, "emoji": "🌱", "label": "Seed", "description": "Just an unbuilt box of bricks..." },
+        { "stage": 2, "emoji": "🌿", "label": "Stem", "description": "Sorting through bags 1 and 2..." },
+        { "stage": 3, "emoji": "🌼", "label": "Bud", "description": "Wait, is this piece upside down?" },
+        { "stage": 4, "emoji": "🌸", "label": "Bloom", "description": "Petals locking in firmly..." },
+        { "stage": 5, "emoji": "💐", "label": "Bouquet", "description": "A permanent wildflower garden that never wilts!" }
+      ],
+      "hook": "So... I went with something that stays. 🌸",
+      "productImage": "/assets/gift/wildflower_bouquet.png",
+      "fallbackImage": "/assets/gift/wildflower_bouquet.svg",
+      "productAlt": "Wildflower Building Bouquet (939 pieces)",
+      "cornerBadges": {
+        "botanical": "🌼 Botanical",
+        "permanentBloom": "Permanent Bloom ✨"
+      },
+      "punchline": "939 pieces of wildflowers to assemble.",
+      "warning": "Your patience is now officially being tested. 😂",
+      "subWarning": "(Never withers, never needs watering, only takes a weekend of assembly!)",
+      "navigation": {
+        "prevLabel": "Back to Mini-Game",
+        "prevHref": "/game",
+        "nextLabel": "The final wish →",
+        "nextHref": "/birthday",
+        "variant": "green"
+      }
+    },
+    "birthday": {
+      "badges": {
+        "left": { "emoji": "🎀", "text": "Chapter 09" },
+        "right": { "emoji": "🎉", "text": "Final Chapter" }
+      },
+      "headline": "HAPPY BIRTHDAY!",
+      "tagline": "19 looks good on you 🌸",
+      "letterhead": {
+        "fromTo": "FROM AFSAL • FOR TANISHA",
+        "date": "SEPT 26, 2026"
+      },
+      "letter": {
+        "p1": "19 looks good on you. 🌸",
+        "p2": "Hope this year gives you plenty of good memories, good food, good people, and enough reasons to laugh at the most random things. 😂",
+        "p3": "Keep being you.",
+        "p4": "Even when you're in robot mode. 🤖",
+        "p5": "Have a really good birthday, Tanisha.",
+        "signOff": "— Afsal"
+      },
+      "actions": {
+        "celebrateAgain": "Celebrate Again 🎉",
+        "pauseMusic": "Pause Music 🎵",
+        "replayMusic": "Replay Music 🎵",
+        "backToGift": "Back to Flower Reveal",
+        "startOver": "Start Over from the Beginning ↻"
+      },
+      "decorIcons": ["🌼", "🦋", "🌸", "🦋", "🌼"]
+    }
+  }
+}

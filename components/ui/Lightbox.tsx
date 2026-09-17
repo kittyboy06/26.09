@@ -3,7 +3,7 @@
 import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
-import { MemoryItem } from "@/data/memories";
+import { MemoryItem, common } from "@/lib/appData";
 
 interface LightboxProps {
   item: MemoryItem | null;
@@ -11,6 +11,8 @@ interface LightboxProps {
 }
 
 export function Lightbox({ item, onClose }: LightboxProps) {
+  const data = common.lightbox;
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -49,7 +51,7 @@ export function Lightbox({ item, onClose }: LightboxProps) {
             {/* Close Button */}
             <button
               onClick={onClose}
-              aria-label="Close modal"
+              aria-label={data.closeAriaLabel}
               className="absolute top-4 right-4 rounded-full p-2 text-pastel-muted hover:bg-pastel-cream hover:text-pastel-charcoal transition-colors focus:outline-none"
             >
               <X className="h-5 w-5" />
@@ -91,13 +93,13 @@ export function Lightbox({ item, onClose }: LightboxProps) {
             <div className="mt-5 pt-3 border-t border-pastel-cream flex items-center justify-between text-xs text-pastel-muted">
               <span className="flex items-center gap-1">
                 <Sparkles className="h-3.5 w-3.5 text-pastel-yellow-dark" />
-                Scrapbook Memory
+                {data.footerLabel}
               </span>
               <button
                 onClick={onClose}
                 className="rounded-full bg-pastel-pink/40 px-3 py-1 font-semibold text-pastel-charcoal hover:bg-pastel-pink/60 transition-colors"
               >
-                Close
+                {data.closeButton}
               </button>
             </div>
           </motion.div>

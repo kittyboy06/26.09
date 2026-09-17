@@ -9,7 +9,7 @@ import React, {
   ReactNode,
 } from "react";
 import { usePathname } from "next/navigation";
-import { siteConfig, siteRoutes } from "@/data/siteConfig";
+import { site, routes as siteRoutes } from "@/lib/appData";
 
 interface BirthdayContextType {
   isUnlocked: boolean;
@@ -109,7 +109,7 @@ export function BirthdayProvider({ children }: { children: ReactNode }) {
       {/* Persistent HTML5 audio element */}
       <audio
         ref={audioRef}
-        src={siteConfig.audioTrack}
+        src={site.audioTrack}
         loop
         playsInline
         preload="auto"
