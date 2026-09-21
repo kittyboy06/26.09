@@ -27,12 +27,25 @@ export default function WhackGamePage() {
   const [malletStrike, setMalletStrike] = useState<number | null>(null);
   const [catStriking, setCatStriking] = useState<boolean>(false);
   const [catQuote, setCatQuote] = useState<string>(data.marquee.initialQuote);
+  const [isEzraAngry, setIsEzraAngry] = useState<boolean>(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const ezraTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const EZRA_ANGRY_QUOTES = (data as any).ezraAngryQuotes || [
+    "MEOW?! HOW DID YOU MISS THAT?!",
+    "Ezra is judging your reflex speed 😾",
+    "My afternoon nap was interrupted for THIS?!",
+    "Aim with your eyes, not your paws!",
+    "Ezra Rage Mode: ACTIVATED ⚡",
+    "Bro missed by a whole mile 😾",
+    "I could have caught that mole myself!",
+  ];
 
   // Eagerly preload game assets on mount
   useEffect(() => {
     const assets = [
       "/assets/whack_a_mole/cat.png",
+      "/assets/whack_a_mole/ezra_angry.png",
       "/assets/whack_a_mole/tanisha_idle.png",
       "/assets/whack_a_mole/tanisha_hit.png",
     ];
@@ -40,7 +53,23 @@ export default function WhackGamePage() {
       const img = new window.Image();
       img.src = src;
     });
+
+    return () => {
+      if (ezraTimerRef.current) clearTimeout(ezraTimerRef.current);
+    };
   }, []);
+
+  // Trigger Ezra Angry reaction on miss / empty tap
+  const triggerEzraAngry = useCallback(() => {
+    if (ezraTimerRef.current) clearTimeout(ezraTimerRef.current);
+    setIsEzraAngry(true);
+    const randomQuote = EZRA_ANGRY_QUOTES[Math.floor(Math.random() * EZRA_ANGRY_QUOTES.length)];
+    setCatQuote(randomQuote);
+
+    ezraTimerRef.current = setTimeout(() => {
+      setIsEzraAngry(false);
+    }, 750);
+  }, [EZRA_ANGRY_QUOTES]);
 
   // Spawn random mole in one of the 9 holes
   const spawnMole = useCallback(() => {
@@ -85,6 +114,9 @@ export default function WhackGamePage() {
 
     // If mole is present and hasn't already been whacked this cycle
     if (holeIndex === activeHole && hitHole !== holeIndex) {
+      if (ezraTimerRef.current) clearTimeout(ezraTimerRef.current);
+      setIsEzraAngry(false);
+
       setHitHole(holeIndex);
       const newScore = score + 1;
       setScore(newScore);
@@ -120,10 +152,15 @@ export default function WhackGamePage() {
           setHitHole(null);
         }, 500);
       }
+    } else if (holeIndex !== activeHole) {
+      // Empty tap or missed mole: Ezra scowls in frustration!
+      triggerEzraAngry();
     }
   };
 
   const handleRestart = () => {
+    if (ezraTimerRef.current) clearTimeout(ezraTimerRef.current);
+    setIsEzraAngry(false);
     setScore(0);
     setIsWon(false);
     setActiveHole(null);
@@ -184,14 +221,34 @@ export default function WhackGamePage() {
       {/* ARCADE MARQUEE: Cat Mascot Striker Deck */}
       <div className="w-full max-w-[340px] bg-[#4E342E] rounded-t-3xl border-t-4 border-x-4 border-[#8B5A2B] px-3 pt-2.5 pb-1 relative shadow-lg overflow-hidden select-none">
         {/* Brass Header Plate with rivets */}
-        <div className="flex items-center justify-between bg-[#3E2723] rounded-xl px-2.5 py-1 border border-amber-700/60 mb-1.5 shadow-inner">
+        <div
+          className={`flex items-center justify-between rounded-xl px-2.5 py-1 mb-1.5 shadow-inner transition-colors duration-200 ${
+            isEzraAngry
+              ? "bg-rose-950/90 border-2 border-rose-500/80 shadow-rose-900/40"
+              : "bg-[#3E2723] border border-amber-700/60"
+          }`}
+        >
           <div className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-yellow-500 shadow-xs animate-ping" />
-            <span className="text-[10px] font-mono font-bold tracking-widest text-amber-200 uppercase">
-              {data.marquee.title}
+            <span
+              className={`h-2 w-2 rounded-full shadow-xs animate-ping ${
+                isEzraAngry ? "bg-rose-500" : "bg-yellow-500"
+              }`}
+            />
+            <span
+              className={`text-[10px] font-mono font-bold tracking-widest uppercase transition-colors duration-200 ${
+                isEzraAngry ? "text-rose-200" : "text-amber-200"
+              }`}
+            >
+              {isEzraAngry ? "EZRA RAGE MODE 😾" : data.marquee.title}
             </span>
           </div>
-          <span className="text-[9px] font-bold text-amber-300/80 bg-black/40 px-1.5 py-0.5 rounded">
+          <span
+            className={`text-[9px] font-bold px-1.5 py-0.5 rounded transition-all duration-200 ${
+              isEzraAngry
+                ? "text-rose-100 bg-rose-900/90 border border-rose-400/60 animate-pulse"
+                : "text-amber-300/80 bg-black/40"
+            }`}
+          >
             {catQuote}
           </span>
         </div>
@@ -206,24 +263,35 @@ export default function WhackGamePage() {
           {/* Animated Cat Body */}
           <motion.div
             animate={
-              catStriking
+              isEzraAngry
+                ? {
+                    y: [0, -5, 3, -2, 0],
+                    scale: [1, 1.14, 1.08, 1.12],
+                    rotate: [-4, 4, -3, 3, 0],
+                  }
+                : catStriking
                 ? {
                     y: [0, -3, 4, 0],
                     scale: [1, 1.05, 0.98, 1],
                     rotate: [-1, 2, -1, 0],
                   }
-                : { y: 0, rotate: 0 }
+                : { y: 0, rotate: 0, scale: 1 }
             }
-            transition={{ duration: 0.22, ease: "easeOut" }}
+            transition={{
+              duration: isEzraAngry ? 0.35 : 0.22,
+              ease: "easeOut",
+            }}
             className="relative z-10 flex items-center justify-center -ml-5"
           >
             <div className="relative h-24 w-48 drop-shadow-xl overflow-visible">
               <Image
-                src="/assets/whack_a_mole/cat.png"
-                alt={data.marquee.catAlt}
+                src={isEzraAngry ? "/assets/whack_a_mole/ezra_angry.png" : "/assets/whack_a_mole/cat.png"}
+                alt={isEzraAngry ? "Ezra Angry Scowl" : data.marquee.catAlt}
                 fill
                 sizes="200px"
-                className="object-contain scale-[1.6] origin-center"
+                className={`object-contain origin-center transition-all duration-150 ${
+                  isEzraAngry ? "scale-[1.65] brightness-105" : "scale-[1.6]"
+                }`}
                 priority
               />
             </div>
