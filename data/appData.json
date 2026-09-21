@@ -609,11 +609,6 @@
             "badgeType": "normal"
           },
           {
-            "label": "Shell",
-            "value": "PRESENT",
-            "badgeType": "normal"
-          },
-          {
             "label": "Human Mode",
             "value": "LOADING...",
             "badgeType": "warning"
@@ -683,7 +678,7 @@
           "title": "Light Colours",
           "emoji": "🌸",
           "subtitle": "Wardrobe Setting",
-          "description": "Green. Pink. Light colours.\nI've noticed this is basically your wardrobe setting 😂",
+          "description": "Yellow. Pink. Light colours.\nI've noticed this is basically your wardrobe setting 😂",
           "bgColor": "bg-pink-50/90 border-pink-200/70",
           "accentColor": "text-pink-800 bg-pink-100",
           "tag": "Palette"
@@ -772,7 +767,7 @@
           "id": "mem-1",
           "type": "quote",
           "title": "The Childhood Archive",
-          "quote": "1st standard. 7th standard. I still don't know how we got there 😂",
+          "quote": "Tanisha detected in 7th but cant bt identified in 1st",
           "author": "Hackathon conversation",
           "tag": "Childhood 📸",
           "sticker": "📸",
@@ -807,15 +802,15 @@
         {
           "id": "mem-inauguration",
           "type": "photo",
-          "title": "The Childhood Archive",
-          "snippet": "Somehow the conversation went from normal stuff to your childhood photos.\n1st standard.\n7th standard.\nI still don't know how we got there 😂",
-          "tag": "Archive 📸",
-          "sticker": "📸",
+          "title": "Association Inauguration",
+          "snippet": "This was from our Association inauguration.\n\nSomehow you went from just being part of the crowd to being right there on stage getting the association work started 😭\n\nI still remember this photo because... well, it's one of those random college moments that ended up staying in my camera roll 😂\n\n14.08 • Department Association 🌸",
+          "tag": "Association 🌸",
+          "sticker": "🌸",
           "rotation": -1.5,
           "tapeColor": "yellow",
           "aspectRatio": "portrait",
           "imageSrc": "/assets/photos/association_inauguration.jpg",
-          "subNote": "1st & 7th standard photos"
+          "subNote": "14.08 • Department Association 🌸"
         },
         {
           "id": "mem-4",
@@ -914,66 +909,85 @@
         {
           "id": "m-1",
           "sender": "afsal",
-          "text": "Sending this today so you have time to process it 😂",
+          "text": "You’ll just do your work, mind your business, reply when someone talks to you, and continue with your life 😂. Like prompting 😭🙏🏻🥀",
           "time": "10:14 PM"
         },
         {
           "id": "m-2",
           "sender": "tanisha",
-          "text": "I'm gonna send today, you can reply tomorrow 😂",
-          "subtext": "Fair enough. At least you warned me 😭",
+          "text": "That’s me…it takes time for my chatting style to change but I might still be a robot 🤖",
           "time": "10:18 PM",
-          "reaction": "🐢"
+          "reaction": "🤖"
         },
         {
           "id": "m-3",
           "sender": "afsal",
-          "text": "Are you finishing the DSA logic or is the robot brain taking a break?",
-          "time": "11:02 PM"
+          "text": "But you are taking like a robot 🤖",
+          "time": "10:20 PM"
         },
         {
           "id": "m-4",
-          "sender": "tanisha",
-          "text": "Do the work. Mind your business. Continue life.",
-          "subtext": "Okay. Message received 😂",
-          "time": "11:05 PM",
-          "reaction": "🤖"
+          "sender": "afsal",
+          "text": "Enna maari anime paapa",
+          "time": "10:22 PM"
         },
         {
           "id": "m-5",
-          "sender": "afsal",
-          "text": "Just waiting for the shell to crack yet?",
-          "time": "Yesterday"
+          "sender": "tanisha",
+          "text": "That depends on my mood…demon slater, spy x family and more but not continuously",
+          "time": "10:25 PM"
         },
         {
           "id": "m-6",
           "sender": "tanisha",
-          "text": "My shell will break but it takes time.",
-          "subtext": "Fair enough. I'll wait 😂",
-          "time": "Yesterday",
-          "reaction": "🐚"
+          "text": "I watched it already and I have watched suzume, weathering with u, spirited away, drifting home and much more…mostly niraiya movies i already watched it",
+          "time": "10:28 PM",
+          "reaction": "🎬"
         },
         {
           "id": "m-7",
           "sender": "afsal",
-          "text": "Look at the updated poster layout vs the first draft.",
-          "time": "Today"
+          "text": "Are You Gonna Sleep Early Today??",
+          "time": "11:15 PM"
         },
         {
           "id": "m-8",
           "sender": "tanisha",
-          "text": "Ohh wow... Yep much better",
-          "subtext": "There it is. Maximum excitement achieved 😂",
-          "time": "Today",
-          "reaction": "🌸"
+          "text": "Nah why wud I",
+          "time": "11:17 PM"
         },
         {
           "id": "m-9",
           "sender": "tanisha",
-          "text": "One more reel probably won't hurt.",
-          "subtext": "Apparently this department is never closed.",
-          "time": "Just now",
-          "reaction": "🎬"
+          "text": "I sleep after 11:30 only",
+          "time": "11:19 PM",
+          "reaction": "🌙"
+        },
+        {
+          "id": "m-10",
+          "sender": "afsal",
+          "text": "Gonna create a vaalthukal sticker 🤣",
+          "time": "11:22 PM"
+        },
+        {
+          "id": "m-11",
+          "sender": "tanisha",
+          "text": "Whyyy me too now???🥲",
+          "time": "11:24 PM",
+          "reaction": "🥲"
+        },
+        {
+          "id": "m-12",
+          "sender": "afsal",
+          "text": "Summa scrolling through gallery 😂",
+          "time": "11:26 PM"
+        },
+        {
+          "id": "m-13",
+          "sender": "tanisha",
+          "text": "Ohh lol 😂 and I got caught too",
+          "time": "11:28 PM",
+          "reaction": "😂"
         }
       ],
       "navigation": {
@@ -1058,7 +1072,7 @@
           "number": "06",
           "emoji": "🌸",
           "frontLabel": "Light Colours",
-          "backContent": "Green. Pink. Light colours.\nBasically your wardrobe setting 😂",
+          "backContent": "Yellow. Pink. Light colours.\nBasically your wardrobe setting 😂",
           "themeColor": "pink"
         },
         {

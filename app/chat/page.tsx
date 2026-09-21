@@ -111,9 +111,9 @@ export default function ChatPage() {
                 >
                   <p className="text-xs leading-relaxed">{msg.text}</p>
 
-                  {msg.subtext && (
+                  {(msg as { subtext?: string }).subtext && (
                     <p className="mt-1 text-[9px] font-medium text-pastel-charcoal/60 italic border-t border-pastel-pink/15 pt-0.5">
-                      {msg.subtext}
+                      {(msg as { subtext?: string }).subtext}
                     </p>
                   )}
 
@@ -139,8 +139,8 @@ export default function ChatPage() {
                   </div>
                 )}
 
-                {/* Inline Collectible Sticker for m-4 */}
-                {msg.id === "m-4" && (
+                {/* Inline Collectible Sticker for m-6 */}
+                {msg.id === "m-6" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_work" size={54} rotation={2} />
                     <span className="text-[9px] font-mono text-pastel-muted italic">{chatData.device.questStickerTag}</span>
