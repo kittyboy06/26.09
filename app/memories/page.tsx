@@ -21,6 +21,7 @@ export default function MemoriesPage() {
   const quote1 = items.find((m) => m.id === "mem-1");
   const photo1 = items.find((m) => m.id === "mem-2");
   const robotIncident = items.find((m) => m.id === "mem-3");
+  const inaugurationPhoto = items.find((m) => m.id === "mem-inauguration");
   const shellDefense = items.find((m) => m.id === "mem-5");
   const reelCard = items.find((m) => m.id === "mem-6");
   const foodCard = items.find((m) => m.id === "mem-7");
@@ -88,7 +89,7 @@ export default function MemoriesPage() {
               sticker="🎨"
               rotation={1.6}
               tapeColor="pink"
-              aspectRatio="portrait"
+              aspectRatio={(photo1.aspectRatio as any) || "video"}
               onExpand={() => setSelectedItem(photo1)}
             />
             <div className="absolute -bottom-3 -left-2 z-20 -rotate-6 rounded-xl bg-pastel-yellow px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-yellow-dark/40 flex items-center gap-2">
@@ -147,6 +148,26 @@ export default function MemoriesPage() {
           </div>
         )}
 
+        {/* Scrapbook Section 4B: Association Inauguration Stage Milestone */}
+        {inaugurationPhoto && (
+          <div className="self-center w-[94%] relative my-1">
+            <PhotoCard
+              src={inaugurationPhoto.imageSrc}
+              alt={inaugurationPhoto.title}
+              caption={inaugurationPhoto.snippet}
+              tag={inaugurationPhoto.tag}
+              sticker={inaugurationPhoto.sticker || "✨"}
+              rotation={inaugurationPhoto.rotation || -1.5}
+              tapeColor={(inaugurationPhoto.tapeColor as any) || "yellow"}
+              aspectRatio={(inaugurationPhoto.aspectRatio as any) || "portrait"}
+              onExpand={() => setSelectedItem(inaugurationPhoto)}
+            />
+            <div className="absolute -bottom-2.5 right-3 z-20 rotate-2 rounded-xl bg-pastel-yellow px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-yellow-dark/40">
+              {inaugurationPhoto.subNote}
+            </div>
+          </div>
+        )}
+
         {/* Scrapbook Section 5: The Shell Defense Quote */}
         {shellDefense && (
           <div
@@ -193,7 +214,7 @@ export default function MemoriesPage() {
           </div>
         )}
 
-        {/* Scrapbook Section 7: Food Council Deliberations */}
+        {/* Scrapbook Section 7: Campus Botanical Spot */}
         {foodCard && (
           <div className="self-center w-full relative mt-2">
             <PhotoCard
@@ -201,10 +222,10 @@ export default function MemoriesPage() {
               alt={foodCard.title}
               caption={foodCard.snippet}
               tag={foodCard.tag}
-              sticker="🍜"
-              rotation={0.8}
-              tapeColor="blue"
-              aspectRatio="square"
+              sticker={foodCard.sticker || "🌱"}
+              rotation={foodCard.rotation || 0.8}
+              tapeColor={(foodCard.tapeColor as any) || "green"}
+              aspectRatio={(foodCard.aspectRatio as any) || "video"}
               onExpand={() => setSelectedItem(foodCard)}
             />
             <div className="absolute -bottom-2 left-4 z-20 -rotate-2 rounded-lg bg-pastel-cream px-2.5 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-muted/30">

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { screens } from "@/lib/appData";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -66,6 +67,34 @@ export default function NoticedPage() {
                 {noticedData.terminal.versionTag}
               </span>
             </div>
+
+            {/* Terminal Photo Profile Header */}
+            {noticedData.terminal.avatarImage && (
+              <div className="flex items-center gap-3.5 p-2.5 rounded-2xl bg-slate-800/80 border border-slate-700/80 my-2">
+                <div className="relative h-20 w-16 shrink-0 rounded-xl overflow-hidden border-2 border-emerald-400/60 shadow-xs bg-slate-900">
+                  <Image
+                    src={noticedData.terminal.avatarImage}
+                    alt={noticedData.terminal.avatarAlt || "Tanisha Executive Bot"}
+                    fill
+                    className="object-cover object-top"
+                    sizes="64px"
+                  />
+                  <span className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-slate-900 animate-pulse" />
+                </div>
+
+                <div className="flex flex-col justify-center gap-1 text-left">
+                  <span className="text-[10px] font-mono text-emerald-400 font-bold tracking-wider">
+                    {noticedData.terminal.statusBadge}
+                  </span>
+                  <span className="font-display text-sm font-bold text-slate-100">
+                    Tanisha Daneen
+                  </span>
+                  <span className="text-[10px] font-mono text-slate-400">
+                    Executive Bot • v19.0 Build
+                  </span>
+                </div>
+              </div>
+            )}
 
             {/* Terminal Diagnostic Rows */}
             <div className="space-y-1.5 text-[11px]">

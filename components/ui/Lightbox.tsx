@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
 import { MemoryItem, common } from "@/lib/appData";
@@ -69,6 +70,19 @@ export function Lightbox({ item, onClose }: LightboxProps) {
             <h3 className="text-lg font-bold font-display text-pastel-charcoal mb-2">
               {item.title}
             </h3>
+
+            {/* Photo Preview if imageSrc exists */}
+            {item.imageSrc && (
+              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden my-3 border border-pastel-pink/30 shadow-inner bg-pastel-cream">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 90vw, 380px"
+                />
+              </div>
+            )}
 
             {/* Content */}
             {item.quote ? (

@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import confetti from "canvas-confetti";
 import { Sparkles, Music, RotateCcw, Heart, ArrowLeft } from "lucide-react";
-import { site, screens } from "@/lib/appData";
+import { site, screens, MemoryItem } from "@/lib/appData";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
 import { Sticker } from "@/components/ui/Sticker";
+import { PhotoCard } from "@/components/ui/PhotoCard";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
@@ -15,6 +17,7 @@ export default function BirthdayPage() {
   const router = useRouter();
   const { isPlaying, toggleMusic } = useBirthday();
   const data = screens.birthday;
+  const [selectedPhoto, setSelectedPhoto] = useState<MemoryItem | null>(null);
 
   const fireCelebrationConfetti = () => {
     try {
@@ -35,6 +38,9 @@ export default function BirthdayPage() {
 
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16 text-center">
+      {/* Fullscreen Lightbox for expanded photo view */}
+      <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+
       {/* Top Ribbon & Celebration Badges */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-3}>
@@ -69,6 +75,41 @@ export default function BirthdayPage() {
           {data.tagline}
         </p>
       </div>
+
+      {/* Celebratory Event Memories Polaroid */}
+      {data.celebrationPhoto && (
+        <div className="w-full max-w-sm my-3 relative">
+          <PhotoCard
+            src={data.celebrationPhoto.imageSrc}
+            alt={data.celebrationPhoto.alt}
+            caption={data.celebrationPhoto.snippet}
+            tag={data.celebrationPhoto.tag}
+            sticker="🎉"
+            rotation={1.2}
+            tapeColor="pink"
+            aspectRatio="video"
+            onExpand={() =>
+              setSelectedPhoto({
+                id: "birthday-trio",
+                type: "photo",
+                title: data.celebrationPhoto.title,
+                snippet: data.celebrationPhoto.snippet,
+                tag: data.celebrationPhoto.tag,
+                sticker: "🎉",
+                imageSrc: data.celebrationPhoto.imageSrc,
+                author: "Chapter 09 Finale",
+                rotation: 0,
+                tapeColor: "pink",
+                aspectRatio: "video",
+                subNote: data.celebrationPhoto.subNote,
+              } as any)
+            }
+          />
+          <div className="absolute -bottom-2 -left-2 z-20 -rotate-3 rounded-lg bg-pastel-yellow px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-yellow-dark/40">
+            {data.celebrationPhoto.subNote}
+          </div>
+        </div>
+      )}
 
       {/* Sincere Friendship Birthday Letter (Ivory Letterhead) */}
       <div className="w-full max-w-sm my-6">

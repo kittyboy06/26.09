@@ -3,20 +3,26 @@
 import React, { useState } from "react";
 import { Sparkles, Heart, ArrowDown } from "lucide-react";
 import { Sticker } from "@/components/ui/Sticker";
+import { PhotoCard } from "@/components/ui/PhotoCard";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 
-import { screens } from "@/lib/appData";
+import { screens, MemoryItem } from "@/lib/appData";
 
 export default function NotePage() {
   const noteData = screens.note;
+  const [selectedPhoto, setSelectedPhoto] = useState<MemoryItem | null>(null);
 
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Scroll decorative vine */}
       <Skiper19ScrollVine color="#91D4EB" />
+
+      {/* Fullscreen Lightbox for expanded photo view */}
+      <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
 
       {/* Top Header Badge */}
       <div className="w-full flex items-center justify-between mb-4">
@@ -88,6 +94,41 @@ export default function NotePage() {
             </div>
           </div>
         </div>
+
+        {/* Pinned Polaroid Keepsake */}
+        {noteData.polaroidKeepsake && (
+          <div className="relative self-center w-full max-w-[320px] my-1">
+            <PhotoCard
+              src={noteData.polaroidKeepsake.imageSrc}
+              alt={noteData.polaroidKeepsake.alt}
+              caption={noteData.polaroidKeepsake.caption}
+              tag={noteData.polaroidKeepsake.tag}
+              sticker="🌸"
+              rotation={-1.5}
+              tapeColor="yellow"
+              aspectRatio="portrait"
+              onExpand={() =>
+                setSelectedPhoto({
+                  id: "note-portrait",
+                  type: "photo",
+                  title: noteData.polaroidKeepsake.alt,
+                  snippet: noteData.polaroidKeepsake.caption,
+                  tag: noteData.polaroidKeepsake.tag,
+                  sticker: "🌸",
+                  imageSrc: noteData.polaroidKeepsake.imageSrc,
+                  author: "Chapter 02 Keepsake",
+                  rotation: 0,
+                  tapeColor: "yellow",
+                  aspectRatio: "portrait",
+                  subNote: noteData.polaroidKeepsake.subNote
+                } as any)
+              }
+            />
+            <div className="absolute -bottom-2.5 -right-2 z-20 rotate-3 rounded-lg bg-pastel-pink/90 px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-pink-dark/40">
+              {noteData.polaroidKeepsake.subNote}
+            </div>
+          </div>
+        )}
 
         {/* 'Why This Exists' Sequence Card */}
         <div className="relative rounded-3xl bg-white/95 p-5 shadow-scrapbook border border-pastel-pink/30">

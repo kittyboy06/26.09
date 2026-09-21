@@ -20,15 +20,60 @@
     }
   },
   "routes": [
-    { "path": "/", "label": "Birthday Gate", "number": "01", "badge": "Unlock 🎂" },
-    { "path": "/note", "label": "A Little Something", "number": "02", "badge": "The Note 💌" },
-    { "path": "/noticed", "label": "Things I've Noticed", "number": "03", "badge": "System Profile 🤖" },
-    { "path": "/memories", "label": "Our Randomness", "number": "04", "badge": "Scrapbook 📸" },
-    { "path": "/chat", "label": "The Chat Logs", "number": "05", "badge": "Chat Wall 💬" },
-    { "path": "/nineteen", "label": "19 Things", "number": "06", "badge": "19 Things ✨" },
-    { "path": "/game", "label": "Whack-a-Tanisha", "number": "07", "badge": "Mini-Game 🕹️" },
-    { "path": "/gift", "label": "Flower Reveal", "number": "08", "badge": "939 Pieces 🌸" },
-    { "path": "/birthday", "label": "Final Celebration", "number": "09", "badge": "Birthday! 🎉" }
+    {
+      "path": "/",
+      "label": "Birthday Gate",
+      "number": "01",
+      "badge": "Unlock 🎂"
+    },
+    {
+      "path": "/note",
+      "label": "A Little Something",
+      "number": "02",
+      "badge": "The Note 💌"
+    },
+    {
+      "path": "/noticed",
+      "label": "Things I've Noticed",
+      "number": "03",
+      "badge": "System Profile 🤖"
+    },
+    {
+      "path": "/memories",
+      "label": "Our Randomness",
+      "number": "04",
+      "badge": "Scrapbook 📸"
+    },
+    {
+      "path": "/chat",
+      "label": "The Chat Logs",
+      "number": "05",
+      "badge": "Chat Wall 💬"
+    },
+    {
+      "path": "/nineteen",
+      "label": "19 Things",
+      "number": "06",
+      "badge": "19 Things ✨"
+    },
+    {
+      "path": "/game",
+      "label": "Whack-a-Tanisha",
+      "number": "07",
+      "badge": "Mini-Game 🕹️"
+    },
+    {
+      "path": "/gift",
+      "label": "Flower Reveal",
+      "number": "08",
+      "badge": "939 Pieces 🌸"
+    },
+    {
+      "path": "/birthday",
+      "label": "Final Celebration",
+      "number": "09",
+      "badge": "Birthday! 🎉"
+    }
   ],
   "stickers": [
     {
@@ -397,8 +442,14 @@
   "screens": {
     "gate": {
       "badges": {
-        "left": { "emoji": "🌼", "text": "Sept 26" },
-        "right": { "emoji": "🦋", "text": "19 Unlocked" }
+        "left": {
+          "emoji": "🌼",
+          "text": "Sept 26"
+        },
+        "right": {
+          "emoji": "🦋",
+          "text": "19 Unlocked"
+        }
       },
       "hero": {
         "tag": "A tiny digital birthday world",
@@ -411,7 +462,20 @@
         "hint": "Hint: See Behind the QR",
         "passcodePlaceholder": "Enter passcode",
         "errorMessage": "Try again! Check behind the QR 😉",
-        "numpadKeys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "0", "del"],
+        "numpadKeys": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          ".",
+          "0",
+          "del"
+        ],
         "unlockButton": "Unlock Story →",
         "unlockingButton": "Opening Chapter 02... 🌸"
       },
@@ -428,8 +492,14 @@
     },
     "note": {
       "badges": {
-        "left": { "emoji": "💌", "text": "Chapter 02" },
-        "right": { "emoji": "📝", "text": "Handwritten Note" }
+        "left": {
+          "emoji": "💌",
+          "text": "Chapter 02"
+        },
+        "right": {
+          "emoji": "📝",
+          "text": "Handwritten Note"
+        }
       },
       "memo": {
         "tag": "MEMO • NO. 02",
@@ -443,10 +513,22 @@
       "whyItExists": {
         "title": "How we ended up here:",
         "steps": [
-          { "text": "A normal birthday wish", "style": "cream" },
-          { "text": "wasn't enough", "style": "yellow" },
-          { "text": "so...", "style": "handwriting" },
-          { "text": "this happened 😂", "style": "pink" }
+          {
+            "text": "A normal birthday wish",
+            "style": "cream"
+          },
+          {
+            "text": "wasn't enough",
+            "style": "yellow"
+          },
+          {
+            "text": "so...",
+            "style": "handwriting"
+          },
+          {
+            "text": "this happened 😂",
+            "style": "pink"
+          }
         ],
         "questBadge": "★ Hidden Quest Sticker Spotted! ★",
         "questDescription": "“Waving cheerful at the foot of the stationery 🌸”"
@@ -462,12 +544,26 @@
         "nextLabel": "Things I've Noticed →",
         "nextHref": "/noticed",
         "variant": "blue"
+      },
+      "polaroidKeepsake": {
+        "imageSrc": "/assets/photos/tanisha_portrait.jpg",
+        "alt": "Tanisha on Campus",
+        "caption": "The official birthday recipient in her element 🌸",
+        "tag": "Day One Keepsake",
+        "tapeColor": "yellow",
+        "subNote": "Campus portrait • 2026"
       }
     },
     "noticed": {
       "badges": {
-        "left": { "emoji": "🤖", "text": "Chapter 03" },
-        "right": { "emoji": "⚙️", "text": "System Terminal" }
+        "left": {
+          "emoji": "🤖",
+          "text": "Chapter 03"
+        },
+        "right": {
+          "emoji": "⚙️",
+          "text": "System Terminal"
+        }
       },
       "header": {
         "title": "Things I've Noticed",
@@ -480,18 +576,49 @@
         "versionTag": "v19.0 ACTIVE",
         "systemLogPrefix": "> SYSTEM_LOG_EXTRACT:",
         "profileRows": [
-          { "label": "Social Mode", "value": "Selective", "badgeType": "normal" },
-          { "label": "Chat Loading", "value": "Gradual", "badgeType": "warning" },
-          { "label": "Independence", "value": "HIGH", "badgeType": "highlight" },
-          { "label": "Reel Capacity", "value": "∞", "badgeType": "highlight" },
-          { "label": "Robot Mode", "value": "ENABLED", "badgeType": "normal" },
-          { "label": "Shell", "value": "PRESENT", "badgeType": "normal" },
-          { "label": "Human Mode", "value": "LOADING...", "badgeType": "warning" }
+          {
+            "label": "Social Mode",
+            "value": "Selective",
+            "badgeType": "normal"
+          },
+          {
+            "label": "Chat Loading",
+            "value": "Gradual",
+            "badgeType": "warning"
+          },
+          {
+            "label": "Independence",
+            "value": "HIGH",
+            "badgeType": "highlight"
+          },
+          {
+            "label": "Reel Capacity",
+            "value": "∞",
+            "badgeType": "highlight"
+          },
+          {
+            "label": "Robot Mode",
+            "value": "ENABLED",
+            "badgeType": "normal"
+          },
+          {
+            "label": "Shell",
+            "value": "PRESENT",
+            "badgeType": "normal"
+          },
+          {
+            "label": "Human Mode",
+            "value": "LOADING...",
+            "badgeType": "warning"
+          }
         ],
         "quote": {
           "quote": "My shell will break but it takes time.",
           "attribution": "Actual Tanisha quote"
-        }
+        },
+        "avatarImage": "/assets/photos/tanisha_formal_bot.jpg",
+        "avatarAlt": "Tanisha Executive Bot Mode",
+        "statusBadge": "● PROFESSIONAL BOT MODE"
       },
       "observations": [
         {
@@ -569,8 +696,14 @@
     },
     "memories": {
       "badges": {
-        "left": { "emoji": "📸", "text": "Chapter 04" },
-        "right": { "emoji": "✨", "text": "Our Randomness" }
+        "left": {
+          "emoji": "📸",
+          "text": "Chapter 04"
+        },
+        "right": {
+          "emoji": "✨",
+          "text": "Our Randomness"
+        }
       },
       "header": {
         "title": "Our Randomness",
@@ -603,14 +736,14 @@
         {
           "id": "mem-2",
           "type": "photo",
-          "title": "Event Work & Edits",
-          "snippet": "Posters, design adjustments, and college deadlines.",
-          "tag": "Campus Grind",
+          "title": "Event Crew & Edits",
+          "snippet": "Laptops, event passes, team coordination, and college deadlines.",
+          "tag": "Event @ 18 🎪",
           "sticker": "🎨",
           "rotation": 1.5,
           "tapeColor": "pink",
-          "aspectRatio": "portrait",
-          "imageSrc": "/assets/photos/event_work.jpg",
+          "aspectRatio": "video",
+          "imageSrc": "/assets/photos/event_crew.jpg",
           "subNote": "“that day 😂”"
         },
         {
@@ -623,6 +756,19 @@
           "rotation": -1.2,
           "tapeColor": "blue",
           "subNote": "The origin of the bot allegations"
+        },
+        {
+          "id": "mem-inauguration",
+          "type": "photo",
+          "title": "Association Inauguration",
+          "snippet": "Department association stage memento & honors at Jerusalem College.",
+          "tag": "Stage Milestone 🎖️",
+          "sticker": "✨",
+          "rotation": -1.5,
+          "tapeColor": "yellow",
+          "aspectRatio": "portrait",
+          "imageSrc": "/assets/photos/association_inauguration.jpg",
+          "subNote": "14.08 • Department Association"
         },
         {
           "id": "mem-4",
@@ -665,15 +811,15 @@
         {
           "id": "mem-7",
           "type": "photo",
-          "title": "Food Discussions",
-          "snippet": "Because food talks always take top priority.",
-          "tag": "Priority Topic",
-          "sticker": "🍜",
+          "title": "Campus Botanical Spot",
+          "snippet": "Executive Member vibes under the college garden palm trees.",
+          "tag": "Campus Vibes 🌿",
+          "sticker": "🌱",
           "rotation": -1.6,
           "tapeColor": "blue",
-          "aspectRatio": "square",
-          "imageSrc": "/assets/photos/food_debate.jpg",
-          "subNote": "Essential agenda"
+          "aspectRatio": "video",
+          "imageSrc": "/assets/photos/campus_garden.jpg",
+          "subNote": "College Garden • Executive Member"
         }
       ],
       "navigation": {
@@ -686,8 +832,14 @@
     },
     "chat": {
       "badges": {
-        "left": { "emoji": "💬", "text": "Chapter 05" },
-        "right": { "emoji": "📱", "text": "The Chat Logs" }
+        "left": {
+          "emoji": "💬",
+          "text": "Chapter 05"
+        },
+        "right": {
+          "emoji": "📱",
+          "text": "The Chat Logs"
+        }
       },
       "header": {
         "title": "The Message Archive",
@@ -702,7 +854,13 @@
         "dayDivider": "Verified Chat Transcript",
         "questStickerTag": "Quest Sticker ✨",
         "quickTapPrefix": "Quick tap:",
-        "quickEmojis": ["🌸", "🤖", "🐢", "🐚", "🎬"],
+        "quickEmojis": [
+          "🌸",
+          "🤖",
+          "🐢",
+          "🐚",
+          "🎬"
+        ],
         "quickTapTitlePrefix": "Send"
       },
       "messages": [
@@ -780,8 +938,14 @@
     },
     "nineteen": {
       "badges": {
-        "left": { "emoji": "✨", "text": "Chapter 06" },
-        "right": { "emoji": "🃏", "text": "Card Collection" }
+        "left": {
+          "emoji": "✨",
+          "text": "Chapter 06"
+        },
+        "right": {
+          "emoji": "🃏",
+          "text": "Card Collection"
+        }
       },
       "header": {
         "title": "19 Things",
@@ -965,8 +1129,14 @@
     },
     "game": {
       "badges": {
-        "left": { "emoji": "🕹️", "text": "Chapter 07" },
-        "right": { "emoji": "🔨", "text": "Classic Whack-a-Mole" }
+        "left": {
+          "emoji": "🕹️",
+          "text": "Chapter 07"
+        },
+        "right": {
+          "emoji": "🔨",
+          "text": "Classic Whack-a-Mole"
+        }
       },
       "header": {
         "title": "Whack-a-Tanisha!",
@@ -1016,8 +1186,14 @@
     },
     "gift": {
       "badges": {
-        "left": { "emoji": "💐", "text": "Chapter 08" },
-        "right": { "emoji": "🌿", "text": "Botanical Specimen" }
+        "left": {
+          "emoji": "💐",
+          "text": "Chapter 08"
+        },
+        "right": {
+          "emoji": "🌿",
+          "text": "Botanical Specimen"
+        }
       },
       "title": "Wildflower Building Bouquet",
       "pieces": 939,
@@ -1027,11 +1203,36 @@
       "specimenTag": "SPECIMEN #939",
       "stagePrefix": "Stage",
       "stages": [
-        { "stage": 1, "emoji": "🌱", "label": "Seed", "description": "Just an unbuilt box of bricks..." },
-        { "stage": 2, "emoji": "🌿", "label": "Stem", "description": "Sorting through bags 1 and 2..." },
-        { "stage": 3, "emoji": "🌼", "label": "Bud", "description": "Wait, is this piece upside down?" },
-        { "stage": 4, "emoji": "🌸", "label": "Bloom", "description": "Petals locking in firmly..." },
-        { "stage": 5, "emoji": "💐", "label": "Bouquet", "description": "A permanent wildflower garden that never wilts!" }
+        {
+          "stage": 1,
+          "emoji": "🌱",
+          "label": "Seed",
+          "description": "Just an unbuilt box of bricks..."
+        },
+        {
+          "stage": 2,
+          "emoji": "🌿",
+          "label": "Stem",
+          "description": "Sorting through bags 1 and 2..."
+        },
+        {
+          "stage": 3,
+          "emoji": "🌼",
+          "label": "Bud",
+          "description": "Wait, is this piece upside down?"
+        },
+        {
+          "stage": 4,
+          "emoji": "🌸",
+          "label": "Bloom",
+          "description": "Petals locking in firmly..."
+        },
+        {
+          "stage": 5,
+          "emoji": "💐",
+          "label": "Bouquet",
+          "description": "A permanent wildflower garden that never wilts!"
+        }
       ],
       "hook": "So... I went with something that stays. 🌸",
       "productImage": "/assets/gift/wildflower_bouquet.png",
@@ -1054,8 +1255,14 @@
     },
     "birthday": {
       "badges": {
-        "left": { "emoji": "🎀", "text": "Chapter 09" },
-        "right": { "emoji": "🎉", "text": "Final Chapter" }
+        "left": {
+          "emoji": "🎀",
+          "text": "Chapter 09"
+        },
+        "right": {
+          "emoji": "🎉",
+          "text": "Final Chapter"
+        }
       },
       "headline": "HAPPY BIRTHDAY!",
       "tagline": "19 looks good on you 🌸",
@@ -1078,7 +1285,22 @@
         "backToGift": "Back to Flower Reveal",
         "startOver": "Start Over from the Beginning ↻"
       },
-      "decorIcons": ["🌼", "🦋", "🌸", "🦋", "🌼"]
+      "decorIcons": [
+        "🌼",
+        "🦋",
+        "🌸",
+        "🦋",
+        "🌼"
+      ],
+      "celebrationPhoto": {
+        "imageSrc": "/assets/photos/event_hall_trio.jpg",
+        "alt": "Celebrating Tanisha's 19th Birthday",
+        "title": "Event Hall Memories 🌸",
+        "snippet": "Good memories, good people, and enough reasons to laugh at the most random things.",
+        "subNote": "Event memories • September 2026",
+        "tag": "19 Unlocked 🎉",
+        "tapeColor": "pink"
+      }
     }
   }
 }
