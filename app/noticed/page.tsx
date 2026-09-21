@@ -40,7 +40,7 @@ export default function NoticedPage() {
         </p>
       </div>
 
-      <div className="w-full max-w-sm flex flex-col gap-4">
+      <div className="w-full max-w-sm flex flex-col gap-4 relative z-10">
         {/* Retro Terminal Window: TANISHA SYSTEM PROFILE */}
         <div className="rounded-3xl bg-slate-900 text-slate-100 shadow-scrapbook border-2 border-slate-700 overflow-hidden">
           {/* Terminal Titlebar with Window Controls */}

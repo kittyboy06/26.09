@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
@@ -13,6 +14,11 @@ interface LightboxProps {
 
 export function Lightbox({ item, onClose }: LightboxProps) {
   const data = common.lightbox;
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -28,90 +34,99 @@ export function Lightbox({ item, onClose }: LightboxProps) {
     };
   }, [item, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {item && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-pastel-charcoal/40 backdrop-blur-sm"
+            className="fixed inset-0 bg-pastel-charcoal/60 backdrop-blur-md"
           />
 
           {/* Modal Card */}
           <motion.div
-            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            initial={{ scale: 0.92, opacity: 0, y: 16 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            transition={{ type: "spring", stiffness: 350, damping: 28 }}
-            className="relative z-10 w-full max-w-sm rounded-3xl bg-white p-6 shadow-scrapbook-lg border border-pastel-pink/30 text-pastel-charcoal"
+            exit={{ scale: 0.92, opacity: 0, y: 16 }}
+            transition={{ type: "spring", stiffness: 360, damping: 28 }}
+            className="relative z-10 w-full max-w-sm my-auto max-h-[88dvh] flex flex-col rounded-3xl bg-white shadow-scrapbook-lg border border-pastel-pink/30 text-pastel-charcoal overflow-hidden"
           >
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              aria-label={data.closeAriaLabel}
-              className="absolute top-4 right-4 rounded-full p-2 text-pastel-muted hover:bg-pastel-cream hover:text-pastel-charcoal transition-colors focus:outline-none"
-            >
-              <X className="h-5 w-5" />
-            </button>
+            {/* Modal Header */}
+            <div className="p-4 sm:p-5 pb-2 flex items-center justify-between border-b border-pastel-cream shrink-0">
+              <div className="flex items-center gap-2">
+                <span className="text-xl select-none">{item.sticker}</span>
+                <span className="rounded-full bg-pastel-yellow/70 px-2.5 py-0.5 text-xs font-semibold text-pastel-charcoal/80">
+                  {item.tag}
+                </span>
+              </div>
 
-            {/* Tag & Sticker */}
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl select-none">{item.sticker}</span>
-              <span className="rounded-full bg-pastel-yellow/60 px-2.5 py-0.5 text-xs font-semibold text-pastel-charcoal/80">
-                {item.tag}
-              </span>
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                aria-label={data.closeAriaLabel}
+                className="rounded-full p-1.5 text-pastel-muted hover:bg-pastel-cream hover:text-pastel-charcoal transition-colors focus:outline-none"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
 
-            {/* Title */}
-            <h3 className="text-lg font-bold font-display text-pastel-charcoal mb-2">
-              {item.title}
-            </h3>
+            {/* Scrollable Modal Content */}
+            <div className="overflow-y-auto p-4 sm:p-5 pt-3 flex-1 space-y-3">
+              <h3 className="text-lg font-bold font-display text-pastel-charcoal">
+                {item.title}
+              </h3>
 
-            {/* Photo Preview if imageSrc exists */}
-            {item.imageSrc && (
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden my-3 border border-pastel-pink/30 shadow-inner bg-pastel-cream">
-                <Image
-                  src={item.imageSrc}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 90vw, 380px"
-                />
-              </div>
-            )}
+              {/* Photo Preview if imageSrc exists */}
+              {item.imageSrc && (
+                <div className="relative w-full aspect-[4/3] max-h-[38dvh] rounded-2xl overflow-hidden my-1 border border-pastel-pink/30 shadow-inner bg-pastel-cream/60">
+                  <Image
+                    src={item.imageSrc}
+                    alt={item.title}
+                    fill
+                    className="object-contain p-1"
+                    sizes="(max-width: 640px) 90vw, 380px"
+                    priority
+                  />
+                </div>
+              )}
 
-            {/* Content */}
-            {item.quote ? (
-              <div className="my-4 rounded-2xl bg-pastel-cream/70 p-4 border border-pastel-pink/20">
-                <p className="font-handwriting text-xl text-pastel-charcoal italic leading-relaxed">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-                {item.author && (
-                  <p className="mt-2 text-right text-xs font-semibold text-pastel-muted">
-                    — {item.author}
+              {/* Quote Block if quote exists */}
+              {item.quote ? (
+                <div className="rounded-2xl bg-pastel-cream/70 p-3.5 border border-pastel-pink/20">
+                  <p className="font-handwriting text-lg sm:text-xl text-pastel-charcoal italic leading-relaxed">
+                    &ldquo;{item.quote}&rdquo;
                   </p>
-                )}
-              </div>
-            ) : null}
+                  {item.author && (
+                    <p className="mt-1.5 text-right text-xs font-semibold text-pastel-muted">
+                      — {item.author}
+                    </p>
+                  )}
+                </div>
+              ) : null}
 
-            {item.snippet ? (
-              <p className="whitespace-pre-line text-sm text-pastel-charcoal/85 leading-relaxed my-3">
-                {item.snippet}
-              </p>
-            ) : null}
+              {/* Descriptive snippet */}
+              {item.snippet ? (
+                <p className="whitespace-pre-line text-xs sm:text-sm text-pastel-charcoal/85 leading-relaxed">
+                  {item.snippet}
+                </p>
+              ) : null}
+            </div>
 
-            <div className="mt-5 pt-3 border-t border-pastel-cream flex items-center justify-between text-xs text-pastel-muted">
+            {/* Modal Footer */}
+            <div className="p-3 sm:p-4 border-t border-pastel-cream flex items-center justify-between text-xs text-pastel-muted shrink-0 bg-pastel-cream/30">
               <span className="flex items-center gap-1">
                 <Sparkles className="h-3.5 w-3.5 text-pastel-yellow-dark" />
                 {data.footerLabel}
               </span>
               <button
                 onClick={onClose}
-                className="rounded-full bg-pastel-pink/40 px-3 py-1 font-semibold text-pastel-charcoal hover:bg-pastel-pink/60 transition-colors"
+                className="rounded-full bg-pastel-pink/50 px-4 py-1.5 font-bold text-pastel-charcoal hover:bg-pastel-pink/70 transition-colors active:scale-95"
               >
                 {data.closeButton}
               </button>
@@ -119,6 +134,7 @@ export function Lightbox({ item, onClose }: LightboxProps) {
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }

@@ -172,7 +172,7 @@ export default function WhackGamePage() {
   };
 
   return (
-    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
+    <PageTransition className="relative flex flex-col items-center pt-12 pb-28">
       {/* Scroll decorative vine */}
       <Skiper19ScrollVine color="#FFD6B3" />
 
@@ -222,28 +222,28 @@ export default function WhackGamePage() {
       <div className="w-full max-w-[340px] bg-[#4E342E] rounded-t-3xl border-t-4 border-x-4 border-[#8B5A2B] px-3 pt-2.5 pb-1 relative shadow-lg overflow-hidden select-none">
         {/* Brass Header Plate with rivets */}
         <div
-          className={`flex items-center justify-between rounded-xl px-2.5 py-1 mb-1.5 shadow-inner transition-colors duration-200 ${
+          className={`flex items-center justify-between gap-1 rounded-xl px-2.5 py-1 mb-1 shadow-inner transition-colors duration-200 ${
             isEzraAngry
               ? "bg-rose-950/90 border-2 border-rose-500/80 shadow-rose-900/40"
               : "bg-[#3E2723] border border-amber-700/60"
           }`}
         >
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 shrink-0">
             <span
               className={`h-2 w-2 rounded-full shadow-xs animate-ping ${
                 isEzraAngry ? "bg-rose-500" : "bg-yellow-500"
               }`}
             />
             <span
-              className={`text-[10px] font-mono font-bold tracking-widest uppercase transition-colors duration-200 ${
+              className={`text-[10px] font-mono font-bold tracking-widest uppercase transition-colors duration-200 whitespace-nowrap ${
                 isEzraAngry ? "text-rose-200" : "text-amber-200"
               }`}
             >
-              {isEzraAngry ? "EZRA RAGE MODE 😾" : data.marquee.title}
+              {isEzraAngry ? "EZRA RAGE 😾" : data.marquee.title}
             </span>
           </div>
           <span
-            className={`text-[9px] font-bold px-1.5 py-0.5 rounded transition-all duration-200 ${
+            className={`text-[9px] font-bold px-1.5 py-0.5 rounded transition-all duration-200 truncate max-w-[155px] text-right ${
               isEzraAngry
                 ? "text-rose-100 bg-rose-900/90 border border-rose-400/60 animate-pulse"
                 : "text-amber-300/80 bg-black/40"
@@ -256,8 +256,8 @@ export default function WhackGamePage() {
         {/* The Cool Cat Mascot & Animated Pivoting Mallet */}
         <div className="relative flex items-center justify-center h-28 w-full py-1">
           {/* Peeking Quest Sticker: tanisha_doubt */}
-          <div className="absolute left-1 top-0 z-20">
-            <CollectibleSticker id="tanisha_doubt" size={48} rotation={-6} />
+          <div className="absolute left-1.5 top-1 z-20">
+            <CollectibleSticker id="tanisha_doubt" size={44} rotation={-6} />
           </div>
 
           {/* Animated Cat Body */}
@@ -265,33 +265,31 @@ export default function WhackGamePage() {
             animate={
               isEzraAngry
                 ? {
-                    y: [0, -5, 3, -2, 0],
-                    scale: [1, 1.14, 1.08, 1.12],
-                    rotate: [-4, 4, -3, 3, 0],
+                    y: [0, -2, 2, 0],
+                    scale: [1, 1.05, 1.02, 1.04],
+                    rotate: [-3, 3, -2, 2, 0],
                   }
                 : catStriking
                 ? {
                     y: [0, -3, 4, 0],
-                    scale: [1, 1.05, 0.98, 1],
+                    scale: [1, 1.04, 0.98, 1],
                     rotate: [-1, 2, -1, 0],
                   }
                 : { y: 0, rotate: 0, scale: 1 }
             }
             transition={{
-              duration: isEzraAngry ? 0.35 : 0.22,
+              duration: isEzraAngry ? 0.3 : 0.22,
               ease: "easeOut",
             }}
-            className="relative z-10 flex items-center justify-center -ml-5"
+            className="relative z-10 flex items-center justify-center"
           >
-            <div className="relative h-24 w-48 drop-shadow-xl overflow-visible">
+            <div className="relative h-24 w-48 drop-shadow-xl overflow-hidden">
               <Image
                 src={isEzraAngry ? "/assets/whack_a_mole/ezra_angry.png" : "/assets/whack_a_mole/cat.png"}
                 alt={isEzraAngry ? "Ezra Angry Scowl" : data.marquee.catAlt}
                 fill
                 sizes="200px"
-                className={`object-contain origin-center transition-all duration-150 ${
-                  isEzraAngry ? "scale-[1.65] brightness-105" : "scale-[1.6]"
-                }`}
+                className="object-contain origin-center scale-[1.35] transition-all duration-150"
                 priority
               />
             </div>

@@ -35,7 +35,7 @@ export function Skiper19ScrollVine({
   return (
     <div
       ref={containerRef}
-      className={`pointer-events-none absolute inset-0 z-0 overflow-hidden ${className}`}
+      className={`pointer-events-none absolute inset-0 -z-10 overflow-hidden ${className}`}
       aria-hidden="true"
     >
       <svg
