@@ -161,6 +161,21 @@ export default function BirthdayPage() {
         </div>
       </div>
 
+      {/* One Last Thing Note Card */}
+      {(data as any).oneLastThing && (
+        <div className="w-full max-w-sm mb-6 -mt-2 text-left">
+          <div className="relative rounded-3xl bg-pastel-yellow/50 border border-pastel-yellow-dark/40 p-5 shadow-scrapbook">
+            <span className="absolute -top-2.5 left-8 h-4 w-16 bg-white/80 border border-pastel-yellow-dark/30 rounded-xs rotate-2" />
+            <h4 className="font-display text-sm font-bold text-pastel-charcoal mb-2">
+              {(data as any).oneLastThing.title}
+            </h4>
+            <p className="whitespace-pre-line text-xs text-pastel-charcoal/85 leading-relaxed font-medium">
+              {(data as any).oneLastThing.body}
+            </p>
+          </div>
+        </div>
+      )}
+
       {/* Interactive CTA Controls */}
       <div className="w-full max-w-xs flex flex-col gap-3">
         {/* Confetti Trigger */}

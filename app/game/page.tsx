@@ -466,17 +466,46 @@ export default function WhackGamePage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-3 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 p-3 rounded-2xl border-2 border-yellow-500 text-center shadow-lg text-amber-950"
+            className="mt-3 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 p-3.5 rounded-2xl border-2 border-yellow-500 text-center shadow-lg text-amber-950"
           >
             <div className="flex items-center justify-center gap-1.5 text-xs font-black uppercase tracking-wider">
               <Sparkles className="h-4 w-4 text-amber-800" />
               <span>{data.winBanner.title}</span>
             </div>
-            <p className="mt-0.5 text-xs font-bold text-amber-900">
+            <p className="mt-1 text-xs font-bold text-amber-900">
               {data.winBanner.description}
             </p>
           </motion.div>
         )}
+      </div>
+
+      {/* Game Objective & Targets Card */}
+      <div className="w-full max-w-[340px] mt-4 rounded-2xl bg-white/95 p-4 shadow-scrapbook border border-amber-200/60 text-left space-y-3">
+        <div>
+          <h4 className="font-mono text-[10px] font-bold tracking-widest text-amber-800 uppercase">
+            {(data as any).objective?.title || "GAME OBJECTIVE"}
+          </h4>
+          <div className="mt-1 space-y-0.5 text-xs text-pastel-charcoal/85">
+            {(data as any).objective?.rules?.map((rule: string, i: number) => (
+              <p key={i} className={i === (data as any).objective.rules.length - 1 ? "font-bold text-pastel-charcoal pt-0.5" : ""}>
+                {rule}
+              </p>
+            ))}
+          </div>
+        </div>
+
+        <div className="pt-2 border-t border-amber-200/50">
+          <h4 className="font-mono text-[10px] font-bold tracking-widest text-amber-800 uppercase mb-1.5">
+            {(data as any).gameTargets?.title || "Game targets"}
+          </h4>
+          <div className="grid grid-cols-2 gap-1.5 text-xs text-pastel-charcoal/85 font-medium">
+            {(data as any).gameTargets?.targets?.map((target: string, i: number) => (
+              <div key={i} className="flex items-center gap-1 bg-pastel-yellow/30 px-2 py-1 rounded-lg border border-pastel-yellow-dark/20 text-[11px]">
+                <span>{target}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Navigation */}

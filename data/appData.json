@@ -10,8 +10,8 @@
     "heroLoopWords": [
       "Happy Birthday",
       "Tanisha",
+      "26.09 • 19 unlocked 🎉",
       "You're 19!",
-      "26.09",
       "Have the best day 🌸"
     ],
     "meta": {
@@ -24,7 +24,7 @@
       "path": "/",
       "label": "Birthday Gate",
       "number": "01",
-      "badge": "Unlock 🎂"
+      "badge": "19 Unlocked 🎉"
     },
     {
       "path": "/note",
@@ -448,14 +448,14 @@
         },
         "right": {
           "emoji": "🦋",
-          "text": "19 Unlocked"
+          "text": "19 Unlocked 🎉"
         }
       },
       "hero": {
         "tag": "A tiny digital birthday world",
         "postmark": "POST • 26.09",
-        "heading": "Happy Birthday",
-        "subtext": "Apparently a simple “Happy Birthday” text wasn't enough. 😂"
+        "heading": "Happy Birthday,",
+        "subtext": "Okay... before you start judging me 😭\nYou could've just got a normal birthday text.\nBut apparently that wasn't enough.\nSo yeah... I made this whole thing instead 😂\nCome on, let's go. 🌸"
       },
       "lockCard": {
         "title": "🔐 A tiny birthday lock",
@@ -476,13 +476,13 @@
           "0",
           "del"
         ],
-        "unlockButton": "Unlock Story →",
+        "unlockButton": "Okay, let's see →",
         "unlockingButton": "Opening Chapter 02... 🌸"
       },
       "unlockedState": {
         "title": "✨ Story Unlocked!",
         "subtitle": "You're already on this journey.",
-        "continueButton": "Continue to Chapter 02"
+        "continueButton": "Okay, let's see →"
       },
       "footerSparkles": {
         "leftEmoji": "✨",
@@ -498,7 +498,7 @@
         },
         "right": {
           "emoji": "📝",
-          "text": "Handwritten Note"
+          "text": "A Little Something"
         }
       },
       "memo": {
@@ -506,9 +506,16 @@
         "greeting": "Okay...",
         "intro": "You could've just gotten a standard birthday text:",
         "standardWish": "“Happy Birthday Tanisha 🎂”",
-        "turn": "...but apparently I decided to build a whole interactive web app instead. 😂",
+        "turn": "...but apparently I decided to build a whole interactive website instead 😂",
         "closingBold": "So here we are.",
-        "closingCare": "With all my care 💌"
+        "closingCare": "I don't really know what else to say without making this unnecessarily dramatic 😭\nSo just enjoy the website, okay?\nHappy 19th, Tanisha. 🌸\n— Afsal"
+      },
+      "hackathonMemory": {
+        "title": "A little memory",
+        "story": "Also... I still remember that hackathon day on 18/09.\nStarted with me being shy as usual 😭\nSomehow ended with us talking properly, taking pictures and randomly talking about childhood stuff.\n\nPretty random day... but I liked it.",
+        "tag": "18/09 Hackathon Day",
+        "sticker": "🎯",
+        "subNote": "Hackathon Day • 18/09"
       },
       "whyItExists": {
         "title": "How we ended up here:",
@@ -541,7 +548,7 @@
       "navigation": {
         "prevLabel": "Back to Gate",
         "prevHref": "/",
-        "nextLabel": "Things I've Noticed →",
+        "nextLabel": "There's actually more →",
         "nextHref": "/noticed",
         "variant": "blue"
       },
@@ -567,7 +574,7 @@
       },
       "header": {
         "title": "Things I've Noticed",
-        "subtitle": "A purely non-scientific diagnostic observation log"
+        "subtitle": "Things I've noticed about you • This is not scientifically proven btw 😂"
       },
       "terminal": {
         "windowTitle": "tanisha-v19.sh — bash",
@@ -623,10 +630,10 @@
       "observations": [
         {
           "id": "obs-1",
-          "title": "Professional Bot",
+          "title": "Robot Mode",
           "emoji": "🤖",
           "subtitle": "System Routine",
-          "description": "Do the work. Mind your business. Continue life.",
+          "description": "Do the work.\nMind your business.\nContinue life.\nHonestly... this describes you way too well 😂",
           "bgColor": "bg-sky-50/90 border-sky-200/70",
           "accentColor": "text-sky-800 bg-sky-100",
           "tag": "Bot Protocol"
@@ -636,7 +643,7 @@
           "title": "Slow Loading",
           "emoji": "🐢",
           "subtitle": "Latency Mode",
-          "description": "Your chatting style takes some time to load.",
+          "description": "Your chatting style takes some time to load.\nYou literally told me that yourself 😭",
           "bgColor": "bg-amber-50/90 border-amber-200/70",
           "accentColor": "text-amber-800 bg-amber-100",
           "tag": "Chat Latency"
@@ -646,45 +653,85 @@
           "title": "The Shell",
           "emoji": "🐚",
           "subtitle": "Defense Layer",
-          "description": "Apparently it'll break... just give it time.",
+          "description": "“My shell will break but it takes time.”\nFair enough.\nI'm still waiting for the update 😂",
           "bgColor": "bg-purple-50/90 border-purple-200/70",
           "accentColor": "text-purple-800 bg-purple-100",
-          "tag": "Protected Core"
+          "tag": "Firewall"
         },
         {
           "id": "obs-4",
-          "title": "Reply.exe",
-          "emoji": "😂",
-          "subtitle": "Delivery Schedule",
-          "description": "Sometimes the reply comes today. Sometimes... tomorrow.",
-          "bgColor": "bg-pink-50/90 border-pink-200/70",
-          "accentColor": "text-pink-800 bg-pink-100",
-          "tag": "Reply Latency"
+          "title": "Independent",
+          "emoji": "🌱",
+          "subtitle": "Default State",
+          "description": "You mostly just do your own thing.\nWork, college, whatever you have to do...\nthen continue life 😂",
+          "bgColor": "bg-emerald-50/90 border-emerald-200/70",
+          "accentColor": "text-emerald-800 bg-emerald-100",
+          "tag": "Autonomy"
         },
         {
           "id": "obs-5",
-          "title": "The Reel Department",
+          "title": "Reel Department",
           "emoji": "🎬",
           "subtitle": "Algorithm Sync",
-          "description": "One more reel probably won't hurt.",
+          "description": "One more reel probably won't hurt.\nFamous last words.",
           "bgColor": "bg-rose-50/90 border-rose-200/70",
           "accentColor": "text-rose-800 bg-rose-100",
           "tag": "Reels"
         },
         {
           "id": "obs-6",
-          "title": "Autonomy",
+          "title": "Light Colours",
+          "emoji": "🌸",
+          "subtitle": "Wardrobe Setting",
+          "description": "Green. Pink. Light colours.\nI've noticed this is basically your wardrobe setting 😂",
+          "bgColor": "bg-pink-50/90 border-pink-200/70",
+          "accentColor": "text-pink-800 bg-pink-100",
+          "tag": "Palette"
+        },
+        {
+          "id": "obs-7",
+          "title": "Craft Mode",
+          "emoji": "✂️",
+          "subtitle": "Handmade Creations",
+          "description": "You actually like making handmade stuff.\nAnd you're pretty good at it too.",
+          "bgColor": "bg-amber-50/90 border-amber-200/70",
+          "accentColor": "text-amber-800 bg-amber-100",
+          "tag": "Creative"
+        },
+        {
+          "id": "obs-8",
+          "title": "Hard to Understand",
+          "emoji": "👀",
+          "subtitle": "Complexity Index",
+          "description": "You're honestly not that easy to figure out 😂\nSometimes I understand you.\nSometimes... no idea.",
+          "bgColor": "bg-indigo-50/90 border-indigo-200/70",
+          "accentColor": "text-indigo-800 bg-indigo-100",
+          "tag": "Mystery"
+        },
+        {
+          "id": "obs-9",
+          "title": "Ambivert.exe",
+          "emoji": "🧩",
+          "subtitle": "Social Battery",
+          "description": "You said you're an ambivert.\nMakes sense tbh 😂",
+          "bgColor": "bg-teal-50/90 border-teal-200/70",
+          "accentColor": "text-teal-800 bg-teal-100",
+          "tag": "Ambivert"
+        },
+        {
+          "id": "obs-10",
+          "title": "Self Control",
           "emoji": "🌱",
-          "subtitle": "Default Operating State",
-          "description": "Independent mode permanently enabled.",
-          "bgColor": "bg-emerald-50/90 border-emerald-200/70",
-          "accentColor": "text-emerald-800 bg-emerald-100",
-          "tag": "Solo Mode"
+          "subtitle": "Inner Strength",
+          "description": "You have quite a bit of self-control.\nI don't think you just do things because everyone else is doing them.",
+          "bgColor": "bg-green-50/90 border-green-200/70",
+          "accentColor": "text-green-800 bg-green-100",
+          "tag": "Mindset"
         }
       ],
       "closing": {
-        "quote": "Maybe that's just your operating system.",
-        "subtext": "Version 19.0 rolled out today with zero bug fixes."
+        "quote": "Maybe that's just your operating system. 🤖",
+        "subtext": "Anyway... enough analysis before this starts looking serious 😂"
       },
       "navigation": {
         "prevLabel": "Back to Note",
@@ -707,14 +754,14 @@
       },
       "header": {
         "title": "Our Randomness",
-        "subtitle": "The official digital college scrapbook 📎"
+        "subtitle": "Some random things I actually remember"
       },
       "tapToExpand": "Tap to expand 🔍",
       "reelReactionCard": {
         "badgeEmoji": "🎬",
         "badgeTitle": "Reel Reaction",
         "quote": "Ohh wow... Yep much better",
-        "subtext": "Peak enthusiasm achieved",
+        "subtext": "I think that's probably your highest level of excitement 😂",
         "floatingEmoji": "😂",
         "floatingLabel": "Reels"
       },
@@ -724,102 +771,102 @@
         {
           "id": "mem-1",
           "type": "quote",
-          "title": "Classic Reply Schedule",
-          "quote": "I'm gonna send today, you can reply tomorrow 😂",
-          "author": "College chat archives",
-          "tag": "Latency Record",
-          "sticker": "⏱️",
+          "title": "The Childhood Archive",
+          "quote": "1st standard. 7th standard. I still don't know how we got there 😂",
+          "author": "Hackathon conversation",
+          "tag": "Childhood 📸",
+          "sticker": "📸",
           "rotation": -1.8,
           "tapeColor": "yellow",
-          "subNote": "Standard operating reply window"
+          "subNote": "Group photos archive"
         },
         {
           "id": "mem-2",
           "type": "photo",
-          "title": "Event Crew & Edits",
-          "snippet": "Laptops, event passes, team coordination, and college deadlines.",
-          "tag": "Event @ 18 🎪",
-          "sticker": "🎨",
+          "title": "18/09 — Hackathon Day",
+          "snippet": "At the start I was obviously shy as usual 😭\nBut somehow later I was just there near you, talking, taking pictures and all that 😂\nWe ended up talking through reels, childhood stuff and random things.\nAnd then you showed me your 1st standard and 7th standard group photos 😭\nAlso you told me to text you once I reached home.\n\nPretty random day... but I liked it.",
+          "tag": "18/09 Hackathon 🎯",
+          "sticker": "🎯",
           "rotation": 1.5,
           "tapeColor": "pink",
           "aspectRatio": "video",
           "imageSrc": "/assets/photos/event_crew.jpg",
-          "subNote": "“that day 😂”"
+          "subNote": "“text me once you reach home” 📱"
         },
         {
           "id": "mem-3",
           "type": "incident",
-          "title": "The Robot Incident 🤖",
-          "snippet": "Apparently my chatting style takes time to update.\n\nShell status: Loading...\nHuman mode: slowly installing...",
-          "tag": "Firmware Bug",
-          "sticker": "💾",
+          "title": "And then there's this...",
+          "snippet": "Somehow normal conversations become completely random conversations.\n\nAnd honestly, that's probably the fun part.",
+          "tag": "Random Drift",
+          "sticker": "✨",
           "rotation": -1.2,
           "tapeColor": "blue",
-          "subNote": "The origin of the bot allegations"
+          "subNote": "The fun part of chatting 😂"
         },
         {
           "id": "mem-inauguration",
           "type": "photo",
-          "title": "Association Inauguration",
-          "snippet": "Department association stage memento & honors at Jerusalem College.",
-          "tag": "Stage Milestone 🎖️",
-          "sticker": "✨",
+          "title": "The Childhood Archive",
+          "snippet": "Somehow the conversation went from normal stuff to your childhood photos.\n1st standard.\n7th standard.\nI still don't know how we got there 😂",
+          "tag": "Archive 📸",
+          "sticker": "📸",
           "rotation": -1.5,
           "tapeColor": "yellow",
           "aspectRatio": "portrait",
           "imageSrc": "/assets/photos/association_inauguration.jpg",
-          "subNote": "14.08 • Department Association"
+          "subNote": "1st & 7th standard photos"
         },
         {
           "id": "mem-4",
           "type": "quote",
-          "title": "Enthusiasm Meter",
+          "title": "That random “Ohh wow...” 😭",
           "quote": "Ohh wow... Yep much better",
           "author": "Peak Reaction",
           "tag": "High Praise",
           "sticker": "✨",
           "rotation": 2.1,
           "tapeColor": "green",
-          "subNote": "Maximum visible enthusiasm achieved"
+          "subNote": "I think that's probably your highest level of excitement 😂"
         },
         {
           "id": "mem-5",
           "type": "quote",
           "title": "The Shell Defense",
-          "quote": "my shell will break but it takes time",
+          "quote": "My shell will break but it takes time.",
           "author": "Tanisha",
           "tag": "Defense Protocol",
           "sticker": "🐚",
           "rotation": -1.4,
           "tapeColor": "yellow",
-          "subNote": "Firmware updating"
+          "subNote": "Fair enough. I'll wait 😂"
         },
         {
           "id": "mem-6",
           "type": "reels",
-          "title": "Reel Department",
-          "quote": "I might actually do that 😂",
-          "snippet": "Reels shared back and forth.",
-          "tag": "Reels",
+          "title": "The Reel Department",
+          "quote": "There are probably enough reels between us to make a completely unnecessary documentary. I'm not saying we should. But we could 😂",
+          "snippet": "There are probably enough reels between us to make a completely unnecessary documentary.\nI'm not saying we should.\nBut we could 😂",
+          "tag": "Reels 🎬",
           "sticker": "🎬",
           "rotation": 1.2,
           "tapeColor": "pink",
           "aspectRatio": "video",
           "imageSrc": "/assets/photos/reels_routine.jpg",
-          "subNote": "One more reel won't hurt"
+          "subNote": "Unnecessary documentary material 😂"
         },
         {
           "id": "mem-7",
           "type": "photo",
-          "title": "Campus Botanical Spot",
-          "snippet": "Executive Member vibes under the college garden palm trees.",
-          "tag": "Campus Vibes 🌿",
+          "title": "Campus Memories",
+          "snippet": "Somehow normal conversations become completely random conversations.\nAnd honestly, that's probably the fun part.",
+          "tag": "College Randomness 🌿",
           "sticker": "🌱",
           "rotation": -1.6,
           "tapeColor": "blue",
           "aspectRatio": "video",
           "imageSrc": "/assets/photos/campus_garden.jpg",
-          "subNote": "College Garden • Executive Member"
+          "subNote": "College Garden • Campus moments"
         }
       ],
       "navigation": {
@@ -842,8 +889,8 @@
         }
       },
       "header": {
-        "title": "The Message Archive",
-        "subtitle": "A purely authentic record of real conversation patterns"
+        "title": "The Chat Logs",
+        "subtitle": "Some messages that deserve their own little museum"
       },
       "device": {
         "contactName": "Tanisha",
@@ -874,7 +921,7 @@
           "id": "m-2",
           "sender": "tanisha",
           "text": "I'm gonna send today, you can reply tomorrow 😂",
-          "subtext": "Standard Tanisha delivery protocol",
+          "subtext": "Fair enough. At least you warned me 😭",
           "time": "10:18 PM",
           "reaction": "🐢"
         },
@@ -888,44 +935,45 @@
           "id": "m-4",
           "sender": "tanisha",
           "text": "Do the work. Mind your business. Continue life.",
-          "subtext": "System Rule #1",
+          "subtext": "Okay. Message received 😂",
           "time": "11:05 PM",
           "reaction": "🤖"
         },
         {
           "id": "m-5",
           "sender": "afsal",
-          "text": "Checking in on the shell status... any cracks yet?",
+          "text": "Just waiting for the shell to crack yet?",
           "time": "Yesterday"
         },
         {
           "id": "m-6",
           "sender": "tanisha",
-          "text": "My shell will break but it takes time. 🐚",
-          "subtext": "Verified direct quote",
+          "text": "My shell will break but it takes time.",
+          "subtext": "Fair enough. I'll wait 😂",
           "time": "Yesterday",
           "reaction": "🐚"
         },
         {
           "id": "m-7",
           "sender": "afsal",
-          "text": "Look at the updated poster layout vs the first draft",
+          "text": "Look at the updated poster layout vs the first draft.",
           "time": "Today"
         },
         {
           "id": "m-8",
           "sender": "tanisha",
           "text": "Ohh wow... Yep much better",
-          "subtext": "Peak excitement reached",
+          "subtext": "There it is. Maximum excitement achieved 😂",
           "time": "Today",
           "reaction": "🌸"
         },
         {
           "id": "m-9",
           "sender": "tanisha",
-          "text": "One more reel probably won't hurt 🎬",
+          "text": "One more reel probably won't hurt.",
+          "subtext": "Apparently this department is never closed.",
           "time": "Just now",
-          "reaction": "🍿"
+          "reaction": "🎬"
         }
       ],
       "navigation": {
@@ -944,24 +992,24 @@
         },
         "right": {
           "emoji": "🃏",
-          "text": "Card Collection"
+          "text": "19 Things ✨"
         }
       },
       "header": {
         "title": "19 Things",
-        "subtitle": "Because you're officially 19 now. Tap each card to reveal! 🌸"
+        "subtitle": "19 things because you're officially 19 now"
       },
       "tapToFlip": "Tap to flip",
       "tapToFlipBack": "Tap to flip back ↻",
       "milestoneCard": {
         "tag": "MILESTONE 19",
         "lockedEmoji": "🎂",
-        "lockedTitle": "19 — The Grand Finale Card",
+        "lockedTitle": "19 — Officially 19 🎂",
         "lockedTapPrompt": "Tap to unlock 19",
         "unlockedNumber": "19",
         "unlockedEmoji": "🎂",
-        "unlockedTag": "OFFICIALLY UNLOCKED",
-        "unlockedMessage": "Happy Birthday, Tanisha 🌸",
+        "unlockedTag": "OFFICIALLY 19",
+        "unlockedMessage": "And somehow you're 19 now. Happy birthday, Tanisha 🌸",
         "unlockedCollapsePrompt": "Tap to collapse ↻"
       },
       "cards": [
@@ -986,7 +1034,7 @@
           "number": "03",
           "emoji": "🐚",
           "frontLabel": "The Shell",
-          "backContent": "Apparently it'll break... just give it time.",
+          "backContent": "“My shell will break but it takes time.”\nStill waiting 😂",
           "themeColor": "pink"
         },
         {
@@ -994,7 +1042,7 @@
           "number": "04",
           "emoji": "😂",
           "frontLabel": "Reply.exe",
-          "backContent": "Sometimes the reply comes today. Sometimes... tomorrow.",
+          "backContent": "Sometimes you reply today.\nSometimes tomorrow.\nSometimes I just accept my fate.",
           "themeColor": "green"
         },
         {
@@ -1002,119 +1050,119 @@
           "number": "05",
           "emoji": "🌱",
           "frontLabel": "Independent",
-          "backContent": "Autonomous mode permanently enabled.",
+          "backContent": "You mostly just do your own thing.\nRespect.",
           "themeColor": "yellow"
         },
         {
           "id": 6,
           "number": "06",
-          "emoji": "🔋",
-          "frontLabel": "Low Initiation",
-          "backContent": "You don't run around starting conversations with everyone.",
-          "themeColor": "blue"
+          "emoji": "🌸",
+          "frontLabel": "Light Colours",
+          "backContent": "Green. Pink. Light colours.\nBasically your wardrobe setting 😂",
+          "themeColor": "pink"
         },
         {
           "id": 7,
           "number": "07",
           "emoji": "🎬",
-          "frontLabel": "The Reel Dept",
-          "backContent": "One more reel probably won't hurt.",
+          "frontLabel": "Reels",
+          "backContent": "One more reel probably won't hurt.\nFamous last words.",
           "themeColor": "peach"
         },
         {
           "id": 8,
           "number": "08",
           "emoji": "🍜",
-          "frontLabel": "Food Talks",
-          "backContent": "Food conversations always take top priority.",
+          "frontLabel": "Food",
+          "backContent": "Somehow food keeps entering our conversations 😂",
           "themeColor": "peach"
         },
         {
           "id": 9,
           "number": "09",
-          "emoji": "📚",
-          "frontLabel": "College & DSA",
-          "backContent": "Assignments, deadlines, and surviving college grind.",
+          "emoji": "💻",
+          "frontLabel": "College + DSA",
+          "backContent": "Assignments.\nDSA.\nCollege work.\nRepeat.",
           "themeColor": "green"
         },
         {
           "id": 10,
           "number": "10",
-          "emoji": "🎨",
-          "frontLabel": "Event Work",
-          "backContent": "Posters, design edits, and campus tasks.",
+          "emoji": "🎪",
+          "frontLabel": "Event Mode",
+          "backContent": "Posters, events, coordination and random college work.\nSomehow we're always doing something.",
           "themeColor": "pink"
         },
         {
           "id": 11,
           "number": "11",
-          "emoji": "🌙",
-          "frontLabel": "Night Pings",
-          "backContent": "Conversations that unexpectedly keep going.",
+          "emoji": "📸",
+          "frontLabel": "Childhood Archive",
+          "backContent": "Somehow I ended up seeing your 1st and 7th standard group photos 😭",
           "themeColor": "blue"
         },
         {
           "id": 12,
           "number": "12",
-          "emoji": "💬",
-          "frontLabel": "Peak Reaction",
-          "backContent": "“Ohh wow... Yep much better”",
+          "emoji": "😂",
+          "frontLabel": "“Ohh wow...”",
+          "backContent": "“Ohh wow... Yep much better.”\nPeak excitement.",
           "themeColor": "lavender"
         },
         {
           "id": 13,
           "number": "13",
-          "emoji": "✨",
-          "frontLabel": "Hidden Comedian",
-          "backContent": "Surprisingly funny once the shell cracks.",
+          "emoji": "✂️",
+          "frontLabel": "Craft Mode",
+          "backContent": "You actually like making handmade stuff.\nAnd you're pretty good at it too.",
           "themeColor": "yellow"
         },
         {
           "id": 14,
           "number": "14",
-          "emoji": "😆",
-          "frontLabel": "That Day",
-          "backContent": "Shared college chaos that made no sense 😂",
+          "emoji": "👀",
+          "frontLabel": "Hard to Read",
+          "backContent": "You're honestly not that easy to figure out 😂",
           "themeColor": "green"
         },
         {
           "id": 15,
           "number": "15",
-          "emoji": "🧃",
-          "frontLabel": "Randomness",
-          "backContent": "When the conversation randomly drifts into nonsense.",
+          "emoji": "🧩",
+          "frontLabel": "Ambivert.exe",
+          "backContent": "You said you're an ambivert.\nMakes sense tbh.",
           "themeColor": "peach"
         },
         {
           "id": 16,
           "number": "16",
-          "emoji": "🌸",
-          "frontLabel": "Small Moments",
-          "backContent": "Quiet everyday moments that stuck around.",
+          "emoji": "🌿",
+          "frontLabel": "Self-Control",
+          "backContent": "You seem to have quite a bit of it.\nI don't think you just do things because everyone else does.",
           "themeColor": "pink"
         },
         {
           "id": 17,
           "number": "17",
-          "emoji": "🧩",
-          "frontLabel": "Patience Test",
-          "backContent": "939 pieces of wildflowers waiting to be built.",
+          "emoji": "🎯",
+          "frontLabel": "18/09",
+          "backContent": "Started with me being shy.\nSomehow ended with us talking a lot 😂",
           "themeColor": "lavender"
         },
         {
           "id": 18,
           "number": "18",
-          "emoji": "🎀",
-          "frontLabel": "Birthday Law",
-          "backContent": "A proper celebration was non-negotiable.",
+          "emoji": "📱",
+          "frontLabel": "“Text me”",
+          "backContent": "“Text me once you reach home” 📱\nSmall thing.\nBut I remembered it.",
           "themeColor": "yellow"
         },
         {
           "id": 19,
           "number": "19",
           "emoji": "🎂",
-          "frontLabel": "Official 19",
-          "backContent": "19 looks good on you. Happy Birthday, Tanisha.",
+          "frontLabel": "Officially 19",
+          "backContent": "And somehow you're 19 now.\nHappy birthday, Tanisha 🌸",
           "themeColor": "pink",
           "isSpecial": true
         }
@@ -1122,7 +1170,7 @@
       "navigation": {
         "prevLabel": "Back to Chat Logs",
         "prevHref": "/chat",
-        "nextLabel": "Play Mini-Game →",
+        "nextLabel": "Okay, now play the stupid game →",
         "nextHref": "/game",
         "variant": "yellow"
       }
@@ -1139,8 +1187,28 @@
         }
       },
       "header": {
-        "title": "Whack-a-Tanisha!",
-        "subtitle": "Classic Carnival Edition • Whack 7 times to break the shell 🐚"
+        "title": "Whack-a-Tanisha",
+        "subtitle": "Okay... this was necessary 😂 • You said you're a robot. So naturally, I had to test the system."
+      },
+      "objective": {
+        "title": "GAME OBJECTIVE",
+        "rules": [
+          "Find Tanisha.",
+          "Tap before she disappears.",
+          "That's it.",
+          "Don't overthink it 😂"
+        ]
+      },
+      "gameTargets": {
+        "title": "Game targets",
+        "targets": [
+          "🤖 Robot Mode",
+          "🐢 Slow Loading",
+          "🎬 Reel Mode",
+          "😴 Sleepy Mode",
+          "🐚 Maximum Shell",
+          "🌸 Human Mode"
+        ]
       },
       "targetScore": 7,
       "totalHoles": 9,
@@ -1173,13 +1241,13 @@
         "BAM! 🎯"
       ],
       "winBanner": {
-        "title": "CARNIVAL CHAMPION! 🏆",
-        "description": "“My shell will break but it takes time.” — Officially Broken! 🎉"
+        "title": "Okay fine. You survived.",
+        "description": "Human mode successfully detected 😂"
       },
       "navigation": {
         "prevLabel": "Back to 19 Things",
         "prevHref": "/nineteen",
-        "nextLabel": "Flower Reveal →",
+        "nextLabel": "One last thing →",
         "nextHref": "/gift",
         "variant": "yellow"
       },
@@ -1196,7 +1264,7 @@
     "gift": {
       "badges": {
         "left": {
-          "emoji": "💐",
+          "emoji": "🌸",
           "text": "Chapter 08"
         },
         "right": {
@@ -1207,8 +1275,8 @@
       "title": "Wildflower Building Bouquet",
       "pieces": 939,
       "mainHeading": "One last thing...",
-      "tagline": "Real flowers don't last forever.",
-      "progressionTitle": "Botanical Progression",
+      "tagline": "Okay, so... I could've gone with something normal. But I wanted to give you something you can actually do something with.",
+      "progressionTitle": "The plan",
       "specimenTag": "SPECIMEN #939",
       "stagePrefix": "Stage",
       "stages": [
@@ -1216,31 +1284,31 @@
           "stage": 1,
           "emoji": "🌱",
           "label": "Seed",
-          "description": "Just an unbuilt box of bricks..."
+          "description": "Just an unopened box of bricks..."
         },
         {
           "stage": 2,
           "emoji": "🌿",
           "label": "Stem",
-          "description": "Sorting through bags 1 and 2..."
+          "description": "Okay, now we're actually building."
         },
         {
           "stage": 3,
-          "emoji": "🌼",
+          "emoji": "🌷",
           "label": "Bud",
-          "description": "Wait, is this piece upside down?"
+          "description": "Wait... is this piece upside down?"
         },
         {
           "stage": 4,
           "emoji": "🌸",
           "label": "Bloom",
-          "description": "Petals locking in firmly..."
+          "description": "Okayyy, it's starting to look like something."
         },
         {
           "stage": 5,
           "emoji": "💐",
           "label": "Bouquet",
-          "description": "A permanent wildflower garden that never wilts!"
+          "description": "Finally. You made it."
         }
       ],
       "hook": "So... I went with something that stays. 🌸",
@@ -1251,13 +1319,13 @@
         "botanical": "🌼 Botanical",
         "permanentBloom": "Permanent Bloom ✨"
       },
-      "punchline": "939 pieces of wildflowers to assemble.",
-      "warning": "Your patience is now officially being tested. 😂",
-      "subWarning": "(Never withers, never needs watering, only takes a weekend of assembly!)",
+      "punchline": "939 pieces. Yep. 939.",
+      "warning": "Your patience is now officially being tested 😂",
+      "subWarning": "Real flowers don't last forever. So I went with something that hopefully stays around a little longer. 🌸",
       "navigation": {
         "prevLabel": "Back to Mini-Game",
         "prevHref": "/game",
-        "nextLabel": "The final wish →",
+        "nextLabel": "Final wish →",
         "nextHref": "/birthday",
         "variant": "green"
       }
@@ -1280,12 +1348,16 @@
         "date": "SEPT 26, 2026"
       },
       "letter": {
-        "p1": "19 looks good on you. 🌸",
-        "p2": "Hope this year gives you plenty of good memories, good food, good people, and enough reasons to laugh at the most random things. 😂",
+        "p1": "19 looks good on you 🌸",
+        "p2": "I hope 19 gives you plenty of good memories, good food, good people and enough random things to laugh about 😂",
         "p3": "Keep being you.",
         "p4": "Even when you're in robot mode. 🤖",
         "p5": "Have a really good birthday, Tanisha.",
-        "signOff": "— Afsal"
+        "signOff": "— Afsal 🌸"
+      },
+      "oneLastThing": {
+        "title": "One last thing",
+        "body": "Thanks for being part of all these random little moments.\nNothing too serious.\nJust a lot of random conversations, reels, college stuff and memories I ended up remembering.\n\nAnyway...\nHave the best day. 🎂🌸"
       },
       "actions": {
         "celebrateAgain": "Celebrate Again 🎉",

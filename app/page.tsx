@@ -145,7 +145,7 @@ export default function HomePage() {
             />
           </div>
 
-          <p className="mt-1 max-w-xs text-xs text-pastel-charcoal/75 leading-relaxed px-4">
+          <p className="mt-1 max-w-xs text-xs text-pastel-charcoal/75 leading-relaxed px-4 whitespace-pre-line">
             {gateData.hero.subtext}
           </p>
         </div>

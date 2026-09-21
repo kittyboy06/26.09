@@ -80,17 +80,19 @@ export default function NotePage() {
               {noteData.memo.turn}
             </p>
 
-            <div className="pt-2 border-t border-amber-200/60 flex items-center justify-between">
-              <div>
+            <div className="pt-2 border-t border-amber-200/60 flex flex-col gap-2">
+              <div className="flex items-center justify-between">
                 <span className="font-handwriting text-2xl font-bold text-pastel-charcoal/90">
                   {noteData.memo.closingBold}
                 </span>
-                <p className="text-[10px] text-pastel-muted italic">{noteData.memo.closingCare}</p>
+                <div className="flex items-center gap-2">
+                  <CollectibleSticker id="tanisha_smile" size={54} rotation={-4} />
+                  <Heart className="h-4 w-4 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <CollectibleSticker id="tanisha_smile" size={54} rotation={-4} />
-                <Heart className="h-4 w-4 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
-              </div>
+              <p className="whitespace-pre-line text-xs font-handwriting font-bold text-pastel-charcoal/80 leading-relaxed">
+                {noteData.memo.closingCare}
+              </p>
             </div>
           </div>
         </div>
@@ -126,6 +128,32 @@ export default function NotePage() {
             />
             <div className="absolute -bottom-2.5 -right-2 z-20 rotate-3 rounded-lg bg-pastel-pink/90 px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-pink-dark/40">
               {noteData.polaroidKeepsake.subNote}
+            </div>
+          </div>
+        )}
+
+        {/* A Little Memory Keepsake Card (18/09 Hackathon) */}
+        {(noteData as any).hackathonMemory && (
+          <div className="relative rounded-3xl bg-gradient-to-br from-pastel-yellow/60 via-white to-pastel-pink/30 p-5 shadow-scrapbook border border-amber-200/80 text-left">
+            <span className="absolute -top-3 left-6 h-5 w-20 bg-pastel-yellow/80 border border-amber-300/60 rounded-xs -rotate-2" />
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xl select-none">{(noteData as any).hackathonMemory.sticker}</span>
+                <h4 className="font-display text-sm font-bold text-pastel-charcoal">
+                  {(noteData as any).hackathonMemory.title}
+                </h4>
+              </div>
+              <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-mono font-bold text-amber-900 border border-amber-300/50">
+                {(noteData as any).hackathonMemory.tag}
+              </span>
+            </div>
+            <p className="whitespace-pre-line font-handwriting text-lg text-pastel-charcoal/90 leading-relaxed my-2">
+              {(noteData as any).hackathonMemory.story}
+            </p>
+            <div className="pt-2 border-t border-amber-200/50 flex justify-end">
+              <span className="text-[10px] font-mono font-semibold text-pastel-muted">
+                {(noteData as any).hackathonMemory.subNote}
+              </span>
             </div>
           </div>
         )}
