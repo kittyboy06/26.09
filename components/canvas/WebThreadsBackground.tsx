@@ -71,51 +71,78 @@ export function WebThreadsBackground({
       width: number;
     }
 
-    const strands: Strand[] = Array.from({ length: strandCount }, (_, i) => ({
+    // Responsive strand count: 6 for mobile, up to strandCount for desktop
+    const isMobile = width < 640;
+    const effectiveStrandCount = isMobile ? Math.min(6, strandCount) : strandCount;
+    const waveStep = isMobile ? 55 : 40;
+
+    const strands: Strand[] = Array.from({ length: effectiveStrandCount }, (_, i) => ({
       x: Math.random() * width,
-      y: (height / strandCount) * i + Math.random() * 40,
+      y: (height / effectiveStrandCount) * i + Math.random() * 40,
       len: width * (0.6 + Math.random() * 0.5),
       angle: (Math.random() - 0.5) * 0.4,
       speed: 0.003 + Math.random() * 0.003,
       color: colors[i % colors.length],
       phase: Math.random() * Math.PI * 2,
       freq: 0.0015 + Math.random() * 0.0015,
-      width: 2 + Math.random() * 2.5,
+      width: 2 + Math.random() * 2,
     }));
 
+    // Respect user's reduced motion preference
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     let time = 0;
+    let lastFrameTime = 0;
+    const targetFpsInterval = 1000 / 30; // 30 FPS throttle prevents 120Hz mobile GPU overheating & lag
 
-    const render = () => {
-      if (isVisibleRef.current) {
-        ctx.clearRect(0, 0, width, height);
+    const drawFrame = () => {
+      ctx.clearRect(0, 0, width, height);
+      time += 1;
 
-        time += 1;
+      strands.forEach((s) => {
+        ctx.beginPath();
+        ctx.lineWidth = s.width;
+        ctx.strokeStyle = s.color;
+        ctx.lineCap = "round";
 
-        strands.forEach((s) => {
-          ctx.beginPath();
-          ctx.lineWidth = s.width;
-          ctx.strokeStyle = s.color;
-          ctx.lineCap = "round";
+        const startX = -100;
+        const endX = width + 100;
 
-          const startX = -100;
-          const endX = width + 100;
-          const step = 40;
+        ctx.moveTo(startX, s.y + Math.sin(startX * s.freq + time * s.speed + s.phase) * 35);
 
-          ctx.moveTo(startX, s.y + Math.sin(startX * s.freq + time * s.speed + s.phase) * 35);
+        for (let x = startX; x <= endX; x += waveStep) {
+          const waveY =
+            s.y +
+            Math.sin(x * s.freq + time * s.speed + s.phase) * 35 +
+            Math.cos(x * 0.002 + time * 0.002) * 20;
+          ctx.lineTo(x, waveY);
+        }
 
-          for (let x = startX; x <= endX; x += step) {
-            const waveY =
-              s.y +
-              Math.sin(x * s.freq + time * s.speed + s.phase) * 35 +
-              Math.cos(x * 0.002 + time * 0.002) * 20;
-            ctx.lineTo(x, waveY);
-          }
+        ctx.stroke();
+      });
+    };
 
-          ctx.stroke();
-        });
-      }
+    if (prefersReducedMotion) {
+      drawFrame();
+      return () => {
+        observer.disconnect();
+        window.removeEventListener("resize", handleResize);
+        document.removeEventListener("visibilitychange", handleVisibilityChange);
+      };
+    }
 
+    const render = (timestamp: number) => {
       animFrameRef.current = requestAnimationFrame(render);
+
+      if (!isVisibleRef.current) return;
+
+      const elapsed = timestamp - lastFrameTime;
+      if (elapsed < targetFpsInterval) return;
+      lastFrameTime = timestamp - (elapsed % targetFpsInterval);
+
+      drawFrame();
     };
 
     animFrameRef.current = requestAnimationFrame(render);

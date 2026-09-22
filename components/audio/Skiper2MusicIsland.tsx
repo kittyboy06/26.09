@@ -76,13 +76,12 @@ export function Skiper2MusicIsland() {
             <motion.div
               key="compact"
               layout
-              initial={{ opacity: 0, scale: 0.94, filter: "blur(2px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.94, filter: "blur(2px)" }}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
               transition={{
                 opacity: { duration: 0.18, ease: [0.32, 0.72, 0, 1] },
                 scale: { duration: 0.18, ease: [0.32, 0.72, 0, 1] },
-                filter: { duration: 0.18 },
                 layout: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
               }}
               className="flex items-center gap-2.5 px-3 py-1.5 h-11 whitespace-nowrap"
@@ -155,13 +154,12 @@ export function Skiper2MusicIsland() {
             <motion.div
               key="expanded"
               layout
-              initial={{ opacity: 0, scale: 0.96, filter: "blur(3px)" }}
-              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-              exit={{ opacity: 0, scale: 0.96, filter: "blur(3px)" }}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
               transition={{
                 opacity: { duration: 0.22, ease: [0.32, 0.72, 0, 1] },
                 scale: { duration: 0.22, ease: [0.32, 0.72, 0, 1] },
-                filter: { duration: 0.22 },
                 layout: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
               }}
               className="w-64 sm:w-72 p-4 flex flex-col gap-3 text-left"

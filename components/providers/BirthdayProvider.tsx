@@ -117,7 +117,7 @@ export function BirthdayProvider({ children }: { children: ReactNode }) {
         src={site.audioTrack}
         loop
         playsInline
-        preload="auto"
+        preload="none"
         onError={() => setHasAudioError(true)}
       />
       {shouldRenderChildren ? children : null}

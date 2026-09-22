@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Caveat, Fredoka, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { BirthdayProvider } from "@/components/providers/BirthdayProvider";
 import { WebThreadsBackground } from "@/components/canvas/WebThreadsBackground";
@@ -6,7 +7,29 @@ import { ChapterProgress } from "@/components/layout/ChapterProgress";
 import { Skiper2MusicIsland } from "@/components/audio/Skiper2MusicIsland";
 import { TanishaCompanion } from "@/components/passport/TanishaCompanion";
 import { StickerToastContainer } from "@/components/stickers/StickerToastContainer";
+import { RouteTransition } from "@/components/layout/RouteTransition";
 import { site } from "@/lib/appData";
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-handwriting",
+  display: "swap",
+});
+
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: site.meta.title,
@@ -36,8 +59,6 @@ export const viewport: Viewport = {
   themeColor: "#FFFDF5",
 };
 
-import { RouteTransition } from "@/components/layout/RouteTransition";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -45,7 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-[100dvh] bg-pastel-cream text-pastel-charcoal antialiased overflow-x-hidden">
+      <body className={`${caveat.variable} ${fredoka.variable} ${plusJakartaSans.variable} min-h-[100dvh] bg-pastel-cream text-pastel-charcoal antialiased overflow-x-hidden`}>
         <BirthdayProvider>
           {/* Global Web Threads canvas background */}
           <WebThreadsBackground opacity={0.55} strandCount={14} />
