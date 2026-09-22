@@ -386,7 +386,12 @@
       "readyInfo": "Soundtrack curated for Tanisha's 19th",
       "missingInfo": "Audio ready when MP3 is placed in public/assets/music/",
       "pauseAction": "Tap to Pause",
-      "playAction": "Tap to Play"
+      "playAction": "Tap to Play",
+      "soundtrackTitle": "Tanisha's 19th Soundtrack",
+      "collapseLabel": "Collapse music player",
+      "expandLabel": "Expand music player",
+      "playingStatus": "Playing Birthday Instrumental ✨",
+      "pausedStatus": "Music Paused ⏸️"
     },
     "passport": {
       "headerBadge": "OFFICIAL BIRTHDAY PASSPORT",

@@ -1,16 +1,43 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Volume2, VolumeX, Music, Sparkles } from "lucide-react";
+import { Volume2, VolumeX, Sparkles, Play, Pause, ChevronUp, ChevronDown } from "lucide-react";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
-
 import { common } from "@/lib/appData";
 
 export function Skiper2MusicIsland() {
   const { isUnlocked, isPlaying, toggleMusic, hasAudioError } = useBirthday();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const audioText = common.audioIsland;
+
+  // Handle outside click & escape key to collapse
+  useEffect(() => {
+    if (!isExpanded) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsExpanded(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsExpanded(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isExpanded]);
 
   // If not unlocked yet, do not display the floating island
   if (!isUnlocked) {
@@ -19,7 +46,8 @@ export function Skiper2MusicIsland() {
 
   return (
     <div
-      className="fixed bottom-5 right-4 z-50 flex flex-col items-end pointer-events-auto select-none"
+      ref={containerRef}
+      className="fixed bottom-5 right-4 z-50 flex flex-col items-end pointer-events-auto select-none max-w-[calc(100vw-2rem)]"
       style={{
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
         paddingRight: "env(safe-area-inset-right, 0px)",
@@ -27,64 +55,175 @@ export function Skiper2MusicIsland() {
     >
       <motion.div
         layout
-        transition={{ type: "spring", stiffness: 450, damping: 30 }}
-        className="overflow-hidden rounded-full border border-pastel-pink/60 bg-white/95 shadow-scrapbook backdrop-blur-md"
+        transition={{ type: "spring", stiffness: 420, damping: 30 }}
+        className={`overflow-hidden border border-pastel-pink/60 bg-white/95 shadow-scrapbook backdrop-blur-md transition-shadow duration-300 ${
+          isExpanded ? "rounded-3xl shadow-scrapbook-lg" : "rounded-full"
+        }`}
       >
-        <div className="flex items-center gap-2 px-3.5 py-2">
-          {/* Animated sound wave bars when playing */}
-          <button
-            onClick={toggleMusic}
-            aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
-            className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink"
-          >
-            {isPlaying ? (
-              <div className="flex items-center gap-0.5 h-4 w-4 justify-center">
-                <span className="w-1 bg-pastel-pink-dark rounded-full h-3 animate-[waveBar_0.8s_ease-in-out_infinite_alternate]" />
-                <span className="w-1 bg-pastel-yellow-dark rounded-full h-4 animate-[waveBar_1.1s_ease-in-out_infinite_alternate_0.2s]" />
-                <span className="w-1 bg-pastel-green-dark rounded-full h-2.5 animate-[waveBar_0.9s_ease-in-out_infinite_alternate_0.4s]" />
-              </div>
-            ) : hasAudioError ? (
-              <VolumeX className="h-4 w-4 text-pastel-muted" />
-            ) : (
-              <Volume2 className="h-4 w-4 text-pastel-muted" />
-            )}
-
-            <span className="text-xs font-medium text-pastel-charcoal">
-              {isPlaying ? audioText.playingLabel : hasAudioError ? audioText.mutedLabel : audioText.pausedLabel}
-            </span>
-          </button>
-
-          {/* Quick info toggle */}
-          <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="rounded-full p-1 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors"
-            aria-label="Expand music details"
-          >
-            <Music className="h-3.5 w-3.5" />
-          </button>
-        </div>
-
-        {/* Expanded mini-drawer */}
-        <AnimatePresence>
-          {isExpanded && (
+        <AnimatePresence mode="wait" initial={false}>
+          {!isExpanded ? (
+            /* Compact Pill State */
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="border-t border-pastel-pink/30 bg-pastel-cream/60 px-4 py-2 text-center"
+              key="compact"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              className="flex items-center gap-2.5 px-3 py-1.5 h-11"
             >
-              <p className="text-[11px] text-pastel-charcoal/80 flex items-center justify-center gap-1">
-                <Sparkles className="h-3 w-3 text-pastel-yellow-dark" />
-                {hasAudioError
-                  ? audioText.missingInfo
-                  : audioText.readyInfo}
-              </p>
+              {/* Mini Rotating Pastel Vinyl Record */}
               <button
                 onClick={toggleMusic}
-                className="mt-1.5 inline-block rounded-full bg-pastel-pink/40 px-3 py-1 text-[11px] font-semibold text-pastel-charcoal hover:bg-pastel-pink/60 transition-colors"
+                aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
+                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink rounded-full group"
               >
-                {isPlaying ? audioText.pauseAction : audioText.playAction}
+                <div className="relative flex items-center justify-center h-6 w-6 rounded-full bg-[#202026] shadow-sm border border-neutral-700/80 shrink-0 cursor-pointer group-hover:scale-105 transition-transform">
+                  {/* Outer & Inner Vinyl Grooves */}
+                  <div className="absolute inset-[3px] rounded-full border border-white/10" />
+                  <div className="absolute inset-[6px] rounded-full border border-white/10" />
+                  {/* Center Pastel Pink Hub */}
+                  <motion.div
+                    animate={{ rotate: isPlaying ? 360 : 0 }}
+                    transition={{
+                      repeat: isPlaying ? Infinity : 0,
+                      duration: 3.5,
+                      ease: "linear",
+                    }}
+                    className="relative h-2.5 w-2.5 rounded-full bg-pastel-pink flex items-center justify-center shadow-xs"
+                  >
+                    {/* Spindle hole */}
+                    <div className="h-0.5 w-0.5 rounded-full bg-neutral-900" />
+                  </motion.div>
+                </div>
+              </button>
+
+              {/* Dynamic Sound Wavebars & Status Label */}
+              <button
+                onClick={toggleMusic}
+                aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
+                className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink text-left"
+              >
+                {isPlaying ? (
+                  <div className="flex items-center gap-0.5 h-4 w-4 justify-center" aria-hidden="true">
+                    <span className="w-1 bg-pastel-pink-dark rounded-full h-3 animate-[waveBar_0.8s_ease-in-out_infinite_alternate]" />
+                    <span className="w-1 bg-pastel-yellow-dark rounded-full h-4 animate-[waveBar_1.1s_ease-in-out_infinite_alternate_0.2s]" />
+                    <span className="w-1 bg-pastel-green-dark rounded-full h-2.5 animate-[waveBar_0.9s_ease-in-out_infinite_alternate_0.4s]" />
+                    <span className="w-1 bg-pastel-peach-dark rounded-full h-3.5 animate-[waveBar_1.2s_ease-in-out_infinite_alternate_0.15s]" />
+                  </div>
+                ) : hasAudioError ? (
+                  <VolumeX className="h-4 w-4 text-pastel-muted shrink-0" />
+                ) : (
+                  <Volume2 className="h-4 w-4 text-pastel-muted shrink-0" />
+                )}
+
+                <span className="text-xs font-semibold text-pastel-charcoal tracking-wide whitespace-nowrap">
+                  {isPlaying
+                    ? audioText.playingLabel
+                    : hasAudioError
+                    ? audioText.mutedLabel
+                    : audioText.pausedLabel}
+                </span>
+              </button>
+
+              {/* Expand Toggle */}
+              <button
+                onClick={() => setIsExpanded(true)}
+                className="rounded-full p-1 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink ml-0.5"
+                aria-label={audioText.expandLabel}
+              >
+                <ChevronUp className="h-3.5 w-3.5" />
+              </button>
+            </motion.div>
+          ) : (
+            /* Expanded Scrapbook Mini-Card */
+            <motion.div
+              key="expanded"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="w-64 sm:w-72 p-4 flex flex-col gap-3 text-left"
+            >
+              {/* Header: Rotating Vinyl Thumbnail + Title + Close Chevron */}
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  {/* Vinyl Icon Badge */}
+                  <div className="relative flex items-center justify-center h-8 w-8 rounded-full bg-[#1e1e24] shadow-sm border border-neutral-700/70 shrink-0">
+                    <div className="absolute inset-[4px] rounded-full border border-white/10" />
+                    <div className="absolute inset-[7px] rounded-full border border-white/10" />
+                    <motion.div
+                      animate={{ rotate: isPlaying ? 360 : 0 }}
+                      transition={{
+                        repeat: isPlaying ? Infinity : 0,
+                        duration: 3.5,
+                        ease: "linear",
+                      }}
+                      className="relative h-3 w-3 rounded-full bg-pastel-pink flex items-center justify-center shadow-xs"
+                    >
+                      <div className="h-0.5 w-0.5 rounded-full bg-neutral-900" />
+                    </motion.div>
+                  </div>
+
+                  {/* Title & Live Status */}
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-[13px] font-bold text-pastel-charcoal font-display tracking-tight truncate">
+                      {audioText.soundtrackTitle}
+                    </h4>
+                    <div className="flex items-center gap-1.5 mt-0.5">
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full shrink-0 ${
+                          isPlaying
+                            ? "bg-emerald-500 animate-pulse"
+                            : hasAudioError
+                            ? "bg-rose-400"
+                            : "bg-pastel-muted/60"
+                        }`}
+                      />
+                      <span className="text-[10px] font-medium text-pastel-muted truncate">
+                        {isPlaying
+                          ? audioText.playingStatus
+                          : hasAudioError
+                          ? audioText.mutedLabel
+                          : audioText.pausedStatus}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Minimize Button */}
+                <button
+                  onClick={() => setIsExpanded(false)}
+                  className="rounded-full p-1.5 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink shrink-0"
+                  aria-label={audioText.collapseLabel}
+                >
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </div>
+
+              {/* Scrapbook Liner Note / Hint */}
+              <div className="rounded-xl bg-pastel-cream/70 border border-pastel-yellow/50 p-2.5 flex items-start gap-2 text-[11px] leading-snug text-pastel-charcoal/85">
+                <Sparkles className="h-3.5 w-3.5 text-pastel-yellow-dark shrink-0 mt-0.5" />
+                <span>
+                  {hasAudioError ? audioText.missingInfo : audioText.readyInfo}
+                </span>
+              </div>
+
+              {/* Tactile Play/Pause Specular Button */}
+              <button
+                onClick={toggleMusic}
+                className="w-full py-2 px-4 rounded-full font-display font-medium text-xs flex items-center justify-center gap-2 bg-gradient-to-r from-pastel-pink via-pastel-peach/90 to-pastel-yellow text-pastel-charcoal shadow-specular hover:brightness-105 active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink cursor-pointer"
+              >
+                {isPlaying ? (
+                  <>
+                    <Pause className="h-3.5 w-3.5 fill-pastel-charcoal" />
+                    <span>{audioText.pauseAction}</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="h-3.5 w-3.5 fill-pastel-charcoal ml-0.5" />
+                    <span>{audioText.playAction}</span>
+                  </>
+                )}
               </button>
             </motion.div>
           )}
