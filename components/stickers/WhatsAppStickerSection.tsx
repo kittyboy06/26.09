@@ -7,15 +7,13 @@ import {
   Download,
   Share2,
   Sparkles,
-  HelpCircle,
+  MessageCircle,
   X,
-  ChevronDown,
-  ChevronUp,
   Gift,
   Lock,
 } from "lucide-react";
 import {
-  ALL_18_WHATSAPP_STICKERS,
+  ALL_14_WHATSAPP_STICKERS,
   STICKER_CREATOR,
   WhatsAppStickerItem,
 } from "@/data/whatsappStickers";
@@ -31,7 +29,6 @@ export function WhatsAppStickerSection({
 }: WhatsAppStickerSectionProps) {
   const [selectedSticker, setSelectedSticker] =
     useState<WhatsAppStickerItem | null>(null);
-  const [showHowTo, setShowHowTo] = useState<boolean>(false);
   const [shareStatus, setShareStatus] = useState<string>("");
 
   const handleShareOrDownload = async (sticker: WhatsAppStickerItem) => {
@@ -67,7 +64,7 @@ export function WhatsAppStickerSection({
   };
 
   // If quest is still in progress, render the Grand Quest Reward Teaser
-  if (!isComplete) {
+  if (!isComplete && totalCollected < 12) {
     return (
       <div className="w-full bg-gradient-to-br from-[#FFF9E6] via-[#FFF3D6] to-[#FFE8E8] rounded-2xl p-3.5 border-2 border-amber-300 shadow-sm flex flex-col items-center text-center my-2 select-none">
         <div className="inline-flex items-center gap-1.5 bg-amber-200/80 px-2.5 py-0.5 rounded-full border border-amber-400/80 text-[9px] font-mono font-bold tracking-widest text-amber-900 uppercase mb-1.5">
@@ -83,35 +80,24 @@ export function WhatsAppStickerSection({
           Created by <span className="underline decoration-amber-500 font-bold">{STICKER_CREATOR}</span>
         </p>
 
-        <p className="text-[10.5px] text-[#786144] leading-relaxed mt-1 px-1">
-          Collect all 16 mood stickers across the story to unlock the complete WhatsApp Sticker Pack (+ 2 Surprise Bonus Whack-a-Mole Stickers = 18 stickers!) created by <strong>{STICKER_CREATOR}</strong>!
+        <p className="text-[11px] text-[#786144] font-medium mt-1 px-1">
+          12 + 2 bonus stickers
         </p>
 
-        {/* Progress Bar & 2 Bonus Preview Badges */}
+        {/* Progress Bar */}
         <div className="w-full mt-2.5 pt-2 border-t border-amber-300/60 flex flex-col items-center gap-1.5">
           <div className="flex items-center justify-between w-full text-[10px] font-mono font-bold text-amber-900 px-1">
             <span>Sticker Quest Progress</span>
-            <span>{totalCollected} / 16 Collected</span>
+            <span>{Math.min(12, totalCollected)} / 12 Collected</span>
           </div>
 
           <div className="w-full bg-amber-200/70 rounded-full h-2 overflow-hidden p-0.5 border border-amber-300">
             <div
               className="bg-gradient-to-r from-amber-400 via-rose-400 to-emerald-500 h-full rounded-full transition-all duration-500"
               style={{
-                width: `${Math.min(100, (totalCollected / 16) * 100)}%`,
+                width: `${Math.min(100, (totalCollected / 12) * 100)}%`,
               }}
             />
-          </div>
-
-          <div className="flex items-center justify-center gap-2 mt-1 w-full text-[9px] font-medium text-amber-800">
-            <span className="inline-flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-md border border-amber-300/80">
-              <Lock className="h-2.5 w-2.5 text-amber-600" />
-              <span>+ Bonus: Peekaboo • {STICKER_CREATOR} 👀</span>
-            </span>
-            <span className="inline-flex items-center gap-1 bg-white/80 px-2 py-0.5 rounded-md border border-amber-300/80">
-              <Lock className="h-2.5 w-2.5 text-amber-600" />
-              <span>+ Bonus: Bonked • {STICKER_CREATOR} 😵</span>
-            </span>
           </div>
         </div>
       </div>
@@ -125,14 +111,14 @@ export function WhatsAppStickerSection({
       <div className="w-full bg-gradient-to-r from-emerald-50 via-green-50 to-teal-50 rounded-2xl p-3 border-2 border-emerald-400/90 shadow-sm text-center mb-2.5 relative overflow-hidden">
         <div className="inline-flex items-center gap-1.5 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300 text-[9px] font-mono font-bold tracking-widest text-emerald-800 uppercase mb-1">
           <Sparkles className="h-3 w-3 text-emerald-600 animate-pulse" />
-          <span>★ 18 WHATSAPP STICKERS READY ★</span>
+          <span>★ 14 WHATSAPP STICKERS READY ★</span>
         </div>
 
         <h4 className="font-display text-sm sm:text-base font-black text-emerald-950">
           Tanisha&apos;s WhatsApp Sticker Pack! 🌸
         </h4>
         <p className="text-[10px] text-emerald-800/90 font-medium mt-0.5">
-          16 Story Stickers + 2 Bonus Whack-a-Mole Stickers • Created by{" "}
+          12 + 2 Bonus Stickers • Created by{" "}
           <strong className="text-emerald-950">{STICKER_CREATOR}</strong>
         </p>
 
@@ -144,91 +130,26 @@ export function WhatsAppStickerSection({
             className="w-full py-2.5 px-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-teal-600 text-white font-display font-bold text-xs shadow-md hover:shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-all text-center"
           >
             <Download className="h-3.5 w-3.5" />
-            <span>Download All 18 Stickers (.ZIP)</span>
+            <span>Download All 14 Stickers (.ZIP)</span>
           </a>
         </div>
 
-        {/* How To Add Guide Toggle */}
-        <button
-          type="button"
-          onClick={() => setShowHowTo(!showHowTo)}
-          className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold text-emerald-900/80 hover:text-emerald-950 underline underline-offset-2 transition-colors"
-        >
-          <HelpCircle className="h-3 w-3 text-emerald-700" />
-          <span>How to add stickers to WhatsApp (Quick Guide)</span>
-          {showHowTo ? (
-            <ChevronUp className="h-3 w-3" />
-          ) : (
-            <ChevronDown className="h-3 w-3" />
-          )}
-        </button>
-
-        {/* Collapsible WhatsApp Step-by-Step Instructions */}
-        <AnimatePresence>
-          {showHowTo && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden mt-2 pt-2 border-t border-emerald-200/80 text-left text-[10px] text-emerald-900 space-y-2 bg-white/70 rounded-xl p-2.5 border border-emerald-300/60"
-            >
-              <div>
-                <p className="font-bold flex items-center gap-1 text-emerald-950">
-                  <span>🍎</span>
-                  <span>iPhone (iOS 16+):</span>
-                </p>
-                <ol className="list-decimal list-inside pl-1 text-[9.5px] text-emerald-800/90 leading-relaxed">
-                  <li>Download or save any sticker image to your Photos app.</li>
-                  <li>In Photos, press &amp; hold Tanisha until it lifts as a sticker.</li>
-                  <li>
-                    Drag it straight into WhatsApp, or tap &quot;+&quot; (Create
-                    Sticker) in WhatsApp!
-                  </li>
-                </ol>
-              </div>
-
-              <div>
-                <p className="font-bold flex items-center gap-1 text-emerald-950">
-                  <span>🤖</span>
-                  <span>Android &amp; WhatsApp Web:</span>
-                </p>
-                <ol className="list-decimal list-inside pl-1 text-[9.5px] text-emerald-800/90 leading-relaxed">
-                  <li>Download the .ZIP pack or individual PNG/WebP stickers.</li>
-                  <li>
-                    Open any chat in WhatsApp -&gt; tap Sticker icon -&gt; tap
-                    &quot;+&quot; (Create).
-                  </li>
-                  <li>
-                    Select the sticker from your gallery or downloaded files!
-                  </li>
-                </ol>
-              </div>
-
-              <div>
-                <p className="font-bold flex items-center gap-1 text-emerald-950">
-                  <span>📦</span>
-                  <span>Sticker Apps (Sticker.ly / Sticker Maker):</span>
-                </p>
-                <p className="pl-1 text-[9.5px] text-emerald-800/90 leading-relaxed">
-                  Open Sticker Maker, create a pack named &quot;Tanisha 19&quot;
-                  with author &quot;{STICKER_CREATOR}&quot;, add these PNG/WebP
-                  stickers, and tap &quot;Add to WhatsApp&quot;!
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Simple note instead of complicated instructions */}
+        <div className="mt-2.5 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-100/90 border border-emerald-300/80 text-emerald-950 font-display font-bold text-xs shadow-2xs">
+          <MessageCircle className="h-3.5 w-3.5 text-emerald-700" />
+          <span>Ask Afsal for the stickers to add them</span>
+        </div>
       </div>
 
-      {/* 18-Sticker Showcase Grid */}
+      {/* 14-Sticker Showcase Grid */}
       <div className="w-full">
         <div className="flex items-center justify-between px-1 mb-1.5 text-[10px] font-bold text-[#6D5438]">
           <span>Tap any sticker to inspect or share:</span>
-          <span className="text-emerald-700 font-mono">18 / 18 Ready</span>
+          <span className="text-emerald-700 font-mono">14 / 14 Ready</span>
         </div>
 
-        <div className="grid grid-cols-6 gap-1 max-h-[175px] overflow-y-auto p-1.5 bg-white/75 rounded-2xl border border-[#D5C29E] shadow-inner custom-chat-scroll">
-          {ALL_18_WHATSAPP_STICKERS.map((sticker) => (
+        <div className="grid grid-cols-7 gap-1 max-h-[175px] overflow-y-auto p-1.5 bg-white/75 rounded-2xl border border-[#D5C29E] shadow-inner custom-chat-scroll">
+          {ALL_14_WHATSAPP_STICKERS.map((sticker) => (
             <button
               key={sticker.id}
               type="button"
@@ -248,12 +169,6 @@ export function WhatsAppStickerSection({
                   className="object-contain"
                 />
               </div>
-
-              {sticker.isBonus && (
-                <span className="absolute -top-1 -right-1 bg-amber-500 text-white text-[6px] font-black px-1 rounded-full shadow-2xs leading-none py-0.5">
-                  ★
-                </span>
-              )}
 
               {/* Unique Sticker Name in grid */}
               <span className="text-[6.5px] font-bold text-stone-700 font-sans truncate w-full text-center leading-none mt-0.5 mb-0.5">
@@ -305,12 +220,6 @@ export function WhatsAppStickerSection({
                   {selectedSticker.creator}
                 </span>
               </div>
-
-              {selectedSticker.isBonus && (
-                <span className="mt-1.5 inline-block text-[8px] font-mono font-bold text-amber-400 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-500/50">
-                  {selectedSticker.badge || "★ BONUS WHACK-A-MOLE"}
-                </span>
-              )}
 
               {/* Personality quote */}
               <p className="text-[10px] text-[#aebac1] font-medium mt-1.5 line-clamp-1 italic">

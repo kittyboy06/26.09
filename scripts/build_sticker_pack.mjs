@@ -127,46 +127,6 @@ export const STICKER_DEFINITIONS = [
     isBonus: false,
   },
   {
-    id: "tanisha_heart",
-    file: "tanisha_heart.png",
-    name: "Heart Eyes",
-    creator: STICKER_CREATOR,
-    tagline: "Pure adoration & love",
-    quote: "You have my whole heart! 🌸",
-    emoji: "💖",
-    isBonus: false,
-  },
-  {
-    id: "tanisha_sad",
-    file: "tanisha_sad.png",
-    name: "Sadge",
-    creator: STICKER_CREATOR,
-    tagline: "Oscar-worthy dramatic tears",
-    quote: "The world is so cruel... why did the boba finish?",
-    emoji: "🥺",
-    isBonus: false,
-  },
-  {
-    id: "tanisha_laugh",
-    file: "tanisha_laugh.png",
-    name: "Hehehe",
-    creator: STICKER_CREATOR,
-    tagline: "Warm birthday candle chuckles",
-    quote: "Hehehe, okay that was actually really sweet.",
-    emoji: "🤭",
-    isBonus: false,
-  },
-  {
-    id: "tanisha_laugh_2",
-    file: "tanisha_laugh_2.png",
-    name: "LMAO",
-    creator: STICKER_CREATOR,
-    tagline: "Wheezing tears of pure joy",
-    quote: "I CANNOT BREATHE HELP LMAOOO 😂",
-    emoji: "🤣",
-    isBonus: false,
-  },
-  {
     id: "tanisha_whack_idle",
     file: "tanisha_whack_idle.png",
     name: "Peekaboo",
@@ -189,7 +149,7 @@ export const STICKER_DEFINITIONS = [
 ];
 
 async function buildPack() {
-  console.log('Building WhatsApp sticker pack with author "Kittyboy06"...');
+  console.log('Building WhatsApp sticker pack (12 + 2 bonus stickers) with author "Kittyboy06"...');
   const webpDir = path.resolve('public/assets/stickers/webp');
   if (!fs.existsSync(webpDir)) {
     fs.mkdirSync(webpDir, { recursive: true });
@@ -223,8 +183,6 @@ async function buildPack() {
     pngFolder.file(pngFilename, pngBuffer);
 
     // 2. Generate official WhatsApp WebP with EXIF metadata
-    // sticker-pack-name = Unique Name (e.g. "Heyy")
-    // sticker-pack-publisher = "Kittyboy06"
     const sticker = new Sticker(pngPath, {
       pack: s.name,
       author: s.creator,
@@ -288,7 +246,7 @@ async function buildPack() {
         creator: STICKER_CREATOR,
         totalStickers: STICKER_DEFINITIONS.length,
         description:
-          "Official 18-sticker WhatsApp pack for Tanisha's 19th Birthday. Each sticker features a unique name and creator attribution to Kittyboy06.",
+          "Official 14-sticker WhatsApp pack (12 + 2 bonus stickers) for Tanisha's 19th Birthday. Each sticker features a unique name and creator attribution to Kittyboy06.",
         stickers: stickersMetaList,
       },
       null,
@@ -300,18 +258,16 @@ async function buildPack() {
   const stickerListText = stickersMetaList
     .map(
       (m) =>
-        `  ${String(m.number).padStart(2, ' ')}. ${m.displayLabel}${
-          m.isBonus ? ' (★ Bonus Whack-a-Mole)' : ''
-        } - "${m.quote}"`
+        `  ${String(m.number).padStart(2, ' ')}. ${m.displayLabel} - "${m.quote}"`
     )
     .join('\n');
 
   const instructions = `🌸 Tanisha's 19th Birthday Official WhatsApp Sticker Pack 🌸
 Creator / Author: ${STICKER_CREATOR}
-Total Stickers: 18 (16 Story Quest Stickers + 2 Bonus Whack-a-Mole Stickers)
+Total Stickers: 14 (12 + 2 Bonus Stickers)
 
-EACH STICKER IN THIS PACK:
-==========================
+STICKER LIST:
+=============
 ${stickerListText}
 
 HOW TO ADD TO WHATSAPP:
@@ -358,7 +314,6 @@ Crafted with love by ${STICKER_CREATOR}
   console.log(
     `✅ Successfully generated: ${outPath} (${(buffer.length / 1024 / 1024).toFixed(2)} MB)`
   );
-  console.log(`✅ Generated 18 WebP stickers with embedded EXIF metadata.`);
 }
 
 buildPack().catch(console.error);
