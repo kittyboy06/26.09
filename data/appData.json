@@ -846,9 +846,10 @@
           "sticker": "🎬",
           "rotation": 1.2,
           "tapeColor": "pink",
-          "aspectRatio": "video",
+          "aspectRatio": "portrait",
           "imageSrc": "/assets/photos/reels_routine.jpg",
-          "subNote": "Unnecessary documentary material 😂"
+          "subNote": "Unnecessary documentary material 😂",
+          "scrollable": true
         },
         {
           "id": "mem-7",

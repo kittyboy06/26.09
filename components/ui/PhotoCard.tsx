@@ -16,6 +16,7 @@ interface PhotoCardProps {
   aspectRatio?: "square" | "portrait" | "video";
   className?: string;
   onExpand?: () => void;
+  scrollable?: boolean;
 }
 
 export function PhotoCard({
@@ -29,6 +30,7 @@ export function PhotoCard({
   aspectRatio = "portrait",
   className = "",
   onExpand,
+  scrollable = false,
 }: PhotoCardProps) {
   const [imageError, setImageError] = useState<boolean>(!src);
 
@@ -70,19 +72,38 @@ export function PhotoCard({
       {/* Media container */}
       <div
         className={cn(
-          "relative w-full overflow-hidden rounded-xl bg-pastel-cream flex items-center justify-center",
-          aspectStyles[aspectRatio]
+          "relative w-full rounded-xl bg-pastel-cream",
+          scrollable
+            ? "aspect-[4/5] overflow-y-auto overscroll-contain touch-pan-y custom-chat-scroll block"
+            : cn("overflow-hidden flex items-center justify-center", aspectStyles[aspectRatio])
         )}
       >
         {!imageError && src ? (
-          <Image
-            src={src}
-            alt={alt}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            onError={() => setImageError(true)}
-            sizes="(max-width: 640px) 100vw, 400px"
-          />
+          scrollable ? (
+            <div className="relative w-full">
+              <Image
+                src={src}
+                alt={alt}
+                width={1080}
+                height={1834}
+                className="w-full h-auto block select-none"
+                sizes="(max-width: 640px) 100vw, 400px"
+              />
+              <div className="sticky bottom-2 right-2 ml-auto w-fit pointer-events-none z-10 rounded-full bg-pastel-charcoal/75 backdrop-blur-xs px-2 py-0.5 text-[10px] font-semibold text-white shadow-xs flex items-center gap-1 opacity-85">
+                <span>↕</span>
+                <span>Scroll chat</span>
+              </div>
+            </div>
+          ) : (
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              onError={() => setImageError(true)}
+              sizes="(max-width: 640px) 100vw, 400px"
+            />
+          )
         ) : (
           /* High-craft pastel SVG placeholder when real photo is pending */
           <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-pastel-cream via-pastel-pink/10 to-pastel-yellow/20">

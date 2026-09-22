@@ -202,10 +202,11 @@ export default function MemoriesPage() {
               alt={reelCard.title}
               caption={reelCard.snippet}
               tag={reelCard.tag}
-              sticker="🎬"
-              rotation={-1.4}
-              tapeColor="yellow"
-              aspectRatio="video"
+              sticker={reelCard.sticker || "🎬"}
+              rotation={reelCard.rotation || -1.4}
+              tapeColor={(reelCard.tapeColor as any) || "pink"}
+              aspectRatio={(reelCard.aspectRatio as any) || "portrait"}
+              scrollable={(reelCard as any).scrollable}
               onExpand={() => setSelectedItem(reelCard)}
             />
             <div className="absolute -bottom-2 -right-2 z-20 rotate-3 rounded-lg bg-pastel-pink px-2.5 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-pink-dark/40">

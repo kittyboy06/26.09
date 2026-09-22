@@ -11,6 +11,16 @@ import { site } from "@/lib/appData";
 export const metadata: Metadata = {
   title: site.meta.title,
   description: site.meta.description,
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "256x256" },
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180" },
+    ],
+    shortcut: "/favicon.ico",
+  },
   robots: {
     index: false,
     follow: false,

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
 import { MemoryItem, common } from "@/lib/appData";
+import { cn } from "@/lib/utils";
 
 interface LightboxProps {
   item: MemoryItem | null;
@@ -84,16 +85,45 @@ export function Lightbox({ item, onClose }: LightboxProps) {
 
               {/* Photo Preview if imageSrc exists */}
               {item.imageSrc && (
-                <div className="relative w-full aspect-[4/3] max-h-[38dvh] rounded-2xl overflow-hidden my-1 border border-pastel-pink/30 shadow-inner bg-pastel-cream/60">
-                  <Image
-                    src={item.imageSrc}
-                    alt={item.title}
-                    fill
-                    className="object-contain p-1"
-                    sizes="(max-width: 640px) 90vw, 380px"
-                    priority
-                  />
-                </div>
+                (item as any).scrollable ? (
+                  <div className="relative my-1">
+                    <div className="relative w-full h-[360px] sm:h-[440px] max-h-[52dvh] rounded-2xl overflow-y-auto overscroll-contain border border-pastel-pink/40 shadow-inner bg-pastel-charcoal/5 p-1 touch-pan-y custom-chat-scroll block">
+                      <div className="relative w-full">
+                        <Image
+                          src={item.imageSrc}
+                          alt={item.title}
+                          width={1080}
+                          height={1834}
+                          className="w-full h-auto rounded-xl block select-none"
+                          priority
+                        />
+                      </div>
+                    </div>
+                    {/* Floating pill badge indicating scrollable chat */}
+                    <div className="absolute bottom-2.5 right-2.5 z-20 pointer-events-none rounded-full bg-pastel-charcoal/80 backdrop-blur-xs px-2.5 py-1 text-[11px] font-semibold text-white shadow-md flex items-center gap-1.5 opacity-90">
+                      <span className="text-xs">↕</span>
+                      <span>Scroll to read chat</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div
+                    className={cn(
+                      "relative w-full rounded-2xl overflow-hidden my-1 border border-pastel-pink/30 shadow-inner bg-pastel-cream/60",
+                      (item as any).aspectRatio === "portrait"
+                        ? "aspect-[4/5] max-h-[50dvh]"
+                        : "aspect-[4/3] max-h-[38dvh]"
+                    )}
+                  >
+                    <Image
+                      src={item.imageSrc}
+                      alt={item.title}
+                      fill
+                      className="object-contain p-1"
+                      sizes="(max-width: 640px) 90vw, 380px"
+                      priority
+                    />
+                  </div>
+                )
               )}
 
               {/* Quote Block if quote exists */}
