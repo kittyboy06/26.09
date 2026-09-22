@@ -55,29 +55,45 @@ export function Skiper2MusicIsland() {
     >
       <motion.div
         layout
-        transition={{ type: "spring", stiffness: 420, damping: 30 }}
-        className={`overflow-hidden border border-pastel-pink/60 bg-white/95 shadow-scrapbook backdrop-blur-md transition-shadow duration-300 ${
-          isExpanded ? "rounded-3xl shadow-scrapbook-lg" : "rounded-full"
-        }`}
+        initial={false}
+        animate={{
+          borderRadius: isExpanded ? 24 : 9999,
+          boxShadow: isExpanded
+            ? "0 16px 36px -6px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04)"
+            : "0 8px 24px -4px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)",
+        }}
+        transition={{
+          layout: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
+          borderRadius: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
+          boxShadow: { duration: 0.25 },
+        }}
+        style={{ transformOrigin: "bottom right" }}
+        className="overflow-hidden border border-pastel-pink/60 bg-white/95 backdrop-blur-md"
       >
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           {!isExpanded ? (
             /* Compact Pill State */
             <motion.div
               key="compact"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.15 }}
-              className="flex items-center gap-2.5 px-3 py-1.5 h-11"
+              layout
+              initial={{ opacity: 0, scale: 0.94, filter: "blur(2px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.94, filter: "blur(2px)" }}
+              transition={{
+                opacity: { duration: 0.18, ease: [0.32, 0.72, 0, 1] },
+                scale: { duration: 0.18, ease: [0.32, 0.72, 0, 1] },
+                filter: { duration: 0.18 },
+                layout: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
+              }}
+              className="flex items-center gap-2.5 px-3 py-1.5 h-11 whitespace-nowrap"
             >
               {/* Mini Rotating Pastel Vinyl Record */}
               <button
                 onClick={toggleMusic}
                 aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
-                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink rounded-full group"
+                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink rounded-full group cursor-pointer"
               >
-                <div className="relative flex items-center justify-center h-6 w-6 rounded-full bg-[#202026] shadow-sm border border-neutral-700/80 shrink-0 cursor-pointer group-hover:scale-105 transition-transform">
+                <div className="relative flex items-center justify-center h-6 w-6 rounded-full bg-[#202026] shadow-sm border border-neutral-700/80 shrink-0 group-hover:scale-105 transition-transform duration-200">
                   {/* Outer & Inner Vinyl Grooves */}
                   <div className="absolute inset-[3px] rounded-full border border-white/10" />
                   <div className="absolute inset-[6px] rounded-full border border-white/10" />
@@ -101,7 +117,7 @@ export function Skiper2MusicIsland() {
               <button
                 onClick={toggleMusic}
                 aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
-                className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink text-left"
+                className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink text-left cursor-pointer"
               >
                 {isPlaying ? (
                   <div className="flex items-center gap-0.5 h-4 w-4 justify-center" aria-hidden="true">
@@ -128,7 +144,7 @@ export function Skiper2MusicIsland() {
               {/* Expand Toggle */}
               <button
                 onClick={() => setIsExpanded(true)}
-                className="rounded-full p-1 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink ml-0.5"
+                className="rounded-full p-1 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink ml-0.5 cursor-pointer"
                 aria-label={audioText.expandLabel}
               >
                 <ChevronUp className="h-3.5 w-3.5" />
@@ -138,10 +154,16 @@ export function Skiper2MusicIsland() {
             /* Expanded Scrapbook Mini-Card */
             <motion.div
               key="expanded"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
+              layout
+              initial={{ opacity: 0, scale: 0.96, filter: "blur(3px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.96, filter: "blur(3px)" }}
+              transition={{
+                opacity: { duration: 0.22, ease: [0.32, 0.72, 0, 1] },
+                scale: { duration: 0.22, ease: [0.32, 0.72, 0, 1] },
+                filter: { duration: 0.22 },
+                layout: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
+              }}
               className="w-64 sm:w-72 p-4 flex flex-col gap-3 text-left"
             >
               {/* Header: Rotating Vinyl Thumbnail + Title + Close Chevron */}
@@ -193,7 +215,7 @@ export function Skiper2MusicIsland() {
                 {/* Minimize Button */}
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="rounded-full p-1.5 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink shrink-0"
+                  className="rounded-full p-1.5 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink shrink-0 cursor-pointer"
                   aria-label={audioText.collapseLabel}
                 >
                   <ChevronDown className="h-4 w-4" />
