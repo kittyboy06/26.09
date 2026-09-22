@@ -8,7 +8,7 @@ import React, {
   useRef,
   ReactNode,
 } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { site, routes as siteRoutes } from "@/lib/appData";
 
 interface BirthdayContextType {
@@ -31,18 +31,24 @@ export function BirthdayProvider({ children }: { children: ReactNode }) {
   const [hasAudioError, setHasAudioError] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
 
-  // Restore unlock state from sessionStorage on mount
+  // Ensure no persistent data remains in browser storage
   useEffect(() => {
     try {
-      const stored = sessionStorage.getItem("tanisha_19_unlocked");
-      if (stored === "true") {
-        setIsUnlocked(true);
-      }
+      sessionStorage.clear();
+      localStorage.clear();
     } catch {
-      // Ignore if sessionStorage is disabled
+      // Ignore if storage is disabled
     }
   }, []);
+
+  // Redirect to landing gate from any page if refreshed or exited (in-memory lock reset)
+  useEffect(() => {
+    if (!isUnlocked && pathname !== "/") {
+      router.replace("/");
+    }
+  }, [isUnlocked, pathname, router]);
 
   // Compute current route index and adjacent navigation
   const currentIndex = siteRoutes.findIndex((r) => r.path === pathname);
@@ -83,14 +89,13 @@ export function BirthdayProvider({ children }: { children: ReactNode }) {
 
   const unlock = () => {
     setIsUnlocked(true);
-    try {
-      sessionStorage.setItem("tanisha_19_unlocked", "true");
-    } catch {
-      // Ignore
-    }
     // Mobile touch interaction allows audio to unlock
     playAudio();
   };
+
+  // If locked and not on landing gate, hide page contents while redirecting
+  const isGateRoute = pathname === "/";
+  const shouldRenderChildren = isUnlocked || isGateRoute;
 
   return (
     <BirthdayContext.Provider
@@ -115,7 +120,7 @@ export function BirthdayProvider({ children }: { children: ReactNode }) {
         preload="auto"
         onError={() => setHasAudioError(true)}
       />
-      {children}
+      {shouldRenderChildren ? children : null}
     </BirthdayContext.Provider>
   );
 }

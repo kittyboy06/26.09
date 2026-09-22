@@ -7,6 +7,9 @@ import { StickerCollectionState, StickerToastPayload } from "@/types/stickers";
 
 const STORAGE_KEY = "tanisha_stickers_collected_v1";
 
+// Pure in-memory state for session lifetime (resets on page refresh or tab close)
+let inMemoryCollectedIds: string[] = [];
+
 export function playStickerChime() {
   if (typeof window === "undefined") return;
   try {
@@ -56,45 +59,26 @@ export function triggerStickerConfetti(origin?: { x: number; y: number }) {
 }
 
 export function useStickerCollection(): StickerCollectionState {
-  const [collectedIds, setCollectedIds] = useState<string[]>([]);
-  const [isHydrated, setIsHydrated] = useState<boolean>(false);
+  const [collectedIds, setCollectedIds] = useState<string[]>(inMemoryCollectedIds);
 
-  // Load from localStorage on mount and sync with custom events
+  // Sync state across all active components during session & wipe legacy storage
   useEffect(() => {
-    const loadStored = () => {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          setCollectedIds(JSON.parse(stored));
-        }
-      } catch {}
-      setIsHydrated(true);
-    };
-
-    loadStored();
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {}
 
     const handleLocalSync = (e: Event) => {
       const customEv = e as CustomEvent<string[]>;
       if (customEv.detail) {
         setCollectedIds(customEv.detail);
       } else {
-        loadStored();
-      }
-    };
-
-    const handleStorage = (e: StorageEvent) => {
-      if (e.key === STORAGE_KEY && e.newValue) {
-        try {
-          setCollectedIds(JSON.parse(e.newValue));
-        } catch {}
+        setCollectedIds([...inMemoryCollectedIds]);
       }
     };
 
     window.addEventListener("tanisha:stickers_changed", handleLocalSync);
-    window.addEventListener("storage", handleStorage);
     return () => {
       window.removeEventListener("tanisha:stickers_changed", handleLocalSync);
-      window.removeEventListener("storage", handleStorage);
     };
   }, []);
 
@@ -107,23 +91,13 @@ export function useStickerCollection(): StickerCollectionState {
 
   const collectSticker = useCallback(
     (id: string) => {
-      let current = collectedIds;
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          current = JSON.parse(stored);
-        }
-      } catch {}
+      if (inMemoryCollectedIds.includes(id)) return false;
 
-      if (current.includes(id)) return false;
-
-      const next = [...current, id];
+      inMemoryCollectedIds = [...inMemoryCollectedIds, id];
+      const next = [...inMemoryCollectedIds];
       setCollectedIds(next);
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-      } catch {}
 
-      // Notify all hook instances in the current window
+      // Notify all hook instances in current session
       window.dispatchEvent(
         new CustomEvent("tanisha:stickers_changed", { detail: next })
       );
@@ -149,10 +123,11 @@ export function useStickerCollection(): StickerCollectionState {
 
       return true;
     },
-    [collectedIds]
+    []
   );
 
   const resetCollection = useCallback(() => {
+    inMemoryCollectedIds = [];
     setCollectedIds([]);
     try {
       localStorage.removeItem(STORAGE_KEY);

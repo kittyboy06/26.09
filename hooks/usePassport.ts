@@ -8,28 +8,37 @@ import { ChapterStamp, PassportState } from "@/types/passport";
 const STORAGE_KEY_UNLOCKED = "tanisha_passport_unlocked_v1";
 const STORAGE_KEY_SEEN = "tanisha_passport_seen_v1";
 
+// Pure in-memory state for session lifetime (resets on page refresh or tab close)
+let inMemoryUnlockedChapters: string[] = [];
+let inMemorySeenChapters: string[] = [];
+
 export function usePassport(): PassportState {
   const pathname = usePathname();
-  const [unlockedChapters, setUnlockedChapters] = useState<string[]>([]);
-  const [seenChapters, setSeenChapters] = useState<string[]>([]);
-  const [isHydrated, setIsHydrated] = useState<boolean>(false);
+  const [unlockedChapters, setUnlockedChapters] = useState<string[]>(inMemoryUnlockedChapters);
+  const [seenChapters, setSeenChapters] = useState<string[]>(inMemorySeenChapters);
 
-  // Load from localStorage on mount
+  // Clear legacy storage on mount and sync state
   useEffect(() => {
     try {
-      const storedUnlocked = localStorage.getItem(STORAGE_KEY_UNLOCKED);
-      const storedSeen = localStorage.getItem(STORAGE_KEY_SEEN);
+      localStorage.removeItem(STORAGE_KEY_UNLOCKED);
+      localStorage.removeItem(STORAGE_KEY_SEEN);
+    } catch {}
 
-      const parsedUnlocked: string[] = storedUnlocked ? JSON.parse(storedUnlocked) : [];
-      const parsedSeen: string[] = storedSeen ? JSON.parse(storedSeen) : [];
+    const handleSync = (e: Event) => {
+      const customEv = e as CustomEvent<{ unlocked: string[]; seen: string[] }>;
+      if (customEv.detail) {
+        setUnlockedChapters(customEv.detail.unlocked);
+        setSeenChapters(customEv.detail.seen);
+      } else {
+        setUnlockedChapters([...inMemoryUnlockedChapters]);
+        setSeenChapters([...inMemorySeenChapters]);
+      }
+    };
 
-      setUnlockedChapters(parsedUnlocked);
-      setSeenChapters(parsedSeen);
-    } catch {
-      // Fallback gracefully if localStorage is unavailable
-    } finally {
-      setIsHydrated(true);
-    }
+    window.addEventListener("tanisha:passport_changed", handleSync);
+    return () => {
+      window.removeEventListener("tanisha:passport_changed", handleSync);
+    };
   }, []);
 
   // Determine active chapter stamp matching current route
@@ -37,21 +46,22 @@ export function usePassport(): PassportState {
     return PASSPORT_CHAPTERS.find((ch) => ch.route === pathname) || null;
   }, [pathname]);
 
-  // Automatically unlock chapter on visit
+  // Automatically unlock chapter on visit in current session
   useEffect(() => {
-    if (!isHydrated || !activeChapterStamp) return;
+    if (!activeChapterStamp) return;
 
     const chapterId = activeChapterStamp.chapterId;
-    setUnlockedChapters((prev) => {
-      if (prev.includes(chapterId)) return prev;
-
-      const next = [...prev, chapterId];
-      try {
-        localStorage.setItem(STORAGE_KEY_UNLOCKED, JSON.stringify(next));
-      } catch {}
-      return next;
-    });
-  }, [isHydrated, activeChapterStamp]);
+    if (!inMemoryUnlockedChapters.includes(chapterId)) {
+      inMemoryUnlockedChapters = [...inMemoryUnlockedChapters, chapterId];
+      const next = [...inMemoryUnlockedChapters];
+      setUnlockedChapters(next);
+      window.dispatchEvent(
+        new CustomEvent("tanisha:passport_changed", {
+          detail: { unlocked: next, seen: inMemorySeenChapters },
+        })
+      );
+    }
+  }, [activeChapterStamp]);
 
   // Check if there is any unlocked chapter that hasn't been seen in the passport
   const hasNewStamp = useMemo(() => {
@@ -59,30 +69,42 @@ export function usePassport(): PassportState {
   }, [unlockedChapters, seenChapters]);
 
   const unlockChapter = useCallback((chapterId: string) => {
-    setUnlockedChapters((prev) => {
-      if (prev.includes(chapterId)) return prev;
-      const next = [...prev, chapterId];
-      try {
-        localStorage.setItem(STORAGE_KEY_UNLOCKED, JSON.stringify(next));
-      } catch {}
-      return next;
-    });
+    if (!inMemoryUnlockedChapters.includes(chapterId)) {
+      inMemoryUnlockedChapters = [...inMemoryUnlockedChapters, chapterId];
+      const next = [...inMemoryUnlockedChapters];
+      setUnlockedChapters(next);
+      window.dispatchEvent(
+        new CustomEvent("tanisha:passport_changed", {
+          detail: { unlocked: next, seen: inMemorySeenChapters },
+        })
+      );
+    }
   }, []);
 
   const markAsSeen = useCallback(() => {
-    setSeenChapters(unlockedChapters);
-    try {
-      localStorage.setItem(STORAGE_KEY_SEEN, JSON.stringify(unlockedChapters));
-    } catch {}
-  }, [unlockedChapters]);
+    inMemorySeenChapters = [...inMemoryUnlockedChapters];
+    setSeenChapters(inMemorySeenChapters);
+    window.dispatchEvent(
+      new CustomEvent("tanisha:passport_changed", {
+        detail: { unlocked: inMemoryUnlockedChapters, seen: inMemorySeenChapters },
+      })
+    );
+  }, []);
 
   const resetPassport = useCallback(() => {
+    inMemoryUnlockedChapters = [];
+    inMemorySeenChapters = [];
     setUnlockedChapters([]);
     setSeenChapters([]);
     try {
       localStorage.removeItem(STORAGE_KEY_UNLOCKED);
       localStorage.removeItem(STORAGE_KEY_SEEN);
     } catch {}
+    window.dispatchEvent(
+      new CustomEvent("tanisha:passport_changed", {
+        detail: { unlocked: [], seen: [] },
+      })
+    );
   }, []);
 
   return {
