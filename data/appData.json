@@ -423,6 +423,19 @@
       "actionButton": "Start Journey into Chapter 02",
       "hintText": "Tap the sticker to unlock your journey ✨"
     },
+    "whatsappStickers": {
+      "badge": "WHATSAPP STICKER PACK",
+      "rewardBadge": "QUEST REWARD UNLOCKED",
+      "title": "Tanisha's WhatsApp Sticker Pack! 🌸",
+      "subtitle": "16 Quest Stickers + 2 Bonus Whack-a-Mole Stickers",
+      "teaserHeading": "Unlock Official WhatsApp Stickers! 📱",
+      "teaserBody": "Collect all 16 mood stickers across the 9 chapters to unlock the complete WhatsApp Sticker Pack (+ 2 Surprise Bonus Whack-a-Mole Stickers = 18 stickers!) to add to your personal WhatsApp!",
+      "downloadZip": "Download All 18 Stickers (.ZIP)",
+      "shareToWhatsApp": "Share / Add to WhatsApp",
+      "howToTitle": "How to add to WhatsApp",
+      "bonusBadge": "BONUS 🕹️",
+      "allUnlocked": "★ 18 STICKERS UNLOCKED ★"
+    },
     "chapterProgress": {
       "ariaLabel": "Story progression",
       "totalChapters": "09",

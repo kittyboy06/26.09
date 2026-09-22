@@ -11,11 +11,13 @@ import { SpecularButton } from "@/components/ui/SpecularButton";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { StickerMissionModal } from "@/components/stickers/StickerMissionModal";
+import { useStickerCollection } from "@/hooks/useStickerCollection";
 import { cn } from "@/lib/utils";
 
 export default function HomePage() {
   const router = useRouter();
   const { isUnlocked, unlock } = useBirthday();
+  const { isComplete, totalCollected } = useStickerCollection();
   const [passcode, setPasscode] = useState<string>("");
   const [errorMsg, setErrorMsg] = useState<string>("");
   const [isUnlocking, setIsUnlocking] = useState<boolean>(false);
@@ -172,6 +174,25 @@ export default function HomePage() {
                 <span>{gateData.unlockedState.continueButton}</span>
                 <ArrowRight className="h-3.5 w-3.5" />
               </SpecularButton>
+
+              <button
+                type="button"
+                onClick={() => setShowMissionModal(true)}
+                className={cn(
+                  "w-full mt-1.5 py-2 px-3 rounded-2xl font-display font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-xs",
+                  isComplete
+                    ? "bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white shadow-md animate-pulse-subtle"
+                    : "bg-pastel-yellow/80 hover:bg-pastel-yellow text-pastel-charcoal border border-pastel-yellow-dark/60"
+                )}
+              >
+                <span>{isComplete ? "📱" : "🌸"}</span>
+                <span>
+                  {isComplete
+                    ? "Add 18 Stickers to WhatsApp! ✨"
+                    : `Sticker Quest (${totalCollected}/16) • WhatsApp Pack`}
+                </span>
+                {isComplete && <Sparkles className="h-3 w-3 text-yellow-200" />}
+              </button>
             </div>
           ) : (
             <div className="flex flex-col gap-1.5">
@@ -270,7 +291,11 @@ export default function HomePage() {
       {/* Post-Password Scavenger Hunt Mission Briefing Popup */}
       <StickerMissionModal
         isOpen={showMissionModal}
-        onProceed={() => router.push("/note")}
+        onProceed={() => {
+          setShowMissionModal(false);
+          router.push("/note");
+        }}
+        onClose={() => setShowMissionModal(false)}
       />
     </PageTransition>
   );

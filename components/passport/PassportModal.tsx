@@ -9,6 +9,7 @@ import { X, Sparkles, Award, ArrowRight, Compass, Lock, Check } from "lucide-rea
 import { stickers as STICKER_CATALOG, common } from "@/lib/appData";
 import { CollectibleStickerItem } from "@/types/stickers";
 import { useStickerCollection } from "@/hooks/useStickerCollection";
+import { WhatsAppStickerSection } from "../stickers/WhatsAppStickerSection";
 
 interface PassportModalProps {
   isOpen: boolean;
@@ -168,21 +169,29 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
 
             {/* Grand Finale: Master Explorer Seal Banner (Unlocked at 16/16) */}
             {isComplete && (
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="mt-1 mb-3 rounded-2xl bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 p-3 border-2 border-amber-500 shadow-md text-center text-amber-950 relative overflow-hidden"
-              >
-                <div className="flex items-center justify-center gap-1.5 mb-1">
-                  <Award className="h-5 w-5 text-amber-700 animate-bounce" />
-                  <span className="font-display text-xs font-black tracking-wider uppercase">
-                    {passportText.sealTitle}
-                  </span>
-                </div>
-                <p className="text-[11px] font-medium leading-tight text-amber-900">
-                  {passportText.sealText}
-                </p>
-              </motion.div>
+              <>
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="mt-1 mb-2 rounded-2xl bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-300 p-3 border-2 border-amber-500 shadow-md text-center text-amber-950 relative overflow-hidden"
+                >
+                  <div className="flex items-center justify-center gap-1.5 mb-1">
+                    <Award className="h-5 w-5 text-amber-700 animate-bounce" />
+                    <span className="font-display text-xs font-black tracking-wider uppercase">
+                      {passportText.sealTitle}
+                    </span>
+                  </div>
+                  <p className="text-[11px] font-medium leading-tight text-amber-900">
+                    {passportText.sealText}
+                  </p>
+                </motion.div>
+
+                {/* Official WhatsApp Sticker Pack (16 + 2 Bonus) */}
+                <WhatsAppStickerSection
+                  isComplete={isComplete}
+                  totalCollected={totalCollected}
+                />
+              </>
             )}
 
             {/* Detailed Sticker Inspector Card (When clicked) */}
