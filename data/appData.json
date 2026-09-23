@@ -640,6 +640,20 @@
         "avatarAlt": "Tanisha Executive Bot Mode",
         "statusBadge": "● PROFESSIONAL BOT MODE"
       },
+      "thingsIKnow": {
+        "title": "A Few Things I Know 💙",
+        "tag": "Things I Remember",
+        "colors": [
+          { "name": "Blue", "emoji": "💙" },
+          { "name": "Purple", "emoji": "💜" },
+          { "name": "Pink", "emoji": "🩷" }
+        ],
+        "snack": {
+          "name": "Popcorn",
+          "emoji": "🍿"
+        },
+        "note": "Tiny details.\nSomehow, I remembered. :)"
+      },
       "observations": [
         {
           "id": "obs-1",
@@ -751,7 +765,7 @@
         "prevHref": "/note",
         "nextLabel": "Our Randomness →",
         "nextHref": "/memories",
-        "variant": "green"
+        "variant": "purple"
       }
     },
     "memories": {
@@ -1052,7 +1066,7 @@
           "emoji": "🤖",
           "frontLabel": "Robot Mode",
           "backContent": "Do the work. Mind your business. Continue life.",
-          "themeColor": "yellow"
+          "themeColor": "blue"
         },
         {
           "id": 2,
@@ -1060,7 +1074,7 @@
           "emoji": "🐢",
           "frontLabel": "Slow Loading",
           "backContent": "Your chatting style takes some time to load.",
-          "themeColor": "blue"
+          "themeColor": "purple"
         },
         {
           "id": 3,
@@ -1076,7 +1090,7 @@
           "emoji": "😂",
           "frontLabel": "Reply.exe",
           "backContent": "Sometimes you reply today.\nSometimes tomorrow.\nSometimes I just accept my fate.",
-          "themeColor": "green"
+          "themeColor": "blue"
         },
         {
           "id": 5,
@@ -1084,7 +1098,7 @@
           "emoji": "🌱",
           "frontLabel": "Independent",
           "backContent": "You mostly just do your own thing.\nRespect.",
-          "themeColor": "yellow"
+          "themeColor": "purple"
         },
         {
           "id": 6,
@@ -1100,7 +1114,7 @@
           "emoji": "🎬",
           "frontLabel": "Reels",
           "backContent": "One more reel probably won't hurt.\nFamous last words.",
-          "themeColor": "peach"
+          "themeColor": "blue"
         },
         {
           "id": 8,
@@ -1108,7 +1122,7 @@
           "emoji": "🍜",
           "frontLabel": "Food",
           "backContent": "Somehow food keeps entering our conversations 😂",
-          "themeColor": "peach"
+          "themeColor": "purple"
         },
         {
           "id": 9,
@@ -1116,7 +1130,7 @@
           "emoji": "💻",
           "frontLabel": "College + DSA",
           "backContent": "Assignments.\nDSA.\nCollege work.\nRepeat.",
-          "themeColor": "green"
+          "themeColor": "pink"
         },
         {
           "id": 10,
@@ -1124,7 +1138,7 @@
           "emoji": "🎪",
           "frontLabel": "Event Mode",
           "backContent": "Posters, events, coordination and random college work.\nSomehow we're always doing something.",
-          "themeColor": "pink"
+          "themeColor": "blue"
         },
         {
           "id": 11,
@@ -1132,7 +1146,7 @@
           "emoji": "📸",
           "frontLabel": "Childhood Archive",
           "backContent": "Somehow I ended up seeing your 1st and 7th standard group photos 😭",
-          "themeColor": "blue"
+          "themeColor": "purple"
         },
         {
           "id": 12,
@@ -1140,7 +1154,7 @@
           "emoji": "😂",
           "frontLabel": "“Ohh wow...”",
           "backContent": "“Ohh wow... Yep much better.”\nPeak excitement.",
-          "themeColor": "lavender"
+          "themeColor": "pink"
         },
         {
           "id": 13,
@@ -1148,7 +1162,7 @@
           "emoji": "✂️",
           "frontLabel": "Craft Mode",
           "backContent": "You actually like making handmade stuff.\nAnd you're pretty good at it too.",
-          "themeColor": "yellow"
+          "themeColor": "blue"
         },
         {
           "id": 14,
@@ -1156,7 +1170,7 @@
           "emoji": "👀",
           "frontLabel": "Hard to Read",
           "backContent": "You're honestly not that easy to figure out 😂",
-          "themeColor": "green"
+          "themeColor": "purple"
         },
         {
           "id": 15,
@@ -1164,7 +1178,7 @@
           "emoji": "🧩",
           "frontLabel": "Ambivert.exe",
           "backContent": "You said you're an ambivert.\nMakes sense tbh.",
-          "themeColor": "peach"
+          "themeColor": "pink"
         },
         {
           "id": 16,
@@ -1172,7 +1186,7 @@
           "emoji": "🌿",
           "frontLabel": "Self-Control",
           "backContent": "You seem to have quite a bit of it.\nI don't think you just do things because everyone else does.",
-          "themeColor": "pink"
+          "themeColor": "blue"
         },
         {
           "id": 17,
@@ -1180,7 +1194,7 @@
           "emoji": "🎯",
           "frontLabel": "18/09",
           "backContent": "Started with me being shy.\nSomehow ended with us talking a lot 😂",
-          "themeColor": "lavender"
+          "themeColor": "purple"
         },
         {
           "id": 18,
@@ -1188,7 +1202,7 @@
           "emoji": "📱",
           "frontLabel": "“Text me”",
           "backContent": "“Text me once you reach home” 📱\nSmall thing.\nBut I remembered it.",
-          "themeColor": "yellow"
+          "themeColor": "pink"
         },
         {
           "id": 19,
@@ -1205,7 +1219,7 @@
         "prevHref": "/chat",
         "nextLabel": "Okay, now play the stupid game →",
         "nextHref": "/game",
-        "variant": "yellow"
+        "variant": "pink"
       }
     },
     "game": {

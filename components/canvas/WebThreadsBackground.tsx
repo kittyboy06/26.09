@@ -49,13 +49,13 @@ export function WebThreadsBackground({
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Warm, bright pastel color palette
+    // Atmospheric Blue • Purple • Pink color harmony
     const colors = [
-      "rgba(255, 244, 168, 0.45)", // Pastel butter yellow
-      "rgba(191, 232, 197, 0.40)", // Pastel mint green
-      "rgba(189, 231, 245, 0.45)", // Pastel sky blue
-      "rgba(255, 199, 217, 0.40)", // Pastel soft pink
-      "rgba(255, 214, 179, 0.40)", // Pastel peach
+      "rgba(200, 229, 245, 0.45)", // Blue Soft (#C8E5F5)
+      "rgba(79, 156, 201, 0.35)",  // Primary Blue (#4F9CC9)
+      "rgba(223, 208, 240, 0.40)", // Lavender Soft (#DFD0F0)
+      "rgba(149, 104, 196, 0.28)", // Primary Purple (#9568C4)
+      "rgba(246, 210, 225, 0.35)", // Pink Soft (#F6D2E1)
     ];
 
     // Thread particles with organic wave motion

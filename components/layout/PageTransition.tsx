@@ -6,11 +6,13 @@ import { motion } from "framer-motion";
 interface PageTransitionProps {
   children: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function PageTransition({ children, className = "" }: PageTransitionProps) {
+export function PageTransition({ children, className = "", style }: PageTransitionProps) {
   return (
     <motion.div
+      style={style}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}

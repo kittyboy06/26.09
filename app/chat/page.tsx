@@ -25,7 +25,7 @@ export default function ChatPage() {
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#FFC7D9" />
+      <Skiper19ScrollVine color="#DFD0F0" />
 
       {/* Header Badges */}
       <div className="w-full flex items-center justify-between mb-4">
@@ -50,11 +50,11 @@ export default function ChatPage() {
       </div>
 
       {/* Mobile Chat Device Container */}
-      <div className="w-full max-w-sm rounded-3xl bg-white/95 border border-pastel-pink/40 shadow-scrapbook overflow-hidden backdrop-blur-md">
+      <div className="w-full max-w-sm rounded-3xl bg-[#FFFDFB]/95 border border-[#DFD0F0] shadow-scrapbook overflow-hidden backdrop-blur-md">
         {/* Chat App Header */}
-        <div className="bg-gradient-to-r from-pastel-pink/30 via-pastel-cream to-pastel-yellow/30 px-4 py-3 border-b border-pastel-pink/20 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-[#F4EFFA] via-[#FFFDFB] to-[#EAF6FC] px-4 py-3 border-b border-[#DFD0F0] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="relative h-9 w-9 rounded-full bg-pastel-pink/40 border border-pastel-pink-dark/40 flex items-center justify-center font-display font-bold text-sm text-pastel-charcoal shadow-xs overflow-hidden">
+            <div className="relative h-9 w-9 rounded-full bg-[#F4EFFA] border border-[#DFD0F0] flex items-center justify-center font-display font-bold text-sm text-pastel-charcoal shadow-xs overflow-hidden">
               <Image
                 src="/assets/stickers/tanisha_idle.png"
                 alt={chatData.device.contactAvatarAlt}
@@ -67,15 +67,15 @@ export default function ChatPage() {
             <div className="text-left">
               <div className="font-display text-xs font-bold text-pastel-charcoal flex items-center gap-1">
                 <span>{chatData.device.contactName}</span>
-                <span className="text-[10px] text-pastel-pink-dark font-medium">{chatData.device.contactMode}</span>
+                <span className="text-[10px] text-[#69428F] font-medium">{chatData.device.contactMode}</span>
               </div>
-              <p className="text-[10px] text-pastel-muted">
+              <p className="text-[10px] text-[#777A87]">
                 {chatData.device.repliesPrefix} <span className="font-semibold text-pastel-charcoal/70">{chatData.device.repliesDelay}</span>
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-pastel-muted">
+          <div className="flex items-center gap-2 text-[#777A87]">
             <Phone className="h-3.5 w-3.5" />
             <Video className="h-3.5 w-3.5" />
             <MoreVertical className="h-3.5 w-3.5" />
@@ -83,10 +83,10 @@ export default function ChatPage() {
         </div>
 
         {/* Chat Messages List */}
-        <div className="p-3.5 flex flex-col gap-3 min-h-[380px] bg-pastel-cream/40">
+        <div className="p-3.5 flex flex-col gap-3 min-h-[380px] bg-[#F4EFFA]/30">
           {/* Day Divider */}
           <div className="flex items-center justify-center my-1">
-            <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-[9px] font-semibold text-pastel-muted shadow-2xs border border-pastel-pink/20">
+            <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-[9px] font-semibold text-[#777A87] shadow-2xs border border-[#DFD0F0]/60">
               {chatData.device.dayDivider}
             </span>
           </div>
@@ -105,27 +105,27 @@ export default function ChatPage() {
                 <div
                   className={`relative max-w-[82%] rounded-2xl px-3.5 py-2 shadow-2xs ${
                     isTanisha
-                      ? "bg-white text-pastel-charcoal rounded-tl-xs border border-pastel-pink/30"
-                      : "bg-pastel-pink text-pastel-charcoal rounded-tr-xs border border-pastel-pink-dark/30"
+                      ? "bg-[#FFF0F5] text-[#303344] rounded-tl-xs border border-[#F6D2E1]"
+                      : "bg-[#EAF6FC] text-[#303344] rounded-tr-xs border border-[#C8E5F5]"
                   }`}
                 >
                   <p className="text-xs leading-relaxed">{msg.text}</p>
 
                   {(msg as { subtext?: string }).subtext && (
-                    <p className="mt-1 text-[9px] font-medium text-pastel-charcoal/60 italic border-t border-pastel-pink/15 pt-0.5">
+                    <p className="mt-1 text-[9px] font-medium text-[#666A78] italic border-t border-[#DFD0F0]/40 pt-0.5">
                       {(msg as { subtext?: string }).subtext}
                     </p>
                   )}
 
                   {/* Timestamp & Delivery status */}
-                  <div className="mt-1 flex items-center justify-end gap-1 text-[8px] text-pastel-charcoal/50">
+                  <div className="mt-1 flex items-center justify-end gap-1 text-[8px] text-[#777A87]">
                     <span>{msg.time}</span>
-                    <CheckCheck className="h-2.5 w-2.5 text-sky-500" />
+                    <CheckCheck className="h-2.5 w-2.5 text-[#4F9CC9]" />
                   </div>
 
                   {/* Reaction Tag if present */}
                   {msg.reaction && (
-                    <span className="absolute -bottom-2 right-2 rounded-full bg-white px-1.5 py-0.2 text-[10px] shadow-xs border border-pastel-pink/30 select-none">
+                    <span className="absolute -bottom-2 right-2 rounded-full bg-white px-1.5 py-0.2 text-[10px] shadow-xs border border-[#DFD0F0] select-none">
                       {msg.reaction}
                     </span>
                   )}

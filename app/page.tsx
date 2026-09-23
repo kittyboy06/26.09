@@ -134,7 +134,7 @@ export default function HomePage() {
             {gateData.hero.heading}
           </h1>
 
-          <div className="font-display text-4xl sm:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-pastel-pink-dark via-pastel-charcoal to-pastel-blue-dark leading-tight">
+          <div className="font-display text-4xl sm:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#9568C4] via-[#303344] to-[#4F9CC9] leading-tight">
             {site.recipient.toUpperCase()}
           </div>
 
@@ -261,15 +261,15 @@ export default function HomePage() {
               {/* Unlock Button */}
               <SpecularButton
                 type="button"
-                variant="pink"
+                variant="purple"
                 size="default"
                 onClick={handleUnlockClick}
                 disabled={isUnlocking}
                 className="w-full justify-center py-2 text-xs font-bold mt-1"
               >
                 {isUnlocking ? (
-                  <span className="flex items-center justify-center gap-1.5 animate-pulse text-pastel-charcoal">
-                    <Sparkles className="h-3.5 w-3.5 text-pastel-pink-dark animate-spin" />
+                  <span className="flex items-center justify-center gap-1.5 animate-pulse text-white">
+                    <Sparkles className="h-3.5 w-3.5 text-white animate-spin" />
                     <span>{gateData.lockCard.unlockingButton}</span>
                   </span>
                 ) : (

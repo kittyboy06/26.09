@@ -12,7 +12,7 @@ interface PageNavigationProps {
   nextLabel: string;
   prevHref?: string;
   prevLabel?: string;
-  variant?: "pink" | "yellow" | "green" | "blue" | "cream";
+  variant?: "pink" | "purple" | "yellow" | "green" | "blue" | "cream";
 }
 
 export function PageNavigation({

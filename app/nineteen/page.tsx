@@ -30,7 +30,7 @@ export default function NineteenPage() {
           particleCount: 85,
           spread: 70,
           origin: { y: 0.8 },
-          colors: ["#FFF4A8", "#FFC7D9", "#BFE8C5", "#BDE7F5", "#FFD6B3"],
+          colors: ["#4F9CC9", "#9568C4", "#D978A2", "#C8E5F5", "#DFD0F0", "#F6D2E1"],
         });
       } catch {
         // Fallback
@@ -40,13 +40,42 @@ export default function NineteenPage() {
     }
   };
 
-  const themeColors: Record<string, string> = {
-    yellow: "bg-pastel-yellow/50 border-pastel-yellow-dark/50 text-pastel-charcoal",
-    green: "bg-pastel-green/50 border-pastel-green-dark/50 text-pastel-charcoal",
-    blue: "bg-pastel-blue/50 border-pastel-blue-dark/50 text-pastel-charcoal",
-    pink: "bg-pastel-pink/50 border-pastel-pink-dark/50 text-pastel-charcoal",
-    peach: "bg-pastel-peach/50 border-pastel-peach-dark/50 text-pastel-charcoal",
-    lavender: "bg-pastel-lavender/50 border-purple-300 text-pastel-charcoal",
+  const themeColors: Record<string, { card: string; back: string; number: string }> = {
+    blue: {
+      card: "bg-[#EAF6FC] border-[#C8E5F5] text-pastel-charcoal",
+      back: "bg-[#EAF6FC] text-pastel-charcoal",
+      number: "text-[#286B96]",
+    },
+    purple: {
+      card: "bg-[#F4EFFA] border-[#DFD0F0] text-pastel-charcoal",
+      back: "bg-[#F4EFFA] text-pastel-charcoal",
+      number: "text-[#69428F]",
+    },
+    pink: {
+      card: "bg-[#FFF0F5] border-[#F6D2E1] text-pastel-charcoal",
+      back: "bg-[#FFF0F5] text-pastel-charcoal",
+      number: "text-[#A94F76]",
+    },
+    yellow: {
+      card: "bg-[#EAF6FC] border-[#C8E5F5] text-pastel-charcoal",
+      back: "bg-[#EAF6FC] text-pastel-charcoal",
+      number: "text-[#286B96]",
+    },
+    green: {
+      card: "bg-[#F4EFFA] border-[#DFD0F0] text-pastel-charcoal",
+      back: "bg-[#F4EFFA] text-pastel-charcoal",
+      number: "text-[#69428F]",
+    },
+    peach: {
+      card: "bg-[#FFF0F5] border-[#F6D2E1] text-pastel-charcoal",
+      back: "bg-[#FFF0F5] text-pastel-charcoal",
+      number: "text-[#A94F76]",
+    },
+    lavender: {
+      card: "bg-[#F4EFFA] border-[#DFD0F0] text-pastel-charcoal",
+      back: "bg-[#F4EFFA] text-pastel-charcoal",
+      number: "text-[#69428F]",
+    },
   };
 
   const standardCards = data.cards.filter((c) => !c.isSpecial);
@@ -81,6 +110,7 @@ export default function NineteenPage() {
         {/* CARDS 01 TO 18 (3D FLIP) */}
         {standardCards.map((card) => {
           const isFlipped = !!flippedCards[card.id];
+          const currentTheme = themeColors[card.themeColor] || themeColors.blue;
 
           return (
             <div
@@ -92,13 +122,13 @@ export default function NineteenPage() {
                 className={cn(
                   "relative h-full w-full rounded-2xl shadow-scrapbook transition-transform duration-500 transform-style-3d border",
                   isFlipped ? "rotate-y-180" : "",
-                  themeColors[card.themeColor] || themeColors.yellow
+                  currentTheme.card
                 )}
               >
                 {/* FRONT OF CARD */}
-                <div className="backface-hidden absolute inset-0 flex flex-col items-center justify-between p-3.5 text-center bg-white/95 rounded-2xl">
-                  <div className="w-full flex items-center justify-between text-[11px] font-bold text-pastel-muted">
-                    <span className="font-display">{card.number}</span>
+                <div className="backface-hidden absolute inset-0 flex flex-col items-center justify-between p-3.5 text-center bg-[#FFFDFB]/95 rounded-2xl">
+                  <div className="w-full flex items-center justify-between text-[11px] font-bold">
+                    <span className={cn("font-display", currentTheme.number)}>{card.number}</span>
                     <RotateCw className="h-3 w-3 text-pastel-muted/60" />
                   </div>
 
@@ -109,7 +139,7 @@ export default function NineteenPage() {
                     </span>
                   </div>
 
-                  <span className="text-[10px] font-semibold text-pastel-pink-dark flex items-center gap-1">
+                  <span className="text-[10px] font-semibold text-[#D978A2] flex items-center gap-1">
                     <Sparkles className="h-2.5 w-2.5" />
                     {data.tapToFlip}
                   </span>
@@ -119,11 +149,11 @@ export default function NineteenPage() {
                 <div
                   className={cn(
                     "backface-hidden rotate-y-180 absolute inset-0 flex flex-col items-center justify-between p-3.5 text-center rounded-2xl",
-                    themeColors[card.themeColor] || themeColors.yellow
+                    currentTheme.back
                   )}
                 >
-                  <div className="w-full flex items-center justify-between text-[11px] font-bold text-pastel-charcoal/60">
-                    <span className="font-display">{card.number}</span>
+                  <div className="w-full flex items-center justify-between text-[11px] font-bold">
+                    <span className={cn("font-display", currentTheme.number)}>{card.number}</span>
                     <span className="text-sm">{card.emoji}</span>
                   </div>
 
@@ -162,15 +192,15 @@ export default function NineteenPage() {
               className={cn(
                 "relative overflow-hidden rounded-3xl p-6 text-center shadow-scrapbook-lg border transition-all duration-300 active:scale-[0.98]",
                 isCard19Unlocked
-                  ? "bg-gradient-to-br from-pastel-pink/30 via-white to-pastel-yellow/30 border-pastel-pink"
-                  : "bg-white/95 border-pastel-pink-dark/50 hover:bg-pastel-pink/10"
+                  ? "bg-gradient-to-br from-[#EAF6FC] via-[#F4EFFA] to-[#FFF0F5] border-[#DFD0F0]"
+                  : "bg-gradient-to-br from-[#EAF6FC]/70 via-[#F4EFFA]/70 to-[#FFF0F5]/70 border-[#DFD0F0] hover:border-[#9568C4]"
               )}
             >
               <div className="flex items-center justify-between mb-2">
-                <span className="rounded-full bg-pastel-pink/50 px-2.5 py-0.5 text-[10px] font-bold text-pastel-charcoal">
+                <span className="rounded-full bg-[#DFD0F0] px-2.5 py-0.5 text-[10px] font-bold text-[#69428F]">
                   {data.milestoneCard.tag}
                 </span>
-                <Sparkles className="h-4 w-4 text-pastel-yellow-dark" />
+                <Sparkles className="h-4 w-4 text-[#9568C4]" />
               </div>
 
               {!isCard19Unlocked ? (
@@ -179,7 +209,7 @@ export default function NineteenPage() {
                   <h3 className="font-display text-xl font-black text-pastel-charcoal">
                     {data.milestoneCard.lockedTitle}
                   </h3>
-                  <span className="text-xs font-semibold text-pastel-pink-dark flex items-center gap-1">
+                  <span className="text-xs font-semibold text-[#D978A2] flex items-center gap-1">
                     <Sparkles className="h-3 w-3" />
                     {data.milestoneCard.lockedTapPrompt}
                   </span>
@@ -190,10 +220,10 @@ export default function NineteenPage() {
                     {data.milestoneCard.unlockedNumber}
                   </span>
                   <span className="text-5xl my-1 animate-bounce">{data.milestoneCard.unlockedEmoji}</span>
-                  <div className="rounded-full bg-pastel-pink/70 px-4 py-1 text-xs font-bold tracking-widest text-pastel-charcoal uppercase border border-pastel-pink-dark/40 shadow-xs">
+                  <div className="rounded-full bg-[#F6D2E1] px-4 py-1 text-xs font-bold tracking-widest text-[#A94F76] uppercase border border-[#D978A2]/40 shadow-xs">
                     {data.milestoneCard.unlockedTag}
                   </div>
-                  <p className="font-handwriting text-3xl font-bold text-pastel-pink-dark mt-2">
+                  <p className="font-handwriting text-3xl font-bold text-[#D978A2] mt-2">
                     {data.milestoneCard.unlockedMessage}
                   </p>
                   <span className="text-[10px] text-pastel-muted mt-3">

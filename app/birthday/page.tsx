@@ -25,7 +25,7 @@ export default function BirthdayPage() {
         particleCount: 85,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#FFF4A8", "#BFE8C5", "#BDE7F5", "#FFC7D9", "#FFD6B3"],
+        colors: ["#4F9CC9", "#9568C4", "#D978A2", "#C8E5F5", "#DFD0F0", "#F6D2E1"],
       });
     } catch {
       // Fallback
@@ -37,7 +37,13 @@ export default function BirthdayPage() {
   }, []);
 
   return (
-    <PageTransition className="relative flex flex-col items-center pt-12 pb-16 text-center">
+    <PageTransition
+      style={{
+        background:
+          "radial-gradient(circle at 15% 20%, #EAF6FC 0%, transparent 32%), radial-gradient(circle at 85% 25%, #F4EFFA 0%, transparent 32%), radial-gradient(circle at 50% 90%, #FFF0F5 0%, transparent 38%), #FFFDFB",
+      }}
+      className="relative flex flex-col items-center pt-12 pb-16 text-center rounded-3xl"
+    >
       {/* Fullscreen Lightbox for expanded photo view */}
       <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
 
@@ -67,7 +73,7 @@ export default function BirthdayPage() {
           {data.headline}
         </h1>
 
-        <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pastel-pink-dark via-pastel-charcoal to-pastel-blue-dark">
+        <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#9568C4] via-[#303344] to-[#4F9CC9]">
           {site.recipient.toUpperCase()}
         </div>
 
@@ -180,12 +186,12 @@ export default function BirthdayPage() {
       <div className="w-full max-w-xs flex flex-col gap-3">
         {/* Confetti Trigger */}
         <SpecularButton
-          variant="yellow"
+          variant="purple"
           size="default"
           className="w-full justify-center"
           onClick={fireCelebrationConfetti}
         >
-          <Sparkles className="h-4 w-4 text-pastel-charcoal" />
+          <Sparkles className="h-4 w-4" />
           <span>{data.actions.celebrateAgain}</span>
         </SpecularButton>
 

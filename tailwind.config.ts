@@ -10,21 +10,50 @@ const config: Config = {
     extend: {
       colors: {
         pastel: {
-          yellow: "#FFF4A8",
-          "yellow-dark": "#F3E070",
-          green: "#BFE8C5",
-          "green-dark": "#98D8A2",
-          blue: "#BDE7F5",
-          "blue-dark": "#91D4EB",
-          pink: "#FFC7D9",
-          "pink-dark": "#F7A8C2",
-          peach: "#FFD6B3",
-          "peach-dark": "#FBBF91",
-          lavender: "#E8DEFF",
-          cream: "#FFFDF5",
+          // Foundation Neutrals
+          cream: "#FFFDFB",
           card: "#FFFFFF",
-          charcoal: "#2D3748",
-          muted: "#64748B",
+          charcoal: "#303344",
+          muted: "#666A78",
+
+          // Blue Family (Dominant: ~45-60%)
+          blue: {
+            mist: "#EAF6FC",
+            soft: "#C8E5F5",
+            DEFAULT: "#4F9CC9",
+            dark: "#3D8AB7",
+            deep: "#286B96",
+          },
+          "blue-dark": "#3D8AB7",
+
+          // Purple Family (Secondary: ~30%)
+          purple: {
+            mist: "#F4EFFA",
+            soft: "#DFD0F0",
+            DEFAULT: "#9568C4",
+            dark: "#8358B0",
+            deep: "#69428F",
+          },
+          lavender: "#DFD0F0",
+          "purple-dark": "#8358B0",
+
+          // Pink Family (Tertiary: ~10-25%)
+          pink: {
+            mist: "#FFF0F5",
+            soft: "#F6D2E1",
+            DEFAULT: "#D978A2",
+            dark: "#C66791",
+            deep: "#A94F76",
+          },
+          "pink-dark": "#C66791",
+
+          // Cool-spectrum harmonization for legacy sticker/accent keys
+          yellow: "#C8E5F5",
+          "yellow-dark": "#4F9CC9",
+          green: "#DFD0F0",
+          "green-dark": "#9568C4",
+          peach: "#F6D2E1",
+          "peach-dark": "#D978A2",
         },
       },
       fontFamily: {
@@ -62,10 +91,10 @@ const config: Config = {
         },
       },
       boxShadow: {
-        scrapbook: "0 8px 24px -4px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)",
-        "scrapbook-lg": "0 16px 36px -6px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04)",
-        sticker: "0 4px 12px rgba(0, 0, 0, 0.08)",
-        specular: "0 6px 20px -2px rgba(255, 199, 217, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.8)",
+        scrapbook: "0 8px 24px -4px rgba(48, 51, 68, 0.06), 0 2px 6px -1px rgba(48, 51, 68, 0.04)",
+        "scrapbook-lg": "0 16px 36px -6px rgba(48, 51, 68, 0.08), 0 4px 12px -2px rgba(48, 51, 68, 0.04)",
+        sticker: "0 4px 12px rgba(48, 51, 68, 0.08)",
+        specular: "0 6px 20px -2px rgba(217, 120, 162, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.8)",
       },
     },
   },

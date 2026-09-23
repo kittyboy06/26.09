@@ -16,7 +16,7 @@ export default function NoticedPage() {
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Skiper 19 Scroll Vine */}
-      <Skiper19ScrollVine color="#98D8A2" />
+      <Skiper19ScrollVine color="#DFD0F0" />
 
       {/* Header */}
       <div className="w-full flex items-center justify-between mb-4">
@@ -134,11 +134,61 @@ export default function NoticedPage() {
           </div>
         </div>
 
-        {/* 6 Observation Cards with Terminal Accents */}
+        {/* A Few Things I Know 💙 — Things I Remember */}
+        {(noticedData as any).thingsIKnow && (
+          <div className="relative rounded-3xl bg-[#FFFDFB] p-5 shadow-scrapbook border border-[#DFD0F0] -rotate-0.5 overflow-hidden transition-all duration-300 hover:rotate-0">
+            {/* Scrapbook washi tape decal */}
+            <span className="absolute -top-2 left-1/2 -translate-x-1/2 h-3.5 w-24 bg-[#DFD0F0]/80 border border-[#9568C4]/30 rounded-xs rotate-1 z-10 shadow-2xs" />
+
+            {/* Header */}
+            <div className="flex items-center justify-between mb-3.5 pt-1">
+              <h3 className="font-display text-base font-bold text-pastel-charcoal flex items-center gap-1.5">
+                <span>{(noticedData as any).thingsIKnow.title}</span>
+              </h3>
+              <span className="rounded-full bg-[#EAF6FC] px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#286B96] border border-[#C8E5F5]">
+                {(noticedData as any).thingsIKnow.tag}
+              </span>
+            </div>
+
+            {/* Signature 3 Colors + Popcorn Discovery */}
+            <div className="space-y-3">
+              {/* Three Colors Pills */}
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#EAF6FC] border border-[#C8E5F5] px-3 py-1.5 text-xs font-bold text-[#286B96] shadow-2xs">
+                  <span>💙</span>
+                  <span>Blue</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F4EFFA] border border-[#DFD0F0] px-3 py-1.5 text-xs font-bold text-[#69428F] shadow-2xs">
+                  <span>💜</span>
+                  <span>Purple</span>
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF0F5] border border-[#F6D2E1] px-3 py-1.5 text-xs font-bold text-[#A94F76] shadow-2xs">
+                  <span>🩷</span>
+                  <span>Pink</span>
+                </span>
+              </div>
+
+              {/* Popcorn — Unexpected Charming Discovery */}
+              <div className="inline-flex items-center gap-2.5 rounded-2xl bg-amber-50/80 border border-amber-200/90 px-3.5 py-1.5 shadow-2xs">
+                <span className="text-xl select-none">🍿</span>
+                <span className="font-display text-xs font-bold text-amber-950">Popcorn</span>
+              </div>
+            </div>
+
+            {/* Handwritten Note */}
+            <div className="mt-4 pt-2.5 border-t border-[#DFD0F0]/50">
+              <p className="font-handwriting text-xl text-pastel-charcoal/85 leading-snug whitespace-pre-line">
+                {(noticedData as any).thingsIKnow.note}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {/* Observation Cards with System Accents */}
         {noticedData.observations.map((obs) => (
           <div
             key={obs.id}
-            className="rounded-2xl bg-white/95 p-4 shadow-scrapbook border border-pastel-pink/30 relative overflow-hidden"
+            className="rounded-2xl bg-[#FFFDFB] p-4 shadow-scrapbook border border-[#DFD0F0]/60 relative overflow-hidden"
           >
             <div className="flex items-start justify-between mb-1">
               <div className="flex items-center gap-2">
@@ -175,7 +225,7 @@ export default function NoticedPage() {
         ))}
 
         {/* Closing Console Log */}
-        <div className="rounded-2xl bg-gradient-to-r from-pastel-yellow/30 via-pastel-green/30 to-pastel-blue/30 p-4 border border-pastel-green/50 text-center shadow-xs">
+        <div className="rounded-2xl bg-gradient-to-r from-[#EAF6FC]/50 via-[#F4EFFA]/50 to-[#FFF0F5]/50 p-4 border border-[#DFD0F0] text-center shadow-xs">
           <p className="font-handwriting text-xl font-bold text-pastel-charcoal">
             &ldquo;{noticedData.closing.quote}&rdquo;
           </p>
@@ -191,7 +241,7 @@ export default function NoticedPage() {
         nextLabel={noticedData.navigation.nextLabel}
         prevHref={noticedData.navigation.prevHref}
         prevLabel={noticedData.navigation.prevLabel}
-        variant="green"
+        variant="purple"
       />
     </PageTransition>
   );

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 interface SpecularButtonProps extends HTMLMotionProps<"button"> {
   children: ReactNode;
-  variant?: "pink" | "yellow" | "green" | "blue" | "cream";
+  variant?: "pink" | "purple" | "blue" | "yellow" | "green" | "cream";
   size?: "default" | "large" | "small";
   className?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -14,18 +14,19 @@ interface SpecularButtonProps extends HTMLMotionProps<"button"> {
 
 export function SpecularButton({
   children,
-  variant = "pink",
+  variant = "purple",
   size = "default",
   className = "",
   onClick,
   ...props
 }: SpecularButtonProps) {
   const variantStyles = {
-    pink: "bg-pastel-pink text-pastel-charcoal border-pastel-pink-dark/60 hover:bg-pastel-pink-dark shadow-specular",
-    yellow: "bg-pastel-yellow text-pastel-charcoal border-pastel-yellow-dark/60 hover:bg-pastel-yellow-dark shadow-scrapbook",
-    green: "bg-pastel-green text-pastel-charcoal border-pastel-green-dark/60 hover:bg-pastel-green-dark shadow-scrapbook",
-    blue: "bg-pastel-blue text-pastel-charcoal border-pastel-blue-dark/60 hover:bg-pastel-blue-dark shadow-scrapbook",
-    cream: "bg-white text-pastel-charcoal border-pastel-muted/30 hover:bg-pastel-cream shadow-scrapbook",
+    purple: "bg-[#9568C4] text-white border-[#7E52AC]/70 hover:bg-[#8358B0] shadow-specular",
+    pink: "bg-[#D978A2] text-white border-[#C45E8B]/70 hover:bg-[#C66791] shadow-specular",
+    blue: "bg-[#4F9CC9] text-white border-[#3884B0]/70 hover:bg-[#3D8AB7] shadow-scrapbook",
+    yellow: "bg-[#4F9CC9] text-white border-[#3884B0]/70 hover:bg-[#3D8AB7] shadow-scrapbook",
+    green: "bg-[#9568C4] text-white border-[#7E52AC]/70 hover:bg-[#8358B0] shadow-specular",
+    cream: "bg-[#FFFDFB] text-[#303344] border-[#DFD0F0] hover:bg-[#F4EFFA] shadow-scrapbook",
   };
 
   const sizeStyles = {

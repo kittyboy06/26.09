@@ -163,3 +163,50 @@
 * **Mobile Viewports**: Emulate and verify on 360×800, 375×812, 390×844, 430×932.
 * **Zero Horizontal Jitter**: Ensure all page containers maintain `overflow-x: hidden`.
 * **Touch Targets**: Minimum 44px hitboxes for all buttons and interactive cards.
+
+---
+
+## 8. Revised Soft + Readable Color System (Blue • Purple • Pink)
+
+### 8.1 Understanding Summary
+* **What**: Evolution from the multi-pastel yellow/green palette to a unified Blue • Purple • Pink color hierarchy across all 9 chapters.
+* **Why**: Soft, dreamy aesthetic with strong WCAG AA contrast (charcoal/deep colors for text, 500-level for UI, 50/100 mists for backgrounds).
+* **Hierarchy**: Blue (dominant 45-60%, airy & playful) → Purple (secondary ~30%, magical & structural) → Pink (tertiary 10-25%, personal & celebratory).
+
+### 8.2 Decision Log
+| # | Decision | Alternatives Considered | Rationale |
+|---|---|---|---|
+| **1** | **Revised Soft + Readable 3-Tier Palette**<br>• Surfaces: `#FFFDFB` (warm white), `#EAF6FC` (blue mist), `#F4EFFA` (lavender mist), `#FFF0F5` (pink mist)<br>• Cards/Borders: `#C8E5F5` (blue soft), `#DFD0F0` (lavender), `#F6D2E1` (pink soft)<br>• UI & Buttons: `#4F9CC9` (blue), `#9568C4` (purple), `#D978A2` (pink)<br>• Text: `#303344` (charcoal body), `#286B96` (deep blue), `#69428F` (deep purple), `#A94F76` (deep pink) | Original lighter 500-series pastels | Original pastels were under 2.5:1 against white; deeper variants guarantee WCAG AA readability (>4.5:1). |
+| **2** | **3-Layer Architecture** (Global → Chapter → Interaction) | Ad-hoc per-component styles | Preserves single microsite cohesion across 9 pages while allowing each chapter to own its unique emotional color job. |
+| **3** | **Tailwind Backward-Compatible Mapping** | Hardcoded CSS strings | Updates `colors.pastel` in `tailwind.config.ts` so all components adapt without breaking. |
+
+### 8.3 Token Reference Table
+| Token Name | Hex Code | Role & Usage |
+| :--- | :--- | :--- |
+| **`--surface-warm`** | `#FFFDFB` | Main paper card surface (replaces `#FFFDF5`) |
+| **`--text-primary`** | `#303344` | High-contrast dark charcoal body text (>10:1 ratio) |
+| **`--text-muted`** | `#666A78` | Secondary captions, timestamps, and metadata |
+| **`--blue-mist`** | `#EAF6FC` | Large atmospheric blue background |
+| **`--blue-soft`** | `#C8E5F5` | Blue cards, borders, decorative shapes |
+| **`--blue-primary`** | `#4F9CC9` | Primary blue UI accents & buttons |
+| **`--blue-deep`** | `#286B96` | High-contrast blue labels & text |
+| **`--purple-mist`** | `#F4EFFA` | Large lavender background |
+| **`--purple-soft`** | `#DFD0F0` | Lavender cards, borders, illustrations |
+| **`--purple-primary`**| `#9568C4` | Primary action buttons & purple UI |
+| **`--purple-deep`** | `#69428F` | High-contrast purple labels & text |
+| **`--pink-mist`** | `#FFF0F5` | Large pink background |
+| **`--pink-soft`** | `#F6D2E1` | Pink cards, borders, decorations |
+| **`--pink-primary`** | `#D978A2` | Primary pink buttons & celebratory accents |
+| **`--pink-deep`** | `#A94F76` | High-contrast pink labels & text |
+
+### 8.4 Chapter-by-Chapter Color Journey
+* **01 — Birthday Gate (`/`)**: 45% Blue (`#EAF6FC`), 30% Purple (`#F4EFFA`), 25% Pink (`#D978A2`). Primary Button: `#9568C4`.
+* **02 — A Little Something (`/note`)**: 50% Pink (`#FFF0F5`), 30% Purple, 20% Blue. Primary Button: `#D978A2`.
+* **03 — Things I've Noticed (`/noticed`)**: Purple dominant (`#F4EFFA`). Cards: `#FFFDFB` / `#EAF6FC`. Primary Button: `#9568C4`.
+* **04 — Our Randomness (`/memories`)**: Blue dominant (`#EAF6FC`). Cards: `#C8E5F5` / `#FFFDFB`. Primary Button: `#4F9CC9`.
+* **05 — The Chat Logs (`/chat`)**: Afsal bubble `#EAF6FC` (border `#C8E5F5`), Tanisha bubble `#FFF0F5` (border `#F6D2E1`), text `#303344`.
+* **06 — 19 Things (`/nineteen`)**: Sequential cycling (01 Blue → 02 Purple → 03 Pink). Card 19: 135deg linear gradient (`#EAF6FC` → `#F4EFFA` → `#FFF0F5`).
+* **07 — Whack-a-Tanisha (`/game`)**: High-energy arcade: background `#EAF6FC`, targets `#DFD0F0`, border `#9568C4`, hit effect `#D978A2`.
+* **08 — Flower Reveal (`/gift`)**: Pink/Purple bloom: background `#FFF0F5`, secondary `#F4EFFA`, card `#FFFDFB`, primary `#D978A2`.
+* **09 — Final Celebration (`/birthday`)**: Triple radial glow background on `#FFFDFB` (`#EAF6FC`, `#F4EFFA`, `#FFF0F5`), primary `#9568C4`, secondary `#D978A2`.
+

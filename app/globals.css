@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,29 @@
   --font-handwriting: var(--font-handwriting, 'Caveat'), cursive, sans-serif;
   --font-display: var(--font-display, 'Fredoka'), 'Quicksand', system-ui, sans-serif;
   --font-body: var(--font-body, 'Plus Jakarta Sans'), 'Inter', system-ui, sans-serif;
+
+  /* Global Color System: Foundation Tokens */
+  --surface-warm: #FFFDFB;
+  --text-primary: #303344;
+  --text-muted: #666A78;
+
+  /* Blue Family */
+  --blue-mist: #EAF6FC;
+  --blue-soft: #C8E5F5;
+  --blue-primary: #4F9CC9;
+  --blue-deep: #286B96;
+
+  /* Purple Family */
+  --purple-mist: #F4EFFA;
+  --purple-soft: #DFD0F0;
+  --purple-primary: #9568C4;
+  --purple-deep: #69428F;
+
+  /* Pink Family */
+  --pink-mist: #FFF0F5;
+  --pink-soft: #F6D2E1;
+  --pink-primary: #D978A2;
+  --pink-deep: #A94F76;
 }
 
 html {
@@ -13,8 +38,8 @@ html {
 }
 
 body {
-  background-color: #FFFDF5;
-  color: #2D3748;
+  background-color: #FFFDFB;
+  color: #303344;
   font-family: var(--font-body);
   overflow-x: hidden;
   width: 100%;
@@ -30,8 +55,8 @@ body {
 }
 
 ::selection {
-  background-color: #FFC7D9;
-  color: #2D3748;
+  background-color: #F6D2E1;
+  color: #303344;
 }
 
 /* 3D Card Flip Utilities */
@@ -65,21 +90,21 @@ body {
 /* Custom scrollbar for scrollable chat images */
 .custom-chat-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #F7A8C2 rgba(0, 0, 0, 0.05);
+  scrollbar-color: #D978A2 rgba(48, 51, 68, 0.05);
 }
 .custom-chat-scroll::-webkit-scrollbar {
   width: 5px;
 }
 .custom-chat-scroll::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(48, 51, 68, 0.05);
   border-radius: 9999px;
 }
 .custom-chat-scroll::-webkit-scrollbar-thumb {
-  background: #F7A8C2;
+  background: #D978A2;
   border-radius: 9999px;
 }
 .custom-chat-scroll::-webkit-scrollbar-thumb:hover {
-  background: #F3E070;
+  background: #9568C4;
 }
 
 /* Reduced Motion Safety */
