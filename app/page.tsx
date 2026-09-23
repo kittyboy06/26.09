@@ -50,13 +50,13 @@ export default function HomePage() {
       setErrorMsg("");
       setIsUnlocking(true);
 
-      // Trigger celebratory pastel confetti burst
+      // Trigger celebratory midnight pastel confetti burst
       try {
         confetti({
           particleCount: 85,
           spread: 65,
           origin: { y: 0.6 },
-          colors: ["#FFF4A8", "#BFE8C5", "#BDE7F5", "#FFC7D9", "#FFD6B3"],
+          colors: ["#69C7F5", "#B98AE8", "#F494BC", "#8DD8FF", "#D3A7FF"],
         });
       } catch {
         // Fallback
@@ -97,7 +97,17 @@ export default function HomePage() {
   const numpadKeys = gateData.lockCard.numpadKeys;
 
   return (
-    <PageTransition className="h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-2 py-3 select-none overflow-hidden">
+    <PageTransition className="relative h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-2 py-3 select-none overflow-hidden">
+      {/* Subtle Midnight Radial Glows */}
+      <div
+        className="pointer-events-none fixed inset-0 -z-10"
+        style={{
+          background:
+            "radial-gradient(circle at 10% 15%, rgba(38, 121, 168, 0.12) 0%, transparent 40%), radial-gradient(circle at 90% 20%, rgba(113, 71, 168, 0.12) 0%, transparent 40%), radial-gradient(circle at 50% 85%, rgba(168, 70, 112, 0.10) 0%, transparent 40%)",
+        }}
+        aria-hidden="true"
+      />
+
       {/* Top Floating Badges with clearance for ChapterProgress when unlocked */}
       <div
         className={cn(
@@ -107,12 +117,12 @@ export default function HomePage() {
       >
         <Sticker variant="floating" rotation={-3}>
           <span>{gateData.badges.left.emoji}</span>
-          <span className="text-[11px] text-pastel-charcoal font-medium">{gateData.badges.left.text}</span>
+          <span className="text-[11px] text-[#F7F4FC] font-medium">{gateData.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={3}>
           <span>{gateData.badges.right.emoji}</span>
-          <span className="text-[11px] text-pastel-charcoal font-medium">{gateData.badges.right.text}</span>
+          <span className="text-[11px] text-[#F7F4FC] font-medium">{gateData.badges.right.text}</span>
         </Sticker>
       </div>
 
@@ -121,20 +131,20 @@ export default function HomePage() {
         {/* Title Group with Postcard Postmark */}
         <div className="w-full flex flex-col items-center shrink-0 relative">
           <div className="mb-1 flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-pastel-pink/50 px-2.5 py-0.5 text-[10px] font-semibold text-pastel-charcoal/80 border border-pastel-pink-dark/40 shadow-xs">
-              <Sparkles className="h-3 w-3 text-pastel-charcoal" />
+            <span className="inline-flex items-center gap-1 rounded-full bg-[#431F35]/70 px-2.5 py-0.5 text-[10px] font-semibold text-[#FFB6D5] border border-[#A84670]/40 shadow-xs">
+              <Sparkles className="h-3 w-3 text-[#FFB6D5]" />
               <span>{gateData.hero.tag}</span>
             </span>
-            <span className="border border-dashed border-pastel-pink-dark/60 rounded px-1.5 py-0.2 text-[8px] font-mono font-bold text-pastel-pink-dark rotate-3 bg-white/70">
+            <span className="border border-dashed border-[#A84670]/60 rounded px-1.5 py-0.2 text-[8px] font-mono font-bold text-[#FFB6D5] rotate-3 bg-[#181B32]/70">
               {gateData.hero.postmark}
             </span>
           </div>
 
-          <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-pastel-charcoal leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl font-extrabold tracking-tight text-[#F7F4FC] leading-tight">
             {gateData.hero.heading}
           </h1>
 
-          <div className="font-display text-4xl sm:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#9568C4] via-[#303344] to-[#4F9CC9] leading-tight">
+          <div className="font-display text-4xl sm:text-5xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#69C7F5] via-[#B98AE8] to-[#F494BC] leading-tight">
             {site.recipient.toUpperCase()}
           </div>
 
@@ -143,26 +153,26 @@ export default function HomePage() {
             <TextLoop
               words={site.heroLoopWords}
               interval={2600}
-              wordClassName="text-sm sm:text-base font-bold text-pastel-charcoal bg-pastel-yellow/60 px-3.5 py-0.5 rounded-full border border-pastel-yellow-dark/40 shadow-xs"
+              wordClassName="text-sm sm:text-base font-bold text-[#F7F4FC] bg-[#30204B] px-3.5 py-0.5 rounded-full border border-[#7147A8]/50 shadow-xs"
             />
           </div>
 
-          <p className="mt-1 max-w-xs text-xs text-pastel-charcoal/75 leading-relaxed px-4 whitespace-pre-line">
+          <p className="mt-1 max-w-xs text-xs text-[#C9C5D6] leading-relaxed px-4 whitespace-pre-line">
             {gateData.hero.subtext}
           </p>
         </div>
 
-        {/* Aesthetic Numberpad Birthday Lock Card */}
-        <div className="w-full max-w-[290px] mx-auto rounded-3xl bg-white/95 p-3.5 sm:p-4 shadow-scrapbook border border-pastel-pink/40 backdrop-blur-md shrink-0">
+        {/* Aesthetic Midnight Numberpad Birthday Lock Card */}
+        <div className="w-full max-w-[290px] mx-auto rounded-3xl bg-[#181B32]/90 p-3.5 sm:p-4 shadow-scrapbook-lg border border-[#302B4D] backdrop-blur-md shrink-0">
           {isUnlocked && !isUnlocking ? (
             <div className="flex flex-col items-center gap-2 py-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-pastel-green/40 text-emerald-800 animate-bounce">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#183B59] text-[#69C7F5] animate-bounce">
                 <Unlock className="h-5 w-5" />
               </div>
-              <p className="font-display text-base font-bold text-pastel-charcoal">
+              <p className="font-display text-base font-bold text-[#F7F4FC]">
                 {gateData.unlockedState.title}
               </p>
-              <p className="text-xs text-pastel-charcoal/70">
+              <p className="text-xs text-[#C9C5D6]">
                 {gateData.unlockedState.subtitle}
               </p>
               <SpecularButton
@@ -181,8 +191,8 @@ export default function HomePage() {
                 className={cn(
                   "w-full mt-1.5 py-2 px-3 rounded-2xl font-display font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-xs",
                   isComplete
-                    ? "bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-600 text-white shadow-md animate-pulse-subtle"
-                    : "bg-pastel-yellow/80 hover:bg-pastel-yellow text-pastel-charcoal border border-pastel-yellow-dark/60"
+                    ? "bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white shadow-md animate-pulse-subtle"
+                    : "bg-[#202440] hover:bg-[#292D4D] text-[#F7F4FC] border border-[#7147A8]/50"
                 )}
               >
                 <span>{isComplete ? "📱" : "🌸"}</span>
@@ -191,42 +201,42 @@ export default function HomePage() {
                     ? "Add 18 Stickers to WhatsApp! ✨"
                     : `Sticker Quest (${totalCollected}/16) • WhatsApp Pack`}
                 </span>
-                {isComplete && <Sparkles className="h-3 w-3 text-yellow-200" />}
+                {isComplete && <Sparkles className="h-3 w-3 text-yellow-300" />}
               </button>
             </div>
           ) : (
             <div className="flex flex-col gap-1.5">
               {/* Header */}
-              <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-pastel-charcoal/85">
-                <Lock className="h-3.5 w-3.5 text-pastel-pink-dark" />
+              <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-[#F7F4FC]">
+                <Lock className="h-3.5 w-3.5 text-[#E875A6]" />
                 <span>{gateData.lockCard.title}</span>
               </div>
 
-              <p className="text-[10px] text-pastel-muted font-medium">
+              <p className="text-[10px] text-[#918DA1] font-medium">
                 {gateData.lockCard.hint}
               </p>
 
               {/* Aesthetic Code Display Box */}
-              <div className="h-10 w-full rounded-2xl border border-pastel-pink/40 bg-pastel-cream/70 flex items-center justify-center px-3 tracking-widest font-display text-lg font-bold text-pastel-charcoal shadow-inner my-0.5">
+              <div className="h-10 w-full rounded-2xl border border-[#7147A8]/40 bg-[#12152A] flex items-center justify-center px-3 tracking-widest font-display text-lg font-bold text-[#F7F4FC] shadow-inner my-0.5">
                 {passcode ? (
                   <div className="flex items-center gap-1">
                     <span>{passcode}</span>
-                    <span className="h-4 w-0.5 bg-pastel-pink-dark animate-pulse" />
+                    <span className="h-4 w-0.5 bg-[#E875A6] animate-pulse" />
                   </div>
                 ) : (
-                  <span className="text-pastel-muted/40 font-normal text-sm tracking-normal">
+                  <span className="text-[#918DA1]/50 font-normal text-sm tracking-normal">
                     {gateData.lockCard.passcodePlaceholder}
                   </span>
                 )}
               </div>
 
               {errorMsg && (
-                <p className="text-[10px] font-semibold text-rose-500 animate-wiggle-soft">
+                <p className="text-[10px] font-semibold text-rose-400 animate-wiggle-soft">
                   {errorMsg}
                 </p>
               )}
 
-              {/* Cute Pastel Numberpad Grid */}
+              {/* Midnight Numberpad Grid */}
               <div className="grid grid-cols-3 gap-1.5 w-full my-0.5">
                 {numpadKeys.map((key) => {
                   if (key === "del") {
@@ -237,9 +247,9 @@ export default function HomePage() {
                         onClick={handleBackspace}
                         disabled={isUnlocking}
                         aria-label="Backspace"
-                        className="h-10 rounded-xl bg-pastel-pink/30 hover:bg-pastel-pink/50 active:scale-90 border border-pastel-pink/40 text-pastel-charcoal flex items-center justify-center transition-transform shadow-xs disabled:opacity-50"
+                        className="h-10 rounded-xl bg-[#431F35]/60 hover:bg-[#431F35] active:scale-90 border border-[#A84670]/40 text-[#FFB6D5] flex items-center justify-center transition-transform shadow-xs disabled:opacity-50"
                       >
-                        <Delete className="h-4 w-4 text-pastel-charcoal/80" />
+                        <Delete className="h-4 w-4 text-[#FFB6D5]" />
                       </button>
                     );
                   }
@@ -250,7 +260,7 @@ export default function HomePage() {
                       type="button"
                       onClick={() => handleKeyPress(key)}
                       disabled={isUnlocking}
-                      className="h-10 rounded-xl bg-pastel-cream/80 hover:bg-pastel-pink/20 active:scale-90 border border-pastel-pink/20 font-display text-base font-bold text-pastel-charcoal transition-transform shadow-xs flex items-center justify-center disabled:opacity-50"
+                      className="h-10 rounded-xl bg-[#12152A] hover:bg-[#202440] active:scale-90 border border-[#272A43] font-display text-base font-bold text-[#F7F4FC] transition-transform shadow-xs flex items-center justify-center disabled:opacity-50"
                     >
                       {key}
                     </button>
@@ -268,8 +278,8 @@ export default function HomePage() {
                 className="w-full justify-center py-2 text-xs font-bold mt-1"
               >
                 {isUnlocking ? (
-                  <span className="flex items-center justify-center gap-1.5 animate-pulse text-white">
-                    <Sparkles className="h-3.5 w-3.5 text-white animate-spin" />
+                  <span className="flex items-center justify-center gap-1.5 animate-pulse text-[#F7F4FC]">
+                    <Sparkles className="h-3.5 w-3.5 text-[#F7F4FC] animate-spin" />
                     <span>{gateData.lockCard.unlockingButton}</span>
                   </span>
                 ) : (
@@ -282,9 +292,9 @@ export default function HomePage() {
       </div>
 
       {/* Bottom Sparkles Decor - Anchored near bottom */}
-      <div className="flex items-center justify-center gap-2 text-xs text-pastel-muted select-none shrink-0 pb-1">
+      <div className="flex items-center justify-center gap-2 text-xs text-[#918DA1] select-none shrink-0 pb-1">
         <span>{gateData.footerSparkles.leftEmoji}</span>
-        <span className="font-handwriting text-sm text-pastel-charcoal/70">{gateData.footerSparkles.text}</span>
+        <span className="font-handwriting text-sm text-[#C9C5D6]">{gateData.footerSparkles.text}</span>
         <span>{gateData.footerSparkles.rightEmoji}</span>
       </div>
 

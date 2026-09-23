@@ -19,7 +19,7 @@ export default function NotePage() {
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#91D4EB" />
+      <Skiper19ScrollVine color="#7147A8" />
 
       {/* Fullscreen Lightbox for expanded photo view */}
       <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
@@ -28,69 +28,69 @@ export default function NotePage() {
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
           <span>{noteData.badges.left.emoji}</span>
-          <span className="text-[11px] font-medium">{noteData.badges.left.text}</span>
+          <span className="text-[11px] font-medium text-[#F7F4FC]">{noteData.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={2}>
           <span>{noteData.badges.right.emoji}</span>
-          <span className="text-[11px] font-medium">{noteData.badges.right.text}</span>
+          <span className="text-[11px] font-medium text-[#F7F4FC]">{noteData.badges.right.text}</span>
         </Sticker>
       </div>
 
       <div className="w-full max-w-sm flex flex-col gap-6">
         {/* Authentic Ruled Legal Pad / Journal Note */}
         <div
-          className="relative rounded-3xl bg-[#FFFDF0] p-6 shadow-scrapbook border border-amber-200/80 overflow-hidden"
+          className="relative rounded-3xl bg-[#181B32] p-6 shadow-scrapbook border border-[#302B4D] overflow-hidden"
           style={{
-            backgroundImage: "repeating-linear-gradient(transparent, transparent 29px, rgba(147, 197, 253, 0.35) 30px)",
+            backgroundImage: "repeating-linear-gradient(transparent, transparent 29px, rgba(113, 71, 168, 0.20) 30px)",
           }}
         >
-          {/* Yellow Tape on Top */}
-          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 h-5 w-24 bg-pastel-yellow/90 backdrop-blur-xs shadow-2xs rotate-1 border-y border-amber-200/50 z-20 pointer-events-none" />
+          {/* Lavender/Purple Tape on Top */}
+          <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 h-5 w-24 bg-[#7147A8]/70 backdrop-blur-xs shadow-2xs rotate-1 border-y border-[#B98AE8]/40 z-20 pointer-events-none" />
 
           {/* Spiral Binder / Perforated Holes Header */}
-          <div className="flex justify-between items-center pb-3 mb-2 border-b border-dashed border-amber-300/60">
+          <div className="flex justify-between items-center pb-3 mb-2 border-b border-dashed border-[#272A43]">
             <div className="flex gap-2.5">
               {[...Array(5)].map((_, i) => (
-                <div key={i} className="h-3 w-3 rounded-full bg-amber-100/80 border border-amber-300/60 shadow-inner" />
+                <div key={i} className="h-3 w-3 rounded-full bg-[#0D1020] border border-[#272A43] shadow-inner" />
               ))}
             </div>
-            <span className="text-[10px] font-mono text-amber-600/60 font-semibold tracking-wider">
+            <span className="text-[10px] font-mono text-[#918DA1] font-semibold tracking-wider">
               {noteData.memo.tag}
             </span>
           </div>
 
-          {/* Red Vertical Margin Line & Note Content */}
-          <div className="border-l-2 border-rose-300/60 pl-4 ml-1 space-y-4 text-pastel-charcoal">
-            <p className="font-handwriting text-3xl font-bold text-pastel-charcoal leading-snug">
+          {/* Red/Pink Vertical Margin Line & Note Content */}
+          <div className="border-l-2 border-[#E875A6]/50 pl-4 ml-1 space-y-4 text-[#F7F4FC]">
+            <p className="font-handwriting text-3xl font-bold text-[#F7F4FC] leading-snug">
               {noteData.memo.greeting}
             </p>
 
-            <p className="text-xs text-pastel-charcoal/85 leading-loose">
+            <p className="text-xs text-[#C9C5D6] leading-loose">
               {noteData.memo.intro}
             </p>
 
-            <div className="rounded-xl bg-white/90 p-2.5 text-center border border-amber-200/70 shadow-2xs">
-              <span className="font-display text-sm font-bold text-pastel-charcoal">
+            <div className="rounded-xl bg-[#12152A] p-2.5 text-center border border-[#272A43] shadow-2xs">
+              <span className="font-display text-sm font-bold text-[#F7F4FC]">
                 {noteData.memo.standardWish}
               </span>
             </div>
 
-            <p className="text-xs text-pastel-charcoal/85 leading-loose">
+            <p className="text-xs text-[#C9C5D6] leading-loose">
               {noteData.memo.turn}
             </p>
 
-            <div className="pt-2 border-t border-amber-200/60 flex flex-col gap-2">
+            <div className="pt-2 border-t border-[#272A43] flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <span className="font-handwriting text-2xl font-bold text-pastel-charcoal/90">
+                <span className="font-handwriting text-2xl font-bold text-[#F7F4FC]">
                   {noteData.memo.closingBold}
                 </span>
                 <div className="flex items-center gap-2">
                   <CollectibleSticker id="tanisha_smile" size={54} rotation={-4} />
-                  <Heart className="h-4 w-4 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+                  <Heart className="h-4 w-4 text-[#E875A6] fill-[#E875A6] animate-pulse" />
                 </div>
               </div>
-              <p className="whitespace-pre-line text-xs font-handwriting font-bold text-pastel-charcoal/80 leading-relaxed">
+              <p className="whitespace-pre-line text-xs font-handwriting font-bold text-[#FFB6D5] leading-relaxed">
                 {noteData.memo.closingCare}
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function NotePage() {
                 } as any)
               }
             />
-            <div className="absolute -bottom-2.5 -right-2 z-20 rotate-3 rounded-lg bg-pastel-pink/90 px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-pink-dark/40">
+            <div className="absolute -bottom-2.5 -right-2 z-20 rotate-3 rounded-lg bg-[#30204B] px-3 py-1 text-xs font-handwriting font-bold text-[#F7F4FC] shadow-xs border border-[#7147A8]">
               {noteData.polaroidKeepsake.subNote}
             </div>
           </div>
@@ -134,24 +134,24 @@ export default function NotePage() {
 
         {/* A Little Memory Keepsake Card (18/09 Hackathon) */}
         {(noteData as any).hackathonMemory && (
-          <div className="relative rounded-3xl bg-gradient-to-br from-pastel-yellow/60 via-white to-pastel-pink/30 p-5 shadow-scrapbook border border-amber-200/80 text-left">
-            <span className="absolute -top-3 left-6 h-5 w-20 bg-pastel-yellow/80 border border-amber-300/60 rounded-xs -rotate-2" />
+          <div className="relative rounded-3xl bg-[#181B32] p-5 shadow-scrapbook border border-[#272A43] text-left">
+            <span className="absolute -top-3 left-6 h-5 w-20 bg-[#2679A8]/60 border border-[#69C7F5]/40 rounded-xs -rotate-2" />
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <span className="text-xl select-none">{(noteData as any).hackathonMemory.sticker}</span>
-                <h4 className="font-display text-sm font-bold text-pastel-charcoal">
+                <h4 className="font-display text-sm font-bold text-[#F7F4FC]">
                   {(noteData as any).hackathonMemory.title}
                 </h4>
               </div>
-              <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-[10px] font-mono font-bold text-amber-900 border border-amber-300/50">
+              <span className="rounded-full bg-[#183B59] px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#8DD8FF] border border-[#2679A8]">
                 {(noteData as any).hackathonMemory.tag}
               </span>
             </div>
-            <p className="whitespace-pre-line font-handwriting text-lg text-pastel-charcoal/90 leading-relaxed my-2">
+            <p className="whitespace-pre-line font-handwriting text-lg text-[#C9C5D6] leading-relaxed my-2">
               {(noteData as any).hackathonMemory.story}
             </p>
-            <div className="pt-2 border-t border-amber-200/50 flex justify-end">
-              <span className="text-[10px] font-mono font-semibold text-pastel-muted">
+            <div className="pt-2 border-t border-[#272A43] flex justify-end">
+              <span className="text-[10px] font-mono font-semibold text-[#918DA1]">
                 {(noteData as any).hackathonMemory.subNote}
               </span>
             </div>
@@ -159,24 +159,24 @@ export default function NotePage() {
         )}
 
         {/* 'Why This Exists' Sequence Card */}
-        <div className="relative rounded-3xl bg-white/95 p-5 shadow-scrapbook border border-pastel-pink/30">
-          <h4 className="font-display text-xs font-bold text-pastel-charcoal uppercase tracking-wider text-center mb-3">
+        <div className="relative rounded-3xl bg-[#181B32] p-5 shadow-scrapbook border border-[#272A43]">
+          <h4 className="font-display text-xs font-bold text-[#F7F4FC] uppercase tracking-wider text-center mb-3">
             {noteData.whyItExists.title}
           </h4>
 
-          <div className="flex flex-col items-center gap-2 text-center text-xs text-pastel-charcoal font-medium">
+          <div className="flex flex-col items-center gap-2 text-center text-xs text-[#F7F4FC] font-medium">
             {noteData.whyItExists.steps.map((step, idx) => (
               <React.Fragment key={idx}>
-                {idx > 0 && <ArrowDown className="h-3 w-3 text-pastel-muted" />}
+                {idx > 0 && <ArrowDown className="h-3 w-3 text-[#918DA1]" />}
                 <span
                   className={
                     step.style === "cream"
-                      ? "rounded-full bg-pastel-cream px-3 py-1 shadow-2xs border border-pastel-pink/20"
+                      ? "rounded-full bg-[#12152A] px-3 py-1 shadow-2xs border border-[#272A43] text-[#F7F4FC]"
                       : step.style === "yellow"
-                      ? "rounded-full bg-pastel-yellow/50 px-3 py-1 border border-pastel-yellow-dark/30"
+                      ? "rounded-full bg-[#183B59] px-3 py-1 border border-[#2679A8] text-[#8DD8FF]"
                       : step.style === "handwriting"
-                      ? "font-handwriting text-base font-bold text-pastel-charcoal"
-                      : "rounded-full bg-pastel-pink/60 px-4 py-1.5 font-bold text-pastel-charcoal border border-pastel-pink-dark/40 shadow-xs"
+                      ? "font-handwriting text-base font-bold text-[#F7F4FC]"
+                      : "rounded-full bg-[#30204B] px-4 py-1.5 font-bold text-[#F7F4FC] border border-[#7147A8] shadow-xs"
                   }
                 >
                   {step.text}
@@ -186,34 +186,34 @@ export default function NotePage() {
           </div>
 
           {/* Collectible Quest Sticker: tanisha_bye */}
-          <div className="mt-5 pt-3 border-t border-pastel-pink/20 text-center flex flex-col items-center">
-            <p className="text-[10px] text-amber-800 font-mono font-bold uppercase tracking-wider mb-2">
+          <div className="mt-5 pt-3 border-t border-[#272A43] text-center flex flex-col items-center">
+            <p className="text-[10px] text-[#B98AE8] font-mono font-bold uppercase tracking-wider mb-2">
               {noteData.whyItExists.questBadge}
             </p>
             <div className="my-1">
               <CollectibleSticker id="tanisha_bye" size={62} rotation={4} showTapPrompt={true} />
             </div>
-            <p className="text-[10px] text-pastel-muted italic mt-1">
+            <p className="text-[10px] text-[#918DA1] italic mt-1">
               {noteData.whyItExists.questDescription}
             </p>
           </div>
         </div>
 
         {/* Tucked Notice */}
-        <div className="rounded-2xl bg-pastel-blue/20 p-3.5 border border-pastel-blue/40 text-center">
-          <p className="font-handwriting text-base text-pastel-charcoal font-bold">
+        <div className="rounded-2xl bg-[#183B59]/30 p-3.5 border border-[#2679A8]/40 text-center">
+          <p className="font-handwriting text-base text-[#F7F4FC] font-bold">
             {noteData.tuckedNotice.quote}
           </p>
-          <span className="text-[11px] text-pastel-charcoal/70">
+          <span className="text-[11px] text-[#C9C5D6]">
             {noteData.tuckedNotice.nextHint}
           </span>
         </div>
       </div>
 
       {/* Floating Sparkles */}
-      <div className="my-4 flex items-center gap-1.5 text-xs text-pastel-muted">
-        <Sparkles className="h-3 w-3 text-pastel-yellow-dark" />
-        <span className="font-handwriting text-base text-pastel-charcoal/80">{noteData.keepScrolling}</span>
+      <div className="my-4 flex items-center gap-1.5 text-xs text-[#918DA1]">
+        <Sparkles className="h-3 w-3 text-[#69C7F5]" />
+        <span className="font-handwriting text-base text-[#C9C5D6]">{noteData.keepScrolling}</span>
       </div>
 
       {/* Page Navigation */}

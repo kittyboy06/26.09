@@ -49,13 +49,13 @@ export function WebThreadsBackground({
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Atmospheric Blue • Purple • Pink color harmony
+    // Atmospheric Blue • Purple • Pink starlight filaments
     const colors = [
-      "rgba(200, 229, 245, 0.45)", // Blue Soft (#C8E5F5)
-      "rgba(79, 156, 201, 0.35)",  // Primary Blue (#4F9CC9)
-      "rgba(223, 208, 240, 0.40)", // Lavender Soft (#DFD0F0)
-      "rgba(149, 104, 196, 0.28)", // Primary Purple (#9568C4)
-      "rgba(246, 210, 225, 0.35)", // Pink Soft (#F6D2E1)
+      "rgba(141, 216, 255, 0.30)", // Blue Glow (#8DD8FF)
+      "rgba(105, 199, 245, 0.22)", // Blue Soft (#69C7F5)
+      "rgba(211, 167, 255, 0.25)", // Lavender Glow (#D3A7FF)
+      "rgba(185, 138, 232, 0.20)", // Lavender (#B98AE8)
+      "rgba(255, 182, 213, 0.22)", // Pink Glow (#FFB6D5)
     ];
 
     // Thread particles with organic wave motion
@@ -157,7 +157,7 @@ export function WebThreadsBackground({
 
   return (
     <div
-      className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-pastel-cream ${className}`}
+      className={`pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-night-950 ${className}`}
       style={{ opacity }}
       aria-hidden="true"
     >

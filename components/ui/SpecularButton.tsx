@@ -21,12 +21,12 @@ export function SpecularButton({
   ...props
 }: SpecularButtonProps) {
   const variantStyles = {
-    purple: "bg-[#9568C4] text-white border-[#7E52AC]/70 hover:bg-[#8358B0] shadow-specular",
-    pink: "bg-[#D978A2] text-white border-[#C45E8B]/70 hover:bg-[#C66791] shadow-specular",
-    blue: "bg-[#4F9CC9] text-white border-[#3884B0]/70 hover:bg-[#3D8AB7] shadow-scrapbook",
-    yellow: "bg-[#4F9CC9] text-white border-[#3884B0]/70 hover:bg-[#3D8AB7] shadow-scrapbook",
-    green: "bg-[#9568C4] text-white border-[#7E52AC]/70 hover:bg-[#8358B0] shadow-specular",
-    cream: "bg-[#FFFDFB] text-[#303344] border-[#DFD0F0] hover:bg-[#F4EFFA] shadow-scrapbook",
+    purple: "bg-[#9B6DDB] text-[#F7F4FC] border-[#B98AE8]/40 hover:bg-[#8857CA] shadow-dream-purple",
+    pink: "bg-[#E875A6] text-[#F7F4FC] border-[#F494BC]/40 hover:bg-[#D46091] shadow-dream-pink",
+    blue: "bg-[#4AAFE0] text-[#F7F4FC] border-[#69C7F5]/40 hover:bg-[#369CCD] shadow-dream-blue",
+    yellow: "bg-[#4AAFE0] text-[#F7F4FC] border-[#69C7F5]/40 hover:bg-[#369CCD] shadow-dream-blue",
+    green: "bg-[#9B6DDB] text-[#F7F4FC] border-[#B98AE8]/40 hover:bg-[#8857CA] shadow-dream-purple",
+    cream: "bg-[#181B32] text-[#F7F4FC] border-[#272A43] hover:bg-[#202440] shadow-scrapbook",
   };
 
   const sizeStyles = {
@@ -42,7 +42,7 @@ export function SpecularButton({
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
       onClick={onClick}
       className={cn(
-        "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-pastel-pink/50 border select-none",
+        "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-[#9B6DDB]/40 border select-none",
         variantStyles[variant],
         sizeStyles[size],
         className

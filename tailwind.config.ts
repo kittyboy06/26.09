@@ -9,51 +9,62 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        night: {
+          950: "#090B16",
+          900: "#0D1020",
+          850: "#12152A",
+          800: "#181B32",
+          750: "#202440",
+          700: "#292D4D",
+        },
         pastel: {
-          // Foundation Neutrals
-          cream: "#FFFDFB",
-          card: "#FFFFFF",
-          charcoal: "#303344",
-          muted: "#666A78",
+          // Midnight Foundation Surfaces & Text
+          cream: "#0D1020",
+          card: "#181B32",
+          charcoal: "#F7F4FC",
+          muted: "#918DA1",
 
-          // Blue Family (Dominant: ~45-60%)
+          // Blue Family (Atmosphere & Movement)
           blue: {
-            mist: "#EAF6FC",
-            soft: "#C8E5F5",
-            DEFAULT: "#4F9CC9",
-            dark: "#3D8AB7",
-            deep: "#286B96",
+            glow: "#8DD8FF",
+            soft: "#69C7F5",
+            DEFAULT: "#4AAFE0",
+            deep: "#2679A8",
+            night: "#183B59",
+            dark: "#2679A8",
           },
-          "blue-dark": "#3D8AB7",
+          "blue-dark": "#2679A8",
 
-          // Purple Family (Secondary: ~30%)
+          // Purple Family (Identity & Magic)
           purple: {
-            mist: "#F4EFFA",
-            soft: "#DFD0F0",
-            DEFAULT: "#9568C4",
-            dark: "#8358B0",
-            deep: "#69428F",
+            glow: "#D3A7FF",
+            soft: "#B98AE8",
+            DEFAULT: "#9B6DDB",
+            deep: "#7147A8",
+            night: "#30204B",
+            dark: "#7147A8",
           },
-          lavender: "#DFD0F0",
-          "purple-dark": "#8358B0",
+          lavender: "#B98AE8",
+          "purple-dark": "#7147A8",
 
-          // Pink Family (Tertiary: ~10-25%)
+          // Pink Family (Warmth & Emotion)
           pink: {
-            mist: "#FFF0F5",
-            soft: "#F6D2E1",
-            DEFAULT: "#D978A2",
-            dark: "#C66791",
-            deep: "#A94F76",
+            glow: "#FFB6D5",
+            soft: "#F494BC",
+            DEFAULT: "#E875A6",
+            deep: "#A84670",
+            night: "#431F35",
+            dark: "#A84670",
           },
-          "pink-dark": "#C66791",
+          "pink-dark": "#A84670",
 
-          // Cool-spectrum harmonization for legacy sticker/accent keys
-          yellow: "#C8E5F5",
-          "yellow-dark": "#4F9CC9",
-          green: "#DFD0F0",
-          "green-dark": "#9568C4",
-          peach: "#F6D2E1",
-          "peach-dark": "#D978A2",
+          // Midnight Harmonization for legacy tokens
+          yellow: "#69C7F5",
+          "yellow-dark": "#4AAFE0",
+          green: "#B98AE8",
+          "green-dark": "#9B6DDB",
+          peach: "#F494BC",
+          "peach-dark": "#E875A6",
         },
       },
       fontFamily: {
@@ -91,10 +102,13 @@ const config: Config = {
         },
       },
       boxShadow: {
-        scrapbook: "0 8px 24px -4px rgba(48, 51, 68, 0.06), 0 2px 6px -1px rgba(48, 51, 68, 0.04)",
-        "scrapbook-lg": "0 16px 36px -6px rgba(48, 51, 68, 0.08), 0 4px 12px -2px rgba(48, 51, 68, 0.04)",
-        sticker: "0 4px 12px rgba(48, 51, 68, 0.08)",
-        specular: "0 6px 20px -2px rgba(217, 120, 162, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.8)",
+        "dream-purple": "0 0 35px -5px rgba(155, 109, 219, 0.18)",
+        "dream-blue": "0 0 35px -5px rgba(105, 199, 245, 0.18)",
+        "dream-pink": "0 0 35px -5px rgba(232, 117, 166, 0.18)",
+        scrapbook: "0 8px 28px -4px rgba(0, 0, 0, 0.5), 0 2px 6px -1px rgba(0, 0, 0, 0.3)",
+        "scrapbook-lg": "0 16px 40px -6px rgba(0, 0, 0, 0.65), 0 4px 12px -2px rgba(0, 0, 0, 0.4)",
+        sticker: "0 4px 16px rgba(0, 0, 0, 0.4)",
+        specular: "0 6px 20px -2px rgba(155, 109, 219, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.15)",
       },
     },
   },

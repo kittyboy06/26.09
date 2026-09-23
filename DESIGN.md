@@ -166,47 +166,63 @@
 
 ---
 
-## 8. Revised Soft + Readable Color System (Blue • Purple • Pink)
+## 8. Dreamy Midnight Scrapbook (Dark Theme System)
 
 ### 8.1 Understanding Summary
-* **What**: Evolution from the multi-pastel yellow/green palette to a unified Blue • Purple • Pink color hierarchy across all 9 chapters.
-* **Why**: Soft, dreamy aesthetic with strong WCAG AA contrast (charcoal/deep colors for text, 500-level for UI, 50/100 mists for backgrounds).
-* **Hierarchy**: Blue (dominant 45-60%, airy & playful) → Purple (secondary ~30%, magical & structural) → Pink (tertiary 10-25%, personal & celebratory).
+* **What**: Complete site transformation to a **Dreamy Midnight Scrapbook** (*Pinterest scrapbook × midnight sky × digital birthday card × soft neon*).
+* **Why**: An atmospheric, rich nighttime celebration avoiding harsh pure black or aggressive gaming neon, using layered deep navy, purple structures, starlight blue glows, and emotional pink accents.
+* **Philosophy**: Darkness is the canvas, not flat black. Depth is created via 4 surface tiers: `#090B16` (base) → `#0D1020` (sections) → `#181B32` (cards) → `#202440` (elevated).
 
 ### 8.2 Decision Log
 | # | Decision | Alternatives Considered | Rationale |
 |---|---|---|---|
-| **1** | **Revised Soft + Readable 3-Tier Palette**<br>• Surfaces: `#FFFDFB` (warm white), `#EAF6FC` (blue mist), `#F4EFFA` (lavender mist), `#FFF0F5` (pink mist)<br>• Cards/Borders: `#C8E5F5` (blue soft), `#DFD0F0` (lavender), `#F6D2E1` (pink soft)<br>• UI & Buttons: `#4F9CC9` (blue), `#9568C4` (purple), `#D978A2` (pink)<br>• Text: `#303344` (charcoal body), `#286B96` (deep blue), `#69428F` (deep purple), `#A94F76` (deep pink) | Original lighter 500-series pastels | Original pastels were under 2.5:1 against white; deeper variants guarantee WCAG AA readability (>4.5:1). |
-| **2** | **3-Layer Architecture** (Global → Chapter → Interaction) | Ad-hoc per-component styles | Preserves single microsite cohesion across 9 pages while allowing each chapter to own its unique emotional color job. |
-| **3** | **Tailwind Backward-Compatible Mapping** | Hardcoded CSS strings | Updates `colors.pastel` in `tailwind.config.ts` so all components adapt without breaking. |
+| **1** | **Full Site Transformation to Dreamy Midnight** | Light/Dark dual toggle | User confirmed a dedicated, fully immersive midnight scrapbook experience without duplicate CSS overhead. |
+| **2** | **Deep Navy Base (`#090B16` / `#0D1020`) Instead of Pure Black (`#000000`)** | Pitch black `#000000` | Pure black creates a cold cyberpunk/gaming dashboard feel. Deep navy preserves warmth and magical scrapbook charm. |
+| **3** | **Restrained Ambient Glows (`rgba(155, 109, 219, 0.18)`)** | Saturated neon outer glows | Soft glows feel dreamy and celebratory rather than an RGB gaming keyboard. |
 
-### 8.3 Token Reference Table
-| Token Name | Hex Code | Role & Usage |
-| :--- | :--- | :--- |
-| **`--surface-warm`** | `#FFFDFB` | Main paper card surface (replaces `#FFFDF5`) |
-| **`--text-primary`** | `#303344` | High-contrast dark charcoal body text (>10:1 ratio) |
-| **`--text-muted`** | `#666A78` | Secondary captions, timestamps, and metadata |
-| **`--blue-mist`** | `#EAF6FC` | Large atmospheric blue background |
-| **`--blue-soft`** | `#C8E5F5` | Blue cards, borders, decorative shapes |
-| **`--blue-primary`** | `#4F9CC9` | Primary blue UI accents & buttons |
-| **`--blue-deep`** | `#286B96` | High-contrast blue labels & text |
-| **`--purple-mist`** | `#F4EFFA` | Large lavender background |
-| **`--purple-soft`** | `#DFD0F0` | Lavender cards, borders, illustrations |
-| **`--purple-primary`**| `#9568C4` | Primary action buttons & purple UI |
-| **`--purple-deep`** | `#69428F` | High-contrast purple labels & text |
-| **`--pink-mist`** | `#FFF0F5` | Large pink background |
-| **`--pink-soft`** | `#F6D2E1` | Pink cards, borders, decorations |
-| **`--pink-primary`** | `#D978A2` | Primary pink buttons & celebratory accents |
-| **`--pink-deep`** | `#A94F76` | High-contrast pink labels & text |
+### 8.3 Master Design Tokens Table
+| Category | Token | Hex | Role & Usage |
+| :--- | :--- | :--- | :--- |
+| **Backgrounds** | `--bg-deep` | `#090B16` | Deepest page canvas & mobile status bar |
+| | `--bg-primary` | `#0D1020` | Section backgrounds & main viewports |
+| | `--bg-secondary` | `#12152A` | Secondary section container surfaces |
+| | `--surface` | `#181B32` | Standard card surface (Polaroids, notes) |
+| | `--surface-elevated` | `#202440` | Elevated / active cards & discovery cards |
+| | `--surface-hover` | `#292D4D` | Hover & interactive button surfaces |
+| **Blue** | `--blue-glow` | `#8DD8FF` | Ambient blue glow & starlight filaments |
+| | `--blue-soft` | `#69C7F5` | Blue icons, stickers & card numbers |
+| | `--blue-primary` | `#4AAFE0` | Interactive blue UI & buttons |
+| | `--blue-deep` | `#2679A8` | Blue borders & chat bubble outlines |
+| | `--blue-night` | `#183B59` | Subtle dark blue bubble surfaces |
+| **Purple** | `--purple-glow` | `#D3A7FF` | Lavender ambient glow & highlights |
+| | `--purple-soft` | `#B98AE8` | Lavender accents, annotations & numbers |
+| | `--purple-primary` | `#9B6DDB` | Primary action buttons & key highlights |
+| | `--purple-deep` | `#7147A8` | Purple card borders & badge outlines |
+| | `--purple-night` | `#30204B` | Dark purple bubble surfaces & selection |
+| **Pink** | `--pink-glow` | `#FFB6D5` | Pink ambient glow & sparkles |
+| | `--pink-soft` | `#F494BC` | Pink stickers, numbers & hit effects |
+| | `--pink-primary` | `#E875A6` | Celebratory action buttons & highlights |
+| | `--pink-deep` | `#A84670` | Pink card borders & decorative lines |
+| | `--pink-night` | `#431F35` | Subtle dark pink surfaces |
+| **Text** | `--text-primary` | `#F7F4FC` | Almost-white lavender headings & bold text |
+| | `--text-secondary` | `#C9C5D6` | Soft lilac-slate body copy |
+| | `--text-muted` | `#918DA1` | Secondary timestamps & metadata |
+| | `--text-disabled` | `#625F70` | Inactive & disabled indicators |
+| **Borders** | `--border-subtle` | `#272A43` | Neutral card dividers & window frames |
 
-### 8.4 Chapter-by-Chapter Color Journey
-* **01 — Birthday Gate (`/`)**: 45% Blue (`#EAF6FC`), 30% Purple (`#F4EFFA`), 25% Pink (`#D978A2`). Primary Button: `#9568C4`.
-* **02 — A Little Something (`/note`)**: 50% Pink (`#FFF0F5`), 30% Purple, 20% Blue. Primary Button: `#D978A2`.
-* **03 — Things I've Noticed (`/noticed`)**: Purple dominant (`#F4EFFA`). Cards: `#FFFDFB` / `#EAF6FC`. Primary Button: `#9568C4`.
-* **04 — Our Randomness (`/memories`)**: Blue dominant (`#EAF6FC`). Cards: `#C8E5F5` / `#FFFDFB`. Primary Button: `#4F9CC9`.
-* **05 — The Chat Logs (`/chat`)**: Afsal bubble `#EAF6FC` (border `#C8E5F5`), Tanisha bubble `#FFF0F5` (border `#F6D2E1`), text `#303344`.
-* **06 — 19 Things (`/nineteen`)**: Sequential cycling (01 Blue → 02 Purple → 03 Pink). Card 19: 135deg linear gradient (`#EAF6FC` → `#F4EFFA` → `#FFF0F5`).
-* **07 — Whack-a-Tanisha (`/game`)**: High-energy arcade: background `#EAF6FC`, targets `#DFD0F0`, border `#9568C4`, hit effect `#D978A2`.
-* **08 — Flower Reveal (`/gift`)**: Pink/Purple bloom: background `#FFF0F5`, secondary `#F4EFFA`, card `#FFFDFB`, primary `#D978A2`.
-* **09 — Final Celebration (`/birthday`)**: Triple radial glow background on `#FFFDFB` (`#EAF6FC`, `#F4EFFA`, `#FFF0F5`), primary `#9568C4`, secondary `#D978A2`.
+### 8.4 Screen-by-Screen Midnight Scrapbook Journey
+* **01 — Birthday Gate (`/`)**: Background `#090B16` with triple ambient corner glow (Blue top-left, Purple top-right, Pink bottom). Card `#181B32` with `#302B4D` border. Primary CTA: `#9B6DDB`.
+* **02 — A Little Something (`/note`)**: Late-night handwritten note. Backdrop `#0D1020`, note card `#181B32`, border `#4A3049`, CTA `#E875A6` (Pink Primary), and pink stars `#FFB6D5`.
+* **03 — Things I've Noticed (`/noticed`)**: Terminal and observation cards in `#181B32` and `#202440`. “Things I Remember” card in `#202440` with `#7147A8` border containing 💙 `#69C7F5`, 💜 `#B98AE8`, 🩷 `#F494BC`, and 🍿 Popcorn badge.
+* **04 — Our Randomness (`/memories`)**: Midnight scrapbook. Base `#12152A`, polaroid cards alternating `#181B32` and `#1B2138`, dominant Blue `#69C7F5`, and handwritten annotations in `#B98AE8`.
+* **05 — The Chat Logs (`/chat`)**: Late-night messaging. Afsal bubble `#183B59` (border `#2679A8`), Tanisha bubble `#30204B` (border `#7147A8`), timestamps `#918DA1`.
+* **06 — 19 Things (`/nineteen`)**: 3-family midnight card grid:
+  * 💙 Blue Card: `#121F2D` (border `#2679A8`, number `#69C7F5`)
+  * 💜 Purple Card: `#1D1730` (border `#7147A8`, number `#B98AE8`)
+  * 🩷 Pink Card: `#2A1723` (border `#A84670`, number `#F494BC`)
+  * Card 19: Special 135° night gradient (`#121F2D` → `#1D1730` → `#2A1723`).
+* **07 — Whack-a-Tanisha (`/game`)**: Arcade night base `#090B16`, board `#12152A`, target holes `#30204B` with `#9B6DDB` borders, hit effect `#F494BC`.
+* **08 — Flower Reveal (`/gift`)**: `#0D1020` with soft blurred radial glow behind the bouquet (`#E875A6` / `#9B6DDB` at 12% opacity).
+* **09 — Final Celebration (`/birthday`)**: Base `#090B16` with triple ambient glows. Headline gradient: `linear-gradient(90deg, #69C7F5, #B98AE8, #F494BC)`. Confetti restricted exclusively to `#69C7F5`, `#B98AE8`, `#F494BC`, and `#FFB6D5`.
+
 

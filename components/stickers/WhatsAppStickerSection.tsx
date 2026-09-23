@@ -66,34 +66,34 @@ export function WhatsAppStickerSection({
   // If quest is still in progress, render the Grand Quest Reward Teaser
   if (!isComplete && totalCollected < 12) {
     return (
-      <div className="w-full bg-gradient-to-br from-[#FFF9E6] via-[#FFF3D6] to-[#FFE8E8] rounded-2xl p-3.5 border-2 border-amber-300 shadow-sm flex flex-col items-center text-center my-2 select-none">
-        <div className="inline-flex items-center gap-1.5 bg-amber-200/80 px-2.5 py-0.5 rounded-full border border-amber-400/80 text-[9px] font-mono font-bold tracking-widest text-amber-900 uppercase mb-1.5">
-          <Gift className="h-3 w-3 text-amber-700 animate-bounce" />
+      <div className="w-full bg-[#181B32] rounded-2xl p-3.5 border border-[#7147A8]/50 shadow-sm flex flex-col items-center text-center my-2 select-none">
+        <div className="inline-flex items-center gap-1.5 bg-[#30204B] px-2.5 py-0.5 rounded-full border border-[#7147A8]/60 text-[9px] font-mono font-bold tracking-widest text-[#D3A7FF] uppercase mb-1.5">
+          <Gift className="h-3 w-3 text-[#D3A7FF] animate-bounce" />
           <span>WHATSAPP STICKER PACK</span>
         </div>
 
-        <h4 className="font-display text-sm font-bold text-amber-950 flex items-center gap-1">
+        <h4 className="font-display text-sm font-bold text-[#F7F4FC] flex items-center gap-1">
           <span>Unlock Official WhatsApp Stickers! 📱</span>
         </h4>
 
-        <p className="text-[10px] text-amber-900/80 font-mono font-semibold mt-0.5">
-          Created by <span className="underline decoration-amber-500 font-bold">{STICKER_CREATOR}</span>
+        <p className="text-[10px] text-[#C9C5D6] font-mono font-semibold mt-0.5">
+          Created by <span className="underline decoration-[#9B6DDB] font-bold text-[#8DD8FF]">{STICKER_CREATOR}</span>
         </p>
 
-        <p className="text-[11px] text-[#786144] font-medium mt-1 px-1">
+        <p className="text-[11px] text-[#918DA1] font-medium mt-1 px-1">
           12 + 2 bonus stickers
         </p>
 
         {/* Progress Bar */}
-        <div className="w-full mt-2.5 pt-2 border-t border-amber-300/60 flex flex-col items-center gap-1.5">
-          <div className="flex items-center justify-between w-full text-[10px] font-mono font-bold text-amber-900 px-1">
+        <div className="w-full mt-2.5 pt-2 border-t border-[#272A43] flex flex-col items-center gap-1.5">
+          <div className="flex items-center justify-between w-full text-[10px] font-mono font-bold text-[#C9C5D6] px-1">
             <span>Sticker Quest Progress</span>
-            <span>{Math.min(12, totalCollected)} / 12 Collected</span>
+            <span className="text-[#8DD8FF]">{Math.min(12, totalCollected)} / 12 Collected</span>
           </div>
 
-          <div className="w-full bg-amber-200/70 rounded-full h-2 overflow-hidden p-0.5 border border-amber-300">
+          <div className="w-full bg-[#0D1020] rounded-full h-2 overflow-hidden p-0.5 border border-[#272A43]">
             <div
-              className="bg-gradient-to-r from-amber-400 via-rose-400 to-emerald-500 h-full rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-[#4AAFE0] via-[#9B6DDB] to-[#E875A6] h-full rounded-full transition-all duration-500"
               style={{
                 width: `${Math.min(100, (totalCollected / 12) * 100)}%`,
               }}
@@ -108,18 +108,18 @@ export function WhatsAppStickerSection({
   return (
     <div className="w-full flex flex-col items-center my-2 select-none">
       {/* Unlocked Grand Banner */}
-      <div className="w-full bg-gradient-to-r from-emerald-50 via-green-50 to-teal-50 rounded-2xl p-3 border-2 border-emerald-400/90 shadow-sm text-center mb-2.5 relative overflow-hidden">
-        <div className="inline-flex items-center gap-1.5 bg-emerald-100 px-2.5 py-0.5 rounded-full border border-emerald-300 text-[9px] font-mono font-bold tracking-widest text-emerald-800 uppercase mb-1">
-          <Sparkles className="h-3 w-3 text-emerald-600 animate-pulse" />
+      <div className="w-full bg-[#181B32] rounded-2xl p-3 border-2 border-emerald-500/50 shadow-dream-purple text-center mb-2.5 relative overflow-hidden">
+        <div className="inline-flex items-center gap-1.5 bg-emerald-950/80 px-2.5 py-0.5 rounded-full border border-emerald-500/60 text-[9px] font-mono font-bold tracking-widest text-emerald-300 uppercase mb-1">
+          <Sparkles className="h-3 w-3 text-emerald-400 animate-pulse" />
           <span>★ 14 WHATSAPP STICKERS READY ★</span>
         </div>
 
-        <h4 className="font-display text-sm sm:text-base font-black text-emerald-950">
+        <h4 className="font-display text-sm sm:text-base font-black text-[#F7F4FC]">
           Tanisha&apos;s WhatsApp Sticker Pack! 🌸
         </h4>
-        <p className="text-[10px] text-emerald-800/90 font-medium mt-0.5">
+        <p className="text-[10px] text-emerald-300/90 font-medium mt-0.5">
           12 + 2 Bonus Stickers • Created by{" "}
-          <strong className="text-emerald-950">{STICKER_CREATOR}</strong>
+          <strong className="text-emerald-200">{STICKER_CREATOR}</strong>
         </p>
 
         {/* Primary Download All ZIP Action */}
@@ -135,20 +135,20 @@ export function WhatsAppStickerSection({
         </div>
 
         {/* Simple note instead of complicated instructions */}
-        <div className="mt-2.5 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-100/90 border border-emerald-300/80 text-emerald-950 font-display font-bold text-xs shadow-2xs">
-          <MessageCircle className="h-3.5 w-3.5 text-emerald-700" />
+        <div className="mt-2.5 inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#12152A] border border-[#272A43] text-[#C9C5D6] font-display font-bold text-xs shadow-2xs">
+          <MessageCircle className="h-3.5 w-3.5 text-emerald-400" />
           <span>Ask Afsal for the stickers to add them</span>
         </div>
       </div>
 
       {/* 14-Sticker Showcase Grid */}
       <div className="w-full">
-        <div className="flex items-center justify-between px-1 mb-1.5 text-[10px] font-bold text-[#6D5438]">
+        <div className="flex items-center justify-between px-1 mb-1.5 text-[10px] font-bold text-[#918DA1]">
           <span>Tap any sticker to inspect or share:</span>
-          <span className="text-emerald-700 font-mono">14 / 14 Ready</span>
+          <span className="text-emerald-400 font-mono">14 / 14 Ready</span>
         </div>
 
-        <div className="grid grid-cols-7 gap-1 max-h-[175px] overflow-y-auto p-1.5 bg-white/75 rounded-2xl border border-[#D5C29E] shadow-inner custom-chat-scroll">
+        <div className="grid grid-cols-7 gap-1 max-h-[175px] overflow-y-auto p-1.5 bg-[#12152A] rounded-2xl border border-[#272A43] shadow-inner custom-chat-scroll">
           {ALL_14_WHATSAPP_STICKERS.map((sticker) => (
             <button
               key={sticker.id}
@@ -156,8 +156,8 @@ export function WhatsAppStickerSection({
               onClick={() => setSelectedSticker(sticker)}
               className={`relative rounded-xl p-1 flex flex-col items-center justify-between aspect-square transition-all hover:scale-105 active:scale-95 ${
                 sticker.isBonus
-                  ? "bg-gradient-to-b from-amber-100 to-yellow-50 border border-amber-400 ring-1 ring-amber-300 shadow-xs"
-                  : "bg-[#FFFDF5] border border-amber-200/80 hover:border-amber-400"
+                  ? "bg-[#30204B] border border-[#9B6DDB] ring-1 ring-[#D3A7FF]/40 shadow-xs"
+                  : "bg-[#181B32] border border-[#272A43] hover:border-[#7147A8]"
               }`}
             >
               <div className="relative h-6 w-6 mt-0.5">
@@ -171,7 +171,7 @@ export function WhatsAppStickerSection({
               </div>
 
               {/* Unique Sticker Name in grid */}
-              <span className="text-[6.5px] font-bold text-stone-700 font-sans truncate w-full text-center leading-none mt-0.5 mb-0.5">
+              <span className="text-[6.5px] font-bold text-[#C9C5D6] font-sans truncate w-full text-center leading-none mt-0.5 mb-0.5">
                 {sticker.uniqueName}
               </span>
             </button>

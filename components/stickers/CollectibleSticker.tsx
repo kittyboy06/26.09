@@ -58,13 +58,13 @@ export function CollectibleSticker({
         className={`relative group cursor-pointer focus:outline-none rounded-2xl p-1 transition-shadow ${
           collected
             ? "drop-shadow-sm hover:drop-shadow-md"
-            : "drop-shadow-md hover:drop-shadow-lg ring-2 ring-amber-400/60 ring-offset-2 bg-amber-100/30"
+            : "drop-shadow-md hover:drop-shadow-lg ring-2 ring-[#9B6DDB]/70 ring-offset-2 ring-offset-[#0D1020] bg-[#30204B]/30"
         }`}
         aria-label={collected ? `${item.name} ${data.ariaCollectedSuffix}` : `${data.ariaCollectPrefix} ${item.name}`}
       >
         {/* Uncollected Floating Sparkle Indicator */}
         {!collected && (
-          <span className="absolute -top-2 -right-2 z-20 flex h-4 w-4 items-center justify-center rounded-full bg-amber-400 text-amber-950 text-[9px] font-black shadow-xs ring-2 ring-white animate-bounce">
+          <span className="absolute -top-2 -right-2 z-20 flex h-4 w-4 items-center justify-center rounded-full bg-[#9B6DDB] text-[#F7F4FC] text-[9px] font-black shadow-xs ring-2 ring-[#0D1020] animate-bounce">
             ✨
           </span>
         )}
@@ -89,7 +89,7 @@ export function CollectibleSticker({
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
-            className="absolute -bottom-1 -right-1 z-20 bg-amber-600 text-white rounded-full p-0.5 shadow-xs border border-white"
+            className="absolute -bottom-1 -right-1 z-20 bg-emerald-600 text-white rounded-full p-0.5 shadow-xs border border-[#0D1020]"
           >
             <Check className="h-2.5 w-2.5 stroke-[3]" />
           </motion.div>
@@ -101,9 +101,9 @@ export function CollectibleSticker({
         <motion.div
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mt-1 flex items-center gap-1 bg-amber-100/95 border border-amber-300 text-amber-900 px-2 py-0.5 rounded-full text-[9px] font-bold shadow-xs pointer-events-none whitespace-nowrap"
+          className="mt-1 flex items-center gap-1 bg-[#181B32]/95 border border-[#7147A8] text-[#D3A7FF] px-2 py-0.5 rounded-full text-[9px] font-bold shadow-xs pointer-events-none whitespace-nowrap"
         >
-          <Sparkles className="h-2.5 w-2.5 text-amber-600 animate-spin" />
+          <Sparkles className="h-2.5 w-2.5 text-[#8DD8FF] animate-spin" />
           <span>{data.tapToCollect}</span>
         </motion.div>
       )}

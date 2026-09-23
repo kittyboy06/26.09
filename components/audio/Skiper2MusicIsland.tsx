@@ -59,8 +59,8 @@ export function Skiper2MusicIsland() {
         animate={{
           borderRadius: isExpanded ? 24 : 9999,
           boxShadow: isExpanded
-            ? "0 16px 36px -6px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.04)"
-            : "0 8px 24px -4px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.04)",
+            ? "0 16px 36px -6px rgba(0, 0, 0, 0.5), 0 4px 12px -2px rgba(0, 0, 0, 0.3)"
+            : "0 8px 24px -4px rgba(0, 0, 0, 0.4), 0 2px 6px -1px rgba(0, 0, 0, 0.3)",
         }}
         transition={{
           layout: { type: "spring", stiffness: 320, damping: 28, mass: 0.8 },
@@ -68,7 +68,7 @@ export function Skiper2MusicIsland() {
           boxShadow: { duration: 0.25 },
         }}
         style={{ transformOrigin: "bottom right" }}
-        className="overflow-hidden border border-pastel-pink/60 bg-white/95 backdrop-blur-md"
+        className="overflow-hidden border border-[#272A43] bg-[#181B32]/95 backdrop-blur-md"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {!isExpanded ? (
@@ -90,13 +90,13 @@ export function Skiper2MusicIsland() {
               <button
                 onClick={toggleMusic}
                 aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
-                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink rounded-full group cursor-pointer"
+                className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B6DDB] rounded-full group cursor-pointer"
               >
-                <div className="relative flex items-center justify-center h-6 w-6 rounded-full bg-[#202026] shadow-sm border border-neutral-700/80 shrink-0 group-hover:scale-105 transition-transform duration-200">
+                <div className="relative flex items-center justify-center h-6 w-6 rounded-full bg-[#12152A] shadow-sm border border-[#272A43] shrink-0 group-hover:scale-105 transition-transform duration-200">
                   {/* Outer & Inner Vinyl Grooves */}
                   <div className="absolute inset-[3px] rounded-full border border-white/10" />
                   <div className="absolute inset-[6px] rounded-full border border-white/10" />
-                  {/* Center Pastel Pink Hub */}
+                  {/* Center Soft Pink Hub */}
                   <motion.div
                     animate={{ rotate: isPlaying ? 360 : 0 }}
                     transition={{
@@ -104,7 +104,7 @@ export function Skiper2MusicIsland() {
                       duration: 3.5,
                       ease: "linear",
                     }}
-                    className="relative h-2.5 w-2.5 rounded-full bg-pastel-pink flex items-center justify-center shadow-xs"
+                    className="relative h-2.5 w-2.5 rounded-full bg-[#E875A6] flex items-center justify-center shadow-xs"
                   >
                     {/* Spindle hole */}
                     <div className="h-0.5 w-0.5 rounded-full bg-neutral-900" />
@@ -116,22 +116,22 @@ export function Skiper2MusicIsland() {
               <button
                 onClick={toggleMusic}
                 aria-label={isPlaying ? audioText.ariaPause : audioText.ariaPlay}
-                className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink text-left cursor-pointer"
+                className="flex items-center gap-1.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B6DDB] text-left cursor-pointer"
               >
                 {isPlaying ? (
                   <div className="flex items-center gap-0.5 h-4 w-4 justify-center" aria-hidden="true">
-                    <span className="w-1 bg-pastel-pink-dark rounded-full h-3 animate-[waveBar_0.8s_ease-in-out_infinite_alternate]" />
-                    <span className="w-1 bg-pastel-yellow-dark rounded-full h-4 animate-[waveBar_1.1s_ease-in-out_infinite_alternate_0.2s]" />
-                    <span className="w-1 bg-pastel-green-dark rounded-full h-2.5 animate-[waveBar_0.9s_ease-in-out_infinite_alternate_0.4s]" />
-                    <span className="w-1 bg-pastel-peach-dark rounded-full h-3.5 animate-[waveBar_1.2s_ease-in-out_infinite_alternate_0.15s]" />
+                    <span className="w-1 bg-[#69C7F5] rounded-full h-3 animate-[waveBar_0.8s_ease-in-out_infinite_alternate]" />
+                    <span className="w-1 bg-[#B98AE8] rounded-full h-4 animate-[waveBar_1.1s_ease-in-out_infinite_alternate_0.2s]" />
+                    <span className="w-1 bg-[#F494BC] rounded-full h-2.5 animate-[waveBar_0.9s_ease-in-out_infinite_alternate_0.4s]" />
+                    <span className="w-1 bg-[#FFB6D5] rounded-full h-3.5 animate-[waveBar_1.2s_ease-in-out_infinite_alternate_0.15s]" />
                   </div>
                 ) : hasAudioError ? (
-                  <VolumeX className="h-4 w-4 text-pastel-muted shrink-0" />
+                  <VolumeX className="h-4 w-4 text-[#918DA1] shrink-0" />
                 ) : (
-                  <Volume2 className="h-4 w-4 text-pastel-muted shrink-0" />
+                  <Volume2 className="h-4 w-4 text-[#918DA1] shrink-0" />
                 )}
 
-                <span className="text-xs font-semibold text-pastel-charcoal tracking-wide whitespace-nowrap">
+                <span className="text-xs font-semibold text-[#F7F4FC] tracking-wide whitespace-nowrap">
                   {isPlaying
                     ? audioText.playingLabel
                     : hasAudioError
@@ -143,7 +143,7 @@ export function Skiper2MusicIsland() {
               {/* Expand Toggle */}
               <button
                 onClick={() => setIsExpanded(true)}
-                className="rounded-full p-1 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink ml-0.5 cursor-pointer"
+                className="rounded-full p-1 text-[#918DA1] hover:text-[#F7F4FC] hover:bg-[#202440] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B6DDB] ml-0.5 cursor-pointer"
                 aria-label={audioText.expandLabel}
               >
                 <ChevronUp className="h-3.5 w-3.5" />
@@ -168,7 +168,7 @@ export function Skiper2MusicIsland() {
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2.5 min-w-0">
                   {/* Vinyl Icon Badge */}
-                  <div className="relative flex items-center justify-center h-8 w-8 rounded-full bg-[#1e1e24] shadow-sm border border-neutral-700/70 shrink-0">
+                  <div className="relative flex items-center justify-center h-8 w-8 rounded-full bg-[#12152A] shadow-sm border border-[#272A43] shrink-0">
                     <div className="absolute inset-[4px] rounded-full border border-white/10" />
                     <div className="absolute inset-[7px] rounded-full border border-white/10" />
                     <motion.div
@@ -178,7 +178,7 @@ export function Skiper2MusicIsland() {
                         duration: 3.5,
                         ease: "linear",
                       }}
-                      className="relative h-3 w-3 rounded-full bg-pastel-pink flex items-center justify-center shadow-xs"
+                      className="relative h-3 w-3 rounded-full bg-[#E875A6] flex items-center justify-center shadow-xs"
                     >
                       <div className="h-0.5 w-0.5 rounded-full bg-neutral-900" />
                     </motion.div>
@@ -186,20 +186,20 @@ export function Skiper2MusicIsland() {
 
                   {/* Title & Live Status */}
                   <div className="min-w-0 flex-1">
-                    <h4 className="text-[13px] font-bold text-pastel-charcoal font-display tracking-tight truncate">
+                    <h4 className="text-[13px] font-bold text-[#F7F4FC] font-display tracking-tight truncate">
                       {audioText.soundtrackTitle}
                     </h4>
                     <div className="flex items-center gap-1.5 mt-0.5">
                       <span
                         className={`h-1.5 w-1.5 rounded-full shrink-0 ${
                           isPlaying
-                            ? "bg-emerald-500 animate-pulse"
+                            ? "bg-emerald-400 animate-pulse"
                             : hasAudioError
                             ? "bg-rose-400"
-                            : "bg-pastel-muted/60"
+                            : "bg-[#918DA1]"
                         }`}
                       />
-                      <span className="text-[10px] font-medium text-pastel-muted truncate">
+                      <span className="text-[10px] font-medium text-[#918DA1] truncate">
                         {isPlaying
                           ? audioText.playingStatus
                           : hasAudioError
@@ -213,7 +213,7 @@ export function Skiper2MusicIsland() {
                 {/* Minimize Button */}
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="rounded-full p-1.5 text-pastel-muted hover:text-pastel-charcoal hover:bg-pastel-cream transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink shrink-0 cursor-pointer"
+                  className="rounded-full p-1.5 text-[#918DA1] hover:text-[#F7F4FC] hover:bg-[#202440] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B6DDB] shrink-0 cursor-pointer"
                   aria-label={audioText.collapseLabel}
                 >
                   <ChevronDown className="h-4 w-4" />
@@ -221,8 +221,8 @@ export function Skiper2MusicIsland() {
               </div>
 
               {/* Scrapbook Liner Note / Hint */}
-              <div className="rounded-xl bg-pastel-cream/70 border border-pastel-yellow/50 p-2.5 flex items-start gap-2 text-[11px] leading-snug text-pastel-charcoal/85">
-                <Sparkles className="h-3.5 w-3.5 text-pastel-yellow-dark shrink-0 mt-0.5" />
+              <div className="rounded-xl bg-[#12152A] border border-[#272A43] p-2.5 flex items-start gap-2 text-[11px] leading-snug text-[#C9C5D6]">
+                <Sparkles className="h-3.5 w-3.5 text-[#8DD8FF] shrink-0 mt-0.5" />
                 <span>
                   {hasAudioError ? audioText.missingInfo : audioText.readyInfo}
                 </span>
@@ -231,16 +231,16 @@ export function Skiper2MusicIsland() {
               {/* Tactile Play/Pause Specular Button */}
               <button
                 onClick={toggleMusic}
-                className="w-full py-2 px-4 rounded-full font-display font-medium text-xs flex items-center justify-center gap-2 bg-gradient-to-r from-pastel-pink via-pastel-peach/90 to-pastel-yellow text-pastel-charcoal shadow-specular hover:brightness-105 active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink cursor-pointer"
+                className="w-full py-2 px-4 rounded-full font-display font-medium text-xs flex items-center justify-center gap-2 bg-gradient-to-r from-[#9B6DDB] via-[#B98AE8] to-[#E875A6] text-[#F7F4FC] shadow-dream-purple hover:brightness-105 active:scale-[0.98] transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B6DDB] cursor-pointer"
               >
                 {isPlaying ? (
                   <>
-                    <Pause className="h-3.5 w-3.5 fill-pastel-charcoal" />
+                    <Pause className="h-3.5 w-3.5 fill-[#F7F4FC]" />
                     <span>{audioText.pauseAction}</span>
                   </>
                 ) : (
                   <>
-                    <Play className="h-3.5 w-3.5 fill-pastel-charcoal ml-0.5" />
+                    <Play className="h-3.5 w-3.5 fill-[#F7F4FC] ml-0.5" />
                     <span>{audioText.playAction}</span>
                   </>
                 )}

@@ -142,7 +142,7 @@ export default function WhackGamePage() {
             particleCount: 110,
             spread: 80,
             origin: { y: 0.6 },
-            colors: ["#FFF4A8", "#BFE8C5", "#BDE7F5", "#FFC7D9", "#FFD6B3"],
+            colors: ["#69C7F5", "#B98AE8", "#F494BC", "#8DD8FF", "#D3A7FF", "#FFB6D5"],
           });
         } catch {}
       } else {
@@ -174,26 +174,26 @@ export default function WhackGamePage() {
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-28">
       {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#FFD6B3" />
+      <Skiper19ScrollVine color="#7147A8" />
 
       {/* Header Badges */}
       <div className="w-full flex items-center justify-between mb-3">
         <Sticker variant="floating" rotation={-3}>
           <span>{data.badges.left.emoji}</span>
-          <span className="text-[11px] font-medium">{data.badges.left.text}</span>
+          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.left.text}</span>
         </Sticker>
         <Sticker variant="wiggle" rotation={3}>
           <span>{data.badges.right.emoji}</span>
-          <span className="text-[11px] font-medium">{data.badges.right.text}</span>
+          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.right.text}</span>
         </Sticker>
       </div>
 
       {/* Chapter Title */}
       <div className="text-center mb-2">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-pastel-charcoal">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F4FC]">
           {data.header.title}
         </h2>
-        <p className="text-xs text-pastel-muted">
+        <p className="text-xs text-[#918DA1]">
           {data.header.subtitle}
         </p>
       </div>
@@ -480,27 +480,27 @@ export default function WhackGamePage() {
       </div>
 
       {/* Game Objective & Targets Card */}
-      <div className="w-full max-w-[340px] mt-4 rounded-2xl bg-white/95 p-4 shadow-scrapbook border border-amber-200/60 text-left space-y-3">
+      <div className="w-full max-w-[340px] mt-4 rounded-2xl bg-[#181B32] p-4 shadow-scrapbook border border-[#272A43] text-left space-y-3">
         <div>
-          <h4 className="font-mono text-[10px] font-bold tracking-widest text-amber-800 uppercase">
+          <h4 className="font-mono text-[10px] font-bold tracking-widest text-[#B98AE8] uppercase">
             {(data as any).objective?.title || "GAME OBJECTIVE"}
           </h4>
-          <div className="mt-1 space-y-0.5 text-xs text-pastel-charcoal/85">
+          <div className="mt-1 space-y-0.5 text-xs text-[#C9C5D6]">
             {(data as any).objective?.rules?.map((rule: string, i: number) => (
-              <p key={i} className={i === (data as any).objective.rules.length - 1 ? "font-bold text-pastel-charcoal pt-0.5" : ""}>
+              <p key={i} className={i === (data as any).objective.rules.length - 1 ? "font-bold text-[#F7F4FC] pt-0.5" : ""}>
                 {rule}
               </p>
             ))}
           </div>
         </div>
 
-        <div className="pt-2 border-t border-amber-200/50">
-          <h4 className="font-mono text-[10px] font-bold tracking-widest text-amber-800 uppercase mb-1.5">
+        <div className="pt-2 border-t border-[#272A43]">
+          <h4 className="font-mono text-[10px] font-bold tracking-widest text-[#B98AE8] uppercase mb-1.5">
             {(data as any).gameTargets?.title || "Game targets"}
           </h4>
-          <div className="grid grid-cols-2 gap-1.5 text-xs text-pastel-charcoal/85 font-medium">
+          <div className="grid grid-cols-2 gap-1.5 text-xs text-[#C9C5D6] font-medium">
             {(data as any).gameTargets?.targets?.map((target: string, i: number) => (
-              <div key={i} className="flex items-center gap-1 bg-pastel-yellow/30 px-2 py-1 rounded-lg border border-pastel-yellow-dark/20 text-[11px]">
+              <div key={i} className="flex items-center gap-1 bg-[#12152A] px-2 py-1 rounded-lg border border-[#272A43] text-[11px] text-[#F7F4FC]">
                 <span>{target}</span>
               </div>
             ))}

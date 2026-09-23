@@ -41,7 +41,7 @@ export function StickerToastContainer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 420, damping: 26 }}
-            className="bg-[#3E2723]/95 text-amber-50 rounded-2xl px-4 py-2 border-2 border-amber-400/80 shadow-2xl flex items-center gap-3 backdrop-blur-md max-w-xs sm:max-w-sm pointer-events-auto"
+            className="bg-[#181B32]/95 text-[#F7F4FC] rounded-2xl px-4 py-2 border border-[#7147A8] shadow-scrapbook-lg flex items-center gap-3 backdrop-blur-md max-w-xs sm:max-w-sm pointer-events-auto"
           >
             {/* Sticker Thumbnail */}
             <div className="relative h-10 w-10 shrink-0 drop-shadow-md">
@@ -56,14 +56,14 @@ export function StickerToastContainer() {
 
             {/* Notification Text */}
             <div className="flex-1 min-w-0 text-left">
-              <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-yellow-300">
-                <Sparkles className="h-3 w-3 text-yellow-400 animate-spin" />
+              <div className="flex items-center gap-1 text-[11px] font-mono font-bold text-[#8DD8FF]">
+                <Sparkles className="h-3 w-3 text-[#8DD8FF] animate-spin" />
                 <span>{data.title}</span>
               </div>
-              <p className="font-display text-xs font-bold text-white truncate">
+              <p className="font-display text-xs font-bold text-[#F7F4FC] truncate">
                 {toast.name}
               </p>
-              <p className="text-[10px] text-amber-200/80 font-mono font-bold">
+              <p className="text-[10px] text-[#FFB6D5] font-mono font-bold">
                 {toast.count} {data.of} {toast.total} {data.collectedSuffix}
               </p>
             </div>

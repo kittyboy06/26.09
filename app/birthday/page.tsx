@@ -25,7 +25,7 @@ export default function BirthdayPage() {
         particleCount: 85,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#4F9CC9", "#9568C4", "#D978A2", "#C8E5F5", "#DFD0F0", "#F6D2E1"],
+        colors: ["#69C7F5", "#B98AE8", "#F494BC", "#8DD8FF", "#D3A7FF", "#FFB6D5"],
       });
     } catch {
       // Fallback
@@ -40,7 +40,7 @@ export default function BirthdayPage() {
     <PageTransition
       style={{
         background:
-          "radial-gradient(circle at 15% 20%, #EAF6FC 0%, transparent 32%), radial-gradient(circle at 85% 25%, #F4EFFA 0%, transparent 32%), radial-gradient(circle at 50% 90%, #FFF0F5 0%, transparent 38%), #FFFDFB",
+          "radial-gradient(circle at 15% 20%, rgba(38, 121, 168, 0.15) 0%, transparent 35%), radial-gradient(circle at 85% 25%, rgba(113, 71, 168, 0.15) 0%, transparent 35%), radial-gradient(circle at 50% 90%, rgba(168, 70, 112, 0.15) 0%, transparent 40%), #090B16",
       }}
       className="relative flex flex-col items-center pt-12 pb-16 text-center rounded-3xl"
     >
@@ -51,12 +51,12 @@ export default function BirthdayPage() {
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-3}>
           <span>{data.badges.left.emoji}</span>
-          <span className="text-[11px] font-medium">{data.badges.left.text}</span>
+          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.left.text}</span>
         </Sticker>
 
         <Sticker variant="wiggle" rotation={3}>
           <span>{data.badges.right.emoji}</span>
-          <span className="text-[11px] font-medium">{data.badges.right.text}</span>
+          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.right.text}</span>
         </Sticker>
       </div>
 
@@ -69,15 +69,15 @@ export default function BirthdayPage() {
           </div>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight text-pastel-charcoal leading-tight">
+        <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight text-[#F7F4FC] leading-tight">
           {data.headline}
         </h1>
 
-        <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#9568C4] via-[#303344] to-[#4F9CC9]">
+        <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#69C7F5] via-[#B98AE8] to-[#F494BC]">
           {site.recipient.toUpperCase()}
         </div>
 
-        <p className="mt-2 font-handwriting text-2xl text-pastel-charcoal/85">
+        <p className="mt-2 font-handwriting text-2xl text-[#FFB6D5]">
           {data.tagline}
         </p>
       </div>
@@ -111,27 +111,27 @@ export default function BirthdayPage() {
               } as any)
             }
           />
-          <div className="absolute -bottom-2 -left-2 z-20 -rotate-3 rounded-lg bg-pastel-yellow px-3 py-1 text-xs font-handwriting font-bold text-pastel-charcoal shadow-xs border border-pastel-yellow-dark/40">
+          <div className="absolute -bottom-2 -left-2 z-20 -rotate-3 rounded-lg bg-[#30204B] px-3 py-1 text-xs font-handwriting font-bold text-[#F7F4FC] shadow-xs border border-[#7147A8]">
             {data.celebrationPhoto.subNote}
           </div>
         </div>
       )}
 
-      {/* Sincere Friendship Birthday Letter (Ivory Letterhead) */}
+      {/* Sincere Friendship Birthday Letter (Midnight Scrapbook Parchment) */}
       <div className="w-full max-w-sm my-6">
-        <div className="relative rounded-3xl bg-[#FCFAF2] border-2 border-amber-200/70 p-6 shadow-scrapbook-lg text-left overflow-hidden">
-          {/* Subtle gold foil header line */}
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-amber-200/60">
-            <span className="text-[9px] font-mono tracking-widest text-amber-800/60 uppercase font-bold">
+        <div className="relative rounded-3xl bg-[#181B32] border border-[#302B4D] p-6 shadow-scrapbook-lg text-left overflow-hidden">
+          {/* Subtle header line */}
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#272A43]">
+            <span className="text-[9px] font-mono tracking-widest text-[#918DA1] uppercase font-bold">
               {data.letterhead.fromTo}
             </span>
-            <span className="text-[9px] font-mono text-amber-700/60">
+            <span className="text-[9px] font-mono text-[#918DA1]">
               {data.letterhead.date}
             </span>
           </div>
 
-          <div className="space-y-4 text-sm sm:text-base text-pastel-charcoal leading-relaxed">
-            <p className="font-handwriting text-2xl text-pastel-pink-dark font-bold">
+          <div className="space-y-4 text-sm sm:text-base text-[#C9C5D6] leading-relaxed">
+            <p className="font-handwriting text-2xl text-[#FFB6D5] font-bold">
               {data.letter.p1}
             </p>
 
@@ -139,27 +139,27 @@ export default function BirthdayPage() {
               {data.letter.p2}
             </p>
 
-            <p className="font-bold text-pastel-charcoal">
+            <p className="font-bold text-[#F7F4FC]">
               {data.letter.p3}
             </p>
 
-            <p className="text-pastel-charcoal/90">
+            <p className="text-[#C9C5D6]">
               {data.letter.p4}
             </p>
 
-            <p className="font-handwriting text-2xl text-pastel-charcoal font-bold pt-2">
+            <p className="font-handwriting text-2xl text-[#F7F4FC] font-bold pt-2">
               {data.letter.p5}
             </p>
 
-            <div className="pt-4 border-t border-amber-200/50 flex items-center justify-between">
-              <span className="font-handwriting text-xl text-pastel-charcoal font-bold">
+            <div className="pt-4 border-t border-[#272A43] flex items-center justify-between">
+              <span className="font-handwriting text-xl text-[#F7F4FC] font-bold">
                 {data.letter.signOff}
               </span>
               <div className="flex items-center gap-2">
                 <CollectibleSticker id="tanisha_laugh_2" size={48} rotation={-4} />
                 <div className="flex items-center gap-1">
                   <span className="text-xs">🌸</span>
-                  <Heart className="h-5 w-5 text-pastel-pink-dark fill-pastel-pink-dark animate-pulse" />
+                  <Heart className="h-5 w-5 text-[#E875A6] fill-[#E875A6] animate-pulse" />
                 </div>
               </div>
             </div>
@@ -170,12 +170,12 @@ export default function BirthdayPage() {
       {/* One Last Thing Note Card */}
       {(data as any).oneLastThing && (
         <div className="w-full max-w-sm mb-6 -mt-2 text-left">
-          <div className="relative rounded-3xl bg-pastel-yellow/50 border border-pastel-yellow-dark/40 p-5 shadow-scrapbook">
-            <span className="absolute -top-2.5 left-8 h-4 w-16 bg-white/80 border border-pastel-yellow-dark/30 rounded-xs rotate-2" />
-            <h4 className="font-display text-sm font-bold text-pastel-charcoal mb-2">
+          <div className="relative rounded-3xl bg-[#202440] border border-[#7147A8]/50 p-5 shadow-scrapbook">
+            <span className="absolute -top-2.5 left-8 h-4 w-16 bg-[#7147A8]/50 border border-[#B98AE8]/40 rounded-xs rotate-2" />
+            <h4 className="font-display text-sm font-bold text-[#F7F4FC] mb-2">
               {(data as any).oneLastThing.title}
             </h4>
-            <p className="whitespace-pre-line text-xs text-pastel-charcoal/85 leading-relaxed font-medium">
+            <p className="whitespace-pre-line text-xs text-[#C9C5D6] leading-relaxed font-medium">
               {(data as any).oneLastThing.body}
             </p>
           </div>
@@ -209,7 +209,7 @@ export default function BirthdayPage() {
         {/* Back to Gift button */}
         <button
           onClick={() => router.push("/gift")}
-          className="mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-pastel-muted hover:text-pastel-charcoal transition-colors py-1.5 focus:outline-none"
+          className="mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#918DA1] hover:text-[#F7F4FC] transition-colors py-1.5 focus:outline-none"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>{data.actions.backToGift}</span>
@@ -218,7 +218,7 @@ export default function BirthdayPage() {
         {/* Start Over button */}
         <button
           onClick={() => router.push("/")}
-          className="flex items-center justify-center gap-1.5 text-xs font-semibold text-pastel-muted hover:text-pastel-charcoal transition-colors py-1 focus:outline-none"
+          className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#918DA1] hover:text-[#F7F4FC] transition-colors py-1 focus:outline-none"
         >
           <RotateCcw className="h-3.5 w-3.5" />
           <span>{data.actions.startOver}</span>

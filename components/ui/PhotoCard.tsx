@@ -41,10 +41,10 @@ export function PhotoCard({
   };
 
   const tapeColors = {
-    yellow: "bg-pastel-yellow/80 border-pastel-yellow-dark/50",
-    pink: "bg-pastel-pink/80 border-pastel-pink-dark/50",
-    blue: "bg-pastel-blue/80 border-pastel-blue-dark/50",
-    green: "bg-pastel-green/80 border-pastel-green-dark/50",
+    yellow: "bg-amber-400/40 border-amber-300/40 text-amber-200",
+    pink: "bg-[#A84670]/40 border-[#E875A6]/40 text-[#FFB6D5]",
+    blue: "bg-[#2679A8]/40 border-[#4AAFE0]/40 text-[#8DD8FF]",
+    green: "bg-emerald-600/40 border-emerald-400/40 text-emerald-200",
   };
 
   const clampedRotation = Math.max(-2, Math.min(2, rotation));
@@ -56,7 +56,7 @@ export function PhotoCard({
         transform: clampedRotation !== 0 ? `rotate(${clampedRotation}deg)` : undefined,
       }}
       className={cn(
-        "group relative rounded-2xl bg-white p-3.5 shadow-scrapbook border border-pastel-cream transition-all duration-300 hover:shadow-scrapbook-lg active:scale-[0.98] cursor-pointer select-none",
+        "group relative rounded-2xl bg-[#181B32] p-3.5 shadow-scrapbook border border-[#272A43] transition-all duration-300 hover:shadow-dream-purple hover:border-[#7147A8]/50 active:scale-[0.98] cursor-pointer select-none",
         className
       )}
     >
@@ -72,7 +72,7 @@ export function PhotoCard({
       {/* Media container */}
       <div
         className={cn(
-          "relative w-full rounded-xl bg-pastel-cream",
+          "relative w-full rounded-xl bg-[#0D1020]",
           scrollable
             ? "aspect-[4/5] overflow-y-auto overscroll-contain touch-pan-y custom-chat-scroll block"
             : cn("overflow-hidden flex items-center justify-center", aspectStyles[aspectRatio])
@@ -89,7 +89,7 @@ export function PhotoCard({
                 className="w-full h-auto block select-none"
                 sizes="(max-width: 640px) 100vw, 400px"
               />
-              <div className="sticky bottom-2 right-2 ml-auto w-fit pointer-events-none z-10 rounded-full bg-pastel-charcoal/75 backdrop-blur-xs px-2 py-0.5 text-[10px] font-semibold text-white shadow-xs flex items-center gap-1 opacity-85">
+              <div className="sticky bottom-2 right-2 ml-auto w-fit pointer-events-none z-10 rounded-full bg-[#090B16]/90 backdrop-blur-xs px-2 py-0.5 text-[10px] font-semibold text-[#F7F4FC] shadow-xs flex items-center gap-1 border border-[#272A43]">
                 <span>↕</span>
                 <span>Scroll chat</span>
               </div>
@@ -105,17 +105,17 @@ export function PhotoCard({
             />
           )
         ) : (
-          /* High-craft pastel SVG placeholder when real photo is pending */
-          <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-pastel-cream via-pastel-pink/10 to-pastel-yellow/20">
-            <div className="relative mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/90 shadow-sm border border-pastel-pink/30">
-              <Camera className="h-7 w-7 text-pastel-charcoal/70" />
-              <Flower2 className="absolute -top-1.5 -right-1.5 h-5 w-5 text-pastel-pink-dark animate-pulse-subtle" />
+          /* High-craft midnight placeholder when real photo is pending */
+          <div className="flex h-full w-full flex-col items-center justify-center p-6 text-center bg-gradient-to-b from-[#12152A] via-[#181B32] to-[#202440]">
+            <div className="relative mb-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#181B32] shadow-sm border border-[#7147A8]/40">
+              <Camera className="h-7 w-7 text-[#9B6DDB]" />
+              <Flower2 className="absolute -top-1.5 -right-1.5 h-5 w-5 text-[#E875A6] animate-pulse-subtle" />
             </div>
-            <p className="text-xs font-semibold text-pastel-charcoal/80 flex items-center gap-1">
-              <Sparkles className="h-3 w-3 text-pastel-yellow-dark" />
+            <p className="text-xs font-semibold text-[#F7F4FC] flex items-center gap-1">
+              <Sparkles className="h-3 w-3 text-[#8DD8FF]" />
               {alt}
             </p>
-            <span className="mt-1 text-[11px] text-pastel-muted">
+            <span className="mt-1 text-[11px] text-[#918DA1]">
               Tap to view full memory
             </span>
           </div>
@@ -123,7 +123,7 @@ export function PhotoCard({
 
         {/* Floating sticker badge */}
         {sticker && (
-          <div className="absolute bottom-2 right-2 rounded-full bg-white/90 px-2 py-0.5 text-xs shadow-sm border border-white/60">
+          <div className="absolute bottom-2 right-2 rounded-full bg-[#181B32]/95 px-2 py-0.5 text-xs shadow-sm border border-[#7147A8]/40 text-[#F7F4FC]">
             {sticker}
           </div>
         )}
@@ -133,12 +133,12 @@ export function PhotoCard({
       {(caption || tag) && (
         <div className="mt-3 px-1">
           {tag && (
-            <span className="inline-block rounded-md bg-pastel-yellow/50 px-2 py-0.5 text-[10px] font-semibold text-pastel-charcoal/70 mb-1">
+            <span className="inline-block rounded-md bg-[#30204B] border border-[#7147A8]/40 px-2 py-0.5 text-[10px] font-semibold text-[#D3A7FF] mb-1">
               {tag}
             </span>
           )}
           {caption && (
-            <p className="font-handwriting text-sm text-pastel-charcoal leading-snug">
+            <p className="font-handwriting text-sm text-[#F7F4FC] leading-snug">
               {caption}
             </p>
           )}

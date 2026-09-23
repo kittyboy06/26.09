@@ -11,7 +11,7 @@ interface Skiper19ScrollVineProps {
 
 export function Skiper19ScrollVine({
   className = "",
-  color = "#98D8A2", // Soft pastel green vine
+  color = "#7147A8", // Dreamy purple filament
   flowerNodes = true,
 }: Skiper19ScrollVineProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -48,7 +48,7 @@ export function Skiper19ScrollVine({
         {/* Background faint guide track */}
         <path
           d="M 18,0 Q 28,150 14,300 T 24,600 T 12,900 L 16,1000"
-          stroke="rgba(191, 232, 197, 0.25)"
+          stroke="rgba(155, 109, 219, 0.20)"
           strokeWidth="3"
           strokeDasharray="4 6"
           fill="none"

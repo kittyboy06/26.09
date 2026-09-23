@@ -28,7 +28,7 @@ export function Sticker({
         transform: rotation !== 0 ? `rotate(${rotation}deg)` : undefined,
       }}
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border border-white/80 bg-white/90 px-3 py-1.5 text-xs font-semibold text-pastel-charcoal shadow-sticker backdrop-blur-xs select-none",
+        "inline-flex items-center gap-1.5 rounded-full border border-[#7147A8]/40 bg-[#181B32]/95 px-3 py-1.5 text-xs font-semibold text-[#F7F4FC] shadow-sticker backdrop-blur-xs select-none",
         animations[variant],
         className
       )}

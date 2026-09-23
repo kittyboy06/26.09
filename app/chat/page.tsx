@@ -25,36 +25,36 @@ export default function ChatPage() {
   return (
     <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
       {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#DFD0F0" />
+      <Skiper19ScrollVine color="#7147A8" />
 
       {/* Header Badges */}
       <div className="w-full flex items-center justify-between mb-4">
         <Sticker variant="floating" rotation={-2}>
           <span>{chatData.badges.left.emoji}</span>
-          <span className="text-xs text-pastel-charcoal font-medium">{chatData.badges.left.text}</span>
+          <span className="text-xs text-[#F7F4FC] font-medium">{chatData.badges.left.text}</span>
         </Sticker>
         <Sticker variant="wiggle" rotation={3}>
           <span>{chatData.badges.right.emoji}</span>
-          <span className="text-xs text-pastel-charcoal font-medium">{chatData.badges.right.text}</span>
+          <span className="text-xs text-[#F7F4FC] font-medium">{chatData.badges.right.text}</span>
         </Sticker>
       </div>
 
       {/* Chapter Title */}
       <div className="text-center mb-5">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-pastel-charcoal">
+        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F4FC]">
           {chatData.header.title}
         </h2>
-        <p className="mt-1 text-xs text-pastel-muted">
+        <p className="mt-1 text-xs text-[#918DA1]">
           {chatData.header.subtitle}
         </p>
       </div>
 
       {/* Mobile Chat Device Container */}
-      <div className="w-full max-w-sm rounded-3xl bg-[#FFFDFB]/95 border border-[#DFD0F0] shadow-scrapbook overflow-hidden backdrop-blur-md">
+      <div className="w-full max-w-sm rounded-3xl bg-[#181B32]/95 border border-[#272A43] shadow-scrapbook overflow-hidden backdrop-blur-md">
         {/* Chat App Header */}
-        <div className="bg-gradient-to-r from-[#F4EFFA] via-[#FFFDFB] to-[#EAF6FC] px-4 py-3 border-b border-[#DFD0F0] flex items-center justify-between">
+        <div className="bg-[#12152A] px-4 py-3 border-b border-[#272A43] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="relative h-9 w-9 rounded-full bg-[#F4EFFA] border border-[#DFD0F0] flex items-center justify-center font-display font-bold text-sm text-pastel-charcoal shadow-xs overflow-hidden">
+            <div className="relative h-9 w-9 rounded-full bg-[#0D1020] border border-[#272A43] flex items-center justify-center font-display font-bold text-sm text-[#F7F4FC] shadow-xs overflow-hidden">
               <Image
                 src="/assets/stickers/tanisha_idle.png"
                 alt={chatData.device.contactAvatarAlt}
@@ -62,20 +62,20 @@ export default function ChatPage() {
                 sizes="36px"
                 className="object-contain p-0.5"
               />
-              <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-white z-10" />
+              <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-[#12152A] z-10" />
             </div>
             <div className="text-left">
-              <div className="font-display text-xs font-bold text-pastel-charcoal flex items-center gap-1">
+              <div className="font-display text-xs font-bold text-[#F7F4FC] flex items-center gap-1">
                 <span>{chatData.device.contactName}</span>
-                <span className="text-[10px] text-[#69428F] font-medium">{chatData.device.contactMode}</span>
+                <span className="text-[10px] text-[#B98AE8] font-medium">{chatData.device.contactMode}</span>
               </div>
-              <p className="text-[10px] text-[#777A87]">
-                {chatData.device.repliesPrefix} <span className="font-semibold text-pastel-charcoal/70">{chatData.device.repliesDelay}</span>
+              <p className="text-[10px] text-[#918DA1]">
+                {chatData.device.repliesPrefix} <span className="font-semibold text-[#C9C5D6]">{chatData.device.repliesDelay}</span>
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 text-[#777A87]">
+          <div className="flex items-center gap-2 text-[#918DA1]">
             <Phone className="h-3.5 w-3.5" />
             <Video className="h-3.5 w-3.5" />
             <MoreVertical className="h-3.5 w-3.5" />
@@ -83,10 +83,10 @@ export default function ChatPage() {
         </div>
 
         {/* Chat Messages List */}
-        <div className="p-3.5 flex flex-col gap-3 min-h-[380px] bg-[#F4EFFA]/30">
+        <div className="p-3.5 flex flex-col gap-3 min-h-[380px] bg-[#0D1020]/90">
           {/* Day Divider */}
           <div className="flex items-center justify-center my-1">
-            <span className="rounded-full bg-white/80 px-2.5 py-0.5 text-[9px] font-semibold text-[#777A87] shadow-2xs border border-[#DFD0F0]/60">
+            <span className="rounded-full bg-[#181B32] px-2.5 py-0.5 text-[9px] font-semibold text-[#918DA1] shadow-2xs border border-[#272A43]">
               {chatData.device.dayDivider}
             </span>
           </div>
@@ -105,27 +105,27 @@ export default function ChatPage() {
                 <div
                   className={`relative max-w-[82%] rounded-2xl px-3.5 py-2 shadow-2xs ${
                     isTanisha
-                      ? "bg-[#FFF0F5] text-[#303344] rounded-tl-xs border border-[#F6D2E1]"
-                      : "bg-[#EAF6FC] text-[#303344] rounded-tr-xs border border-[#C8E5F5]"
+                      ? "bg-[#30204B] text-[#F7F4FC] rounded-tl-xs border border-[#7147A8]"
+                      : "bg-[#183B59] text-[#F7F4FC] rounded-tr-xs border border-[#2679A8]"
                   }`}
                 >
                   <p className="text-xs leading-relaxed">{msg.text}</p>
 
                   {(msg as { subtext?: string }).subtext && (
-                    <p className="mt-1 text-[9px] font-medium text-[#666A78] italic border-t border-[#DFD0F0]/40 pt-0.5">
+                    <p className="mt-1 text-[9px] font-medium text-[#C9C5D6] italic border-t border-white/10 pt-0.5">
                       {(msg as { subtext?: string }).subtext}
                     </p>
                   )}
 
                   {/* Timestamp & Delivery status */}
-                  <div className="mt-1 flex items-center justify-end gap-1 text-[8px] text-[#777A87]">
+                  <div className="mt-1 flex items-center justify-end gap-1 text-[8px] text-[#918DA1]">
                     <span>{msg.time}</span>
-                    <CheckCheck className="h-2.5 w-2.5 text-[#4F9CC9]" />
+                    <CheckCheck className="h-2.5 w-2.5 text-[#69C7F5]" />
                   </div>
 
                   {/* Reaction Tag if present */}
                   {msg.reaction && (
-                    <span className="absolute -bottom-2 right-2 rounded-full bg-white px-1.5 py-0.2 text-[10px] shadow-xs border border-[#DFD0F0] select-none">
+                    <span className="absolute -bottom-2 right-2 rounded-full bg-[#181B32] px-1.5 py-0.2 text-[10px] shadow-xs border border-[#7147A8] text-[#F7F4FC] select-none">
                       {msg.reaction}
                     </span>
                   )}
@@ -135,7 +135,7 @@ export default function ChatPage() {
                 {msg.id === "m-2" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_smirk" size={54} rotation={-3} />
-                    <span className="text-[9px] font-mono text-pastel-muted italic">{chatData.device.questStickerTag}</span>
+                    <span className="text-[9px] font-mono text-[#918DA1] italic">{chatData.device.questStickerTag}</span>
                   </div>
                 )}
 
@@ -143,7 +143,7 @@ export default function ChatPage() {
                 {msg.id === "m-6" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_work" size={54} rotation={2} />
-                    <span className="text-[9px] font-mono text-pastel-muted italic">{chatData.device.questStickerTag}</span>
+                    <span className="text-[9px] font-mono text-[#918DA1] italic">{chatData.device.questStickerTag}</span>
                   </div>
                 )}
               </motion.div>
@@ -167,9 +167,9 @@ export default function ChatPage() {
         </div>
 
         {/* Quick Reactions Bar */}
-        <div className="bg-white px-3 py-2 border-t border-pastel-pink/20 flex items-center justify-between">
-          <span className="text-[10px] font-semibold text-pastel-muted flex items-center gap-1">
-            <Smile className="h-3 w-3 text-pastel-pink-dark" /> {chatData.device.quickTapPrefix}
+        <div className="bg-[#12152A] px-3 py-2 border-t border-[#272A43] flex items-center justify-between">
+          <span className="text-[10px] font-semibold text-[#918DA1] flex items-center gap-1">
+            <Smile className="h-3 w-3 text-[#E875A6]" /> {chatData.device.quickTapPrefix}
           </span>
           <div className="flex items-center gap-1.5">
             {chatData.device.quickEmojis.map((emoji) => (
@@ -177,7 +177,7 @@ export default function ChatPage() {
                 key={emoji}
                 type="button"
                 onClick={() => addReaction(emoji)}
-                className="h-7 w-7 rounded-full bg-pastel-cream hover:bg-pastel-pink/30 active:scale-90 border border-pastel-pink/20 text-xs flex items-center justify-center transition-transform shadow-2xs"
+                className="h-7 w-7 rounded-full bg-[#181B32] hover:bg-[#202440] active:scale-90 border border-[#272A43] text-xs flex items-center justify-center transition-transform shadow-2xs"
                 title={`${chatData.device.quickTapTitlePrefix} ${emoji}`}
               >
                 {emoji}
@@ -193,7 +193,7 @@ export default function ChatPage() {
         nextLabel={chatData.navigation.nextLabel}
         prevHref={chatData.navigation.prevHref}
         prevLabel={chatData.navigation.prevLabel}
-        variant="pink"
+        variant="purple"
       />
     </PageTransition>
   );

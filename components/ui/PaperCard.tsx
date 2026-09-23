@@ -21,10 +21,10 @@ export function PaperCard({
   onClick,
 }: PaperCardProps) {
   const tapeColors = {
-    yellow: "bg-pastel-yellow/80 border-pastel-yellow-dark/40",
-    pink: "bg-pastel-pink/80 border-pastel-pink-dark/40",
-    blue: "bg-pastel-blue/80 border-pastel-blue-dark/40",
-    green: "bg-pastel-green/80 border-pastel-green-dark/40",
+    yellow: "bg-amber-400/40 border-amber-300/40 text-amber-200",
+    pink: "bg-[#A84670]/40 border-[#E875A6]/40 text-[#FFB6D5]",
+    blue: "bg-[#2679A8]/40 border-[#4AAFE0]/40 text-[#8DD8FF]",
+    green: "bg-emerald-600/40 border-emerald-400/40 text-emerald-200",
     none: "",
   };
 
@@ -44,8 +44,8 @@ export function PaperCard({
         transform: clampedRotation !== 0 ? `rotate(${clampedRotation}deg)` : undefined,
       }}
       className={cn(
-        "relative rounded-3xl bg-white/95 p-6 shadow-scrapbook border border-pastel-cream transition-all duration-300 backdrop-blur-sm",
-        onClick && "cursor-pointer hover:shadow-scrapbook-lg active:scale-[0.99]",
+        "relative rounded-3xl bg-[#181B32]/95 p-6 shadow-scrapbook border border-[#272A43] transition-all duration-300 backdrop-blur-sm text-[#F7F4FC]",
+        onClick && "cursor-pointer hover:shadow-dream-purple hover:border-[#7147A8]/50 active:scale-[0.99]",
         className
       )}
     >

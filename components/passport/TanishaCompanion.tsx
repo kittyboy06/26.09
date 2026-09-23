@@ -52,7 +52,7 @@ export function TanishaCompanion() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={handleOpenPassport}
-          className="relative group overflow-visible rounded-full border border-pastel-pink/60 bg-white/95 shadow-scrapbook backdrop-blur-md px-3 py-1.5 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-pastel-pink"
+          className="relative group overflow-visible rounded-full border border-[#272A43] bg-[#181B32]/95 shadow-scrapbook backdrop-blur-md px-3 py-1.5 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B6DDB]"
           aria-label={companionText.companionAriaLabel}
         >
           {/* Pulsing "New Stamp" Notification Badge */}
@@ -62,7 +62,7 @@ export function TanishaCompanion() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0 }}
-                className="absolute -top-1.5 -right-1 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-amber-400 text-amber-950 text-[9px] font-black shadow-xs ring-2 ring-white animate-bounce"
+                className="absolute -top-1.5 -right-1 z-10 flex h-4 w-4 items-center justify-center rounded-full bg-amber-400 text-amber-950 text-[9px] font-black shadow-xs ring-2 ring-[#181B32] animate-bounce"
               >
                 ✨
               </motion.span>
@@ -83,14 +83,14 @@ export function TanishaCompanion() {
 
           {/* Label and Stamp Counter */}
           <div className="flex items-center gap-1.5 text-left">
-            <span className="text-xs font-semibold text-pastel-charcoal hidden sm:inline">
+            <span className="text-xs font-semibold text-[#F7F4FC] hidden sm:inline">
               {companionText.companionLabel}
             </span>
             <span
               className={`text-[10px] font-mono font-bold px-1.5 py-0.2 rounded-full border ${
                 isStickerComplete
-                  ? "bg-amber-100 text-amber-800 border-amber-300 animate-pulse"
-                  : "bg-pastel-pink/30 text-pastel-charcoal border-pastel-pink/40"
+                  ? "bg-amber-900/60 text-amber-200 border-amber-500/50 animate-pulse"
+                  : "bg-[#30204B] text-[#F7F4FC] border-[#7147A8]/50"
               }`}
             >
               {totalCollected}/{companionText.stickersTotalSuffix}

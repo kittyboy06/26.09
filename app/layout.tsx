@@ -34,7 +34,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: "cover",
-  themeColor: "#EAF6FC",
+  themeColor: "#090B16",
 };
 
 export default function RootLayout({
@@ -44,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-[100dvh] bg-pastel-cream text-pastel-charcoal antialiased overflow-x-hidden">
+      <body className="min-h-[100dvh] bg-night-900 text-[#F7F4FC] antialiased overflow-x-hidden">
         <BirthdayProvider>
           {/* Global Web Threads canvas background */}
           <WebThreadsBackground opacity={0.55} strandCount={14} />
