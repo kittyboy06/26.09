@@ -41,7 +41,7 @@ export function PageNavigation({
       {prevHref && (
         <button
           onClick={() => router.push(prevHref)}
-          className="flex items-center gap-1.5 text-xs font-semibold text-[#918DA1] hover:text-[#F7F4FC] transition-colors py-2 px-4 focus:outline-none"
+          className="flex items-center gap-1.5 text-xs font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-2 px-4 focus:outline-none"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>{prevLabel}</span>

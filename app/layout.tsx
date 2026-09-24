@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { BirthdayProvider } from "@/components/providers/BirthdayProvider";
-import { WebThreadsBackground } from "@/components/canvas/WebThreadsBackground";
 import { ChapterProgress } from "@/components/layout/ChapterProgress";
 import { Skiper2MusicIsland } from "@/components/audio/Skiper2MusicIsland";
 import { TanishaCompanion } from "@/components/passport/TanishaCompanion";
@@ -34,7 +33,7 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   viewportFit: "cover",
-  themeColor: "#090B16",
+  themeColor: "#080B1D",
 };
 
 export default function RootLayout({
@@ -44,12 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-h-[100dvh] bg-night-900 text-[#F7F4FC] antialiased overflow-x-hidden">
+      <body className="min-h-[100dvh] bg-sky-925 text-[#F7F5FC] antialiased overflow-x-hidden">
         <BirthdayProvider>
-          {/* Global Web Threads canvas background */}
-          <WebThreadsBackground opacity={0.55} strandCount={14} />
-
-          {/* Floating Chapter Progress Header (01 / 07) */}
+          {/* Floating Chapter Progress Header */}
           <ChapterProgress />
 
           {/* Floating Skiper 2 Dynamic Music Island */}
@@ -61,8 +57,8 @@ export default function RootLayout({
           {/* Global Sticker Scavenger Hunt Toast Notifications */}
           <StickerToastContainer />
 
-          {/* Mobile-first main container with animated route transitions */}
-          <main className="relative min-h-[100dvh] w-full max-w-md mx-auto px-4 flex flex-col">
+          {/* Full-width container with animated route transitions */}
+          <main className="relative min-h-[100dvh] w-full flex flex-col">
             <RouteTransition>{children}</RouteTransition>
           </main>
         </BirthdayProvider>

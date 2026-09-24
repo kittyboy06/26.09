@@ -21,12 +21,12 @@ export function SpecularButton({
   ...props
 }: SpecularButtonProps) {
   const variantStyles = {
-    purple: "bg-[#9B6DDB] text-[#F7F4FC] border-[#B98AE8]/40 hover:bg-[#8857CA] shadow-dream-purple",
-    pink: "bg-[#E875A6] text-[#F7F4FC] border-[#F494BC]/40 hover:bg-[#D46091] shadow-dream-pink",
-    blue: "bg-[#4AAFE0] text-[#F7F4FC] border-[#69C7F5]/40 hover:bg-[#369CCD] shadow-dream-blue",
-    yellow: "bg-[#4AAFE0] text-[#F7F4FC] border-[#69C7F5]/40 hover:bg-[#369CCD] shadow-dream-blue",
-    green: "bg-[#9B6DDB] text-[#F7F4FC] border-[#B98AE8]/40 hover:bg-[#8857CA] shadow-dream-purple",
-    cream: "bg-[#181B32] text-[#F7F4FC] border-[#272A43] hover:bg-[#202440] shadow-scrapbook",
+    purple: "bg-[#9B70D9] text-[#F7F5FC] border-[#C09AF4]/40 hover:bg-[#8857CA] shadow-celestial-purple",
+    pink: "bg-[#E77BA8] text-[#F7F5FC] border-[#F79ABD]/40 hover:bg-[#D46091] shadow-celestial-pink",
+    blue: "bg-[#55B8EA] text-[#F7F5FC] border-[#7DD3FC]/40 hover:bg-[#3185B8] shadow-celestial-blue",
+    yellow: "bg-[#55B8EA] text-[#F7F5FC] border-[#7DD3FC]/40 hover:bg-[#3185B8] shadow-celestial-blue",
+    green: "bg-[#9B70D9] text-[#F7F5FC] border-[#C09AF4]/40 hover:bg-[#8857CA] shadow-celestial-purple",
+    cream: "bg-[#151C3D] text-[#F7F5FC] border-[#1C254A] hover:bg-[#1C254A] shadow-scrapbook",
   };
 
   const sizeStyles = {
@@ -42,7 +42,7 @@ export function SpecularButton({
       transition={{ type: "spring", stiffness: 400, damping: 20 }}
       onClick={onClick}
       className={cn(
-        "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-[#9B6DDB]/40 border select-none",
+        "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-[#9B70D9]/40 border select-none",
         variantStyles[variant],
         sizeStyles[size],
         className
@@ -51,7 +51,7 @@ export function SpecularButton({
     >
       {/* Specular sheen effect (soft light ray sweep) */}
       <span
-        className="pointer-events-none absolute -inset-full top-0 block -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_infinite]"
+        className="pointer-events-none absolute -inset-full top-0 block -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_infinite]"
         aria-hidden="true"
       />
 

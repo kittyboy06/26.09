@@ -20,19 +20,19 @@ export function ChapterProgress() {
   return (
     <nav
       aria-label={progressText.ariaLabel}
-      className="fixed top-2.5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-[#272A43] bg-[#181B32]/95 px-3 py-1 shadow-scrapbook backdrop-blur-md select-none whitespace-nowrap shrink-0 max-w-fit"
+      className="fixed top-2.5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-sky-750 bg-sky-850/95 px-3 py-1 shadow-scrapbook backdrop-blur-md select-none whitespace-nowrap shrink-0 max-w-fit"
       style={{
         paddingTop: "max(4px, env(safe-area-inset-top, 4px))",
       }}
     >
       {/* Chapter Counter strictly on one single line */}
-      <span className="font-display text-xs font-bold text-[#F7F4FC] whitespace-nowrap shrink-0 inline-flex items-center gap-1">
+      <span className="font-display text-xs font-bold text-[#F7F5FC] whitespace-nowrap shrink-0 inline-flex items-center gap-1">
         <span>{current.number}</span>
-        <span className="text-[#918DA1] font-normal">/</span>
-        <span className="text-[#918DA1] font-normal">{progressText.totalChapters}</span>
+        <span className="text-[#9693A7] font-normal">/</span>
+        <span className="text-[#9693A7] font-normal">{progressText.totalChapters}</span>
       </span>
 
-      <span className="h-3 w-[1px] bg-[#272A43] shrink-0" aria-hidden="true" />
+      <span className="h-3 w-[1px] bg-sky-750 shrink-0" aria-hidden="true" />
 
       {/* Progress Dots strictly on one single line */}
       <div className="flex items-center gap-1 shrink-0 flex-nowrap">
@@ -48,10 +48,10 @@ export function ChapterProgress() {
               className={cn(
                 "h-1.5 rounded-full transition-all duration-300 shrink-0",
                 isActive
-                  ? "w-4 bg-[#E875A6]"
+                  ? "w-4 bg-pink-primary shadow-xs"
                   : isPassed
-                  ? "w-1.5 bg-[#9B6DDB]"
-                  : "w-1.5 bg-[#272A43] hover:bg-[#918DA1]/50"
+                  ? "w-1.5 bg-purple-primary"
+                  : "w-1.5 bg-sky-700/80 hover:bg-sky-700"
               )}
             />
           );

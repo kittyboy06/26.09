@@ -12,6 +12,9 @@ import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { StickerMissionModal } from "@/components/stickers/StickerMissionModal";
 import { useStickerCollection } from "@/hooks/useStickerCollection";
+import { NightSky } from "@/components/celestial/NightSky";
+import { Star } from "@/components/celestial/Star";
+import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { cn } from "@/lib/utils";
 
 export default function HomePage() {
@@ -50,13 +53,13 @@ export default function HomePage() {
       setErrorMsg("");
       setIsUnlocking(true);
 
-      // Trigger celebratory midnight pastel confetti burst
+      // Trigger celebratory celestial confetti burst
       try {
         confetti({
           particleCount: 85,
           spread: 65,
           origin: { y: 0.6 },
-          colors: ["#69C7F5", "#B98AE8", "#F494BC", "#8DD8FF", "#D3A7FF"],
+          colors: ["#7DD3FC", "#C09AF4", "#F79ABD", "#FFF8E7", "#A8E3FF"],
         });
       } catch {
         // Fallback
@@ -97,34 +100,33 @@ export default function HomePage() {
   const numpadKeys = gateData.lockCard.numpadKeys;
 
   return (
-    <PageTransition className="relative h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-2 py-3 select-none overflow-hidden">
-      {/* Subtle Midnight Radial Glows */}
-      <div
-        className="pointer-events-none fixed inset-0 -z-10"
-        style={{
-          background:
-            "radial-gradient(circle at 10% 15%, rgba(38, 121, 168, 0.12) 0%, transparent 40%), radial-gradient(circle at 90% 20%, rgba(113, 71, 168, 0.12) 0%, transparent 40%), radial-gradient(circle at 50% 85%, rgba(168, 70, 112, 0.10) 0%, transparent 40%)",
-        }}
-        aria-hidden="true"
-      />
+    <NightSky
+      mood="purple"
+      starDensity="sparse"
+      baseBg="deep"
+      showMoon={true}
+      moonVariant="crescent"
+      shootingStar={true}
+      shootingStarColor="main"
+    >
+      <PageTransition className="relative h-[100dvh] max-h-[100dvh] w-full flex flex-col justify-between items-center text-center px-2 py-3 select-none overflow-hidden">
+        {/* Top Floating Badges with clearance for ChapterProgress when unlocked */}
+        <div
+          className={cn(
+            "w-full flex items-center justify-between px-2 shrink-0 transition-all duration-300",
+            isUnlocked ? "pt-10" : "pt-0.5"
+          )}
+        >
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-850/80 border border-purple-deep/30 shadow-xs">
+            <Star variant="purple" size="xs" twinkle={true} />
+            <span className="text-[11px] text-[#F7F5FC] font-medium">{gateData.badges.left.text}</span>
+          </div>
 
-      {/* Top Floating Badges with clearance for ChapterProgress when unlocked */}
-      <div
-        className={cn(
-          "w-full flex items-center justify-between px-2 shrink-0 transition-all duration-300",
-          isUnlocked ? "pt-10" : "pt-0.5"
-        )}
-      >
-        <Sticker variant="floating" rotation={-3}>
-          <span>{gateData.badges.left.emoji}</span>
-          <span className="text-[11px] text-[#F7F4FC] font-medium">{gateData.badges.left.text}</span>
-        </Sticker>
-
-        <Sticker variant="wiggle" rotation={3}>
-          <span>{gateData.badges.right.emoji}</span>
-          <span className="text-[11px] text-[#F7F4FC] font-medium">{gateData.badges.right.text}</span>
-        </Sticker>
-      </div>
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-850/80 border border-purple-deep/30 shadow-xs">
+            <Star variant="blue" size="xs" twinkle={true} delayed={true} />
+            <span className="text-[11px] text-[#F7F5FC] font-medium">{gateData.badges.right.text}</span>
+          </div>
+        </div>
 
       {/* Middle Content: Vertically Centered and Perfectly Balanced */}
       <div className="my-auto w-full flex flex-col items-center justify-center gap-2 sm:gap-2.5 py-1">
@@ -192,16 +194,16 @@ export default function HomePage() {
                   "w-full mt-1.5 py-2 px-3 rounded-2xl font-display font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all shadow-xs",
                   isComplete
                     ? "bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 text-white shadow-md animate-pulse-subtle"
-                    : "bg-[#202440] hover:bg-[#292D4D] text-[#F7F4FC] border border-[#7147A8]/50"
+                    : "bg-sky-750 hover:bg-sky-700 text-[#F7F5FC] border border-purple-deep/40"
                 )}
               >
-                <span>{isComplete ? "📱" : "🌸"}</span>
+                <Star variant={isComplete ? "main" : "pink"} size="xs" />
                 <span>
                   {isComplete
-                    ? "Add 18 Stickers to WhatsApp! ✨"
+                    ? "Add 18 Stickers to WhatsApp!"
                     : `Sticker Quest (${totalCollected}/16) • WhatsApp Pack`}
                 </span>
-                {isComplete && <Sparkles className="h-3 w-3 text-yellow-300" />}
+                {isComplete && <Sparkles className="h-3 w-3 text-star-main" />}
               </button>
             </div>
           ) : (
@@ -292,10 +294,10 @@ export default function HomePage() {
       </div>
 
       {/* Bottom Sparkles Decor - Anchored near bottom */}
-      <div className="flex items-center justify-center gap-2 text-xs text-[#918DA1] select-none shrink-0 pb-1">
-        <span>{gateData.footerSparkles.leftEmoji}</span>
-        <span className="font-handwriting text-sm text-[#C9C5D6]">{gateData.footerSparkles.text}</span>
-        <span>{gateData.footerSparkles.rightEmoji}</span>
+      <div className="flex items-center justify-center gap-2 text-xs text-[#9693A7] select-none shrink-0 pb-1">
+        <Star variant="pink" size="xs" twinkle={true} />
+        <span className="font-handwriting text-sm text-[#D0CDDC]">{gateData.footerSparkles.text}</span>
+        <Star variant="blue" size="xs" twinkle={true} delayed={true} />
       </div>
 
       {/* Post-Password Scavenger Hunt Mission Briefing Popup */}
@@ -308,5 +310,6 @@ export default function HomePage() {
         onClose={() => setShowMissionModal(false)}
       />
     </PageTransition>
+  </NightSky>
   );
 }
