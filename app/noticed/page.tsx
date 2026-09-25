@@ -13,6 +13,215 @@ import { Star } from "@/components/celestial/Star";
 import { Constellation, ConstellationNode } from "@/components/celestial/Constellation";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Terminal } from "lucide-react";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { cn } from "@/lib/utils";
+
+// Visual identity and telemetry for each observation card
+const observationVisuals: Record<
+  string,
+  {
+    stickerId: string;
+    stickerRotation: number;
+    medallionBg: string;
+    medallionBorder: string;
+    spotlightColor: string;
+    glowShadow: string;
+    telemetry: React.ReactNode;
+  }
+> = {
+  "obs-1": {
+    stickerId: "tanisha_work",
+    stickerRotation: -3,
+    medallionBg: "bg-cyan-950/60",
+    medallionBorder: "border-cyan-500/40",
+    spotlightColor: "rgba(6, 182, 212, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(6,182,212,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-cyan-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-cyan-400 flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+          CPU: 100% Focused
+        </span>
+        <span className="text-[#C9C5D6] bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-800/50">
+          Routine: Mind Your Business
+        </span>
+      </div>
+    ),
+  },
+  "obs-2": {
+    stickerId: "tanisha_drink",
+    stickerRotation: -4,
+    medallionBg: "bg-amber-950/60",
+    medallionBorder: "border-amber-500/40",
+    spotlightColor: "rgba(245, 158, 11, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(245,158,11,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-amber-500/20 space-y-1.5">
+        <div className="flex items-center justify-between text-[10px] font-mono">
+          <span className="text-amber-400 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-ping" />
+            Chat Buffer: 42%
+          </span>
+          <span className="text-[#C9C5D6] bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/50">
+            Ping: 999+ ms 🐢
+          </span>
+        </div>
+        <div className="h-1.5 w-full bg-amber-950/90 rounded-full overflow-hidden border border-amber-500/30">
+          <div className="h-full bg-gradient-to-r from-amber-500 to-amber-300 w-[42%] rounded-full animate-pulse" />
+        </div>
+      </div>
+    ),
+  },
+  "obs-3": {
+    stickerId: "tanisha_fight",
+    stickerRotation: 3,
+    medallionBg: "bg-purple-950/60",
+    medallionBorder: "border-purple-500/40",
+    spotlightColor: "rgba(168, 85, 247, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(168,85,247,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-purple-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-purple-300 flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-purple-400 animate-pulse" />
+          Shield: 98% Active
+        </span>
+        <span className="text-[#C9C5D6] bg-purple-950/80 px-2 py-0.5 rounded border border-purple-800/50">
+          Break: Pending Update ⏳
+        </span>
+      </div>
+    ),
+  },
+  "obs-4": {
+    stickerId: "tanisha_smirk",
+    stickerRotation: -3,
+    medallionBg: "bg-emerald-950/60",
+    medallionBorder: "border-emerald-500/40",
+    spotlightColor: "rgba(16, 185, 129, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(16,185,129,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-emerald-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-emerald-400 flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          Autonomy: 100%
+        </span>
+        <span className="text-[#C9C5D6] bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">
+          Solo Mindset 🌱
+        </span>
+      </div>
+    ),
+  },
+  "obs-5": {
+    stickerId: "tanisha_sleep",
+    stickerRotation: 4,
+    medallionBg: "bg-rose-950/60",
+    medallionBorder: "border-rose-500/40",
+    spotlightColor: "rgba(244, 63, 94, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(244,63,94,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-rose-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-rose-400 flex items-center gap-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-ping" />
+          02:47 AM • Infinite Scroll
+        </span>
+        <span className="text-[#C9C5D6] bg-rose-950/80 px-2 py-0.5 rounded border border-rose-800/50">
+          Next Reel ▶
+        </span>
+      </div>
+    ),
+  },
+  "obs-6": {
+    stickerId: "tanisha_heart",
+    stickerRotation: -2,
+    medallionBg: "bg-pink-950/60",
+    medallionBorder: "border-pink-500/40",
+    spotlightColor: "rgba(236, 72, 153, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(236,72,153,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-pink-500/20 flex items-center justify-between text-[10px] font-mono">
+        <div className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#FFF4A8] border border-black/20" title="Butter Yellow" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#FFC7D9] border border-black/20" title="Soft Pink" />
+          <span className="h-2.5 w-2.5 rounded-full bg-[#BDE7F5] border border-black/20" title="Sky Blue" />
+          <span className="text-[10px] text-pink-300 ml-1">Wardrobe Palette</span>
+        </div>
+        <span className="text-[#C9C5D6] bg-pink-950/80 px-2 py-0.5 rounded border border-pink-800/50">
+          Soft Pastels 🌸
+        </span>
+      </div>
+    ),
+  },
+  "obs-7": {
+    stickerId: "tanisha_book",
+    stickerRotation: 2,
+    medallionBg: "bg-amber-950/60",
+    medallionBorder: "border-amber-500/40",
+    spotlightColor: "rgba(245, 158, 11, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(245,158,11,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-amber-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-amber-400 flex items-center gap-1.5">
+          Handmade Precision: 10/10 ✂️
+        </span>
+        <span className="text-[#C9C5D6] bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/50">
+          Craft Mode: Active
+        </span>
+      </div>
+    ),
+  },
+  "obs-8": {
+    stickerId: "tanisha_doubt",
+    stickerRotation: -4,
+    medallionBg: "bg-indigo-950/60",
+    medallionBorder: "border-indigo-500/40",
+    spotlightColor: "rgba(99, 102, 241, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(99,102,241,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-indigo-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-indigo-300 flex items-center gap-1.5">
+          Complexity: Cryptic 🧩
+        </span>
+        <span className="text-[#C9C5D6] bg-indigo-950/80 px-2 py-0.5 rounded border border-indigo-800/50">
+          Still Decrypting...
+        </span>
+      </div>
+    ),
+  },
+  "obs-9": {
+    stickerId: "tanisha_idle",
+    stickerRotation: 3,
+    medallionBg: "bg-teal-950/60",
+    medallionBorder: "border-teal-500/40",
+    spotlightColor: "rgba(20, 184, 166, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(20,184,166,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-teal-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-teal-300">Introvert: 50%</span>
+        <div className="h-1.5 w-16 bg-teal-950 rounded-full overflow-hidden border border-teal-500/30 mx-1">
+          <div className="h-full bg-teal-400 w-1/2" />
+        </div>
+        <span className="text-teal-300">Extrovert: 50%</span>
+      </div>
+    ),
+  },
+  "obs-10": {
+    stickerId: "tanisha_smile",
+    stickerRotation: -2,
+    medallionBg: "bg-emerald-950/60",
+    medallionBorder: "border-emerald-500/40",
+    spotlightColor: "rgba(16, 185, 129, 0.25)",
+    glowShadow: "shadow-[0_0_16px_rgba(16,185,129,0.22)]",
+    telemetry: (
+      <div className="mt-2.5 pt-2 border-t border-emerald-500/20 flex items-center justify-between text-[10px] font-mono">
+        <span className="text-emerald-400 flex items-center gap-1.5">
+          Peer Pressure: 0% 🛡️
+        </span>
+        <span className="text-[#C9C5D6] bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">
+          Grounded 🌱
+        </span>
+      </div>
+    ),
+  },
+};
 
 export default function NoticedPage() {
   const noticedData = screens.noticed;
@@ -56,64 +265,32 @@ export default function NoticedPage() {
         {/* Retro Terminal Window: TANISHA SYSTEM PROFILE */}
         <div className="rounded-3xl bg-[#12152A] text-[#F7F4FC] shadow-scrapbook border border-[#272A43] overflow-hidden">
           {/* Terminal Titlebar with Window Controls */}
-          <div className="bg-[#181B32] px-4 py-2.5 border-b border-[#272A43] flex items-center justify-between">
+          <div className="flex items-center justify-between bg-[#0B0D1B] px-4 py-2.5 border-b border-[#272A43]">
             <div className="flex items-center gap-1.5">
-              <span className="h-3 w-3 rounded-full bg-rose-500/80 inline-block" />
-              <span className="h-3 w-3 rounded-full bg-amber-400/80 inline-block" />
-              <span className="h-3 w-3 rounded-full bg-emerald-400/80 inline-block" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#E05252]/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#E5B544]/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-[#44C978]/80" />
             </div>
-            <span className="font-mono text-[11px] text-[#918DA1] font-bold">
-              {noticedData.terminal.windowTitle}
-            </span>
-            <span className="text-[10px] font-mono text-emerald-400 font-bold">
-              {noticedData.terminal.onlineStatus}
-            </span>
+            <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#8DD8FF]">
+              <Terminal className="h-3 w-3" />
+              <span>{noticedData.terminal.windowTitle}</span>
+            </div>
+            <div className="w-8" />
           </div>
 
-          <div className="p-4 space-y-3 font-mono text-xs">
-            <div className="flex items-center justify-between pb-2 border-b border-[#272A43]">
-              <span className="text-[#FFB6D5] font-semibold flex items-center gap-1">
-                <Terminal className="h-3.5 w-3.5" /> {noticedData.terminal.sectionTitle}
-              </span>
-              <span className="rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-2 py-0.5 text-[9px] font-bold">
-                {noticedData.terminal.versionTag}
-              </span>
+          <div className="p-4">
+            {/* Terminal Status Header */}
+            <div className="flex items-center justify-between text-[10px] font-mono text-[#918DA1] border-b border-[#272A43] pb-2 mb-3">
+              <span>{noticedData.terminal.versionTag}</span>
+              <span className="text-emerald-400 font-bold">{noticedData.terminal.onlineStatus}</span>
             </div>
 
-            {/* Terminal Photo Profile Header */}
-            {noticedData.terminal.avatarImage && (
-              <div className="flex items-center gap-3.5 p-2.5 rounded-2xl bg-[#181B32] border border-[#272A43] my-2">
-                <div className="relative h-20 w-16 shrink-0 rounded-xl overflow-hidden border-2 border-[#4AAFE0]/60 shadow-xs bg-[#090B16]">
-                  <Image
-                    src={noticedData.terminal.avatarImage}
-                    alt={noticedData.terminal.avatarAlt || "Tanisha Executive Bot"}
-                    fill
-                    className="object-cover object-top"
-                    sizes="64px"
-                  />
-                  <span className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-full bg-emerald-400 ring-2 ring-[#0D1020] animate-pulse" />
-                </div>
-
-                <div className="flex flex-col justify-center gap-1 text-left">
-                  <span className="text-[10px] font-mono text-emerald-400 font-bold tracking-wider">
-                    {noticedData.terminal.statusBadge}
-                  </span>
-                  <span className="font-display text-sm font-bold text-[#F7F4FC]">
-                    Tanisha Daneen
-                  </span>
-                  <span className="text-[10px] font-mono text-[#918DA1]">
-                    Executive Bot • v19.0 Build
-                  </span>
-                </div>
-              </div>
-            )}
-
-            {/* Terminal Diagnostic Rows */}
-            <div className="space-y-1.5 text-[11px]">
-              {noticedData.terminal.profileRows.map((row) => (
+            {/* Profile Field Data Rows */}
+            <div className="space-y-1.5 text-xs font-mono">
+              {noticedData.terminal.profileRows.map((row, idx) => (
                 <div
-                  key={row.label}
-                  className="flex items-center justify-between py-1 border-b border-[#272A43]/60"
+                  key={idx}
+                  className="flex items-center justify-between py-0.5 border-b border-[#272A43]/50 last:border-0"
                 >
                   <span className="text-[#918DA1]">{row.label}:</span>
                   <span
@@ -204,49 +381,94 @@ export default function NoticedPage() {
             className="absolute inset-0 pointer-events-none -z-10"
           />
 
-          {/* Observation Cards with System Accents */}
-          {noticedData.observations.map((obs, idx) => (
-            <div
-              key={obs.id}
-              className="rounded-2xl bg-sky-800/90 backdrop-blur-xs p-4 shadow-scrapbook border border-purple-deep/30 relative overflow-hidden"
-            >
-              <div className="flex items-start justify-between mb-1">
-                <div className="flex items-center gap-2">
-                  <Star
-                    variant={idx % 3 === 0 ? "purple" : idx % 3 === 1 ? "blue" : "pink"}
-                    size="sm"
-                    twinkle={idx % 2 === 0}
-                  />
-                  <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
-                    {obs.title}
-                  </h4>
+          {/* Observation Cards with System Accents & Illustrated Medallions */}
+          {noticedData.observations.map((obs, idx) => {
+            const visual = observationVisuals[obs.id] || {
+              stickerId: "tanisha_idle",
+              stickerRotation: 0,
+              medallionBg: "bg-sky-950/60",
+              medallionBorder: "border-sky-500/40",
+              spotlightColor: "rgba(192, 132, 252, 0.25)",
+              glowShadow: "shadow-xs",
+              telemetry: null,
+            };
+
+            return (
+              <SpotlightCard
+                key={obs.id}
+                spotlightColor={visual.spotlightColor}
+                spotlightSize={260}
+                tilt={true}
+                tiltAmplitude={3}
+                className="rounded-2xl transition-all duration-300 select-none"
+              >
+                <div className="rounded-2xl bg-sky-800/90 backdrop-blur-xs p-4 shadow-scrapbook border border-purple-deep/30 relative overflow-hidden">
+                  {/* Subtle Constellation Watermark */}
+                  <svg
+                    className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
+                    viewBox="0 0 100 80"
+                    fill="none"
+                  >
+                    <line x1="10" y1="20" x2="90" y2="30" stroke="#FFFFFF" strokeWidth="0.5" strokeDasharray="3 3" />
+                    <line x1="90" y1="30" x2="50" y2="70" stroke="#FFFFFF" strokeWidth="0.5" strokeDasharray="3 3" />
+                    <circle cx="10" cy="20" r="1.5" fill="#FFFFFF" />
+                    <circle cx="90" cy="30" r="1.5" fill="#FFFFFF" />
+                    <circle cx="50" cy="70" r="1.5" fill="#FFFFFF" />
+                  </svg>
+
+                  {/* Header Row */}
+                  <div className="flex items-start justify-between mb-1 relative z-10">
+                    <div className="flex items-center gap-2">
+                      <Star
+                        variant={idx % 3 === 0 ? "purple" : idx % 3 === 1 ? "blue" : "pink"}
+                        size="sm"
+                        twinkle={idx % 2 === 0}
+                      />
+                      <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
+                        {obs.title}
+                      </h4>
+                    </div>
+                    <span className="rounded-full px-2 py-0.5 text-[9px] font-mono font-bold bg-sky-750 text-purple-light border border-purple-deep/30">
+                      {obs.tag}
+                    </span>
+                  </div>
+
+                  <p className="text-[10px] text-[#9693A7] font-mono mb-2 relative z-10">
+                    // {obs.subtitle}
+                  </p>
+
+                  {/* Content Row with Right-side Illustrated Sticker Medallion */}
+                  <div className="flex items-center justify-between gap-3 relative z-10">
+                    <p className="text-xs text-[#D0CDDC] leading-relaxed flex-1 whitespace-pre-line font-normal">
+                      {obs.description}
+                    </p>
+
+                    <div
+                      className={cn(
+                        "relative shrink-0 rounded-2xl p-1.5 border flex items-center justify-center transition-transform hover:scale-105",
+                        visual.medallionBg,
+                        visual.medallionBorder,
+                        visual.glowShadow
+                      )}
+                    >
+                      <CollectibleSticker
+                        id={visual.stickerId}
+                        size={56}
+                        rotation={visual.stickerRotation}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Micro-telemetry Status HUD Line */}
+                  {visual.telemetry && (
+                    <div className="relative z-10">
+                      {visual.telemetry}
+                    </div>
+                  )}
                 </div>
-                <span className="rounded-full px-2 py-0.5 text-[9px] font-mono font-bold bg-sky-750 text-purple-light border border-purple-deep/30">
-                  {obs.tag}
-                </span>
-              </div>
-
-              <p className="text-[10px] text-[#9693A7] font-mono mb-1.5">
-                // {obs.subtitle}
-              </p>
-
-              <div className="flex items-center justify-between gap-3">
-                <p className="text-xs text-[#D0CDDC] leading-relaxed flex-1 whitespace-pre-line">
-                  {obs.description}
-                </p>
-                {obs.id === "obs-2" && (
-                  <div className="shrink-0">
-                    <CollectibleSticker id="tanisha_drink" size={54} rotation={-4} />
-                  </div>
-                )}
-                {obs.id === "obs-5" && (
-                  <div className="shrink-0">
-                    <CollectibleSticker id="tanisha_sleep" size={54} rotation={4} />
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+              </SpotlightCard>
+            );
+          })}
         </div>
 
         {/* Closing Console Log */}
