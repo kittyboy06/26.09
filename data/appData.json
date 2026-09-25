@@ -796,6 +796,25 @@
       "reelCardReaction": "I might actually do that 😂",
       "items": [
         {
+          "id": "mem-tagore-symposium",
+          "type": "featured-photo",
+          "title": "Tagore College — 25.09.2026",
+          "snippet": "Today was basically one long conversation.\n\nWe went to Tagore College for the symposium, had lunch together, got ice cream, and ended up talking way more than we normally have before—about Ezra, school, different areas in Chennai, food and things we'd eaten, and just general everyday random topics.\n\nThen we traveled back home together.\n\nQuite a lot happened in one day.",
+          "quote": "Somehow, we ended up spending the whole day together.",
+          "headline": "One whole day.",
+          "shortSummary": "Symposium. Lunch. Ice cream. Random conversations. The trip back home.",
+          "tag": "Today's memory",
+          "sticker": "🚌",
+          "rotation": -0.5,
+          "tapeColor": "blue",
+          "aspectRatio": "video",
+          "imageSrc": "/assets/photos/tagore_symposium.jpg",
+          "subNote": "25.09.2026 • Tagore College",
+          "college": "TAGORE COLLEGE",
+          "dateLabel": "25 SEPTEMBER 2026",
+          "eventLabel": "SYMPOSIUM DAY"
+        },
+        {
           "id": "mem-1",
           "type": "quote",
           "title": "The Childhood Archive",

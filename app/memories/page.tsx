@@ -9,6 +9,7 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
+import { FeaturedMemoryCard } from "@/components/memories/FeaturedMemoryCard";
 
 export default function MemoriesPage() {
   const memoriesData = screens.memories;
@@ -18,6 +19,7 @@ export default function MemoriesPage() {
   const [selectedItem, setSelectedItem] = useState<MemoryItemType | null>(null);
 
   // Group items for artistic asymmetric collage arrangement
+  const featuredTagoreMemory = items.find((m) => m.id === "mem-tagore-symposium");
   const quote1 = items.find((m) => m.id === "mem-1");
   const photo1 = items.find((m) => m.id === "mem-2");
   const robotIncident = items.find((m) => m.id === "mem-3");
@@ -58,6 +60,16 @@ export default function MemoriesPage() {
 
       {/* Intentionally Messy, Asymmetric Collage Stack */}
       <div className="w-full max-w-sm flex flex-col gap-6 relative">
+        {/* Featured Memory Constellation: Tagore College Symposium (Today • 25.09.2026) */}
+        {featuredTagoreMemory && (
+          <div className="w-full relative mb-1">
+            <FeaturedMemoryCard
+              item={featuredTagoreMemory}
+              onExpand={() => setSelectedItem(featuredTagoreMemory)}
+            />
+          </div>
+        )}
+
         {/* Scrapbook Section 1: Classic Reply Schedule Quote */}
         {quote1 && (
           <div

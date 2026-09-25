@@ -111,6 +111,8 @@ export function Lightbox({ item, onClose }: LightboxProps) {
                       "relative w-full rounded-2xl overflow-hidden my-1 border border-[#7147A8]/30 shadow-inner bg-[#0D1020]",
                       (item as any).aspectRatio === "portrait"
                         ? "aspect-[4/5] max-h-[50dvh]"
+                        : (item as any).aspectRatio === "video"
+                        ? "aspect-[16/9] sm:aspect-[2.1/1] max-h-[42dvh]"
                         : "aspect-[4/3] max-h-[38dvh]"
                     )}
                   >
