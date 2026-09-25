@@ -8,9 +8,14 @@ import { cn } from "@/lib/utils";
 
 export function ChapterProgress() {
   const { isUnlocked, currentRouteIndex } = useBirthday();
+  const [mounted, setMounted] = React.useState<boolean>(false);
 
-  // Hide progress before unlock
-  if (!isUnlocked) {
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Hide progress before client hydration mount and before unlock
+  if (!mounted || !isUnlocked) {
     return null;
   }
 

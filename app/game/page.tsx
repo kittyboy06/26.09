@@ -220,7 +220,7 @@ export default function WhackGamePage() {
         </button>
       </div>
 
-      {/* ARCADE MARQUEE: Cat Mascot Striker Deck */}
+      {/* ARCADE MARQUEE: Ezra Mascot Striker Deck */}
       <div className="w-full max-w-[340px] bg-[#4E342E] rounded-t-3xl border-t-4 border-x-4 border-[#8B5A2B] px-3 pt-2.5 pb-1 relative shadow-lg overflow-hidden select-none">
         {/* Brass Header Plate with rivets */}
         <div

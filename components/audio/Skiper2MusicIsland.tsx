@@ -39,8 +39,14 @@ export function Skiper2MusicIsland() {
     };
   }, [isExpanded]);
 
-  // If not unlocked yet, do not display the floating island
-  if (!isUnlocked) {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // If not mounted or not unlocked yet, do not display the floating island
+  if (!mounted || !isUnlocked) {
     return null;
   }
 

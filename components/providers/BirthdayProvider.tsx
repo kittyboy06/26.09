@@ -26,34 +26,43 @@ interface BirthdayContextType {
 const BirthdayContext = createContext<BirthdayContextType | undefined>(undefined);
 
 export function BirthdayProvider({ children }: { children: ReactNode }) {
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
-    if (typeof window !== "undefined") {
-      try {
-        return sessionStorage.getItem("tanisha_19_unlocked") === "true";
-      } catch {
-        return false;
-      }
-    }
-    return false;
-  });
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [hasAudioError, setHasAudioError] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
-  // Clear persistent local storage on initial mount
+  // Clear persistent local storage on initial mount & restore unlock state from session
   useEffect(() => {
     try {
       localStorage.clear();
     } catch {
       // Ignore if storage is disabled
     }
+
+    try {
+      const stored = sessionStorage.getItem("tanisha_19_unlocked");
+      if (stored === "true") {
+        setIsUnlocked(true);
+      }
+    } catch {
+      // Ignore if sessionStorage is disabled
+    }
   }, []);
 
-  // Redirect to landing gate from any page if refreshed or exited (in-memory lock reset)
+  // Redirect to landing gate from any page if refreshed or accessed without session unlock
   useEffect(() => {
     if (!isUnlocked && pathname !== "/") {
+      try {
+        const stored = sessionStorage.getItem("tanisha_19_unlocked");
+        if (stored === "true") {
+          setIsUnlocked(true);
+          return;
+        }
+      } catch {
+        // Ignore
+      }
       router.replace("/");
     }
   }, [isUnlocked, pathname, router]);

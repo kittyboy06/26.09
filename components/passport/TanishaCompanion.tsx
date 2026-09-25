@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
@@ -22,8 +22,14 @@ export function TanishaCompanion() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const companionText = common.passport;
 
-  // If on the locked welcome gate before passcode entry, keep screen clean
-  if (!isUnlocked) {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // If on the locked welcome gate before passcode entry or before hydration, keep screen clean
+  if (!mounted || !isUnlocked) {
     return null;
   }
 

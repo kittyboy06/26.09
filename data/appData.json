@@ -204,7 +204,7 @@
       "chapterTitle": "Whack-a-Tanisha",
       "route": "/game",
       "src": "/assets/stickers/tanisha_doubt.png",
-      "quote": "Side-eyeing the Cat Striker 9000 mallet 🔨",
+      "quote": "Side-eyeing the Ezra Striker 9000 mallet 🔨",
       "tagline": "Found in Chapter 07: Arcade Marquee",
       "personality": "Skeptical side-eye watching the carnival mallet swing."
     },
@@ -340,7 +340,7 @@
       "subtitle": "Carnival Arcade Strike",
       "stickerSrc": "/assets/stickers/tanisha_doubt.png",
       "stickerAlt": "Tanisha Skeptical Side-Eye",
-      "quote": "Side-eyeing the Cat Striker 9000 🔨",
+      "quote": "Side-eyeing the Ezra Striker 9000 🔨",
       "stampDate": "STAMP 07",
       "accentColor": "border-amber-600/80 text-amber-950",
       "badgeBg": "bg-amber-200"
@@ -1283,9 +1283,9 @@
         "resetButton": "RESET"
       },
       "marquee": {
-        "title": "CAT STRIKER 9000",
+        "title": "EZRA STRIKER 9000",
         "initialQuote": "Ready to strike! 🕶️",
-        "catAlt": "Cool Cat Striker"
+        "catAlt": "Cool Ezra Striker"
       },
       "tanishaMole": {
         "idleAlt": "Tanisha Mole",

@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { screens } from "@/lib/appData";
 import { PaperCard } from "@/components/ui/PaperCard";
 import { Sticker } from "@/components/ui/Sticker";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
-import { Flower2, PackageCheck } from "lucide-react";
+import { Flower2, PackageCheck, ZoomIn, X } from "lucide-react";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
@@ -18,6 +19,7 @@ export default function GiftPage() {
   const data = screens.gift;
   const [currentImg, setCurrentImg] = useState<string>(data.productImage);
   const [hasError, setHasError] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const handleImageError = () => {
     if (currentImg !== data.fallbackImage) {
@@ -121,32 +123,37 @@ export default function GiftPage() {
           </div>
 
           {/* Product Frame Surrounded by Illustrated Elements */}
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-sky-950 border-2 border-dashed border-purple-deep/50 flex items-center justify-center p-3 shadow-inner">
-            {/* Soft blurred radial glow behind bouquet */}
-            <div className="absolute inset-0 bg-radial from-pink-primary/10 via-purple-primary/5 to-transparent pointer-events-none" />
-
+          <div
+            onClick={() => setIsExpanded(true)}
+            className="group relative aspect-square sm:aspect-[4/3] w-full overflow-hidden rounded-2xl bg-white border-2 border-dashed border-purple-deep/50 flex items-center justify-center p-2 shadow-scrapbook cursor-pointer transition-all duration-300 hover:shadow-celestial-purple"
+          >
             {!hasError ? (
               <Image
                 src={currentImg}
                 alt={data.productAlt}
                 fill
-                className="object-contain p-2 transition-transform duration-500 hover:scale-105 relative z-10"
+                priority
+                className="object-contain p-2 transition-transform duration-500 group-hover:scale-105 relative z-10"
                 onError={handleImageError}
               />
             ) : (
               <div className="flex flex-col items-center justify-center p-6 text-center relative z-10">
                 <Star variant="main" size="lg" twinkle={true} />
-                <h4 className="font-display text-sm font-bold text-[#F7F4FC] mt-2">
+                <h4 className="font-display text-sm font-bold text-sky-950 mt-2">
                   {data.title}
                 </h4>
               </div>
             )}
 
             {/* Corner stickers framing the bouquet */}
-            <div className="absolute top-2 left-2 rounded-full bg-blue-night px-2 py-0.5 text-[10px] font-bold text-blue-light shadow-xs border border-blue-deep z-20">
+            <div className="absolute top-2 left-2 rounded-full bg-blue-night/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-blue-light shadow-xs border border-blue-deep z-20">
               {data.cornerBadges.botanical}
             </div>
-            <div className="absolute bottom-2 right-2 rounded-full bg-pink-night px-2.5 py-0.5 text-[10px] font-bold text-pink-light shadow-xs border border-pink-deep z-20">
+            <div className="absolute top-2 right-2 rounded-full bg-sky-900/80 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-[#8DD8FF] shadow-xs border border-[#2679A8] flex items-center gap-1 z-20 transition-transform group-hover:scale-105">
+              <ZoomIn className="h-3 w-3" />
+              <span>Tap to inspect</span>
+            </div>
+            <div className="absolute bottom-2 right-2 rounded-full bg-pink-night/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-pink-light shadow-xs border border-pink-deep z-20">
               {data.cornerBadges.permanentBloom}
             </div>
           </div>
@@ -182,6 +189,69 @@ export default function GiftPage() {
         variant={data.navigation.variant as any}
       />
     </PageTransition>
+
+    {/* High-Resolution Expanded Inspection Modal */}
+    <AnimatePresence>
+      {isExpanded && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+          onClick={() => setIsExpanded(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.92, opacity: 0, y: 16 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.92, opacity: 0, y: 16 }}
+            transition={{ type: "spring", stiffness: 350, damping: 26 }}
+            className="relative max-h-[90vh] w-full max-w-lg rounded-3xl bg-[#12152A] border border-[#272A43] p-4 sm:p-5 shadow-2xl flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header with Title & Close Button */}
+            <div className="w-full flex items-center justify-between pb-3 border-b border-[#272A43]">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-[#8DD8FF] animate-pulse" />
+                <span className="font-mono text-xs font-bold text-[#8DD8FF] uppercase tracking-wider">
+                  {data.title}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsExpanded(false)}
+                className="rounded-full bg-sky-850 p-1.5 text-[#C9C5D6] hover:text-white hover:bg-sky-800 transition-colors border border-sky-750"
+                aria-label="Close modal"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+
+            {/* High-Res Image Display Container */}
+            <div className="relative aspect-square w-full my-3 rounded-2xl bg-white p-3 shadow-inner overflow-hidden flex items-center justify-center">
+              <Image
+                src={currentImg}
+                alt={data.productAlt}
+                fill
+                className="object-contain p-2"
+                priority
+              />
+            </div>
+
+            {/* Botanical Specimen Details Card */}
+            <div className="w-full text-center space-y-1">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183B59] border border-[#2679A8] text-xs font-mono font-bold text-[#8DD8FF]">
+                <span>939 PIECES</span>
+                <span>•</span>
+                <span>BUILDING BLOCK BOUQUET</span>
+              </div>
+              <p className="font-handwriting text-lg text-[#FFB6D5] font-bold pt-1">
+                &ldquo;A bloom that lasts forever.&rdquo; 🌸
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   </NightSky>
   );
 }
