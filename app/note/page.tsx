@@ -9,6 +9,9 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
+import { NightSky } from "@/components/celestial/NightSky";
+import { CelestialBadge } from "@/components/celestial/CelestialBadge";
+import { Star } from "@/components/celestial/Star";
 
 import { screens, MemoryItem } from "@/lib/appData";
 
@@ -17,25 +20,27 @@ export default function NotePage() {
   const [selectedPhoto, setSelectedPhoto] = useState<MemoryItem | null>(null);
 
   return (
-    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
-      {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#7147A8" />
+    <NightSky
+      mood="pink"
+      starDensity="normal"
+      baseBg="default"
+      showMoon={true}
+      moonVariant="thin-crescent"
+      shootingStar={true}
+      shootingStarColor="pink"
+    >
+      <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
+        {/* Scroll decorative vine */}
+        <Skiper19ScrollVine color="#7049A6" />
 
-      {/* Fullscreen Lightbox for expanded photo view */}
-      <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+        {/* Fullscreen Lightbox for expanded photo view */}
+        <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
 
-      {/* Top Header Badge */}
-      <div className="w-full flex items-center justify-between mb-4">
-        <Sticker variant="floating" rotation={-2}>
-          <span>{noteData.badges.left.emoji}</span>
-          <span className="text-[11px] font-medium text-[#F7F4FC]">{noteData.badges.left.text}</span>
-        </Sticker>
-
-        <Sticker variant="wiggle" rotation={2}>
-          <span>{noteData.badges.right.emoji}</span>
-          <span className="text-[11px] font-medium text-[#F7F4FC]">{noteData.badges.right.text}</span>
-        </Sticker>
-      </div>
+        {/* Top Header Badge */}
+        <div className="w-full flex items-center justify-between mb-4 px-2">
+          <CelestialBadge icon="letter" text={noteData.badges.left.text} theme="pink" />
+          <CelestialBadge icon="star" text={noteData.badges.right.text} theme="purple" />
+        </div>
 
       <div className="w-full max-w-sm flex flex-col gap-6">
         {/* Authentic Ruled Legal Pad / Journal Note */}
@@ -134,24 +139,24 @@ export default function NotePage() {
 
         {/* A Little Memory Keepsake Card (18/09 Hackathon) */}
         {(noteData as any).hackathonMemory && (
-          <div className="relative rounded-3xl bg-[#181B32] p-5 shadow-scrapbook border border-[#272A43] text-left">
-            <span className="absolute -top-3 left-6 h-5 w-20 bg-[#2679A8]/60 border border-[#69C7F5]/40 rounded-xs -rotate-2" />
+          <div className="relative rounded-3xl bg-sky-800 p-5 shadow-scrapbook border border-purple-deep/30 text-left">
+            <span className="absolute -top-3 left-6 h-5 w-20 bg-blue-deep/60 border border-blue-light/40 rounded-xs -rotate-2" />
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span className="text-xl select-none">{(noteData as any).hackathonMemory.sticker}</span>
-                <h4 className="font-display text-sm font-bold text-[#F7F4FC]">
+                <CelestialBadge icon="telescope" theme="blue" />
+                <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
                   {(noteData as any).hackathonMemory.title}
                 </h4>
               </div>
-              <span className="rounded-full bg-[#183B59] px-2.5 py-0.5 text-[10px] font-mono font-bold text-[#8DD8FF] border border-[#2679A8]">
+              <span className="rounded-full bg-blue-night px-2.5 py-0.5 text-[10px] font-mono font-bold text-blue-light border border-blue-deep">
                 {(noteData as any).hackathonMemory.tag}
               </span>
             </div>
-            <p className="whitespace-pre-line font-handwriting text-lg text-[#C9C5D6] leading-relaxed my-2">
+            <p className="whitespace-pre-line font-handwriting text-lg text-[#D0CDDC] leading-relaxed my-2">
               {(noteData as any).hackathonMemory.story}
             </p>
-            <div className="pt-2 border-t border-[#272A43] flex justify-end">
-              <span className="text-[10px] font-mono font-semibold text-[#918DA1]">
+            <div className="pt-2 border-t border-purple-deep/20 flex justify-end">
+              <span className="text-[10px] font-mono font-semibold text-[#9693A7]">
                 {(noteData as any).hackathonMemory.subNote}
               </span>
             </div>
@@ -159,24 +164,24 @@ export default function NotePage() {
         )}
 
         {/* 'Why This Exists' Sequence Card */}
-        <div className="relative rounded-3xl bg-[#181B32] p-5 shadow-scrapbook border border-[#272A43]">
-          <h4 className="font-display text-xs font-bold text-[#F7F4FC] uppercase tracking-wider text-center mb-3">
+        <div className="relative rounded-3xl bg-sky-800 p-5 shadow-scrapbook border border-purple-deep/30">
+          <h4 className="font-display text-xs font-bold text-[#F7F5FC] uppercase tracking-wider text-center mb-3">
             {noteData.whyItExists.title}
           </h4>
 
-          <div className="flex flex-col items-center gap-2 text-center text-xs text-[#F7F4FC] font-medium">
+          <div className="flex flex-col items-center gap-2 text-center text-xs text-[#F7F5FC] font-medium">
             {noteData.whyItExists.steps.map((step, idx) => (
               <React.Fragment key={idx}>
-                {idx > 0 && <ArrowDown className="h-3 w-3 text-[#918DA1]" />}
+                {idx > 0 && <ArrowDown className="h-3 w-3 text-[#9693A7]" />}
                 <span
                   className={
                     step.style === "cream"
-                      ? "rounded-full bg-[#12152A] px-3 py-1 shadow-2xs border border-[#272A43] text-[#F7F4FC]"
+                      ? "rounded-full bg-sky-850 px-3 py-1 shadow-2xs border border-purple-deep/30 text-[#F7F5FC]"
                       : step.style === "yellow"
-                      ? "rounded-full bg-[#183B59] px-3 py-1 border border-[#2679A8] text-[#8DD8FF]"
+                      ? "rounded-full bg-blue-night px-3 py-1 border border-blue-deep text-blue-light"
                       : step.style === "handwriting"
-                      ? "font-handwriting text-base font-bold text-[#F7F4FC]"
-                      : "rounded-full bg-[#30204B] px-4 py-1.5 font-bold text-[#F7F4FC] border border-[#7147A8] shadow-xs"
+                      ? "font-handwriting text-base font-bold text-[#F7F5FC]"
+                      : "rounded-full bg-purple-night px-4 py-1.5 font-bold text-[#F7F5FC] border border-purple-deep shadow-xs"
                   }
                 >
                   {step.text}
@@ -186,34 +191,35 @@ export default function NotePage() {
           </div>
 
           {/* Collectible Quest Sticker: tanisha_bye */}
-          <div className="mt-5 pt-3 border-t border-[#272A43] text-center flex flex-col items-center">
-            <p className="text-[10px] text-[#B98AE8] font-mono font-bold uppercase tracking-wider mb-2">
+          <div className="mt-5 pt-3 border-t border-purple-deep/20 text-center flex flex-col items-center">
+            <p className="text-[10px] text-purple-light font-mono font-bold uppercase tracking-wider mb-2">
               {noteData.whyItExists.questBadge}
             </p>
             <div className="my-1">
               <CollectibleSticker id="tanisha_bye" size={62} rotation={4} showTapPrompt={true} />
             </div>
-            <p className="text-[10px] text-[#918DA1] italic mt-1">
+            <p className="text-[10px] text-[#9693A7] italic mt-1">
               {noteData.whyItExists.questDescription}
             </p>
           </div>
         </div>
 
         {/* Tucked Notice */}
-        <div className="rounded-2xl bg-[#183B59]/30 p-3.5 border border-[#2679A8]/40 text-center">
-          <p className="font-handwriting text-base text-[#F7F4FC] font-bold">
+        <div className="rounded-2xl bg-blue-night/40 p-3.5 border border-blue-deep/40 text-center">
+          <p className="font-handwriting text-base text-[#F7F5FC] font-bold">
             {noteData.tuckedNotice.quote}
           </p>
-          <span className="text-[11px] text-[#C9C5D6]">
+          <span className="text-[11px] text-[#D0CDDC]">
             {noteData.tuckedNotice.nextHint}
           </span>
         </div>
       </div>
 
       {/* Floating Sparkles */}
-      <div className="my-4 flex items-center gap-1.5 text-xs text-[#918DA1]">
-        <Sparkles className="h-3 w-3 text-[#69C7F5]" />
-        <span className="font-handwriting text-base text-[#C9C5D6]">{noteData.keepScrolling}</span>
+      <div className="my-4 flex items-center gap-1.5 text-xs text-[#9693A7]">
+        <Star variant="pink" size="xs" twinkle={true} />
+        <span className="font-handwriting text-base text-[#D0CDDC]">{noteData.keepScrolling}</span>
+        <Star variant="blue" size="xs" twinkle={true} delayed={true} />
       </div>
 
       {/* Page Navigation */}
@@ -222,8 +228,9 @@ export default function NotePage() {
         nextLabel={noteData.navigation.nextLabel}
         prevHref={noteData.navigation.prevHref}
         prevLabel={noteData.navigation.prevLabel}
-        variant="blue"
+        variant="pink"
       />
     </PageTransition>
+  </NightSky>
   );
 }

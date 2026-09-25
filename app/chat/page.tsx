@@ -9,6 +9,8 @@ import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sticker } from "@/components/ui/Sticker";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
+import { NightSky } from "@/components/celestial/NightSky";
+import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 
 import { screens } from "@/lib/appData";
 
@@ -23,21 +25,22 @@ export default function ChatPage() {
   };
 
   return (
-    <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
-      {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#7147A8" />
+    <NightSky
+      mood="mixed"
+      starDensity="sparse"
+      baseBg="deep"
+      showMoon={true}
+      moonVariant="thin-crescent"
+    >
+      <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
+        {/* Scroll decorative vine */}
+        <Skiper19ScrollVine color="#7049A6" />
 
-      {/* Header Badges */}
-      <div className="w-full flex items-center justify-between mb-4">
-        <Sticker variant="floating" rotation={-2}>
-          <span>{chatData.badges.left.emoji}</span>
-          <span className="text-xs text-[#F7F4FC] font-medium">{chatData.badges.left.text}</span>
-        </Sticker>
-        <Sticker variant="wiggle" rotation={3}>
-          <span>{chatData.badges.right.emoji}</span>
-          <span className="text-xs text-[#F7F4FC] font-medium">{chatData.badges.right.text}</span>
-        </Sticker>
-      </div>
+        {/* Header Badges */}
+        <div className="w-full flex items-center justify-between mb-4 px-2">
+          <CelestialBadge icon="chat" text={chatData.badges.left.text} theme="blue" />
+          <CelestialBadge icon="moon" text={chatData.badges.right.text} theme="purple" />
+        </div>
 
       {/* Chapter Title */}
       <div className="text-center mb-5">
@@ -105,27 +108,27 @@ export default function ChatPage() {
                 <div
                   className={`relative max-w-[82%] rounded-2xl px-3.5 py-2 shadow-2xs ${
                     isTanisha
-                      ? "bg-[#30204B] text-[#F7F4FC] rounded-tl-xs border border-[#7147A8]"
-                      : "bg-[#183B59] text-[#F7F4FC] rounded-tr-xs border border-[#2679A8]"
+                      ? "bg-purple-night text-[#F7F5FC] rounded-tl-xs border border-purple-deep"
+                      : "bg-blue-night text-[#F7F5FC] rounded-tr-xs border border-blue-deep"
                   }`}
                 >
                   <p className="text-xs leading-relaxed">{msg.text}</p>
 
                   {(msg as { subtext?: string }).subtext && (
-                    <p className="mt-1 text-[9px] font-medium text-[#C9C5D6] italic border-t border-white/10 pt-0.5">
+                    <p className="mt-1 text-[9px] font-medium text-[#D0CDDC] italic border-t border-white/10 pt-0.5">
                       {(msg as { subtext?: string }).subtext}
                     </p>
                   )}
 
                   {/* Timestamp & Delivery status */}
-                  <div className="mt-1 flex items-center justify-end gap-1 text-[8px] text-[#918DA1]">
+                  <div className="mt-1 flex items-center justify-end gap-1 text-[8px] text-[#9693A7]">
                     <span>{msg.time}</span>
-                    <CheckCheck className="h-2.5 w-2.5 text-[#69C7F5]" />
+                    <CheckCheck className="h-2.5 w-2.5 text-blue-light" />
                   </div>
 
                   {/* Reaction Tag if present */}
                   {msg.reaction && (
-                    <span className="absolute -bottom-2 right-2 rounded-full bg-[#181B32] px-1.5 py-0.2 text-[10px] shadow-xs border border-[#7147A8] text-[#F7F4FC] select-none">
+                    <span className="absolute -bottom-2 right-2 rounded-full bg-sky-850 px-1.5 py-0.2 text-[10px] shadow-xs border border-purple-deep text-[#F7F5FC] select-none">
                       {msg.reaction}
                     </span>
                   )}
@@ -135,7 +138,7 @@ export default function ChatPage() {
                 {msg.id === "m-2" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_smirk" size={54} rotation={-3} />
-                    <span className="text-[9px] font-mono text-[#918DA1] italic">{chatData.device.questStickerTag}</span>
+                    <span className="text-[9px] font-mono text-[#9693A7] italic">{chatData.device.questStickerTag}</span>
                   </div>
                 )}
 
@@ -143,7 +146,7 @@ export default function ChatPage() {
                 {msg.id === "m-6" && (
                   <div className="mt-1 ml-2 flex items-center gap-1.5">
                     <CollectibleSticker id="tanisha_work" size={54} rotation={2} />
-                    <span className="text-[9px] font-mono text-[#918DA1] italic">{chatData.device.questStickerTag}</span>
+                    <span className="text-[9px] font-mono text-[#9693A7] italic">{chatData.device.questStickerTag}</span>
                   </div>
                 )}
               </motion.div>
@@ -167,9 +170,9 @@ export default function ChatPage() {
         </div>
 
         {/* Quick Reactions Bar */}
-        <div className="bg-[#12152A] px-3 py-2 border-t border-[#272A43] flex items-center justify-between">
-          <span className="text-[10px] font-semibold text-[#918DA1] flex items-center gap-1">
-            <Smile className="h-3 w-3 text-[#E875A6]" /> {chatData.device.quickTapPrefix}
+        <div className="bg-sky-900 px-3 py-2 border-t border-purple-deep/30 flex items-center justify-between">
+          <span className="text-[10px] font-semibold text-[#9693A7] flex items-center gap-1">
+            <Smile className="h-3 w-3 text-pink-primary" /> {chatData.device.quickTapPrefix}
           </span>
           <div className="flex items-center gap-1.5">
             {chatData.device.quickEmojis.map((emoji) => (
@@ -177,7 +180,7 @@ export default function ChatPage() {
                 key={emoji}
                 type="button"
                 onClick={() => addReaction(emoji)}
-                className="h-7 w-7 rounded-full bg-[#181B32] hover:bg-[#202440] active:scale-90 border border-[#272A43] text-xs flex items-center justify-center transition-transform shadow-2xs"
+                className="h-7 w-7 rounded-full bg-sky-850 hover:bg-sky-750 active:scale-90 border border-purple-deep/30 text-xs flex items-center justify-center transition-transform shadow-2xs"
                 title={`${chatData.device.quickTapTitlePrefix} ${emoji}`}
               >
                 {emoji}
@@ -196,5 +199,6 @@ export default function ChatPage() {
         variant="purple"
       />
     </PageTransition>
+  </NightSky>
   );
 }

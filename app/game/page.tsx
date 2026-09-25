@@ -11,6 +11,9 @@ import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Sticker } from "@/components/ui/Sticker";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
+import { NightSky } from "@/components/celestial/NightSky";
+import { CelestialBadge } from "@/components/celestial/CelestialBadge";
+import { Star } from "@/components/celestial/Star";
 
 export default function WhackGamePage() {
   const data = screens.game;
@@ -172,31 +175,30 @@ export default function WhackGamePage() {
   };
 
   return (
-    <PageTransition className="relative flex flex-col items-center pt-12 pb-28">
-      {/* Scroll decorative vine */}
-      <Skiper19ScrollVine color="#7147A8" />
+    <NightSky
+      mood="purple"
+      starDensity="sparse"
+      baseBg="deep"
+    >
+      <PageTransition className="relative flex flex-col items-center pt-12 pb-28">
+        {/* Scroll decorative vine */}
+        <Skiper19ScrollVine color="#7049A6" />
 
-      {/* Header Badges */}
-      <div className="w-full flex items-center justify-between mb-3">
-        <Sticker variant="floating" rotation={-3}>
-          <span>{data.badges.left.emoji}</span>
-          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.left.text}</span>
-        </Sticker>
-        <Sticker variant="wiggle" rotation={3}>
-          <span>{data.badges.right.emoji}</span>
-          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.right.text}</span>
-        </Sticker>
-      </div>
+        {/* Header Badges */}
+        <div className="w-full flex items-center justify-between mb-3 px-2">
+          <CelestialBadge icon="gamepad" text={data.badges.left.text} theme="purple" />
+          <CelestialBadge icon="star" text={data.badges.right.text} theme="pink" />
+        </div>
 
-      {/* Chapter Title */}
-      <div className="text-center mb-2">
-        <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F4FC]">
-          {data.header.title}
-        </h2>
-        <p className="text-xs text-[#918DA1]">
-          {data.header.subtitle}
-        </p>
-      </div>
+        {/* Chapter Title */}
+        <div className="text-center mb-2">
+          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F5FC]">
+            {data.header.title}
+          </h2>
+          <p className="text-xs text-[#9693A7]">
+            {data.header.subtitle}
+          </p>
+        </div>
 
       {/* Scoreboard Bar */}
       <div className="w-full max-w-[340px] flex items-center justify-between bg-amber-900/90 text-amber-100 rounded-2xl px-4 py-2 border-2 border-amber-700 shadow-md mb-2 select-none">
@@ -336,9 +338,9 @@ export default function WhackGamePage() {
                 animate={{ opacity: 0, scale: 1.4 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-4 top-2 text-yellow-300 font-black text-xs z-30 pointer-events-none"
+                className="absolute right-4 top-2 z-30 pointer-events-none"
               >
-                💥
+                <Star variant="main" size="md" twinkle={true} />
               </motion.div>
             )}
           </AnimatePresence>
@@ -517,5 +519,6 @@ export default function WhackGamePage() {
         variant={data.navigation.variant as any}
       />
     </PageTransition>
+  </NightSky>
   );
 }

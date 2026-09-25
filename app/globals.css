@@ -9,46 +9,67 @@
   --font-display: var(--font-display, 'Fredoka'), 'Quicksand', system-ui, sans-serif;
   --font-body: var(--font-body, 'Plus Jakarta Sans'), 'Inter', system-ui, sans-serif;
 
-  /* Global Color System: Midnight Surface Hierarchy */
-  --bg-deep: #090B16;
-  --bg-primary: #0D1020;
-  --bg-secondary: #12152A;
-  --surface: #181B32;
-  --surface-elevated: #202440;
-  --surface-hover: #292D4D;
+  /* Global Color System: Night Sky Environment */
+  --sky-950: #060817;
+  --sky-925: #080B1D;
+  --sky-900: #0B1024;
+  --sky-850: #101735;
+  --sky-800: #151C3D;
+  --sky-750: #1C254A;
+  --sky-700: #252E57;
+
+  /* Semantic Surfaces */
+  --bg-deep: #060817;
+  --bg-primary: #080B1D;
+  --bg-secondary: #0B1024;
+  --surface: #151C3D;
+  --surface-elevated: #1C254A;
+  --surface-hover: #252E57;
 
   /* Text Hierarchy */
-  --text-primary: #F7F4FC;
-  --text-secondary: #C9C5D6;
-  --text-muted: #918DA1;
-  --text-disabled: #625F70;
+  --text-primary: #F7F5FC;
+  --text-secondary: #D0CDDC;
+  --text-muted: #9693A7;
+  --text-disabled: #6C697D;
 
   /* Borders */
-  --border-subtle: #272A43;
-  --border-blue: #2679A8;
-  --border-purple: #7147A8;
-  --border-pink: #A84670;
+  --border-subtle: rgba(192, 154, 244, 0.18);
+  --border-blue: #3185B8;
+  --border-purple: #7049A6;
+  --border-pink: #A94E77;
 
   /* Blue Family (Atmosphere & Movement) */
-  --blue-glow: #8DD8FF;
-  --blue-soft: #69C7F5;
-  --blue-primary: #4AAFE0;
-  --blue-deep: #2679A8;
-  --blue-night: #183B59;
+  --blue-glow: #A8E3FF;
+  --blue-light: #7DD3FC;
+  --blue-soft: #7DD3FC;
+  --blue-primary: #55B8EA;
+  --blue-deep: #3185B8;
+  --blue-night: #163D5A;
 
   /* Purple Family (Identity & Magic) */
-  --purple-glow: #D3A7FF;
-  --purple-soft: #B98AE8;
-  --purple-primary: #9B6DDB;
-  --purple-deep: #7147A8;
-  --purple-night: #30204B;
+  --purple-glow: #D9B8FF;
+  --purple-light: #C09AF4;
+  --purple-soft: #C09AF4;
+  --purple-primary: #9B70D9;
+  --purple-deep: #7049A6;
+  --purple-night: #30204D;
 
   /* Pink Family (Warmth & Emotion) */
-  --pink-glow: #FFB6D5;
-  --pink-soft: #F494BC;
-  --pink-primary: #E875A6;
-  --pink-deep: #A84670;
-  --pink-night: #431F35;
+  --pink-glow: #FFC2DD;
+  --pink-light: #F79ABD;
+  --pink-soft: #F79ABD;
+  --pink-primary: #E77BA8;
+  --pink-deep: #A94E77;
+  --pink-night: #421F35;
+
+  /* Celestial Objects */
+  --star-main: #FFF8E7;
+  --star-blue: #DFF5FF;
+  --star-purple: #E8DCFF;
+  --star-pink: #FFD8E8;
+  --moon-body: #F6F0E5;
+  --moon-highlight: #FFF9EC;
+  --moon-crater: #D9D3CB;
 }
 
 html {
@@ -56,8 +77,8 @@ html {
 }
 
 body {
-  background-color: #0D1020;
-  color: #F7F4FC;
+  background-color: #080B1D;
+  color: #F7F5FC;
   font-family: var(--font-body);
   overflow-x: hidden;
   width: 100%;
@@ -73,8 +94,8 @@ body {
 }
 
 ::selection {
-  background-color: #30204B;
-  color: #F7F4FC;
+  background-color: #30204D;
+  color: #F7F5FC;
 }
 
 /* 3D Card Flip Utilities */
@@ -108,21 +129,21 @@ body {
 /* Custom scrollbar for scrollable chat images */
 .custom-chat-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #7147A8 rgba(18, 21, 42, 0.8);
+  scrollbar-color: #7049A6 rgba(16, 23, 53, 0.85);
 }
 .custom-chat-scroll::-webkit-scrollbar {
   width: 5px;
 }
 .custom-chat-scroll::-webkit-scrollbar-track {
-  background: rgba(18, 21, 42, 0.8);
+  background: rgba(16, 23, 53, 0.85);
   border-radius: 9999px;
 }
 .custom-chat-scroll::-webkit-scrollbar-thumb {
-  background: #7147A8;
+  background: #7049A6;
   border-radius: 9999px;
 }
 .custom-chat-scroll::-webkit-scrollbar-thumb:hover {
-  background: #9B6DDB;
+  background: #9B70D9;
 }
 
 /* Reduced Motion Safety */

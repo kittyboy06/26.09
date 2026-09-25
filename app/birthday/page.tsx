@@ -12,6 +12,9 @@ import { Lightbox } from "@/components/ui/Lightbox";
 import { SpecularButton } from "@/components/ui/SpecularButton";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
+import { NightSky } from "@/components/celestial/NightSky";
+import { CelestialBadge } from "@/components/celestial/CelestialBadge";
+import { Star } from "@/components/celestial/Star";
 
 export default function BirthdayPage() {
   const router = useRouter();
@@ -25,7 +28,7 @@ export default function BirthdayPage() {
         particleCount: 85,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ["#69C7F5", "#B98AE8", "#F494BC", "#8DD8FF", "#D3A7FF", "#FFB6D5"],
+        colors: ["#7DD3FC", "#C09AF4", "#F79ABD", "#FFF8E7", "#A8E3FF"],
       });
     } catch {
       // Fallback
@@ -37,50 +40,46 @@ export default function BirthdayPage() {
   }, []);
 
   return (
-    <PageTransition
-      style={{
-        background:
-          "radial-gradient(circle at 15% 20%, rgba(38, 121, 168, 0.15) 0%, transparent 35%), radial-gradient(circle at 85% 25%, rgba(113, 71, 168, 0.15) 0%, transparent 35%), radial-gradient(circle at 50% 90%, rgba(168, 70, 112, 0.15) 0%, transparent 40%), #090B16",
-      }}
-      className="relative flex flex-col items-center pt-12 pb-16 text-center rounded-3xl"
+    <NightSky
+      mood="mixed"
+      starDensity="dense"
+      baseBg="deep"
+      showMoon={true}
+      moonVariant="full"
+      shootingStar={true}
+      shootingStarColor="main"
     >
-      {/* Fullscreen Lightbox for expanded photo view */}
-      <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
+      <PageTransition className="relative flex flex-col items-center pt-12 pb-16 text-center">
+        {/* Fullscreen Lightbox for expanded photo view */}
+        <Lightbox item={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
 
-      {/* Top Ribbon & Celebration Badges */}
-      <div className="w-full flex items-center justify-between mb-4">
-        <Sticker variant="floating" rotation={-3}>
-          <span>{data.badges.left.emoji}</span>
-          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.left.text}</span>
-        </Sticker>
+        {/* Top Ribbon & Celebration Badges */}
+        <div className="w-full flex items-center justify-between mb-4 px-2">
+          <CelestialBadge icon="celebrate" text={data.badges.left.text} theme="purple" />
+          <CelestialBadge icon="star" text={data.badges.right.text} theme="pink" />
+        </div>
 
-        <Sticker variant="wiggle" rotation={3}>
-          <span>{data.badges.right.emoji}</span>
-          <span className="text-[11px] font-medium text-[#F7F4FC]">{data.badges.right.text}</span>
-        </Sticker>
-      </div>
-
-      {/* Main Celebration Headline */}
-      <div className="my-2 flex flex-col items-center">
-        <div className="relative inline-flex items-center justify-center">
-          <span className="text-4xl mb-1 select-none animate-bounce">🎂</span>
-          <div className="absolute -right-14 -top-2">
-            <CollectibleSticker id="tanisha_laugh" size={50} rotation={6} />
+        {/* Main Celebration Headline */}
+        <div className="my-2 flex flex-col items-center">
+          <div className="relative inline-flex items-center justify-center my-1">
+            <Star variant="main" size="lg" twinkle={true} />
+            <div className="absolute -right-14 -top-2">
+              <CollectibleSticker id="tanisha_laugh" size={50} rotation={6} />
+            </div>
           </div>
+
+          <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight text-[#F7F5FC] leading-tight">
+            {data.headline}
+          </h1>
+
+          <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-light via-purple-light to-pink-light">
+            {site.recipient.toUpperCase()}
+          </div>
+
+          <p className="mt-2 font-handwriting text-2xl text-pink-light">
+            {data.tagline}
+          </p>
         </div>
-
-        <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight text-[#F7F4FC] leading-tight">
-          {data.headline}
-        </h1>
-
-        <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#69C7F5] via-[#B98AE8] to-[#F494BC]">
-          {site.recipient.toUpperCase()}
-        </div>
-
-        <p className="mt-2 font-handwriting text-2xl text-[#FFB6D5]">
-          {data.tagline}
-        </p>
-      </div>
 
       {/* Celebratory Event Memories Polaroid */}
       {data.celebrationPhoto && (
@@ -119,19 +118,19 @@ export default function BirthdayPage() {
 
       {/* Sincere Friendship Birthday Letter (Midnight Scrapbook Parchment) */}
       <div className="w-full max-w-sm my-6">
-        <div className="relative rounded-3xl bg-[#181B32] border border-[#302B4D] p-6 shadow-scrapbook-lg text-left overflow-hidden">
+        <div className="relative rounded-3xl bg-sky-800 border border-purple-deep/40 p-6 shadow-scrapbook-lg text-left overflow-hidden">
           {/* Subtle header line */}
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#272A43]">
-            <span className="text-[9px] font-mono tracking-widest text-[#918DA1] uppercase font-bold">
+          <div className="flex items-center justify-between pb-3 mb-4 border-b border-purple-deep/20">
+            <span className="text-[9px] font-mono tracking-widest text-[#9693A7] uppercase font-bold">
               {data.letterhead.fromTo}
             </span>
-            <span className="text-[9px] font-mono text-[#918DA1]">
+            <span className="text-[9px] font-mono text-[#9693A7]">
               {data.letterhead.date}
             </span>
           </div>
 
-          <div className="space-y-4 text-sm sm:text-base text-[#C9C5D6] leading-relaxed">
-            <p className="font-handwriting text-2xl text-[#FFB6D5] font-bold">
+          <div className="space-y-4 text-sm sm:text-base text-[#D0CDDC] leading-relaxed">
+            <p className="font-handwriting text-2xl text-pink-light font-bold">
               {data.letter.p1}
             </p>
 
@@ -139,27 +138,27 @@ export default function BirthdayPage() {
               {data.letter.p2}
             </p>
 
-            <p className="font-bold text-[#F7F4FC]">
+            <p className="font-bold text-[#F7F5FC]">
               {data.letter.p3}
             </p>
 
-            <p className="text-[#C9C5D6]">
+            <p className="text-[#D0CDDC]">
               {data.letter.p4}
             </p>
 
-            <p className="font-handwriting text-2xl text-[#F7F4FC] font-bold pt-2">
+            <p className="font-handwriting text-2xl text-[#F7F5FC] font-bold pt-2">
               {data.letter.p5}
             </p>
 
-            <div className="pt-4 border-t border-[#272A43] flex items-center justify-between">
-              <span className="font-handwriting text-xl text-[#F7F4FC] font-bold">
+            <div className="pt-4 border-t border-purple-deep/20 flex items-center justify-between">
+              <span className="font-handwriting text-xl text-[#F7F5FC] font-bold">
                 {data.letter.signOff}
               </span>
               <div className="flex items-center gap-2">
                 <CollectibleSticker id="tanisha_laugh_2" size={48} rotation={-4} />
-                <div className="flex items-center gap-1">
-                  <span className="text-xs">🌸</span>
-                  <Heart className="h-5 w-5 text-[#E875A6] fill-[#E875A6] animate-pulse" />
+                <div className="flex items-center gap-1.5">
+                  <Star variant="pink" size="xs" />
+                  <Heart className="h-5 w-5 text-pink-primary fill-pink-primary animate-pulse" />
                 </div>
               </div>
             </div>
@@ -170,12 +169,12 @@ export default function BirthdayPage() {
       {/* One Last Thing Note Card */}
       {(data as any).oneLastThing && (
         <div className="w-full max-w-sm mb-6 -mt-2 text-left">
-          <div className="relative rounded-3xl bg-[#202440] border border-[#7147A8]/50 p-5 shadow-scrapbook">
-            <span className="absolute -top-2.5 left-8 h-4 w-16 bg-[#7147A8]/50 border border-[#B98AE8]/40 rounded-xs rotate-2" />
-            <h4 className="font-display text-sm font-bold text-[#F7F4FC] mb-2">
+          <div className="relative rounded-3xl bg-sky-850 border border-purple-deep/50 p-5 shadow-scrapbook">
+            <span className="absolute -top-2.5 left-8 h-4 w-16 bg-purple-deep/50 border border-purple-light/40 rounded-xs rotate-2" />
+            <h4 className="font-display text-sm font-bold text-[#F7F5FC] mb-2">
               {(data as any).oneLastThing.title}
             </h4>
-            <p className="whitespace-pre-line text-xs text-[#C9C5D6] leading-relaxed font-medium">
+            <p className="whitespace-pre-line text-xs text-[#D0CDDC] leading-relaxed font-medium">
               {(data as any).oneLastThing.body}
             </p>
           </div>
@@ -209,7 +208,7 @@ export default function BirthdayPage() {
         {/* Back to Gift button */}
         <button
           onClick={() => router.push("/gift")}
-          className="mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#918DA1] hover:text-[#F7F4FC] transition-colors py-1.5 focus:outline-none"
+          className="mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-1.5 focus:outline-none"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>{data.actions.backToGift}</span>
@@ -218,19 +217,22 @@ export default function BirthdayPage() {
         {/* Start Over button */}
         <button
           onClick={() => router.push("/")}
-          className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#918DA1] hover:text-[#F7F4FC] transition-colors py-1 focus:outline-none"
+          className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-1 focus:outline-none"
         >
           <RotateCcw className="h-3.5 w-3.5" />
           <span>{data.actions.startOver}</span>
         </button>
       </div>
 
-      {/* Bottom Florals & Butterflies */}
-      <div className="mt-8 flex items-center justify-center gap-3 text-lg select-none">
-        {data.decorIcons.map((icon, i) => (
-          <span key={i}>{icon}</span>
-        ))}
+      {/* Bottom Celestial Stars Decor */}
+      <div className="mt-8 flex items-center justify-center gap-4 text-lg select-none">
+        <Star variant="purple" size="sm" twinkle={true} />
+        <Star variant="blue" size="xs" />
+        <Star variant="pink" size="md" twinkle={true} delayed={true} />
+        <Star variant="main" size="xs" />
+        <Star variant="purple" size="sm" />
       </div>
     </PageTransition>
+  </NightSky>
   );
 }

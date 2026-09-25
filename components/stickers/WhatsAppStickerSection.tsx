@@ -72,8 +72,8 @@ export function WhatsAppStickerSection({
           <span>WHATSAPP STICKER PACK</span>
         </div>
 
-        <h4 className="font-display text-sm font-bold text-[#F7F4FC] flex items-center gap-1">
-          <span>Unlock Official WhatsApp Stickers! 📱</span>
+        <h4 className="font-display text-sm font-bold text-[#F7F5FC] flex items-center gap-1">
+          <span>Unlock Official WhatsApp Stickers!</span>
         </h4>
 
         <p className="text-[10px] text-[#C9C5D6] font-mono font-semibold mt-0.5">
@@ -114,8 +114,8 @@ export function WhatsAppStickerSection({
           <span>★ 14 WHATSAPP STICKERS READY ★</span>
         </div>
 
-        <h4 className="font-display text-sm sm:text-base font-black text-[#F7F4FC]">
-          Tanisha&apos;s WhatsApp Sticker Pack! 🌸
+        <h4 className="font-display text-sm sm:text-base font-black text-[#F7F5FC]">
+          Tanisha&apos;s WhatsApp Sticker Pack!
         </h4>
         <p className="text-[10px] text-emerald-300/90 font-medium mt-0.5">
           12 + 2 Bonus Stickers • Created by{" "}

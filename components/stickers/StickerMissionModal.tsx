@@ -81,8 +81,8 @@ export function StickerMissionModal({
               <span>{isComplete ? "★ QUEST COMPLETE ★" : missionText.badge}</span>
             </div>
 
-            <h3 className="font-display text-lg sm:text-xl font-black text-[#F7F4FC] tracking-tight">
-              {isComplete ? "Tanisha's WhatsApp Sticker Pack! 🌸" : missionText.title}
+            <h3 className="font-display text-lg sm:text-xl font-black text-[#F7F5FC] tracking-tight">
+              {isComplete ? "Tanisha's WhatsApp Sticker Pack!" : missionText.title}
             </h3>
 
             {!isComplete && (

@@ -166,63 +166,91 @@
 
 ---
 
-## 8. Dreamy Midnight Scrapbook (Dark Theme System)
+## 8. Night Sky Design System (Master Specification)
 
 ### 8.1 Understanding Summary
-* **What**: Complete site transformation to a **Dreamy Midnight Scrapbook** (*Pinterest scrapbook × midnight sky × digital birthday card × soft neon*).
-* **Why**: An atmospheric, rich nighttime celebration avoiding harsh pure black or aggressive gaming neon, using layered deep navy, purple structures, starlight blue glows, and emotional pink accents.
-* **Philosophy**: Darkness is the canvas, not flat black. Depth is created via 4 surface tiers: `#090B16` (base) → `#0D1020` (sections) → `#181B32` (cards) → `#202440` (elevated).
+* **What**: A comprehensive design system overhaul transitioning the application from a "dark website with emojis" to an intentional **Night Sky Design System**.
+* **Why**: To craft a cohesive, magical, and artisanal digital gift where the night sky serves as the continuous physical environment, and Blue, Purple, and Pink act as the light inside that world. All decorative emojis are eliminated in favor of handcrafted vector SVG assets (stars, moons, clouds, nebulae, constellations, shooting stars, and vector characters).
+* **Who**: Tanisha (celebrating her 19th birthday on September 26), experiencing the site primarily on mobile devices (portrait viewports from 360px to 430px).
+* **Key Constraints**: 60fps mobile performance via pure SVG and hardware-accelerated CSS keyframe animations (zero heavy WebGL/canvas CPU footprint), zero horizontal overflow, seamless persistent background audio via `Skiper 2`, and minimum 44px tap targets.
+* **Explicit Non-Goals**: No emoji-based decorative elements or badges; no pitch-black (`#000000`) surfaces; no harsh cyberpunk neon; no romantic melodrama; no stripping of authentic conversational emojis from raw chat messages.
+
+---
 
 ### 8.2 Decision Log
+
 | # | Decision | Alternatives Considered | Rationale |
 |---|---|---|---|
-| **1** | **Full Site Transformation to Dreamy Midnight** | Light/Dark dual toggle | User confirmed a dedicated, fully immersive midnight scrapbook experience without duplicate CSS overhead. |
-| **2** | **Deep Navy Base (`#090B16` / `#0D1020`) Instead of Pure Black (`#000000`)** | Pitch black `#000000` | Pure black creates a cold cyberpunk/gaming dashboard feel. Deep navy preserves warmth and magical scrapbook charm. |
-| **3** | **Restrained Ambient Glows (`rgba(155, 109, 219, 0.18)`)** | Saturated neon outer glows | Soft glows feel dreamy and celebratory rather than an RGB gaming keyboard. |
+| **1** | **Full Shift to Shared Night Sky Environment** | Distinct background colors per page | Maintains atmospheric immersion while allowing each chapter to express its own lighting mood (Blue, Purple, Pink). |
+| **2** | **Deep Indigo Base (`#080B1D`) Instead of Pure Black (`#000000`)** | Pitch black `#000000` | Pure black creates a cold terminal feel. Deep indigo preserves warmth, depth, and cosmic scrapbook charm. |
+| **3** | **Pure SVG + CSS Keyframes Rendering** | Three.js / Canvas mesh | Guaranteed 60fps on mid-range mobile devices, zero canvas battery drain, instant SVG rendering. |
+| **4** | **Emoji Migration Policy** | Total purge across all text strings | Replace all decorative UI, badges, game targets, and stamps with SVGs, while preserving authentic conversational emojis inside chat transcripts. |
+| **5** | **Progressive Scroll-Linked Constellation** | Interactive 2D star map modal | Seamless mobile vertical scrolling with illuminated SVG constellation paths and glowing star nodes. |
+| **6** | **Modular `<NightSky>` Shell Architecture** | Page-specific local wrappers, Global Context Provider | Declarative React composition with route-level props (`mood`, `density`) avoids state re-renders while eliminating duplication. |
+
+---
 
 ### 8.3 Master Design Tokens Table
-| Category | Token | Hex | Role & Usage |
-| :--- | :--- | :--- | :--- |
-| **Backgrounds** | `--bg-deep` | `#090B16` | Deepest page canvas & mobile status bar |
-| | `--bg-primary` | `#0D1020` | Section backgrounds & main viewports |
-| | `--bg-secondary` | `#12152A` | Secondary section container surfaces |
-| | `--surface` | `#181B32` | Standard card surface (Polaroids, notes) |
-| | `--surface-elevated` | `#202440` | Elevated / active cards & discovery cards |
-| | `--surface-hover` | `#292D4D` | Hover & interactive button surfaces |
-| **Blue** | `--blue-glow` | `#8DD8FF` | Ambient blue glow & starlight filaments |
-| | `--blue-soft` | `#69C7F5` | Blue icons, stickers & card numbers |
-| | `--blue-primary` | `#4AAFE0` | Interactive blue UI & buttons |
-| | `--blue-deep` | `#2679A8` | Blue borders & chat bubble outlines |
-| | `--blue-night` | `#183B59` | Subtle dark blue bubble surfaces |
-| **Purple** | `--purple-glow` | `#D3A7FF` | Lavender ambient glow & highlights |
-| | `--purple-soft` | `#B98AE8` | Lavender accents, annotations & numbers |
-| | `--purple-primary` | `#9B6DDB` | Primary action buttons & key highlights |
-| | `--purple-deep` | `#7147A8` | Purple card borders & badge outlines |
-| | `--purple-night` | `#30204B` | Dark purple bubble surfaces & selection |
-| **Pink** | `--pink-glow` | `#FFB6D5` | Pink ambient glow & sparkles |
-| | `--pink-soft` | `#F494BC` | Pink stickers, numbers & hit effects |
-| | `--pink-primary` | `#E875A6` | Celebratory action buttons & highlights |
-| | `--pink-deep` | `#A84670` | Pink card borders & decorative lines |
-| | `--pink-night` | `#431F35` | Subtle dark pink surfaces |
-| **Text** | `--text-primary` | `#F7F4FC` | Almost-white lavender headings & bold text |
-| | `--text-secondary` | `#C9C5D6` | Soft lilac-slate body copy |
-| | `--text-muted` | `#918DA1` | Secondary timestamps & metadata |
-| | `--text-disabled` | `#625F70` | Inactive & disabled indicators |
-| **Borders** | `--border-subtle` | `#272A43` | Neutral card dividers & window frames |
 
-### 8.4 Screen-by-Screen Midnight Scrapbook Journey
-* **01 — Birthday Gate (`/`)**: Background `#090B16` with triple ambient corner glow (Blue top-left, Purple top-right, Pink bottom). Card `#181B32` with `#302B4D` border. Primary CTA: `#9B6DDB`.
-* **02 — A Little Something (`/note`)**: Late-night handwritten note. Backdrop `#0D1020`, note card `#181B32`, border `#4A3049`, CTA `#E875A6` (Pink Primary), and pink stars `#FFB6D5`.
-* **03 — Things I've Noticed (`/noticed`)**: Terminal and observation cards in `#181B32` and `#202440`. “Things I Remember” card in `#202440` with `#7147A8` border containing 💙 `#69C7F5`, 💜 `#B98AE8`, 🩷 `#F494BC`, and 🍿 Popcorn badge.
-* **04 — Our Randomness (`/memories`)**: Midnight scrapbook. Base `#12152A`, polaroid cards alternating `#181B32` and `#1B2138`, dominant Blue `#69C7F5`, and handwritten annotations in `#B98AE8`.
-* **05 — The Chat Logs (`/chat`)**: Late-night messaging. Afsal bubble `#183B59` (border `#2679A8`), Tanisha bubble `#30204B` (border `#7147A8`), timestamps `#918DA1`.
-* **06 — 19 Things (`/nineteen`)**: 3-family midnight card grid:
-  * 💙 Blue Card: `#121F2D` (border `#2679A8`, number `#69C7F5`)
-  * 💜 Purple Card: `#1D1730` (border `#7147A8`, number `#B98AE8`)
-  * 🩷 Pink Card: `#2A1723` (border `#A84670`, number `#F494BC`)
-  * Card 19: Special 135° night gradient (`#121F2D` → `#1D1730` → `#2A1723`).
-* **07 — Whack-a-Tanisha (`/game`)**: Arcade night base `#090B16`, board `#12152A`, target holes `#30204B` with `#9B6DDB` borders, hit effect `#F494BC`.
-* **08 — Flower Reveal (`/gift`)**: `#0D1020` with soft blurred radial glow behind the bouquet (`#E875A6` / `#9B6DDB` at 12% opacity).
-* **09 — Final Celebration (`/birthday`)**: Base `#090B16` with triple ambient glows. Headline gradient: `linear-gradient(90deg, #69C7F5, #B98AE8, #F494BC)`. Confetti restricted exclusively to `#69C7F5`, `#B98AE8`, `#F494BC`, and `#FFB6D5`.
+```css
+/* 1. Sky Environment (The World) */
+--sky-950: #060817; /* Deepest night / Gate */
+--sky-925: #080B1D; /* Master Default Background */
+--sky-900: #0B1024; /* Main page background */
+--sky-850: #101735; /* Section background / Letter card */
+--sky-800: #151C3D; /* Standard card surface */
+--sky-750: #1C254A; /* Elevated / active card */
+--sky-700: #252E57; /* Hover / active borders */
+
+/* 2. Light Atmosphere (The Lighting) */
+--blue-glow: #A8E3FF;  --blue-light: #7DD3FC;  --blue: #55B8EA;  --blue-deep: #3185B8;  --blue-night: #163D5A;
+--purple-glow: #D9B8FF; --purple-light: #C09AF4; --purple: #9B70D9; --purple-deep: #7049A6; --purple-night: #30204D;
+--pink-glow: #FFC2DD;  --pink-light: #F79ABD;  --pink: #E77BA8;  --pink-deep: #A94E77;  --pink-night: #421F35;
+
+/* 3. Celestial & Typography */
+--text-primary: #F7F5FC;  --text-secondary: #D0CDDC;  --text-muted: #9693A7;  --text-disabled: #6C697D;
+--star-main: #FFF8E7;     --star-blue: #DFF5FF;       --star-purple: #E8DCFF; --star-pink: #FFD8E8;
+--moon-body: #F6F0E5;     --moon-highlight: #FFF9EC;  --moon-crater: #D9D3CB;
+```
+
+---
+
+### 8.4 Celestial Component Architecture (`components/celestial/`)
+* **`<NightSky>`**: Master layout shell injecting atmosphere, nebula radial gradients, and responsive starfields.
+* **`<StarField>`**: Multi-depth SVG vector starfield:
+  * *60% Subtle*: Distant deep space stars (opacity 0.15–0.30).
+  * *25% Visible*: Mid-ground steady stars (opacity 0.45–0.65).
+  * *10% Bright*: Foreground focal stars (opacity 0.80–1.00).
+  * *5% Special Twinkle*: Scale & opacity hardware-accelerated keyframe pulsation.
+* **`<Moon>`**: Warm ivory body (`#F6F0E5`), rim highlight (`#FFF9EC`), and crater contour paths (`#D9D3CB`).
+* **`<Nebula>`**: Subtle SVG radial gradient mesh (7–10% opacity) blended via GPU.
+* **`<Constellation>`**: Dynamic vector path generator connecting star nodes across scroll positions.
+* **`<ShootingStar>`**: CSS keyframe diagonal light streak with decaying trail.
+* **`<CelestialBadge>`**: Reusable vector badge replacing emoji headers & tags.
+* **`<TanishaAvatarVector>`**: Custom vector character asset for Whack-a-Mole targets.
+
+---
+
+### 8.5 Screen-by-Screen Celestial Mood Matrix
+
+| Route & Chapter | Base / Surface | Mood & Lighting | Primary CTA | Key Celestial Features |
+| :--- | :--- | :--- | :--- | :--- |
+| **01 — Gate (`/`)** | `#060817` / `#151C3D` | 💜 **Purple** (+ faint Blue) | `#9B70D9` | Crescent moon, sparse starfield, slow shooting star |
+| **02 — Note (`/note`)** | `#080B1D` / `#101735` | 🩷 **Pink** (personal warmth) | `#E77BA8` | Thin crescent, pink shooting star, vector handwritten underline |
+| **03 — Noticed (`/noticed`)** | `#080B1D` / `#151C3D` | 💜 **Purple** (+ Blue stars) | `#9B70D9` | Vertical scroll-linked SVG constellation paths & glowing star nodes |
+| **04 — Memories (`/memories`)** | `#0B1024` / Multi-tint | 💙 **Blue** (calm air) | `#55B8EA` | Floating memory polaroids, shooting-star streaks, paper frames |
+| **05 — Chat (`/chat`)** | `#060817` / `#0B1024` | 💙 + 💜 **11 PM Night** | `#9B70D9` | Distant subtle moon, Afsal bubble (`#163D5A`), Tanisha bubble (`#30204D`) |
+| **06 — 19 Things (`/nineteen`)** | `#080B1D` / `#151C3D` | 💜 **Purple** (+ Star nodes) | `#9B70D9` | 19-node constellation trail; 19th star is warm ivory (`#FFF8E7`) |
+| **07 — Game (`/game`)** | `#060817` / `#101735` | 💜 **Arcade Night** | `#9B70D9` | Illustrated vector Tanisha avatar targets; hit pulse (`#F79ABD`) |
+| **08 — Gift (`/gift`)** | `#0B1024` / `#151C3D` | 🩷 **Night Garden** | `#E77BA8` | Radial floral aura, vector botanical growth (seed → wildflower) |
+| **09 — Finale (`/birthday`)** | `#060817` / Elev. Sky | 💙💜🩷 **Whole Sky** | `#9B70D9` | Triple atmospheric glow, celestial confetti, shooting star streak |
+
+---
+
+### 8.6 Non-Functional Requirements & Verification
+* **60fps Performance**: CSS `transform` & `opacity` compositor-only animations; zero layout repaints.
+* **Reduced Motion**: Universal `@media (prefers-reduced-motion: reduce)` pauses celestial movement and locks static views.
+* **Accessibility**: Contrast ratios $\ge 10:1$ across all typography on sky surfaces; minimum 44px hitboxes.
+* **Audio Integrity**: Seamless playback across route changes via `Skiper 2` in `app/layout.tsx`.
 
 
