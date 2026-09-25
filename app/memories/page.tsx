@@ -10,7 +10,6 @@ import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { FeaturedMemoryCard } from "@/components/memories/FeaturedMemoryCard";
-import { InteractivePhotoDeck, DeckPhotoItem } from "@/components/memories/InteractivePhotoDeck";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
@@ -22,55 +21,6 @@ export default function MemoriesPage() {
   type MemoryItemType = (typeof items)[0];
 
   const [selectedItem, setSelectedItem] = useState<MemoryItemType | null>(null);
-
-  // Dedicated interactive photo deck collection
-  const deckPhotos: DeckPhotoItem[] = [
-    {
-      id: "deck-tagore",
-      title: "Tagore Symposium 2026",
-      imageSrc: "/assets/photos/tagore_symposium.jpg",
-      caption: "Auditorium stage, the big presentation, and receiving the trophy.",
-      tag: "Milestone 🏆",
-      subNote: "25.09.2026 • Live memory",
-      date: "Sep 2026",
-    },
-    {
-      id: "deck-crew",
-      title: "Event & Hackathon Crew",
-      imageSrc: "/assets/photos/event_crew.jpg",
-      caption: "Coordinating backstage chaos, badge distribution, and team energy.",
-      tag: "Hackathon 🎯",
-      subNote: "18.09.2026",
-      date: "Sep 2026",
-    },
-    {
-      id: "deck-hall",
-      title: "Front Row Squad",
-      imageSrc: "/assets/photos/event_hall_friends.jpg",
-      caption: "Catching smiles between conference talks and hall sessions.",
-      tag: "College Moments ✨",
-      subNote: "Auditorium vibes",
-      date: "2026",
-    },
-    {
-      id: "deck-trio",
-      title: "Strategy & Late Discussions",
-      imageSrc: "/assets/photos/event_hall_trio.jpg",
-      caption: "Debating ideas and figuring out event logistics together.",
-      tag: "Discussions 💡",
-      subNote: "Brainstorming corner",
-      date: "2026",
-    },
-    {
-      id: "deck-garden",
-      title: "Botanical Pathway Walk",
-      imageSrc: "/assets/photos/campus_garden.jpg",
-      caption: "Passing through the green campus trees between classes.",
-      tag: "Campus Walk 🌿",
-      subNote: "Campus drift",
-      date: "2026",
-    },
-  ];
 
   // Group items for artistic asymmetric collage arrangement
   const featuredTagoreMemory = items.find((m) => m.id === "mem-tagore-symposium");
@@ -191,22 +141,6 @@ export default function MemoriesPage() {
             <Star variant="purple" size="md" twinkle={true} />
             <span className="text-xs font-handwriting text-[#D0CDDC] mt-1">{memoriesData.reelReactionCard.floatingLabel}</span>
           </div>
-        </div>
-
-        {/* Scrapbook Section 3B: Interactive Draggable Polaroid Deck (21st.dev / React Bits) */}
-        <div className="w-full my-3">
-          <InteractivePhotoDeck
-            photos={deckPhotos}
-            onExpandPhoto={(photo) =>
-              setSelectedItem({
-                id: photo.id,
-                title: photo.title,
-                tag: photo.tag,
-                imageSrc: photo.imageSrc,
-                snippet: photo.caption,
-              } as any)
-            }
-          />
         </div>
 
         {/* Scrapbook Section 4: The Robot Incident Card */}
