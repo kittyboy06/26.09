@@ -9,13 +9,10 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
-<<<<<<< HEAD
 import { FeaturedMemoryCard } from "@/components/memories/FeaturedMemoryCard";
-=======
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
->>>>>>> 0b4a59a5cdf4c66e111f355c8f804996e1e7ceea
 
 export default function MemoriesPage() {
   const memoriesData = screens.memories;

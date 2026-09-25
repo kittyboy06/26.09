@@ -26,17 +26,25 @@ interface BirthdayContextType {
 const BirthdayContext = createContext<BirthdayContextType | undefined>(undefined);
 
 export function BirthdayProvider({ children }: { children: ReactNode }) {
-  const [isUnlocked, setIsUnlocked] = useState<boolean>(false);
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        return sessionStorage.getItem("tanisha_19_unlocked") === "true";
+      } catch {
+        return false;
+      }
+    }
+    return false;
+  });
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [hasAudioError, setHasAudioError] = useState<boolean>(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const pathname = usePathname();
   const router = useRouter();
 
-  // Ensure no persistent data remains in browser storage
+  // Clear persistent local storage on initial mount
   useEffect(() => {
     try {
-      sessionStorage.clear();
       localStorage.clear();
     } catch {
       // Ignore if storage is disabled
@@ -88,6 +96,11 @@ export function BirthdayProvider({ children }: { children: ReactNode }) {
   };
 
   const unlock = () => {
+    if (typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem("tanisha_19_unlocked", "true");
+      } catch {}
+    }
     setIsUnlocked(true);
     // Mobile touch interaction allows audio to unlock
     playAudio();
