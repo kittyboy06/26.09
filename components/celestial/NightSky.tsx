@@ -68,6 +68,7 @@ export const NightSky: React.FC<NightSkyProps> = ({
   asCard,
   className = "",
   children,
+}) => {
   const rawDensity = starDensity || density || "normal";
   const effectiveDensity: "sparse" | "normal" | "dense" =
     rawDensity === "medium" ? "normal" : rawDensity;
