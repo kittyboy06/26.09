@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Camera, Flower2, Sparkles } from "lucide-react";
 import { Star } from "@/components/celestial/Star";
+import { TiltedCard } from "@/components/ui/TiltedCard";
 import { cn } from "@/lib/utils";
 
 interface PhotoCardProps {
@@ -18,6 +19,7 @@ interface PhotoCardProps {
   className?: string;
   onExpand?: () => void;
   scrollable?: boolean;
+  tilt?: boolean;
 }
 
 export function PhotoCard({
@@ -32,6 +34,7 @@ export function PhotoCard({
   className = "",
   onExpand,
   scrollable = false,
+  tilt = true,
 }: PhotoCardProps) {
   const [imageError, setImageError] = useState<boolean>(!src);
 
@@ -50,7 +53,7 @@ export function PhotoCard({
 
   const clampedRotation = Math.max(-2, Math.min(2, rotation));
 
-  return (
+  const cardContent = (
     <div
       onClick={onExpand}
       style={{
@@ -152,4 +155,14 @@ export function PhotoCard({
       )}
     </div>
   );
+
+  if (tilt) {
+    return (
+      <TiltedCard rotateAmplitude={5} scaleOnHover={1.015} showGlare={true} className="w-full">
+        {cardContent}
+      </TiltedCard>
+    );
+  }
+
+  return cardContent;
 }

@@ -10,6 +10,8 @@ import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Skiper19ScrollVine } from "@/components/svg/Skiper19ScrollVine";
 import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { FeaturedMemoryCard } from "@/components/memories/FeaturedMemoryCard";
+import { InteractivePhotoDeck, DeckPhotoItem } from "@/components/memories/InteractivePhotoDeck";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
@@ -20,6 +22,55 @@ export default function MemoriesPage() {
   type MemoryItemType = (typeof items)[0];
 
   const [selectedItem, setSelectedItem] = useState<MemoryItemType | null>(null);
+
+  // Dedicated interactive photo deck collection
+  const deckPhotos: DeckPhotoItem[] = [
+    {
+      id: "deck-tagore",
+      title: "Tagore Symposium 2026",
+      imageSrc: "/assets/photos/tagore_symposium.jpg",
+      caption: "Auditorium stage, the big presentation, and receiving the trophy.",
+      tag: "Milestone 🏆",
+      subNote: "25.09.2026 • Live memory",
+      date: "Sep 2026",
+    },
+    {
+      id: "deck-crew",
+      title: "Event & Hackathon Crew",
+      imageSrc: "/assets/photos/event_crew.jpg",
+      caption: "Coordinating backstage chaos, badge distribution, and team energy.",
+      tag: "Hackathon 🎯",
+      subNote: "18.09.2026",
+      date: "Sep 2026",
+    },
+    {
+      id: "deck-hall",
+      title: "Front Row Squad",
+      imageSrc: "/assets/photos/event_hall_friends.jpg",
+      caption: "Catching smiles between conference talks and hall sessions.",
+      tag: "College Moments ✨",
+      subNote: "Auditorium vibes",
+      date: "2026",
+    },
+    {
+      id: "deck-trio",
+      title: "Strategy & Late Discussions",
+      imageSrc: "/assets/photos/event_hall_trio.jpg",
+      caption: "Debating ideas and figuring out event logistics together.",
+      tag: "Discussions 💡",
+      subNote: "Brainstorming corner",
+      date: "2026",
+    },
+    {
+      id: "deck-garden",
+      title: "Botanical Pathway Walk",
+      imageSrc: "/assets/photos/campus_garden.jpg",
+      caption: "Passing through the green campus trees between classes.",
+      tag: "Campus Walk 🌿",
+      subNote: "Campus drift",
+      date: "2026",
+    },
+  ];
 
   // Group items for artistic asymmetric collage arrangement
   const featuredTagoreMemory = items.find((m) => m.id === "mem-tagore-symposium");
@@ -74,27 +125,32 @@ export default function MemoriesPage() {
         )}
 
         {/* Scrapbook Section 1: Classic Reply Schedule Quote */}
-        {/* Scrapbook Section 1: Classic Reply Schedule Quote */}
         {quote1 && (
-          <div
+          <SpotlightCard
+            spotlightColor="rgba(56, 189, 248, 0.25)"
+            spotlightSize={240}
+            tilt={true}
+            tiltAmplitude={4}
+            className="self-start w-[88%] -rotate-2 cursor-pointer select-none"
             onClick={() => setSelectedItem(quote1)}
-            className="self-start w-[88%] -rotate-2 rounded-2xl bg-sky-800 p-4 border border-blue-deep/40 shadow-scrapbook cursor-pointer active:scale-95 transition-transform select-none relative"
           >
-            <span className="absolute -top-3 left-6 h-5 w-16 bg-blue-deep/70 border border-blue-light/40 rounded-xs -rotate-6" />
-            <div className="flex items-center justify-between text-[11px] font-bold text-blue-light mb-1">
-              <div className="flex items-center gap-1.5">
-                <Star variant="blue" size="xs" />
-                <span>{quote1.tag}</span>
+            <div className="rounded-2xl bg-sky-800 p-4 border border-blue-deep/40 shadow-scrapbook relative">
+              <span className="absolute -top-3 left-6 h-5 w-16 bg-blue-deep/70 border border-blue-light/40 rounded-xs -rotate-6" />
+              <div className="flex items-center justify-between text-[11px] font-bold text-blue-light mb-1">
+                <div className="flex items-center gap-1.5">
+                  <Star variant="blue" size="xs" />
+                  <span>{quote1.tag}</span>
+                </div>
+                <span className="text-[10px] text-[#9693A7]">{memoriesData.tapToExpand}</span>
               </div>
-              <span className="text-[10px] text-[#9693A7]">{memoriesData.tapToExpand}</span>
+              <p className="font-handwriting text-xl font-bold text-[#F7F5FC] leading-snug">
+                &ldquo;{quote1.quote}&rdquo;
+              </p>
+              <span className="font-handwriting text-xs text-[#D0CDDC] block mt-1">
+                — {quote1.subNote}
+              </span>
             </div>
-            <p className="font-handwriting text-xl font-bold text-[#F7F5FC] leading-snug">
-              &ldquo;{quote1.quote}&rdquo;
-            </p>
-            <span className="font-handwriting text-xs text-[#D0CDDC] block mt-1">
-              — {quote1.subNote}
-            </span>
-          </div>
+          </SpotlightCard>
         )}
 
         {/* Scrapbook Section 2: Photo 1 (Event Work & Late Edits) with 'that day' note */}
@@ -137,34 +193,56 @@ export default function MemoriesPage() {
           </div>
         </div>
 
+        {/* Scrapbook Section 3B: Interactive Draggable Polaroid Deck (21st.dev / React Bits) */}
+        <div className="w-full my-3">
+          <InteractivePhotoDeck
+            photos={deckPhotos}
+            onExpandPhoto={(photo) =>
+              setSelectedItem({
+                id: photo.id,
+                title: photo.title,
+                tag: photo.tag,
+                imageSrc: photo.imageSrc,
+                snippet: photo.caption,
+              } as any)
+            }
+          />
+        </div>
+
         {/* Scrapbook Section 4: The Robot Incident Card */}
         {robotIncident && (
-          <div
+          <SpotlightCard
+            spotlightColor="rgba(192, 132, 252, 0.3)"
+            spotlightSize={280}
+            tilt={true}
+            tiltAmplitude={4}
+            className="w-full rotate-1 cursor-pointer select-none"
             onClick={() => setSelectedItem(robotIncident)}
-            className="w-full rotate-1 rounded-3xl bg-gradient-to-br from-sky-800 via-sky-850 to-purple-night p-5 shadow-scrapbook-lg border border-purple-deep/40 cursor-pointer active:scale-98 transition-transform select-none relative"
           >
-            <span className="absolute -top-3.5 right-10 h-6 w-20 bg-purple-deep/70 border border-purple-light/40 rounded-xs rotate-3" />
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2">
-                <CelestialBadge icon="robot" theme="purple" />
-                <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
-                  {robotIncident.title}
-                </h4>
+            <div className="rounded-3xl bg-gradient-to-br from-sky-800 via-sky-850 to-purple-night p-5 shadow-scrapbook-lg border border-purple-deep/40 relative">
+              <span className="absolute -top-3.5 right-10 h-6 w-20 bg-purple-deep/70 border border-purple-light/40 rounded-xs rotate-3" />
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-2">
+                  <CelestialBadge icon="robot" theme="purple" />
+                  <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
+                    {robotIncident.title}
+                  </h4>
+                </div>
+                <span className="rounded-full bg-blue-night px-2 py-0.5 text-[10px] font-bold text-blue-light border border-blue-deep">
+                  {robotIncident.tag}
+                </span>
               </div>
-              <span className="rounded-full bg-blue-night px-2 py-0.5 text-[10px] font-bold text-blue-light border border-blue-deep">
-                {robotIncident.tag}
-              </span>
-            </div>
 
-            <p className="whitespace-pre-line text-xs font-mono text-[#F7F5FC]/90 bg-sky-950 p-3 rounded-xl border border-purple-deep/20 my-2 leading-relaxed">
-              {robotIncident.snippet}
-            </p>
+              <p className="whitespace-pre-line text-xs font-mono text-[#F7F5FC]/90 bg-sky-950 p-3 rounded-xl border border-purple-deep/20 my-2 leading-relaxed">
+                {robotIncident.snippet}
+              </p>
 
-            <div className="flex items-center justify-between text-[11px] text-[#9693A7] font-medium pt-1">
-              <span>{robotIncident.subNote}</span>
-              <span>{memoriesData.tapToExpand}</span>
+              <div className="flex items-center justify-between text-[11px] text-[#9693A7] font-medium pt-1">
+                <span>{robotIncident.subNote}</span>
+                <span>{memoriesData.tapToExpand}</span>
+              </div>
             </div>
-          </div>
+          </SpotlightCard>
         )}
 
         {/* Scrapbook Section 4B: Association Inauguration Stage Milestone */}
@@ -189,28 +267,34 @@ export default function MemoriesPage() {
 
         {/* Scrapbook Section 5: The Shell Defense Quote */}
         {shellDefense && (
-          <div
+          <SpotlightCard
+            spotlightColor="rgba(244, 114, 182, 0.28)"
+            spotlightSize={260}
+            tilt={true}
+            tiltAmplitude={4}
+            className="self-center w-[90%] -rotate-1 cursor-pointer select-none"
             onClick={() => setSelectedItem(shellDefense)}
-            className="self-center w-[90%] -rotate-1 rounded-2xl bg-sky-800 p-4 border border-purple-deep/50 shadow-scrapbook cursor-pointer active:scale-95 transition-transform relative select-none"
           >
-            <span className="absolute -top-3 left-1/2 -translate-x-1/2 h-5 w-20 bg-purple-deep/60 border border-purple-light/40 rounded-xs" />
-            <div className="flex items-center gap-1.5 text-xs font-bold text-purple-light mb-1">
-              <CelestialBadge icon="shell" theme="purple" />
-              <span>{shellDefense.tag}</span>
-            </div>
-            <p className="font-handwriting text-xl font-bold text-[#F7F5FC] leading-snug">
-              &ldquo;{shellDefense.quote}&rdquo;
-            </p>
-            <div className="flex items-center justify-between mt-2 pt-2 border-t border-purple-deep/20">
-              <span className="text-[10px] text-[#9693A7] italic">{memoriesData.campusHallObservation}</span>
-              <div className="flex items-center gap-2">
-                <CollectibleSticker id="tanisha_idle" size={48} rotation={2} />
-                <p className="text-[10px] text-[#D0CDDC] font-semibold">
-                  — {shellDefense.author}
-                </p>
+            <div className="rounded-2xl bg-sky-800 p-4 border border-purple-deep/50 shadow-scrapbook relative">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 h-5 w-20 bg-purple-deep/60 border border-purple-light/40 rounded-xs" />
+              <div className="flex items-center gap-1.5 text-xs font-bold text-purple-light mb-1">
+                <CelestialBadge icon="shell" theme="purple" />
+                <span>{shellDefense.tag}</span>
+              </div>
+              <p className="font-handwriting text-xl font-bold text-[#F7F5FC] leading-snug">
+                &ldquo;{shellDefense.quote}&rdquo;
+              </p>
+              <div className="flex items-center justify-between mt-2 pt-2 border-t border-purple-deep/20">
+                <span className="text-[10px] text-[#9693A7] italic">{memoriesData.campusHallObservation}</span>
+                <div className="flex items-center gap-2">
+                  <CollectibleSticker id="tanisha_idle" size={48} rotation={2} />
+                  <p className="text-[10px] text-[#D0CDDC] font-semibold">
+                    — {shellDefense.author}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          </SpotlightCard>
         )}
 
         {/* Scrapbook Section 6: Reel Card + 'I might actually do that' */}

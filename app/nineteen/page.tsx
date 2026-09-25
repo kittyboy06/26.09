@@ -10,6 +10,7 @@ import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
+import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { cn } from "@/lib/utils";
 
 export default function NineteenPage() {
@@ -161,10 +162,14 @@ export default function NineteenPage() {
               themeStyles[card.themeColor] || themeStyles.blue;
 
             return (
-              <div
+              <SpotlightCard
                 key={card.id}
+                spotlightColor={currentTheme.glowColor}
+                spotlightSize={220}
+                tilt={true}
+                tiltAmplitude={5}
+                className="perspective-1000 h-52 w-full cursor-pointer select-none overflow-visible group"
                 onClick={() => toggleCard(card.id)}
-                className="perspective-1000 h-52 w-full cursor-pointer select-none group"
               >
                 <div
                   className={cn(
@@ -430,15 +435,23 @@ export default function NineteenPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
             );
           })}
 
           {/* SPECIAL CARD 19: The 19th Star (Brightest in Constellation) */}
           {card19 && (
-            <div
+            <SpotlightCard
+              spotlightColor={
+                isCard19Unlocked
+                  ? "rgba(244, 114, 182, 0.35)"
+                  : "rgba(192, 132, 252, 0.3)"
+              }
+              spotlightSize={320}
+              tilt={true}
+              tiltAmplitude={4}
+              className="col-span-2 cursor-pointer select-none mt-2 overflow-visible"
               onClick={handleCard19Click}
-              className="col-span-2 cursor-pointer select-none mt-2"
             >
               <div
                 className={cn(
@@ -493,7 +506,7 @@ export default function NineteenPage() {
                   </div>
                 )}
               </div>
-            </div>
+            </SpotlightCard>
           )}
         </div>
 
