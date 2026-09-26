@@ -20,9 +20,45 @@ export function TanishaCompanion() {
   const { totalCollected, isComplete: isStickerComplete } = useStickerCollection();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [speechText, setSpeechText] = useState<string | null>(null);
   const companionText = common.passport;
 
   const [mounted, setMounted] = useState<boolean>(false);
+
+  const CUTE_QUOTES = [
+    "Happy 19th Birthday, Tanisha! 🎂",
+    "Poking me won't speed up my replies 🐢",
+    "Professional Bot Mode: 99% 🤖",
+    "Ezra says you're doing great 🐱✨",
+    "Psst... tap all the hidden stickers! ⭐",
+    "19 things to celebrate today! 🌸",
+    "Passcode: 26.09 (Afsal made a whole site 😂)",
+    "Wildflowers never wilt 💐",
+    "Tap me to inspect your Birthday Passport! 📒",
+  ];
+
+  // Periodic cute greeting
+  useEffect(() => {
+    if (!mounted || !isUnlocked) return;
+
+    // Show initial greeting after 3 seconds
+    const initialTimer = setTimeout(() => {
+      setSpeechText(CUTE_QUOTES[0]);
+      setTimeout(() => setSpeechText(null), 4200);
+    }, 3000);
+
+    // Periodic gentle remarks every 25s
+    const interval = setInterval(() => {
+      const randomQuote = CUTE_QUOTES[Math.floor(Math.random() * CUTE_QUOTES.length)];
+      setSpeechText(randomQuote);
+      setTimeout(() => setSpeechText(null), 4500);
+    }, 26000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(interval);
+    };
+  }, [mounted, isUnlocked]);
 
   useEffect(() => {
     setMounted(true);
@@ -42,15 +78,42 @@ export function TanishaCompanion() {
     markAsSeen();
   };
 
+  const handlePoke = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const otherQuotes = CUTE_QUOTES.filter((q) => q !== speechText);
+    const nextQuote = otherQuotes[Math.floor(Math.random() * otherQuotes.length)];
+    setSpeechText(nextQuote);
+  };
+
   return (
     <>
       <div
-        className="fixed bottom-5 left-4 z-50 flex items-center pointer-events-auto select-none"
+        className="fixed bottom-5 left-4 z-50 flex flex-col items-start pointer-events-auto select-none"
         style={{
           paddingBottom: "env(safe-area-inset-bottom, 0px)",
           paddingLeft: "env(safe-area-inset-left, 0px)",
         }}
       >
+        {/* Cute Floating Speech Bubble */}
+        <AnimatePresence>
+          {speechText && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 8 }}
+              transition={{ type: "spring", stiffness: 400, damping: 24 }}
+              onClick={handlePoke}
+              className="relative mb-2 max-w-[210px] rounded-2xl bg-[#181B32]/95 border border-[#7049A6]/70 shadow-scrapbook px-3 py-1.5 text-left cursor-pointer group active:scale-95"
+            >
+              <p className="font-handwriting text-[13px] text-[#F7F5FC] font-bold leading-tight">
+                {speechText}
+              </p>
+              {/* Little speech tail pointing down to avatar */}
+              <div className="absolute -bottom-1.5 left-4 h-3 w-3 rotate-45 bg-[#181B32] border-r border-b border-[#7049A6]/70" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.button
           type="button"
           layout
@@ -74,8 +137,25 @@ export function TanishaCompanion() {
             )}
           </AnimatePresence>
 
-          {/* Miniature Character Sticker Avatar */}
-          <div className="relative h-7 w-7 shrink-0 drop-shadow-xs">
+          {/* Miniature Character Sticker Avatar with Idle Breathing/Bobbing */}
+          <motion.div
+            animate={{
+              y: [0, -2.5, 0],
+              rotate: [0, 2.5, -2.5, 0],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 3.5,
+              ease: "easeInOut",
+            }}
+            whileTap={{ scale: 0.82, rotate: -12 }}
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePoke(e);
+            }}
+            className="relative h-7 w-7 shrink-0 drop-shadow-xs"
+            title="Poke Tanisha!"
+          >
             <Image
               src={currentSticker}
               alt={currentAlt}
@@ -84,7 +164,7 @@ export function TanishaCompanion() {
               className="object-contain transition-transform group-hover:rotate-6"
               priority
             />
-          </div>
+          </motion.div>
 
           {/* Label and Stamp Counter */}
           <div className="flex items-center gap-1.5 text-left">

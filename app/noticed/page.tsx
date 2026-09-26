@@ -14,6 +14,7 @@ import { Constellation, ConstellationNode } from "@/components/celestial/Constel
 import { PageNavigation } from "@/components/layout/PageNavigation";
 import { Terminal } from "lucide-react";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ScrollHint } from "@/components/ui/ScrollHint";
 import { cn } from "@/lib/utils";
 
 // Visual identity and telemetry for each observation card
@@ -490,6 +491,9 @@ export default function NoticedPage() {
         prevLabel={noticedData.navigation.prevLabel}
         variant="purple"
       />
+
+      {/* Floating Scroll Indicator */}
+      <ScrollHint label="Scroll down ✦" />
     </PageTransition>
   </NightSky>
   );

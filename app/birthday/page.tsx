@@ -15,6 +15,7 @@ import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
+import { ScrollHint } from "@/components/ui/ScrollHint";
 
 export default function BirthdayPage() {
   const router = useRouter();
@@ -232,6 +233,9 @@ export default function BirthdayPage() {
         <Star variant="main" size="xs" />
         <Star variant="purple" size="sm" />
       </div>
+
+      {/* Floating Scroll Indicator */}
+      <ScrollHint label="Scroll for the letter ✦" />
     </PageTransition>
   </NightSky>
   );

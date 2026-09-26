@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Volume2, VolumeX, Sparkles, Play, Pause, ChevronUp, ChevronDown } from "lucide-react";
 import { useBirthday } from "@/components/providers/BirthdayProvider";
 import { common } from "@/lib/appData";
+import { MusicNotesEmitter } from "./MusicNotesEmitter";
 
 export function Skiper2MusicIsland() {
   const { isUnlocked, isPlaying, toggleMusic, hasAudioError } = useBirthday();
@@ -99,6 +100,9 @@ export function Skiper2MusicIsland() {
                 className="focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9B70D9] rounded-full group cursor-pointer"
               >
                 <div className="relative flex items-center justify-center h-6 w-6 rounded-full bg-sky-900 shadow-sm border border-sky-750 shrink-0 group-hover:scale-105 transition-transform duration-200">
+                  {/* Floating Whimsical Musical Notes */}
+                  <MusicNotesEmitter isPlaying={isPlaying} />
+
                   {/* Outer & Inner Vinyl Grooves */}
                   <div className="absolute inset-[3px] rounded-full border border-white/10" />
                   <div className="absolute inset-[6px] rounded-full border border-white/10" />
@@ -175,6 +179,9 @@ export function Skiper2MusicIsland() {
                 <div className="flex items-center gap-2.5 min-w-0">
                   {/* Vinyl Icon Badge */}
                   <div className="relative flex items-center justify-center h-8 w-8 rounded-full bg-sky-900 shadow-sm border border-sky-750 shrink-0">
+                    {/* Floating Whimsical Musical Notes */}
+                    <MusicNotesEmitter isPlaying={isPlaying} />
+
                     <div className="absolute inset-[4px] rounded-full border border-white/10" />
                     <div className="absolute inset-[7px] rounded-full border border-white/10" />
                     <motion.div

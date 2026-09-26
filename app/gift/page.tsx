@@ -15,6 +15,7 @@ import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
+import { ScrollHint } from "@/components/ui/ScrollHint";
 import { cn } from "@/lib/utils";
 
 interface StageVisual {
@@ -353,6 +354,9 @@ export default function GiftPage() {
           prevLabel={data.navigation.prevLabel}
           variant={data.navigation.variant as any}
         />
+
+        {/* Floating Scroll Indicator */}
+        <ScrollHint label="Scroll down ✦" />
       </PageTransition>
 
       {/* High-Resolution Expanded Inspection Modal */}

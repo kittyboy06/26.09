@@ -12,6 +12,7 @@ import { CollectibleSticker } from "@/components/stickers/CollectibleSticker";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
+import { ScrollHint } from "@/components/ui/ScrollHint";
 
 import { screens, MemoryItem } from "@/lib/appData";
 
@@ -230,6 +231,9 @@ export default function NotePage() {
         prevLabel={noteData.navigation.prevLabel}
         variant="pink"
       />
+
+      {/* Floating Scroll Indicator */}
+      <ScrollHint label="Scroll down ✦" />
     </PageTransition>
   </NightSky>
   );

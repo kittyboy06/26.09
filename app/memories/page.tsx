@@ -14,6 +14,7 @@ import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { NightSky } from "@/components/celestial/NightSky";
 import { CelestialBadge } from "@/components/celestial/CelestialBadge";
 import { Star } from "@/components/celestial/Star";
+import { ScrollHint } from "@/components/ui/ScrollHint";
 
 export default function MemoriesPage() {
   const memoriesData = screens.memories;
@@ -281,6 +282,9 @@ export default function MemoriesPage() {
         prevLabel={memoriesData.navigation.prevLabel}
         variant="blue"
       />
+
+      {/* Floating Scroll Indicator */}
+      <ScrollHint label="Scroll down ✦" />
     </PageTransition>
   </NightSky>
   );

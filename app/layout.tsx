@@ -6,6 +6,7 @@ import { Skiper2MusicIsland } from "@/components/audio/Skiper2MusicIsland";
 import { TanishaCompanion } from "@/components/passport/TanishaCompanion";
 import { StickerToastContainer } from "@/components/stickers/StickerToastContainer";
 import { RouteTransition } from "@/components/layout/RouteTransition";
+import { TapSparkles } from "@/components/ui/TapSparkles";
 import { site } from "@/lib/appData";
 
 export const metadata: Metadata = {
@@ -56,6 +57,9 @@ export default function RootLayout({
 
           {/* Global Sticker Scavenger Hunt Toast Notifications */}
           <StickerToastContainer />
+
+          {/* Whimsical Interactive Tap & Click Sparkles */}
+          <TapSparkles />
 
           {/* Full-width container with animated route transitions */}
           <main className="relative min-h-[100dvh] w-full flex flex-col">
