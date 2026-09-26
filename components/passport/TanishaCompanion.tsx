@@ -88,7 +88,7 @@ export function TanishaCompanion() {
   return (
     <>
       <div
-        className="fixed bottom-5 left-4 z-50 flex flex-col items-start pointer-events-auto select-none"
+        className="fixed bottom-5 left-4 md:bottom-6 md:left-6 lg:left-[max(1.5rem,calc(50%-28rem))] z-50 flex flex-col items-start pointer-events-auto select-none"
         style={{
           paddingBottom: "env(safe-area-inset-bottom, 0px)",
           paddingLeft: "env(safe-area-inset-left, 0px)",
@@ -103,9 +103,9 @@ export function TanishaCompanion() {
               exit={{ opacity: 0, scale: 0.8, y: 8 }}
               transition={{ type: "spring", stiffness: 400, damping: 24 }}
               onClick={handlePoke}
-              className="relative mb-2 max-w-[210px] rounded-2xl bg-[#181B32]/95 border border-[#7049A6]/70 shadow-scrapbook px-3 py-1.5 text-left cursor-pointer group active:scale-95"
+              className="relative mb-2 max-w-[210px] md:max-w-[260px] rounded-2xl bg-[#181B32]/95 border border-[#7049A6]/70 shadow-scrapbook px-3 py-1.5 md:px-4 md:py-2 text-left cursor-pointer group active:scale-95"
             >
-              <p className="font-handwriting text-[13px] text-[#F7F5FC] font-bold leading-tight">
+              <p className="font-handwriting text-[13px] md:text-sm text-[#F7F5FC] font-bold leading-tight">
                 {speechText}
               </p>
               {/* Little speech tail pointing down to avatar */}

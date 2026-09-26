@@ -25,22 +25,22 @@ export function ChapterProgress() {
   return (
     <nav
       aria-label={progressText.ariaLabel}
-      className="fixed top-2.5 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 rounded-full border border-sky-750 bg-sky-850/95 px-3 py-1 shadow-scrapbook backdrop-blur-md select-none whitespace-nowrap shrink-0 max-w-fit"
+      className="fixed top-2.5 md:top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-3 rounded-full border border-sky-750 bg-sky-850/95 px-3 md:px-4 py-1 md:py-1.5 shadow-scrapbook backdrop-blur-md select-none whitespace-nowrap shrink-0 max-w-fit"
       style={{
         paddingTop: "max(4px, env(safe-area-inset-top, 4px))",
       }}
     >
       {/* Chapter Counter strictly on one single line */}
-      <span className="font-display text-xs font-bold text-[#F7F5FC] whitespace-nowrap shrink-0 inline-flex items-center gap-1">
+      <span className="font-display text-xs md:text-sm font-bold text-[#F7F5FC] whitespace-nowrap shrink-0 inline-flex items-center gap-1">
         <span>{current.number}</span>
         <span className="text-[#9693A7] font-normal">/</span>
         <span className="text-[#9693A7] font-normal">{progressText.totalChapters}</span>
       </span>
 
-      <span className="h-3 w-[1px] bg-sky-750 shrink-0" aria-hidden="true" />
+      <span className="h-3 md:h-4 w-[1px] bg-sky-750 shrink-0" aria-hidden="true" />
 
       {/* Progress Dots strictly on one single line */}
-      <div className="flex items-center gap-1 shrink-0 flex-nowrap">
+      <div className="flex items-center gap-1 md:gap-1.5 shrink-0 flex-nowrap">
         {siteRoutes.map((route, idx) => {
           const isActive = idx === currentRouteIndex;
           const isPassed = idx < currentRouteIndex;

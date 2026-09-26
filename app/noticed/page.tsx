@@ -253,45 +253,45 @@ export default function NoticedPage() {
           <CelestialBadge icon="telescope" text={noticedData.badges.right.text} theme="blue" />
         </div>
 
-        <div className="text-center mb-5">
-          <h2 className="font-display text-2xl sm:text-3xl font-extrabold text-[#F7F5FC]">
+        <div className="text-center mb-5 md:mb-8">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F7F5FC]">
             {noticedData.header.title}
           </h2>
-          <p className="mt-1 text-xs text-[#9693A7]">
+          <p className="mt-1 text-xs md:text-sm text-[#9693A7]">
             {noticedData.header.subtitle}
           </p>
         </div>
 
-      <div className="w-full max-w-sm flex flex-col gap-4 relative z-10">
+      <div className="w-full max-w-sm md:max-w-2xl lg:max-w-3xl flex flex-col gap-4 md:gap-6 relative z-10">
         {/* Retro Terminal Window: TANISHA SYSTEM PROFILE */}
-        <div className="rounded-3xl bg-[#12152A] text-[#F7F4FC] shadow-scrapbook border border-[#272A43] overflow-hidden">
+        <div className="rounded-3xl md:rounded-[32px] bg-[#12152A] text-[#F7F4FC] shadow-scrapbook border border-[#272A43] overflow-hidden">
           {/* Terminal Titlebar with Window Controls */}
-          <div className="flex items-center justify-between bg-[#0B0D1B] px-4 py-2.5 border-b border-[#272A43]">
-            <div className="flex items-center gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#E05252]/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#E5B544]/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#44C978]/80" />
+          <div className="flex items-center justify-between bg-[#0B0D1B] px-4 md:px-6 py-2.5 md:py-3.5 border-b border-[#272A43]">
+            <div className="flex items-center gap-1.5 md:gap-2">
+              <span className="h-2.5 w-2.5 md:h-3 md:w-3 rounded-full bg-[#E05252]/80" />
+              <span className="h-2.5 w-2.5 md:h-3 md:w-3 rounded-full bg-[#E5B544]/80" />
+              <span className="h-2.5 w-2.5 md:h-3 md:w-3 rounded-full bg-[#44C978]/80" />
             </div>
-            <div className="flex items-center gap-1.5 text-[10px] font-mono text-[#8DD8FF]">
-              <Terminal className="h-3 w-3" />
+            <div className="flex items-center gap-1.5 text-[10px] md:text-xs font-mono text-[#8DD8FF]">
+              <Terminal className="h-3 w-3 md:h-3.5 md:w-3.5" />
               <span>{noticedData.terminal.windowTitle}</span>
             </div>
-            <div className="w-8" />
+            <div className="w-8 md:w-12" />
           </div>
 
-          <div className="p-4">
+          <div className="p-4 md:p-6">
             {/* Terminal Status Header */}
-            <div className="flex items-center justify-between text-[10px] font-mono text-[#918DA1] border-b border-[#272A43] pb-2 mb-3">
+            <div className="flex items-center justify-between text-[10px] md:text-xs font-mono text-[#918DA1] border-b border-[#272A43] pb-2 md:pb-3 mb-3 md:mb-4">
               <span>{noticedData.terminal.versionTag}</span>
               <span className="text-emerald-400 font-bold">{noticedData.terminal.onlineStatus}</span>
             </div>
 
             {/* Profile Field Data Rows */}
-            <div className="space-y-1.5 text-xs font-mono">
+            <div className="space-y-1.5 md:space-y-2 text-xs md:text-sm font-mono">
               {noticedData.terminal.profileRows.map((row, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between py-0.5 border-b border-[#272A43]/50 last:border-0"
+                  className="flex items-center justify-between py-0.5 md:py-1 border-b border-[#272A43]/50 last:border-0"
                 >
                   <span className="text-[#918DA1]">{row.label}:</span>
                   <span
@@ -310,14 +310,14 @@ export default function NoticedPage() {
             </div>
 
             {/* Terminal Quote Block */}
-            <div className="mt-3 rounded-xl bg-[#181B32] p-3 border border-[#272A43]">
-              <div className="text-[9px] font-bold text-amber-400 uppercase tracking-wider mb-1">
+            <div className="mt-3 md:mt-5 rounded-xl md:rounded-2xl bg-[#181B32] p-3 md:p-4 border border-[#272A43]">
+              <div className="text-[9px] md:text-[10px] font-bold text-amber-400 uppercase tracking-wider mb-1">
                 {noticedData.terminal.systemLogPrefix}
               </div>
-              <p className="font-handwriting text-lg font-bold text-[#FFB6D5] leading-snug">
+              <p className="font-handwriting text-lg md:text-xl font-bold text-[#FFB6D5] leading-snug">
                 &ldquo;{noticedData.terminal.quote.quote}&rdquo;
               </p>
-              <p className="text-right text-[9px] text-[#918DA1] font-mono mt-1">
+              <p className="text-right text-[9px] md:text-[11px] text-[#918DA1] font-mono mt-1">
                 — {noticedData.terminal.quote.attribution}
               </p>
             </div>
@@ -326,48 +326,48 @@ export default function NoticedPage() {
 
         {/* A Few Things I Know 💙 — Things I Remember */}
         {(noticedData as any).thingsIKnow && (
-          <div className="relative rounded-3xl bg-sky-800 p-5 shadow-scrapbook border border-purple-deep/30 -rotate-0.5 overflow-hidden transition-all duration-300 hover:rotate-0">
+          <div className="relative rounded-3xl md:rounded-[32px] bg-sky-800 p-5 md:p-7 shadow-scrapbook border border-purple-deep/30 -rotate-0.5 overflow-hidden transition-all duration-300 hover:rotate-0">
             {/* Scrapbook washi tape decal */}
-            <span className="absolute -top-2 left-1/2 -translate-x-1/2 h-3.5 w-24 bg-purple-deep/60 border border-purple-light/40 rounded-xs rotate-1 z-10 shadow-2xs" />
+            <span className="absolute -top-2 left-1/2 -translate-x-1/2 h-3.5 md:h-4 w-24 md:w-32 bg-purple-deep/60 border border-purple-light/40 rounded-xs rotate-1 z-10 shadow-2xs" />
 
             {/* Header */}
             <div className="flex items-center justify-between mb-3.5 pt-1">
-              <h3 className="font-display text-base font-bold text-[#F7F5FC] flex items-center gap-1.5">
+              <h3 className="font-display text-base md:text-lg font-bold text-[#F7F5FC] flex items-center gap-1.5">
                 <span>{(noticedData as any).thingsIKnow.title}</span>
               </h3>
-              <span className="rounded-full bg-blue-night px-2.5 py-0.5 text-[10px] font-mono font-bold text-blue-light border border-blue-deep">
+              <span className="rounded-full bg-blue-night px-2.5 md:px-3 py-0.5 md:py-1 text-[10px] md:text-xs font-mono font-bold text-blue-light border border-blue-deep">
                 {(noticedData as any).thingsIKnow.tag}
               </span>
             </div>
 
             {/* Signature 3 Colors + Popcorn Discovery */}
-            <div className="space-y-3">
+            <div className="space-y-3 md:space-y-4">
               {/* Three Colors Pills */}
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-night border border-blue-deep px-3 py-1.5 text-xs font-bold text-blue-light shadow-2xs">
+              <div className="flex flex-wrap items-center gap-2 md:gap-3">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-night border border-blue-deep px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-bold text-blue-light shadow-2xs">
                   <Star variant="blue" size="xs" />
                   <span>Blue</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-purple-night border border-purple-deep px-3 py-1.5 text-xs font-bold text-purple-light shadow-2xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-purple-night border border-purple-deep px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-bold text-purple-light shadow-2xs">
                   <Star variant="purple" size="xs" />
                   <span>Purple</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-pink-night border border-pink-deep px-3 py-1.5 text-xs font-bold text-pink-light shadow-2xs">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-pink-night border border-pink-deep px-3 md:px-4 py-1.5 md:py-2 text-xs md:text-sm font-bold text-pink-light shadow-2xs">
                   <Star variant="pink" size="xs" />
                   <span>Pink</span>
                 </span>
               </div>
 
               {/* Popcorn — Unexpected Charming Discovery */}
-              <div className="inline-flex items-center gap-2 rounded-2xl bg-[#251E14] border border-[#8A6A2A]/50 px-3.5 py-1.5 shadow-2xs">
+              <div className="inline-flex items-center gap-2 rounded-2xl bg-[#251E14] border border-[#8A6A2A]/50 px-3.5 md:px-4 py-1.5 md:py-2 shadow-2xs">
                 <Star variant="main" size="xs" />
-                <span className="font-display text-xs font-bold text-[#FFD280]">Popcorn</span>
+                <span className="font-display text-xs md:text-sm font-bold text-[#FFD280]">Popcorn</span>
               </div>
             </div>
 
             {/* Handwritten Note */}
-            <div className="mt-4 pt-2.5 border-t border-purple-deep/20">
-              <p className="font-handwriting text-xl text-[#F7F5FC]/90 leading-snug whitespace-pre-line">
+            <div className="mt-4 pt-2.5 md:pt-3.5 border-t border-purple-deep/20">
+              <p className="font-handwriting text-xl md:text-2xl text-[#F7F5FC]/90 leading-snug whitespace-pre-line">
                 {(noticedData as any).thingsIKnow.note}
               </p>
             </div>
@@ -403,7 +403,7 @@ export default function NoticedPage() {
                 tiltAmplitude={3}
                 className="rounded-2xl transition-all duration-300 select-none"
               >
-                <div className="rounded-2xl bg-sky-800/90 backdrop-blur-xs p-4 shadow-scrapbook border border-purple-deep/30 relative overflow-hidden">
+                <div className="rounded-2xl md:rounded-3xl bg-sky-800/90 backdrop-blur-xs p-4 md:p-6 shadow-scrapbook border border-purple-deep/30 relative overflow-hidden">
                   {/* Subtle Constellation Watermark */}
                   <svg
                     className="absolute inset-0 w-full h-full opacity-10 pointer-events-none"
@@ -425,28 +425,28 @@ export default function NoticedPage() {
                         size="sm"
                         twinkle={idx % 2 === 0}
                       />
-                      <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
+                      <h4 className="font-display text-sm md:text-base font-bold text-[#F7F5FC]">
                         {obs.title}
                       </h4>
                     </div>
-                    <span className="rounded-full px-2 py-0.5 text-[9px] font-mono font-bold bg-sky-750 text-purple-light border border-purple-deep/30">
+                    <span className="rounded-full px-2 md:px-2.5 py-0.5 text-[9px] md:text-xs font-mono font-bold bg-sky-750 text-purple-light border border-purple-deep/30">
                       {obs.tag}
                     </span>
                   </div>
 
-                  <p className="text-[10px] text-[#9693A7] font-mono mb-2 relative z-10">
+                  <p className="text-[10px] md:text-xs text-[#9693A7] font-mono mb-2 md:mb-3 relative z-10">
                     // {obs.subtitle}
                   </p>
 
                   {/* Content Row with Right-side Illustrated Sticker Medallion */}
-                  <div className="flex items-center justify-between gap-3 relative z-10">
-                    <p className="text-xs text-[#D0CDDC] leading-relaxed flex-1 whitespace-pre-line font-normal">
+                  <div className="flex items-center justify-between gap-3 md:gap-5 relative z-10">
+                    <p className="text-xs md:text-sm text-[#D0CDDC] leading-relaxed flex-1 whitespace-pre-line font-normal">
                       {obs.description}
                     </p>
 
                     <div
                       className={cn(
-                        "relative shrink-0 rounded-2xl p-1.5 border flex items-center justify-center transition-transform hover:scale-105",
+                        "relative shrink-0 rounded-2xl p-1.5 md:p-2 border flex items-center justify-center transition-transform hover:scale-105",
                         visual.medallionBg,
                         visual.medallionBorder,
                         visual.glowShadow

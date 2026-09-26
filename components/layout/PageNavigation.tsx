@@ -30,7 +30,7 @@ export function PageNavigation({
       <SpecularButton
         variant={variant}
         size="large"
-        className="w-full max-w-xs justify-between px-6"
+        className="w-full max-w-xs md:max-w-sm justify-between px-6 md:px-8 md:text-lg"
         onClick={() => router.push(nextHref)}
       >
         <span>{nextLabel}</span>
@@ -41,7 +41,7 @@ export function PageNavigation({
       {prevHref && (
         <button
           onClick={() => router.push(prevHref)}
-          className="flex items-center gap-1.5 text-xs font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-2 px-4 focus:outline-none"
+          className="flex items-center gap-1.5 text-xs md:text-sm font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-2 px-4 focus:outline-none"
         >
           <ArrowLeft className="h-3.5 w-3.5" />
           <span>{prevLabel}</span>

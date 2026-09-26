@@ -24,6 +24,7 @@ export interface NightSkyProps {
   showConstellation?: boolean;
   asCard?: boolean;
   className?: string;
+  contentClassName?: string;
   children: React.ReactNode;
 }
 
@@ -67,6 +68,7 @@ export const NightSky: React.FC<NightSkyProps> = ({
   showConstellation = false,
   asCard,
   className = "",
+  contentClassName = "",
   children,
 }) => {
   const rawDensity = starDensity || density || "normal";
@@ -144,8 +146,8 @@ export const NightSky: React.FC<NightSkyProps> = ({
         />
       )}
 
-      {/* 5. Mobile-first Route View Content Layer */}
-      <div className="relative z-10 w-full max-w-md mx-auto px-4 min-h-screen flex flex-col">
+      {/* 5. Mobile-first Route View Content Layer - Bigger compact screen on laptop/desktop */}
+      <div className={cn("relative z-10 w-full max-w-md md:max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen flex flex-col", contentClassName)}>
         {children}
       </div>
     </div>

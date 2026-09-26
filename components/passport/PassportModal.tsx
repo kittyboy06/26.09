@@ -61,7 +61,7 @@ export function PassportModal({ isOpen, onClose }: PassportModalProps) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ type: "spring", damping: 28, stiffness: 320 }}
-            className="relative w-full max-w-sm sm:max-w-md bg-[#12152A] rounded-t-3xl sm:rounded-3xl border-t-4 sm:border-4 border-[#302B4D] shadow-2xl p-4 sm:p-5 flex flex-col max-h-[88vh] overflow-y-auto z-10 text-[#F7F4FC]"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl bg-[#12152A] rounded-t-3xl sm:rounded-3xl border-t-4 sm:border-4 border-[#302B4D] shadow-2xl p-4 sm:p-5 md:p-6 flex flex-col max-h-[88vh] overflow-y-auto z-10 text-[#F7F4FC]"
             style={{
               backgroundImage: "radial-gradient(rgba(113, 71, 168, 0.15) 10%, transparent 11%)",
               backgroundSize: "16px 16px",

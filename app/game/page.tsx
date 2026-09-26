@@ -191,21 +191,21 @@ export default function WhackGamePage() {
         </div>
 
         {/* Chapter Title */}
-        <div className="text-center mb-2">
-          <h2 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#F7F5FC]">
+        <div className="text-center mb-2 md:mb-4">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-[#F7F5FC]">
             {data.header.title}
           </h2>
-          <p className="text-xs text-[#9693A7]">
+          <p className="text-xs md:text-sm text-[#9693A7]">
             {data.header.subtitle}
           </p>
         </div>
 
       {/* Scoreboard Bar */}
-      <div className="w-full max-w-[340px] flex items-center justify-between bg-amber-900/90 text-amber-100 rounded-2xl px-4 py-2 border-2 border-amber-700 shadow-md mb-2 select-none">
-        <div className="flex items-center gap-2 font-display text-xs font-bold">
-          <Trophy className="h-4 w-4 text-yellow-400 animate-bounce" />
+      <div className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[540px] flex items-center justify-between bg-amber-900/90 text-amber-100 rounded-2xl md:rounded-3xl px-4 py-2 md:px-5 md:py-2.5 border-2 border-amber-700 shadow-md mb-2 md:mb-3 select-none">
+        <div className="flex items-center gap-2 font-display text-xs md:text-sm font-bold">
+          <Trophy className="h-4 w-4 md:h-5 md:w-5 text-yellow-400 animate-bounce" />
           <span>{data.scoreboard.scoreLabel}</span>
-          <span className="text-yellow-300 text-base font-mono font-black tracking-wider bg-black/40 px-2.5 py-0.5 rounded-lg border border-amber-600">
+          <span className="text-yellow-300 text-base md:text-lg font-mono font-black tracking-wider bg-black/40 px-2.5 py-0.5 rounded-lg border border-amber-600">
             {score} / {TARGET_SCORE}
           </span>
         </div>
@@ -213,18 +213,18 @@ export default function WhackGamePage() {
         <button
           type="button"
           onClick={handleRestart}
-          className="flex items-center gap-1 text-[11px] font-bold text-amber-200 hover:text-white bg-amber-800/80 px-2.5 py-1 rounded-xl border border-amber-600 active:scale-95 transition-all shadow-xs"
+          className="flex items-center gap-1 text-[11px] md:text-xs font-bold text-amber-200 hover:text-white bg-amber-800/80 px-2.5 py-1 md:px-3 md:py-1.5 rounded-xl border border-amber-600 active:scale-95 transition-all shadow-xs"
         >
-          <RotateCcw className="h-3 w-3" />
+          <RotateCcw className="h-3 w-3 md:h-3.5 md:w-3.5" />
           <span>{data.scoreboard.resetButton}</span>
         </button>
       </div>
 
       {/* ARCADE MARQUEE: Ezra Mascot Striker Deck */}
-      <div className="w-full max-w-[340px] bg-[#4E342E] rounded-t-3xl border-t-4 border-x-4 border-[#8B5A2B] px-3 pt-2.5 pb-1 relative shadow-lg overflow-hidden select-none">
+      <div className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[540px] bg-[#4E342E] rounded-t-3xl md:rounded-t-[32px] border-t-4 border-x-4 border-[#8B5A2B] px-3 pt-2.5 pb-1 md:px-4 md:pt-3 relative shadow-lg overflow-hidden select-none">
         {/* Brass Header Plate with rivets */}
         <div
-          className={`flex items-center justify-between gap-1 rounded-xl px-2.5 py-1 mb-1 shadow-inner transition-colors duration-200 ${
+          className={`flex items-center justify-between gap-1 rounded-xl px-2.5 py-1 md:px-3.5 md:py-1.5 mb-1 shadow-inner transition-colors duration-200 ${
             isEzraAngry
               ? "bg-rose-950/90 border-2 border-rose-500/80 shadow-rose-900/40"
               : "bg-[#3E2723] border border-amber-700/60"
@@ -237,7 +237,7 @@ export default function WhackGamePage() {
               }`}
             />
             <span
-              className={`text-[10px] font-mono font-bold tracking-widest uppercase transition-colors duration-200 whitespace-nowrap ${
+              className={`text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase transition-colors duration-200 whitespace-nowrap ${
                 isEzraAngry ? "text-rose-200" : "text-amber-200"
               }`}
             >
@@ -245,7 +245,7 @@ export default function WhackGamePage() {
             </span>
           </div>
           <span
-            className={`text-[9px] font-bold px-1.5 py-0.5 rounded transition-all duration-200 truncate max-w-[155px] text-right ${
+            className={`text-[9px] md:text-xs font-bold px-1.5 py-0.5 rounded transition-all duration-200 truncate max-w-[155px] md:max-w-[280px] text-right ${
               isEzraAngry
                 ? "text-rose-100 bg-rose-900/90 border border-rose-400/60 animate-pulse"
                 : "text-amber-300/80 bg-black/40"
@@ -256,7 +256,7 @@ export default function WhackGamePage() {
         </div>
 
         {/* The Cool Cat Mascot & Animated Pivoting Mallet */}
-        <div className="relative flex items-center justify-center h-28 w-full py-1">
+        <div className="relative flex items-center justify-center h-28 md:h-36 w-full py-1">
           {/* Peeking Quest Sticker: tanisha_doubt */}
           <div className="absolute left-1.5 top-1 z-20">
             <CollectibleSticker id="tanisha_doubt" size={44} rotation={-6} />
@@ -285,12 +285,12 @@ export default function WhackGamePage() {
             }}
             className="relative z-10 flex items-center justify-center"
           >
-            <div className="relative h-24 w-48 drop-shadow-xl overflow-hidden">
+            <div className="relative h-24 w-48 md:h-32 md:w-64 drop-shadow-xl overflow-hidden">
               <Image
                 src={isEzraAngry ? "/assets/whack_a_mole/ezra_angry.png" : "/assets/whack_a_mole/cat.png"}
                 alt={isEzraAngry ? "Ezra Angry Scowl" : data.marquee.catAlt}
                 fill
-                sizes="200px"
+                sizes="(min-width: 768px) 260px, 200px"
                 className="object-contain origin-center scale-[1.35] transition-all duration-150"
                 priority
               />
@@ -311,10 +311,10 @@ export default function WhackGamePage() {
             }
             transition={{ duration: 0.24, ease: "easeInOut" }}
             style={{ originX: 0.25, originY: 0.85 }}
-            className="absolute right-8 sm:right-10 top-2 z-20 pointer-events-none drop-shadow-2xl"
+            className="absolute right-8 sm:right-10 md:right-16 top-2 z-20 pointer-events-none drop-shadow-2xl"
           >
             {/* High-craft Carnival Wooden Mallet */}
-            <svg width="52" height="52" viewBox="0 0 64 64" fill="none">
+            <svg width="52" height="52" viewBox="0 0 64 64" fill="none" className="md:w-[62px] md:h-[62px]">
               {/* Mallet Wooden Shaft */}
               <rect x="29" y="24" width="6" height="36" rx="3" fill="#D2B48C" stroke="#8B5A2B" strokeWidth="2" />
               {/* Grip wraps */}
@@ -348,16 +348,16 @@ export default function WhackGamePage() {
       </div>
 
       {/* Classic Carnival Dirt Ground & Wooden Border (3x3 Grid) */}
-      <div className="w-full max-w-[340px] rounded-b-3xl bg-[#5C4033] p-3 sm:p-3.5 shadow-2xl border-b-4 border-x-4 border-[#8B5A2B] relative select-none overflow-hidden touch-manipulation">
+      <div className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[540px] rounded-b-3xl md:rounded-b-[32px] bg-[#5C4033] p-3 sm:p-3.5 md:p-5 shadow-2xl border-b-4 border-x-4 border-[#8B5A2B] relative select-none overflow-hidden touch-manipulation">
         {/* Wood Fence Corner Accents */}
-        <div className="absolute top-1 left-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
-        <div className="absolute top-1 right-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
-        <div className="absolute bottom-1 left-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
-        <div className="absolute bottom-1 right-1 h-3 w-3 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute top-1 left-1 h-3 w-3 md:h-4 md:w-4 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute top-1 right-1 h-3 w-3 md:h-4 md:w-4 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute bottom-1 left-1 h-3 w-3 md:h-4 md:w-4 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
+        <div className="absolute bottom-1 right-1 h-3 w-3 md:h-4 md:w-4 rounded-full bg-amber-700 border border-amber-900 shadow-xs" />
 
         {/* Dirt Surface Texture */}
         <div
-          className="rounded-2xl bg-[#4A3222] p-2 border-2 border-[#382416] grid grid-cols-3 gap-2 shadow-inner"
+          className="rounded-2xl md:rounded-3xl bg-[#4A3222] p-2 md:p-3.5 border-2 border-[#382416] grid grid-cols-3 gap-2 md:gap-3.5 shadow-inner"
           style={{
             backgroundImage: "radial-gradient(#3E2718 15%, transparent 16%), radial-gradient(#382315 15%, transparent 16%)",
             backgroundSize: "16px 16px",
@@ -375,7 +375,7 @@ export default function WhackGamePage() {
                 data-hole-index={index}
                 data-active={isMoleActive ? "true" : "false"}
                 onClick={() => handleHoleClick(index)}
-                className="relative h-24 w-full flex flex-col justify-end items-center cursor-pointer select-none"
+                className="relative h-24 md:h-32 w-full flex flex-col justify-end items-center cursor-pointer select-none"
               >
                 {/* Floating Hit Text / Score */}
                 <AnimatePresence>
@@ -385,7 +385,7 @@ export default function WhackGamePage() {
                       animate={{ opacity: 0, y: -48, scale: 1.3 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.8 }}
-                      className="absolute -top-3 z-40 font-display text-xs font-black text-yellow-300 bg-amber-950/95 px-2 py-0.5 rounded-full border border-yellow-400 shadow-lg pointer-events-none whitespace-nowrap"
+                      className="absolute -top-3 z-40 font-display text-xs md:text-sm font-black text-yellow-300 bg-amber-950/95 px-2 py-0.5 md:px-3 md:py-1 rounded-full border border-yellow-400 shadow-lg pointer-events-none whitespace-nowrap"
                     >
                       {floatingScore.text}
                     </motion.div>
@@ -402,7 +402,7 @@ export default function WhackGamePage() {
                       transition={{ duration: 0.18 }}
                       className="absolute -top-4 z-50 pointer-events-none"
                     >
-                      <svg width="46" height="46" viewBox="0 0 64 64" fill="none">
+                      <svg width="46" height="46" viewBox="0 0 64 64" fill="none" className="md:w-14 md:h-14">
                         <rect x="29" y="24" width="6" height="36" rx="3" fill="#D2B48C" stroke="#8B5A2B" strokeWidth="2" />
                         <rect x="12" y="10" width="40" height="20" rx="5" fill="#E65100" stroke="#BF360C" strokeWidth="2" />
                         <rect x="8" y="12" width="6" height="16" rx="2" fill="#FFE082" />
@@ -413,7 +413,7 @@ export default function WhackGamePage() {
                 </AnimatePresence>
 
                 {/* Deep Dark Hole Cavity (Behind Mole) */}
-                <div className="absolute bottom-1 w-[90%] h-8 rounded-[50%] bg-[#1E110A] border border-[#120A05] shadow-inner" />
+                <div className="absolute bottom-1 w-[90%] h-8 md:h-11 rounded-[50%] bg-[#1E110A] border border-[#120A05] shadow-inner" />
 
                 {/* Tanisha Mole Pop-Up Container (Masked by bottom dirt rim) */}
                 <div className="relative w-full h-full overflow-hidden flex justify-center items-end pb-1 pointer-events-none">
@@ -421,13 +421,13 @@ export default function WhackGamePage() {
                     {isMoleActive && (
                       <motion.div
                         key="active-mole"
-                        initial={{ y: 70, scale: 0.85 }}
+                        initial={{ y: 80, scale: 0.85 }}
                         animate={{
                           y: isHit ? 4 : 0,
                           scale: isHit ? 1.05 : 1,
                           rotate: isHit ? [-6, 6, -3, 3, 0] : 0,
                         }}
-                        exit={{ y: 70, scale: 0.85 }}
+                        exit={{ y: 80, scale: 0.85 }}
                         transition={{
                           type: "spring",
                           stiffness: 520,
@@ -436,12 +436,12 @@ export default function WhackGamePage() {
                         className="absolute bottom-1 inset-x-0 flex flex-col items-center z-10"
                       >
                         {/* Realistic Sticker Illustration: Idle vs Hit */}
-                        <div className="relative h-20 w-20 drop-shadow-md">
+                        <div className="relative h-20 w-20 md:h-28 md:w-28 drop-shadow-md">
                           <Image
                             src={isHit ? "/assets/whack_a_mole/tanisha_hit.png" : "/assets/whack_a_mole/tanisha_idle.png"}
                             alt={isHit ? data.tanishaMole.hitAlt : data.tanishaMole.idleAlt}
                             fill
-                            sizes="80px"
+                            sizes="(min-width: 768px) 112px, 80px"
                             className="object-contain"
                             priority
                           />
@@ -452,11 +452,11 @@ export default function WhackGamePage() {
                 </div>
 
                 {/* Classic 3D Dirt Mound Lip (Foreground over hole) */}
-                <div className="absolute -bottom-1 w-[94%] h-5 rounded-[50%] bg-[#795548] border-t-2 border-[#A1887F] shadow-md z-20 flex items-center justify-around px-1 pointer-events-none">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#5D4037]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#8D6E63]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#4E342E]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#6D4C41]" />
+                <div className="absolute -bottom-1 w-[94%] h-5 md:h-7 rounded-[50%] bg-[#795548] border-t-2 border-[#A1887F] shadow-md z-20 flex items-center justify-around px-1 md:px-2 pointer-events-none">
+                  <span className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#5D4037]" />
+                  <span className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#8D6E63]" />
+                  <span className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#4E342E]" />
+                  <span className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-[#6D4C41]" />
                 </div>
               </div>
             );
@@ -468,13 +468,13 @@ export default function WhackGamePage() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-3 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 p-3.5 rounded-2xl border-2 border-yellow-500 text-center shadow-lg text-amber-950"
+            className="mt-3 md:mt-4 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-400 p-3.5 md:p-5 rounded-2xl md:rounded-3xl border-2 border-yellow-500 text-center shadow-lg text-amber-950"
           >
-            <div className="flex items-center justify-center gap-1.5 text-xs font-black uppercase tracking-wider">
-              <Sparkles className="h-4 w-4 text-amber-800" />
+            <div className="flex items-center justify-center gap-1.5 text-xs md:text-sm font-black uppercase tracking-wider">
+              <Sparkles className="h-4 w-4 md:h-5 md:w-5 text-amber-800" />
               <span>{data.winBanner.title}</span>
             </div>
-            <p className="mt-1 text-xs font-bold text-amber-900">
+            <p className="mt-1 text-xs md:text-sm font-bold text-amber-900">
               {data.winBanner.description}
             </p>
           </motion.div>
@@ -482,12 +482,12 @@ export default function WhackGamePage() {
       </div>
 
       {/* Game Objective & Targets Card */}
-      <div className="w-full max-w-[340px] mt-4 rounded-2xl bg-[#181B32] p-4 shadow-scrapbook border border-[#272A43] text-left space-y-3">
+      <div className="w-full max-w-[340px] md:max-w-[480px] lg:max-w-[540px] mt-4 md:mt-6 rounded-2xl md:rounded-3xl bg-[#181B32] p-4 md:p-6 shadow-scrapbook border border-[#272A43] text-left space-y-3 md:space-y-4">
         <div>
-          <h4 className="font-mono text-[10px] font-bold tracking-widest text-[#B98AE8] uppercase">
+          <h4 className="font-mono text-[10px] md:text-xs font-bold tracking-widest text-[#B98AE8] uppercase">
             {(data as any).objective?.title || "GAME OBJECTIVE"}
           </h4>
-          <div className="mt-1 space-y-0.5 text-xs text-[#C9C5D6]">
+          <div className="mt-1 space-y-0.5 text-xs md:text-sm text-[#C9C5D6]">
             {(data as any).objective?.rules?.map((rule: string, i: number) => (
               <p key={i} className={i === (data as any).objective.rules.length - 1 ? "font-bold text-[#F7F4FC] pt-0.5" : ""}>
                 {rule}
@@ -497,12 +497,12 @@ export default function WhackGamePage() {
         </div>
 
         <div className="pt-2 border-t border-[#272A43]">
-          <h4 className="font-mono text-[10px] font-bold tracking-widest text-[#B98AE8] uppercase mb-1.5">
+          <h4 className="font-mono text-[10px] md:text-xs font-bold tracking-widest text-[#B98AE8] uppercase mb-1.5 md:mb-2">
             {(data as any).gameTargets?.title || "Game targets"}
           </h4>
-          <div className="grid grid-cols-2 gap-1.5 text-xs text-[#C9C5D6] font-medium">
+          <div className="grid grid-cols-2 gap-1.5 md:gap-2 text-xs md:text-sm text-[#C9C5D6] font-medium">
             {(data as any).gameTargets?.targets?.map((target: string, i: number) => (
-              <div key={i} className="flex items-center gap-1 bg-[#12152A] px-2 py-1 rounded-lg border border-[#272A43] text-[11px] text-[#F7F4FC]">
+              <div key={i} className="flex items-center gap-1 bg-[#12152A] px-2 py-1 md:px-3 md:py-1.5 rounded-lg md:rounded-xl border border-[#272A43] text-[11px] md:text-xs text-[#F7F4FC]">
                 <span>{target}</span>
               </div>
             ))}

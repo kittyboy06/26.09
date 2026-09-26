@@ -57,7 +57,7 @@ export function StickerMissionModal({
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.85, opacity: 0, y: 20 }}
             transition={{ type: "spring", damping: 26, stiffness: 320 }}
-            className="relative w-full max-w-sm sm:max-w-md bg-[#12152A] rounded-3xl border-2 border-[#7147A8] shadow-scrapbook-lg p-4 sm:p-5 flex flex-col items-center text-center z-10 max-h-[90vh] overflow-y-auto custom-chat-scroll"
+            className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl bg-[#12152A] rounded-3xl border-2 border-[#7147A8] shadow-scrapbook-lg p-4 sm:p-5 md:p-6 flex flex-col items-center text-center z-10 max-h-[90vh] overflow-y-auto custom-chat-scroll"
             style={{
               backgroundImage: "radial-gradient(rgba(155, 109, 219, 0.12) 10%, transparent 11%)",
               backgroundSize: "16px 16px",

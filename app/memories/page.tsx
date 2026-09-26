@@ -54,20 +54,20 @@ export default function MemoriesPage() {
           <CelestialBadge icon="star" text={memoriesData.badges.right.text} theme="pink" />
         </div>
 
-      <div className="text-center mb-6">
-        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#F7F4FC]">
+      <div className="text-center mb-6 md:mb-8">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F7F4FC]">
           {memoriesData.header.title}
         </h2>
-        <p className="mt-1 font-handwriting text-xl text-[#C9C5D6]">
+        <p className="mt-1 font-handwriting text-xl md:text-2xl text-[#C9C5D6]">
           {memoriesData.header.subtitle}
         </p>
       </div>
 
       {/* Intentionally Messy, Asymmetric Collage Stack */}
-      <div className="w-full max-w-sm flex flex-col gap-6 relative">
+      <div className="w-full max-w-sm md:max-w-2xl lg:max-w-3xl flex flex-col gap-6 md:gap-8 relative">
         {/* Featured Memory Constellation: Tagore College Symposium (Today • 25.09.2026) */}
         {featuredTagoreMemory && (
-          <div className="w-full relative mb-1">
+          <div className="w-full relative mb-1 md:mb-2">
             <FeaturedMemoryCard
               item={featuredTagoreMemory}
               onExpand={() => setSelectedItem(featuredTagoreMemory)}
@@ -82,22 +82,22 @@ export default function MemoriesPage() {
             spotlightSize={240}
             tilt={true}
             tiltAmplitude={4}
-            className="self-start w-[88%] -rotate-2 cursor-pointer select-none"
+            className="self-start w-[88%] md:w-[82%] -rotate-2 cursor-pointer select-none"
             onClick={() => setSelectedItem(quote1)}
           >
-            <div className="rounded-2xl bg-sky-800 p-4 border border-blue-deep/40 shadow-scrapbook relative">
-              <span className="absolute -top-3 left-6 h-5 w-16 bg-blue-deep/70 border border-blue-light/40 rounded-xs -rotate-6" />
-              <div className="flex items-center justify-between text-[11px] font-bold text-blue-light mb-1">
+            <div className="rounded-2xl md:rounded-3xl bg-sky-800 p-4 md:p-6 border border-blue-deep/40 shadow-scrapbook relative">
+              <span className="absolute -top-3 left-6 h-5 md:h-6 w-16 md:w-24 bg-blue-deep/70 border border-blue-light/40 rounded-xs -rotate-6" />
+              <div className="flex items-center justify-between text-[11px] md:text-xs font-bold text-blue-light mb-1 md:mb-2">
                 <div className="flex items-center gap-1.5">
                   <Star variant="blue" size="xs" />
                   <span>{quote1.tag}</span>
                 </div>
-                <span className="text-[10px] text-[#9693A7]">{memoriesData.tapToExpand}</span>
+                <span className="text-[10px] md:text-xs text-[#9693A7]">{memoriesData.tapToExpand}</span>
               </div>
-              <p className="font-handwriting text-xl font-bold text-[#F7F5FC] leading-snug">
+              <p className="font-handwriting text-xl md:text-2xl font-bold text-[#F7F5FC] leading-snug">
                 &ldquo;{quote1.quote}&rdquo;
               </p>
-              <span className="font-handwriting text-xs text-[#D0CDDC] block mt-1">
+              <span className="font-handwriting text-xs md:text-sm text-[#D0CDDC] block mt-1 md:mt-2">
                 — {quote1.subNote}
               </span>
             </div>
@@ -106,7 +106,7 @@ export default function MemoriesPage() {
 
         {/* Scrapbook Section 2: Photo 1 (Event Work & Late Edits) with 'that day' note */}
         {photo1 && (
-          <div className="self-end w-[92%] relative">
+          <div className="self-end w-[92%] md:w-[84%] relative">
             <PhotoCard
               src={photo1.imageSrc}
               alt={photo1.title}
@@ -118,7 +118,7 @@ export default function MemoriesPage() {
               aspectRatio={(photo1.aspectRatio as any) || "video"}
               onExpand={() => setSelectedItem(photo1)}
             />
-            <div className="absolute -bottom-3 -left-2 z-20 -rotate-6 rounded-xl bg-purple-night px-3 py-1 text-xs font-handwriting font-bold text-[#F7F5FC] shadow-xs border border-purple-deep flex items-center gap-2">
+            <div className="absolute -bottom-3 -left-2 z-20 -rotate-6 rounded-xl bg-purple-night px-3 md:px-4 py-1 md:py-1.5 text-xs md:text-sm font-handwriting font-bold text-[#F7F5FC] shadow-xs border border-purple-deep flex items-center gap-2">
               <span>{photo1.subNote}</span>
               <CollectibleSticker id="tanisha_book" size={48} rotation={-4} />
             </div>
@@ -127,20 +127,20 @@ export default function MemoriesPage() {
 
         {/* Scrapbook Section 3: Reel & 'Ohh wow' reaction snippet */}
         <div className="flex items-center justify-between gap-2 px-1">
-          <div className="flex-1 rounded-2xl bg-sky-800 p-3.5 shadow-scrapbook border border-purple-deep/30 -rotate-1">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[#F7F5FC] mb-1">
+          <div className="flex-1 rounded-2xl md:rounded-3xl bg-sky-800 p-3.5 md:p-5 shadow-scrapbook border border-purple-deep/30 -rotate-1">
+            <div className="flex items-center gap-1.5 text-xs md:text-sm font-bold text-[#F7F5FC] mb-1 md:mb-1.5">
               <Star variant="pink" size="xs" />
               <span>{memoriesData.reelReactionCard.badgeTitle}</span>
             </div>
-            <p className="font-handwriting text-lg text-pink-light font-bold leading-tight">
+            <p className="font-handwriting text-lg md:text-xl text-pink-light font-bold leading-tight">
               &ldquo;{memoriesData.reelReactionCard.quote}&rdquo;
             </p>
-            <span className="text-[10px] text-[#9693A7]">{memoriesData.reelReactionCard.subtext}</span>
+            <span className="text-[10px] md:text-xs text-[#9693A7]">{memoriesData.reelReactionCard.subtext}</span>
           </div>
 
-          <div className="flex flex-col items-center justify-center p-2 text-2xl animate-float-slow select-none">
+          <div className="flex flex-col items-center justify-center p-2 text-2xl md:text-3xl animate-float-slow select-none">
             <Star variant="purple" size="md" twinkle={true} />
-            <span className="text-xs font-handwriting text-[#D0CDDC] mt-1">{memoriesData.reelReactionCard.floatingLabel}</span>
+            <span className="text-xs md:text-sm font-handwriting text-[#D0CDDC] mt-1">{memoriesData.reelReactionCard.floatingLabel}</span>
           </div>
         </div>
 
@@ -154,25 +154,25 @@ export default function MemoriesPage() {
             className="w-full rotate-1 cursor-pointer select-none"
             onClick={() => setSelectedItem(robotIncident)}
           >
-            <div className="rounded-3xl bg-gradient-to-br from-sky-800 via-sky-850 to-purple-night p-5 shadow-scrapbook-lg border border-purple-deep/40 relative">
-              <span className="absolute -top-3.5 right-10 h-6 w-20 bg-purple-deep/70 border border-purple-light/40 rounded-xs rotate-3" />
+            <div className="rounded-3xl md:rounded-[32px] bg-gradient-to-br from-sky-800 via-sky-850 to-purple-night p-5 md:p-7 shadow-scrapbook-lg border border-purple-deep/40 relative">
+              <span className="absolute -top-3.5 right-10 h-6 md:h-7 w-20 md:w-28 bg-purple-deep/70 border border-purple-light/40 rounded-xs rotate-3" />
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-2">
                   <CelestialBadge icon="robot" theme="purple" />
-                  <h4 className="font-display text-sm font-bold text-[#F7F5FC]">
+                  <h4 className="font-display text-sm md:text-base font-bold text-[#F7F5FC]">
                     {robotIncident.title}
                   </h4>
                 </div>
-                <span className="rounded-full bg-blue-night px-2 py-0.5 text-[10px] font-bold text-blue-light border border-blue-deep">
+                <span className="rounded-full bg-blue-night px-2.5 md:px-3 py-0.5 md:py-1 text-[10px] md:text-xs font-bold text-blue-light border border-blue-deep">
                   {robotIncident.tag}
                 </span>
               </div>
 
-              <p className="whitespace-pre-line text-xs font-mono text-[#F7F5FC]/90 bg-sky-950 p-3 rounded-xl border border-purple-deep/20 my-2 leading-relaxed">
+              <p className="whitespace-pre-line text-xs md:text-sm font-mono text-[#F7F5FC]/90 bg-sky-950 p-3 md:p-4 rounded-xl md:rounded-2xl border border-purple-deep/20 my-2 md:my-3 leading-relaxed">
                 {robotIncident.snippet}
               </p>
 
-              <div className="flex items-center justify-between text-[11px] text-[#9693A7] font-medium pt-1">
+              <div className="flex items-center justify-between text-[11px] md:text-xs text-[#9693A7] font-medium pt-1">
                 <span>{robotIncident.subNote}</span>
                 <span>{memoriesData.tapToExpand}</span>
               </div>
@@ -182,7 +182,7 @@ export default function MemoriesPage() {
 
         {/* Scrapbook Section 4B: Association Inauguration Stage Milestone */}
         {inaugurationPhoto && (
-          <div className="self-center w-[94%] relative my-1">
+          <div className="self-center w-[94%] md:w-[86%] relative my-1 md:my-3">
             <PhotoCard
               src={inaugurationPhoto.imageSrc}
               alt={inaugurationPhoto.title}
@@ -194,7 +194,7 @@ export default function MemoriesPage() {
               aspectRatio={(inaugurationPhoto.aspectRatio as any) || "portrait"}
               onExpand={() => setSelectedItem(inaugurationPhoto)}
             />
-            <div className="absolute -bottom-2.5 right-3 z-20 rotate-2 rounded-xl bg-blue-night px-3 py-1 text-xs font-handwriting font-bold text-blue-light shadow-xs border border-blue-deep">
+            <div className="absolute -bottom-2.5 right-3 z-20 rotate-2 rounded-xl bg-blue-night px-3 md:px-4 py-1 md:py-1.5 text-xs md:text-sm font-handwriting font-bold text-blue-light shadow-xs border border-blue-deep">
               {inaugurationPhoto.subNote}
             </div>
           </div>
@@ -207,23 +207,23 @@ export default function MemoriesPage() {
             spotlightSize={260}
             tilt={true}
             tiltAmplitude={4}
-            className="self-center w-[90%] -rotate-1 cursor-pointer select-none"
+            className="self-center w-[90%] md:w-[82%] -rotate-1 cursor-pointer select-none"
             onClick={() => setSelectedItem(shellDefense)}
           >
-            <div className="rounded-2xl bg-sky-800 p-4 border border-purple-deep/50 shadow-scrapbook relative">
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 h-5 w-20 bg-purple-deep/60 border border-purple-light/40 rounded-xs" />
-              <div className="flex items-center gap-1.5 text-xs font-bold text-purple-light mb-1">
+            <div className="rounded-2xl md:rounded-3xl bg-sky-800 p-4 md:p-6 border border-purple-deep/50 shadow-scrapbook relative">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 h-5 md:h-6 w-20 md:w-28 bg-purple-deep/60 border border-purple-light/40 rounded-xs" />
+              <div className="flex items-center gap-1.5 text-xs md:text-sm font-bold text-purple-light mb-1 md:mb-2">
                 <CelestialBadge icon="shell" theme="purple" />
                 <span>{shellDefense.tag}</span>
               </div>
-              <p className="font-handwriting text-xl font-bold text-[#F7F5FC] leading-snug">
+              <p className="font-handwriting text-xl md:text-2xl font-bold text-[#F7F5FC] leading-snug">
                 &ldquo;{shellDefense.quote}&rdquo;
               </p>
               <div className="flex items-center justify-between mt-2 pt-2 border-t border-purple-deep/20">
-                <span className="text-[10px] text-[#9693A7] italic">{memoriesData.campusHallObservation}</span>
+                <span className="text-[10px] md:text-xs text-[#9693A7] italic">{memoriesData.campusHallObservation}</span>
                 <div className="flex items-center gap-2">
                   <CollectibleSticker id="tanisha_idle" size={48} rotation={2} />
-                  <p className="text-[10px] text-[#D0CDDC] font-semibold">
+                  <p className="text-[10px] md:text-xs text-[#D0CDDC] font-semibold">
                     — {shellDefense.author}
                   </p>
                 </div>
@@ -234,7 +234,7 @@ export default function MemoriesPage() {
 
         {/* Scrapbook Section 6: Reel Card + 'I might actually do that' */}
         {reelCard && (
-          <div className="self-start w-[92%] relative">
+          <div className="self-start w-[92%] md:w-[84%] relative">
             <PhotoCard
               src={reelCard.imageSrc}
               alt={reelCard.title}

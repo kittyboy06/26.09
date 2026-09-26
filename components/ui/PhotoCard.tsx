@@ -91,7 +91,7 @@ export function PhotoCard({
                 width={1080}
                 height={1834}
                 className="w-full h-auto block select-none"
-                sizes="(max-width: 640px) 100vw, 400px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 680px, 800px"
                 onError={() => setImageError(true)}
                 priority
               />
@@ -102,7 +102,7 @@ export function PhotoCard({
               alt={alt}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-105 select-none"
-              sizes="(max-width: 640px) 100vw, 400px"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 680px, 800px"
               onError={() => setImageError(true)}
               priority
             />

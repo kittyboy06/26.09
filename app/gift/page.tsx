@@ -126,49 +126,49 @@ export default function GiftPage() {
           <CelestialBadge icon="star" text={data.badges.right.text} theme="purple" />
         </div>
 
-        <div className="text-center mb-6">
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#F7F4FC]">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F7F4FC]">
             {data.mainHeading}
           </h2>
-          <p className="mt-1 font-handwriting text-xl text-[#C9C5D6]">
+          <p className="mt-1 font-handwriting text-xl md:text-2xl text-[#C9C5D6]">
             {data.tagline}
           </p>
         </div>
 
-        <div className="w-full max-w-sm flex flex-col gap-6">
+        <div className="w-full max-w-sm md:max-w-2xl lg:max-w-3xl flex flex-col gap-6 md:gap-8">
           {/* Botanical Growth Timeline */}
-          <div className="relative rounded-3xl bg-[#181B32] p-5 shadow-scrapbook border border-[#272A43]">
+          <div className="relative rounded-3xl md:rounded-[32px] bg-[#181B32] p-5 md:p-7 shadow-scrapbook border border-[#272A43]">
             {/* Playful corner sticker with speech badge */}
             <div className="absolute -top-4 -right-1 z-20 flex items-center">
-              <span className="font-mono text-[9px] font-bold text-amber-300 bg-amber-950/95 border border-amber-500/40 px-2 py-0.5 rounded-full shadow-xs mr-0.5 whitespace-nowrap">
+              <span className="font-mono text-[9px] md:text-xs font-bold text-amber-300 bg-amber-950/95 border border-amber-500/40 px-2 py-0.5 md:px-2.5 md:py-1 rounded-full shadow-xs mr-0.5 whitespace-nowrap">
                 939 pcs?! Good luck!
               </span>
               <CollectibleSticker id="tanisha_work" size={48} rotation={6} />
             </div>
 
             {/* Section Header */}
-            <div className="flex items-center justify-between border-b border-[#272A43] pb-2.5 mb-4 pr-10">
-              <div className="flex items-center gap-1.5 min-w-0">
-                <h3 className="font-display text-sm font-bold uppercase tracking-wider text-[#FFB6D5] flex items-center gap-1.5 shrink-0">
-                  <Flower2 className="h-4 w-4 text-[#FFB6D5]" />
+            <div className="flex items-center justify-between border-b border-[#272A43] pb-2.5 md:pb-3.5 mb-4 md:mb-5 pr-10">
+              <div className="flex items-center gap-1.5 md:gap-2.5 min-w-0">
+                <h3 className="font-display text-sm md:text-base font-bold uppercase tracking-wider text-[#FFB6D5] flex items-center gap-1.5 shrink-0">
+                  <Flower2 className="h-4 w-4 md:h-5 md:w-5 text-[#FFB6D5]" />
                   <span>{data.progressionTitle}</span>
                 </h3>
-                <span className="flex items-center gap-1 text-[9px] font-mono font-bold text-[#8DD8FF] bg-[#183B59] px-2 py-0.5 rounded-full border border-[#2679A8] shrink-0">
-                  <Layers className="h-2.5 w-2.5" />
+                <span className="flex items-center gap-1 text-[9px] md:text-xs font-mono font-bold text-[#8DD8FF] bg-[#183B59] px-2 py-0.5 md:px-2.5 md:py-1 rounded-full border border-[#2679A8] shrink-0">
+                  <Layers className="h-2.5 w-2.5 md:h-3 md:w-3" />
                   <span>{data.specimenTag}</span>
                 </span>
               </div>
 
-              <div className="flex items-center gap-1 text-[9px] font-mono text-[#C9C5D6] bg-[#0E1122] px-2 py-0.5 rounded-full border border-[#272A43] shrink-0">
-                <Clock className="h-2.5 w-2.5 text-amber-400" />
+              <div className="flex items-center gap-1 text-[9px] md:text-xs font-mono text-[#C9C5D6] bg-[#0E1122] px-2 py-0.5 md:px-2.5 md:py-1 rounded-full border border-[#272A43] shrink-0">
+                <Clock className="h-2.5 w-2.5 md:h-3 md:w-3 text-amber-400" />
                 <span>~3-4h</span>
               </div>
             </div>
 
             {/* Timeline Stages with Botanical Milestones */}
-            <div className="relative flex flex-col gap-3">
+            <div className="relative flex flex-col gap-3 md:gap-4">
               {/* Connected Vertical Botanical Stem Line */}
-              <div className="absolute left-[23px] top-6 bottom-6 w-0.5 border-l-2 border-dashed border-purple-500/30 -z-0 pointer-events-none" />
+              <div className="absolute left-[23px] md:left-[27px] top-6 bottom-6 w-0.5 border-l-2 border-dashed border-purple-500/30 -z-0 pointer-events-none" />
 
               {data.stages.map((stage, idx) => {
                 const visual = stageVisuals[stage.stage] || stageVisuals[1];
@@ -182,14 +182,14 @@ export default function GiftPage() {
                     tiltAmplitude={2.5}
                     className="rounded-2xl transition-all duration-300 select-none z-10"
                   >
-                    <div className="rounded-2xl bg-sky-900/90 backdrop-blur-xs p-3.5 border border-purple-deep/30 relative overflow-hidden flex flex-col gap-2">
+                    <div className="rounded-2xl bg-sky-900/90 backdrop-blur-xs p-3.5 md:p-4 border border-purple-deep/30 relative overflow-hidden flex flex-col gap-2 md:gap-2.5">
                       {/* Top Row: Milestone Emoji Medallion + Stage Label + Badge */}
                       <div className="flex items-center justify-between gap-2">
-                        <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="flex items-center gap-2.5 md:gap-3 min-w-0">
                           {/* Glowing Botanical Emoji Medallion */}
                           <div
                             className={cn(
-                              "relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-lg select-none transition-transform hover:scale-110",
+                              "relative flex h-10 w-10 md:h-12 md:w-12 shrink-0 items-center justify-center rounded-xl md:rounded-2xl border text-lg md:text-xl select-none transition-transform hover:scale-110",
                               visual.medallionBg,
                               visual.medallionBorder,
                               visual.medallionGlow
@@ -197,36 +197,36 @@ export default function GiftPage() {
                           >
                             <span className="transform translate-y-[-1px]">{stage.emoji}</span>
                             {/* Mini active milestone node dot */}
-                            <span className="absolute -top-1 -right-1 flex h-2 w-2">
+                            <span className="absolute -top-1 -right-1 flex h-2 w-2 md:h-2.5 md:w-2.5">
                               <span className={cn("animate-ping absolute inline-flex h-full w-full rounded-full opacity-75", idx === 4 ? "bg-amber-400" : "bg-purple-400")} />
-                              <span className={cn("relative inline-flex rounded-full h-2 w-2", idx === 4 ? "bg-amber-400" : "bg-purple-400")} />
+                              <span className={cn("relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5", idx === 4 ? "bg-amber-400" : "bg-purple-400")} />
                             </span>
                           </div>
 
                           <div className="min-w-0">
-                            <div className="flex items-center gap-1.5">
-                              <h4 className="font-display text-sm font-bold text-[#F7F4FC] truncate">
+                            <div className="flex items-center gap-1.5 md:gap-2">
+                              <h4 className="font-display text-sm md:text-base font-bold text-[#F7F4FC] truncate">
                                 {stage.label}
                               </h4>
-                              <span className="text-[10px] font-mono text-[#9693A7]">
+                              <span className="text-[10px] md:text-xs font-mono text-[#9693A7]">
                                 {data.stagePrefix} 0{stage.stage}
                               </span>
                             </div>
-                            <span className="text-[9px] font-mono text-[#8DD8FF]">
+                            <span className="text-[9px] md:text-[11px] font-mono text-[#8DD8FF]">
                               {visual.stepHint}
                             </span>
                           </div>
                         </div>
 
                         {/* Status Badge */}
-                        <span className="shrink-0 text-[9px] font-mono font-bold px-2 py-0.5 rounded-md bg-[#12152A] border border-[#272A43] text-purple-light shadow-2xs">
+                        <span className="shrink-0 text-[9px] md:text-[11px] font-mono font-bold px-2 py-0.5 md:px-2.5 md:py-1 rounded-md bg-[#12152A] border border-[#272A43] text-purple-light shadow-2xs">
                           {visual.badge}
                         </span>
                       </div>
 
                       {/* Middle: Stage Description with Relatable Detail */}
-                      <div className="flex items-center justify-between gap-2 pl-12 pr-1">
-                        <p className="font-handwriting text-base font-bold text-[#FFB6D5] leading-snug flex-1">
+                      <div className="flex items-center justify-between gap-2 pl-12 md:pl-15 pr-1">
+                        <p className="font-handwriting text-base md:text-lg font-bold text-[#FFB6D5] leading-snug flex-1">
                           &ldquo;{stage.description}&rdquo;
                         </p>
 
@@ -272,7 +272,7 @@ export default function GiftPage() {
             tapeColor="green"
             tapePosition="center"
             rotation={-0.8}
-            className="relative bg-sky-800 border-purple-deep/30 p-6 shadow-scrapbook"
+            className="relative bg-sky-800 border-purple-deep/30 p-6 md:p-8 rounded-3xl md:rounded-[32px] shadow-scrapbook"
           >
             {/* Decorative Corner Stars */}
             <span className="absolute -top-2.5 left-4 select-none" aria-hidden="true">
@@ -282,8 +282,8 @@ export default function GiftPage() {
               <Star variant="blue" size="sm" twinkle={true} delayed={true} />
             </span>
 
-            <div className="text-center mb-4">
-              <span className="font-handwriting text-2xl sm:text-3xl font-bold text-[#F7F4FC] leading-snug block">
+            <div className="text-center mb-4 md:mb-6">
+              <span className="font-handwriting text-2xl sm:text-3xl md:text-4xl font-bold text-[#F7F4FC] leading-snug block">
                 &ldquo;{data.hook}&rdquo;
               </span>
             </div>
@@ -291,51 +291,52 @@ export default function GiftPage() {
             {/* Product Frame Surrounded by Illustrated Elements */}
             <div
               onClick={() => setIsExpanded(true)}
-              className="group relative aspect-square sm:aspect-[4/3] w-full overflow-hidden rounded-2xl bg-white border-2 border-dashed border-purple-deep/50 flex items-center justify-center p-2 shadow-scrapbook cursor-pointer transition-all duration-300 hover:shadow-celestial-purple"
+              className="group relative aspect-square sm:aspect-[4/3] md:aspect-[16/11] w-full max-w-xl mx-auto overflow-hidden rounded-2xl md:rounded-3xl bg-white border-2 border-dashed border-purple-deep/50 flex items-center justify-center p-2 shadow-scrapbook cursor-pointer transition-all duration-300 hover:shadow-celestial-purple"
             >
               {!hasError ? (
                 <Image
                   src={currentImg}
                   alt={data.productAlt}
                   fill
+                  sizes="(min-width: 768px) 560px, 320px"
                   priority
-                  className="object-contain p-2 transition-transform duration-500 group-hover:scale-105 relative z-10"
+                  className="object-contain p-2 md:p-4 transition-transform duration-500 group-hover:scale-105 relative z-10"
                   onError={handleImageError}
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center p-6 text-center relative z-10">
                   <Star variant="main" size="lg" twinkle={true} />
-                  <h4 className="font-display text-sm font-bold text-sky-950 mt-2">
+                  <h4 className="font-display text-sm md:text-base font-bold text-sky-950 mt-2">
                     {data.title}
                   </h4>
                 </div>
               )}
 
               {/* Corner stickers framing the bouquet */}
-              <div className="absolute top-2 left-2 rounded-full bg-blue-night/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-blue-light shadow-xs border border-blue-deep z-20">
+              <div className="absolute top-2 left-2 rounded-full bg-blue-night/90 backdrop-blur-xs px-2.5 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold text-blue-light shadow-xs border border-blue-deep z-20">
                 {data.cornerBadges.botanical}
               </div>
-              <div className="absolute top-2 right-2 rounded-full bg-sky-900/80 backdrop-blur-xs px-2 py-0.5 text-[10px] font-bold text-[#8DD8FF] shadow-xs border border-[#2679A8] flex items-center gap-1 z-20 transition-transform group-hover:scale-105">
-                <ZoomIn className="h-3 w-3" />
+              <div className="absolute top-2 right-2 rounded-full bg-sky-900/80 backdrop-blur-xs px-2 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold text-[#8DD8FF] shadow-xs border border-[#2679A8] flex items-center gap-1 z-20 transition-transform group-hover:scale-105">
+                <ZoomIn className="h-3 w-3 md:h-3.5 md:w-3.5" />
                 <span>Tap to inspect</span>
               </div>
-              <div className="absolute bottom-2 right-2 rounded-full bg-pink-night/90 backdrop-blur-xs px-2.5 py-0.5 text-[10px] font-bold text-pink-light shadow-xs border border-pink-deep z-20">
+              <div className="absolute bottom-2 right-2 rounded-full bg-pink-night/90 backdrop-blur-xs px-2.5 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold text-pink-light shadow-xs border border-pink-deep z-20">
                 {data.cornerBadges.permanentBloom}
               </div>
             </div>
 
-            <div className="mt-4 space-y-2.5 text-center">
-              <div className="inline-flex items-center gap-1.5 rounded-full bg-purple-night px-3.5 py-1 text-xs font-bold text-[#F7F4FC] border border-purple-deep shadow-xs">
-                <PackageCheck className="h-4 w-4 text-blue-light" />
+            <div className="mt-4 md:mt-6 space-y-2.5 md:space-y-3.5 text-center">
+              <div className="inline-flex items-center gap-1.5 rounded-full bg-purple-night px-3.5 py-1 md:px-5 md:py-1.5 text-xs md:text-sm font-bold text-[#F7F4FC] border border-purple-deep shadow-xs">
+                <PackageCheck className="h-4 w-4 md:h-5 md:w-5 text-blue-light" />
                 <span>{data.punchline}</span>
               </div>
 
-              <p className="font-handwriting text-xl font-bold text-pink-light leading-snug">
+              <p className="font-handwriting text-xl md:text-2xl font-bold text-pink-light leading-snug">
                 &ldquo;{data.warning}&rdquo;
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-2 pt-1">
-                <p className="text-xs text-[#D0CDDC]">
+                <p className="text-xs md:text-sm text-[#D0CDDC]">
                   {data.subWarning}
                 </p>
                 <div className="shrink-0">
@@ -374,14 +375,14 @@ export default function GiftPage() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.92, opacity: 0, y: 16 }}
               transition={{ type: "spring", stiffness: 350, damping: 26 }}
-              className="relative max-h-[90vh] w-full max-w-lg rounded-3xl bg-[#12152A] border border-[#272A43] p-4 sm:p-5 shadow-2xl flex flex-col items-center"
+              className="relative max-h-[90vh] w-full max-w-lg md:max-w-xl lg:max-w-2xl rounded-3xl bg-[#12152A] border border-[#272A43] p-4 sm:p-5 md:p-6 shadow-2xl flex flex-col items-center"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header with Title & Close Button */}
               <div className="w-full flex items-center justify-between pb-3 border-b border-[#272A43]">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-[#8DD8FF] animate-pulse" />
-                  <span className="font-mono text-xs font-bold text-[#8DD8FF] uppercase tracking-wider">
+                  <span className="font-mono text-xs md:text-sm font-bold text-[#8DD8FF] uppercase tracking-wider">
                     {data.title}
                   </span>
                 </div>
@@ -391,7 +392,7 @@ export default function GiftPage() {
                   className="rounded-full bg-sky-850 p-1.5 text-[#C9C5D6] hover:text-white hover:bg-sky-800 transition-colors border border-sky-750"
                   aria-label="Close modal"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-4 w-4 md:h-5 md:w-5" />
                 </button>
               </div>
 
@@ -401,19 +402,20 @@ export default function GiftPage() {
                   src={currentImg}
                   alt={data.productAlt}
                   fill
-                  className="object-contain p-2"
+                  sizes="(min-width: 768px) 600px, 90vw"
+                  className="object-contain p-2 md:p-4"
                   priority
                 />
               </div>
 
               {/* Botanical Specimen Details Card */}
               <div className="w-full text-center space-y-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#183B59] border border-[#2679A8] text-xs font-mono font-bold text-[#8DD8FF]">
+                <div className="inline-flex items-center gap-2 px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-[#183B59] border border-[#2679A8] text-xs md:text-sm font-mono font-bold text-[#8DD8FF]">
                   <span>939 PIECES</span>
                   <span>•</span>
                   <span>BUILDING BLOCK BOUQUET</span>
                 </div>
-                <p className="font-handwriting text-lg text-[#FFB6D5] font-bold pt-1">
+                <p className="font-handwriting text-lg md:text-xl text-[#FFB6D5] font-bold pt-1">
                   &ldquo;A bloom that lasts forever.&rdquo; 🌸
                 </p>
               </div>

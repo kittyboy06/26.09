@@ -66,7 +66,7 @@ export function Lightbox({ item, onClose }: LightboxProps) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 16 }}
             transition={{ type: "spring", stiffness: 360, damping: 28 }}
-            className="relative z-10 w-full max-w-sm my-auto max-h-[88dvh] flex flex-col rounded-3xl bg-sky-850 shadow-scrapbook-lg border border-purple-deep/50 text-[#F7F5FC] overflow-hidden"
+            className="relative z-10 w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl my-auto max-h-[88dvh] flex flex-col rounded-3xl bg-sky-850 shadow-scrapbook-lg border border-purple-deep/50 text-[#F7F5FC] overflow-hidden"
           >
             {/* Modal Header */}
             <div className="p-4 sm:p-5 pb-2 flex items-center justify-between border-b border-sky-750 shrink-0">

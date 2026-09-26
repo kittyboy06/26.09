@@ -54,7 +54,7 @@ export function Skiper2MusicIsland() {
   return (
     <div
       ref={containerRef}
-      className="fixed bottom-5 right-4 z-50 flex flex-col items-end pointer-events-auto select-none max-w-[calc(100vw-2rem)]"
+      className="fixed bottom-5 right-4 md:bottom-6 md:right-6 lg:right-[max(1.5rem,calc(50%-28rem))] z-50 flex flex-col items-end pointer-events-auto select-none max-w-[calc(100vw-2rem)]"
       style={{
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
         paddingRight: "env(safe-area-inset-right, 0px)",

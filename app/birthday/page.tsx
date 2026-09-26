@@ -61,7 +61,7 @@ export default function BirthdayPage() {
         </div>
 
         {/* Main Celebration Headline */}
-        <div className="my-2 flex flex-col items-center">
+        <div className="my-2 md:my-4 flex flex-col items-center">
           <div className="relative inline-flex items-center justify-center my-1">
             <Star variant="main" size="lg" twinkle={true} />
             <div className="absolute -right-14 -top-2">
@@ -69,22 +69,22 @@ export default function BirthdayPage() {
             </div>
           </div>
 
-          <h1 className="font-display text-4xl sm:text-5xl font-black tracking-tight text-[#F7F5FC] leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#F7F5FC] leading-tight">
             {data.headline}
           </h1>
 
-          <div className="font-display text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-light via-purple-light to-pink-light">
+          <div className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-light via-purple-light to-pink-light">
             {site.recipient.toUpperCase()}
           </div>
 
-          <p className="mt-2 font-handwriting text-2xl text-pink-light">
+          <p className="mt-2 md:mt-3 font-handwriting text-2xl md:text-3xl text-pink-light">
             {data.tagline}
           </p>
         </div>
 
       {/* Celebratory Event Memories Polaroid */}
       {data.celebrationPhoto && (
-        <div className="w-full max-w-sm my-3 relative">
+        <div className="w-full max-w-sm md:max-w-md lg:max-w-lg my-3 md:my-5 relative">
           <PhotoCard
             src={data.celebrationPhoto.imageSrc}
             alt={data.celebrationPhoto.alt}
@@ -111,27 +111,27 @@ export default function BirthdayPage() {
               } as any)
             }
           />
-          <div className="absolute -bottom-2 -left-2 z-20 -rotate-3 rounded-lg bg-[#30204B] px-3 py-1 text-xs font-handwriting font-bold text-[#F7F4FC] shadow-xs border border-[#7147A8]">
+          <div className="absolute -bottom-2 -left-2 z-20 -rotate-3 rounded-lg bg-[#30204B] px-3 py-1 text-xs md:text-sm font-handwriting font-bold text-[#F7F4FC] shadow-xs border border-[#7147A8]">
             {data.celebrationPhoto.subNote}
           </div>
         </div>
       )}
 
       {/* Sincere Friendship Birthday Letter (Midnight Scrapbook Parchment) */}
-      <div className="w-full max-w-sm my-6">
-        <div className="relative rounded-3xl bg-sky-800 border border-purple-deep/40 p-6 shadow-scrapbook-lg text-left overflow-hidden">
+      <div className="w-full max-w-sm md:max-w-xl lg:max-w-2xl my-6 md:my-8">
+        <div className="relative rounded-3xl md:rounded-[32px] bg-sky-800 border border-purple-deep/40 p-6 md:p-8 shadow-scrapbook-lg text-left overflow-hidden">
           {/* Subtle header line */}
-          <div className="flex items-center justify-between pb-3 mb-4 border-b border-purple-deep/20">
-            <span className="text-[9px] font-mono tracking-widest text-[#9693A7] uppercase font-bold">
+          <div className="flex items-center justify-between pb-3 mb-4 md:mb-5 border-b border-purple-deep/20">
+            <span className="text-[9px] md:text-xs font-mono tracking-widest text-[#9693A7] uppercase font-bold">
               {data.letterhead.fromTo}
             </span>
-            <span className="text-[9px] font-mono text-[#9693A7]">
+            <span className="text-[9px] md:text-xs font-mono text-[#9693A7]">
               {data.letterhead.date}
             </span>
           </div>
 
-          <div className="space-y-4 text-sm sm:text-base text-[#D0CDDC] leading-relaxed">
-            <p className="font-handwriting text-2xl text-pink-light font-bold">
+          <div className="space-y-4 md:space-y-5 text-sm sm:text-base md:text-lg text-[#D0CDDC] leading-relaxed">
+            <p className="font-handwriting text-2xl md:text-3xl text-pink-light font-bold">
               {data.letter.p1}
             </p>
 
@@ -147,12 +147,12 @@ export default function BirthdayPage() {
               {data.letter.p4}
             </p>
 
-            <p className="font-handwriting text-2xl text-[#F7F5FC] font-bold pt-2">
+            <p className="font-handwriting text-2xl md:text-3xl text-[#F7F5FC] font-bold pt-2">
               {data.letter.p5}
             </p>
 
-            <div className="pt-4 border-t border-purple-deep/20 flex items-center justify-between">
-              <span className="font-handwriting text-xl text-[#F7F5FC] font-bold">
+            <div className="pt-4 md:pt-5 border-t border-purple-deep/20 flex items-center justify-between">
+              <span className="font-handwriting text-xl md:text-2xl text-[#F7F5FC] font-bold">
                 {data.letter.signOff}
               </span>
               <div className="flex items-center gap-2">
@@ -169,13 +169,13 @@ export default function BirthdayPage() {
 
       {/* One Last Thing Note Card */}
       {(data as any).oneLastThing && (
-        <div className="w-full max-w-sm mb-6 -mt-2 text-left">
-          <div className="relative rounded-3xl bg-sky-850 border border-purple-deep/50 p-5 shadow-scrapbook">
+        <div className="w-full max-w-sm md:max-w-xl lg:max-w-2xl mb-6 md:mb-8 -mt-2 text-left">
+          <div className="relative rounded-3xl md:rounded-[32px] bg-sky-850 border border-purple-deep/50 p-5 md:p-6 shadow-scrapbook">
             <span className="absolute -top-2.5 left-8 h-4 w-16 bg-purple-deep/50 border border-purple-light/40 rounded-xs rotate-2" />
-            <h4 className="font-display text-sm font-bold text-[#F7F5FC] mb-2">
+            <h4 className="font-display text-sm md:text-base font-bold text-[#F7F5FC] mb-2">
               {(data as any).oneLastThing.title}
             </h4>
-            <p className="whitespace-pre-line text-xs text-[#D0CDDC] leading-relaxed font-medium">
+            <p className="whitespace-pre-line text-xs md:text-sm text-[#D0CDDC] leading-relaxed font-medium">
               {(data as any).oneLastThing.body}
             </p>
           </div>
@@ -183,15 +183,15 @@ export default function BirthdayPage() {
       )}
 
       {/* Interactive CTA Controls */}
-      <div className="w-full max-w-xs flex flex-col gap-3">
+      <div className="w-full max-w-xs md:max-w-sm flex flex-col gap-3 md:gap-3.5">
         {/* Confetti Trigger */}
         <SpecularButton
           variant="purple"
           size="default"
-          className="w-full justify-center"
+          className="w-full justify-center md:text-base md:py-2.5"
           onClick={fireCelebrationConfetti}
         >
-          <Sparkles className="h-4 w-4" />
+          <Sparkles className="h-4 w-4 md:h-5 md:w-5" />
           <span>{data.actions.celebrateAgain}</span>
         </SpecularButton>
 
@@ -199,28 +199,28 @@ export default function BirthdayPage() {
         <SpecularButton
           variant="pink"
           size="default"
-          className="w-full justify-center"
+          className="w-full justify-center md:text-base md:py-2.5"
           onClick={toggleMusic}
         >
-          <Music className="h-4 w-4" />
+          <Music className="h-4 w-4 md:h-5 md:w-5" />
           <span>{isPlaying ? data.actions.pauseMusic : data.actions.replayMusic}</span>
         </SpecularButton>
 
         {/* Back to Gift button */}
         <button
           onClick={() => router.push("/gift")}
-          className="mt-1 flex items-center justify-center gap-1.5 text-xs font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-1.5 focus:outline-none"
+          className="mt-1 flex items-center justify-center gap-1.5 text-xs md:text-sm font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-1.5 focus:outline-none"
         >
-          <ArrowLeft className="h-3.5 w-3.5" />
+          <ArrowLeft className="h-3.5 w-3.5 md:h-4 md:w-4" />
           <span>{data.actions.backToGift}</span>
         </button>
 
         {/* Start Over button */}
         <button
           onClick={() => router.push("/")}
-          className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-1 focus:outline-none"
+          className="flex items-center justify-center gap-1.5 text-xs md:text-sm font-semibold text-[#9693A7] hover:text-[#F7F5FC] transition-colors py-1 focus:outline-none"
         >
-          <RotateCcw className="h-3.5 w-3.5" />
+          <RotateCcw className="h-3.5 w-3.5 md:h-4 md:w-4" />
           <span>{data.actions.startOver}</span>
         </button>
       </div>

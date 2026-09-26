@@ -136,7 +136,7 @@ export default function NineteenPage() {
   const card19 = data.cards.find((c) => c.isSpecial);
 
   return (
-    <NightSky mood="purple" starDensity="normal" baseBg="default">
+    <NightSky mood="purple" starDensity="normal" baseBg="default" contentClassName="md:max-w-3xl lg:max-w-4xl">
       <PageTransition className="relative flex flex-col items-center pt-12 pb-16">
         {/* Header */}
         <div className="w-full flex items-center justify-between mb-4 px-2">
@@ -144,17 +144,17 @@ export default function NineteenPage() {
           <CelestialBadge icon="star" text={data.badges.right.text} theme="pink" />
         </div>
 
-        <div className="text-center mb-6">
-          <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-[#F7F5FC]">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F7F5FC]">
             {data.header.title}
           </h2>
-          <p className="mt-1 font-handwriting text-lg text-[#D0CDDC]">
+          <p className="mt-1 font-handwriting text-lg md:text-xl text-[#D0CDDC]">
             {data.header.subtitle}
           </p>
         </div>
 
-        {/* Responsive 2-column mobile grid */}
-        <div className="w-full max-w-sm grid grid-cols-2 gap-3">
+        {/* Responsive 2-column mobile / 3-column tablet / 4-column desktop grid */}
+        <div className="w-full max-w-sm md:max-w-3xl lg:max-w-4xl grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
           {/* CARDS 01 TO 18 (3D FLIP) */}
           {standardCards.map((card) => {
             const isFlipped = !!flippedCards[card.id];
@@ -168,7 +168,7 @@ export default function NineteenPage() {
                 spotlightSize={220}
                 tilt={true}
                 tiltAmplitude={5}
-                className="perspective-1000 h-52 w-full cursor-pointer select-none overflow-visible group"
+                className="perspective-1000 h-52 md:h-56 lg:h-60 w-full cursor-pointer select-none overflow-visible group"
                 onClick={() => toggleCard(card.id)}
               >
                 <div
@@ -450,12 +450,12 @@ export default function NineteenPage() {
               spotlightSize={320}
               tilt={true}
               tiltAmplitude={4}
-              className="col-span-2 cursor-pointer select-none mt-2 overflow-visible"
+              className="col-span-2 md:col-span-3 lg:col-span-4 cursor-pointer select-none mt-2 md:mt-4 overflow-visible"
               onClick={handleCard19Click}
             >
               <div
                 className={cn(
-                  "relative overflow-hidden rounded-3xl p-6 text-center shadow-scrapbook-lg border transition-all duration-300 active:scale-[0.98]",
+                  "relative overflow-hidden rounded-3xl p-6 md:p-8 text-center shadow-scrapbook-lg border transition-all duration-300 active:scale-[0.98]",
                   isCard19Unlocked
                     ? "bg-gradient-to-br from-blue-night via-purple-night to-pink-night border-purple-primary shadow-celestial-purple"
                     : "bg-gradient-to-br from-blue-night/90 via-purple-night/90 to-pink-night/90 border-purple-deep/50 hover:border-purple-primary"
@@ -465,42 +465,42 @@ export default function NineteenPage() {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(192,154,244,0.18)_0%,transparent_70%)] pointer-events-none" />
 
                 <div className="relative flex items-center justify-between mb-2 z-10">
-                  <span className="rounded-full bg-purple-night px-2.5 py-0.5 text-[10px] font-bold text-purple-light border border-purple-deep/50">
+                  <span className="rounded-full bg-purple-night px-2.5 py-0.5 md:px-3 md:py-1 text-[10px] md:text-xs font-bold text-purple-light border border-purple-deep/50">
                     {data.milestoneCard.tag}
                   </span>
                   <Star variant="main" size="sm" twinkle={true} />
                 </div>
 
                 {!isCard19Unlocked ? (
-                  <div className="py-4 flex flex-col items-center gap-2 relative z-10">
+                  <div className="py-4 md:py-6 flex flex-col items-center gap-2 relative z-10">
                     <div className="relative my-1">
                       <Star variant="main" size="lg" twinkle={true} />
                       <div className="absolute inset-0 rounded-full blur-md bg-purple-glow/30" />
                     </div>
-                    <h3 className="font-display text-xl font-black text-[#F7F4FC]">
+                    <h3 className="font-display text-xl md:text-2xl font-black text-[#F7F4FC]">
                       {data.milestoneCard.lockedTitle}
                     </h3>
-                    <span className="text-xs font-semibold text-pink-light flex items-center gap-1">
-                      <Sparkles className="h-3 w-3" />
+                    <span className="text-xs md:text-sm font-semibold text-pink-light flex items-center gap-1">
+                      <Sparkles className="h-3 w-3 md:h-3.5 md:w-3.5" />
                       {data.milestoneCard.lockedTapPrompt}
                     </span>
                   </div>
                 ) : (
-                  <div className="py-4 flex flex-col items-center gap-2 animate-in fade-in zoom-in-95 duration-300 relative z-10">
-                    <span className="font-display text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-light via-purple-light to-pink-light">
+                  <div className="py-4 md:py-6 flex flex-col items-center gap-2 md:gap-3 animate-in fade-in zoom-in-95 duration-300 relative z-10">
+                    <span className="font-display text-6xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-light via-purple-light to-pink-light">
                       {data.milestoneCard.unlockedNumber}
                     </span>
                     <div className="relative my-2">
                       <Star variant="main" size="lg" twinkle={true} />
                       <div className="absolute inset-0 rounded-full blur-lg bg-pink-glow/40 animate-ping" />
                     </div>
-                    <div className="rounded-full bg-pink-night px-4 py-1 text-xs font-bold tracking-widest text-pink-light uppercase border border-pink-deep/40 shadow-xs">
+                    <div className="rounded-full bg-pink-night px-4 py-1 text-xs md:text-sm font-bold tracking-widest text-pink-light uppercase border border-pink-deep/40 shadow-xs">
                       {data.milestoneCard.unlockedTag}
                     </div>
-                    <p className="font-handwriting text-3xl font-bold text-pink-light mt-2">
+                    <p className="font-handwriting text-3xl md:text-4xl font-bold text-pink-light mt-2">
                       {data.milestoneCard.unlockedMessage}
                     </p>
-                    <span className="text-[10px] text-[#9693A7] mt-3">
+                    <span className="text-[10px] md:text-xs text-[#9693A7] mt-3">
                       {data.milestoneCard.unlockedCollapsePrompt}
                     </span>
                   </div>
